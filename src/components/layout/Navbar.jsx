@@ -64,7 +64,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex h-[80px] w-full max-w-[1400px] items-center justify-between gap-5 px-6 lg:h-[88px] lg:px-10"
+        className="mx-auto flex min-h-[80px] w-full max-w-[1400px] items-center justify-between gap-5 px-6 py-3 lg:min-h-[88px] lg:px-10"
       >
         {/* LOGO AND WORDMARK */}
         <Link
