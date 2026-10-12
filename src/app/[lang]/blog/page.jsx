@@ -1,7 +1,5 @@
-import SectionIntroPage from "../../../components/layout/SectionIntroPage"
+import Blog from "../../../components/migrated/Blog"
 
-// Temporary navigation destination; replace with the original page during migration.
-export default async function SectionPage({ params }) {
-  const { lang } = await params
-  return <SectionIntroPage lang={lang} section="blog" />
+export default function BlogPage() {
+  return <Blog />
 }
