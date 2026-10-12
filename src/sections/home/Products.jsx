@@ -13,7 +13,7 @@ function LMSDashboard({ content }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0.96, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
@@ -224,7 +224,7 @@ function Products({ content, lang }) {
         <div className="grid gap-7 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0.96, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary sm:text-[12px] sm:tracking-[0.28em]"
@@ -233,7 +233,7 @@ function Products({ content, lang }) {
             </motion.p>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.96, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
@@ -247,7 +247,7 @@ function Products({ content, lang }) {
           </div>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.96, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-md font-body text-sm leading-6 text-slate-500 sm:leading-7 lg:col-span-4 lg:justify-self-end lg:text-base"
@@ -257,7 +257,7 @@ function Products({ content, lang }) {
         </div>
 
         <motion.article
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0.96, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.12 }}
           transition={{ duration: 0.7 }}
@@ -315,7 +315,7 @@ function Products({ content, lang }) {
           {products.map((product, index) => (
             <motion.article
               key={product.id}
-              initial={{ opacity: 0, y: 35 }}
+              initial={{ opacity: 0.96, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, delay: index * 0.08 }}
