@@ -37,7 +37,7 @@
       "description": "AI-gestützte Arbeitsabläufe, die Informationen, Entscheidungen und Aktionen verbinden und wiederkehrende Arbeit reduzieren.",
       "steps": [
         "Eingabe",
-        "KI",
+        "AI",
         "Aktion"
       ]
     },
@@ -83,7 +83,7 @@
         "Edge",
         "Cloud",
         "Automatisierung",
-        "KI"
+        "AI"
       ]
     }
   },
@@ -217,7 +217,7 @@
       {
         "number": "02",
         "title": "Data Science",
-        "category": "Daten & KI",
+        "category": "Daten & AI",
         "description": "Lernen Sie, Daten zu analysieren, Muster zu erkennen und mit modernen Data-Science-Methoden prädiktive Lösungen zu entwickeln.",
         "topics": [
           "Python",
