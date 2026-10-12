@@ -9,7 +9,7 @@ const getStages = (t) => t("process.stages", { returnObjects: true });
 function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 35 }}
+      initial={{ opacity: 0.96, y: 35 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.65, delay: index * 0.08 }}
@@ -107,7 +107,7 @@ function IntelligenceProcess({ content, lang }) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0.96, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
@@ -116,7 +116,7 @@ function IntelligenceProcess({ content, lang }) {
             </motion.p>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.96, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
@@ -130,7 +130,7 @@ function IntelligenceProcess({ content, lang }) {
           </div>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.96, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-md font-body text-sm leading-7 text-slate-200 lg:col-span-4 lg:justify-self-end lg:text-base"
@@ -168,7 +168,7 @@ function IntelligenceProcess({ content, lang }) {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.96, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
