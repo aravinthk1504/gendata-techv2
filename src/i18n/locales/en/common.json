@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "training": "Training",
+    "insights": "Insights",
+    "contact": "Let's Talk"
+  },
+  "home": {
+    "eyebrow": "GenData Tech",
+    "title": "Engineering Intelligent Technology",
+    "description": "We develop AI systems, intelligent automation, digital products and technology solutions designed for real-world challenges.",
+    "primaryButton": "Explore Our Capabilities",
+    "secondaryButton": "About Us"
+  },
+  "about": {
+    "eyebrow": "About GenData Tech",
+    "title": "Technology built around real challenges.",
+    "description": "GenData Tech is a technology company with a strong focus on AI, intelligent automation, software engineering and digital solutions."
+  }
+}
