@@ -1,0 +1,281 @@
+{
+  "hero": {
+    "eyebrow": "AI-gestützte Technologie",
+    "titleLine1": "AI entwickelt für",
+    "titleLine2": "reale Wirkung.",
+    "description": "GenData Tech entwickelt intelligente AI-Modelle, agentische Systeme und Automatisierungslösungen für reale Herausforderungen.",
+    "primaryCta": "AI-Kompetenzen entdecken",
+    "secondaryCta": "Kontakt aufnehmen",
+    "tags": [
+      "AI Models",
+      "Custom AI",
+      "Software",
+      "Apps",
+      "IoT Solutions",
+      "IT Training"
+    ],
+    "scroll": "Scrollen"
+  },
+  "aiCapabilities": {
+    "eyebrow": "Unsere AI-Kompetenzen",
+    "titleLine1": "Intelligenz entwickelt",
+    "titleLine2": "für reale Wirkung.",
+    "description": "Von maßgeschneiderten AI-Modellen bis zu autonomen Agenten und intelligenter Automatisierung entwickeln wir AI-Systeme für konkrete Herausforderungen, Arbeitsabläufe und Ziele.",
+    "models": {
+      "label": "01 / Modelle",
+      "title": "AI Model Development",
+      "description": "Maßgeschneiderte Machine-Learning- und AI-Modelle, entwickelt für spezifische Daten, Probleme und betriebliche Anforderungen."
+    },
+    "agents": {
+      "label": "02 / Agenten",
+      "title": "Agentic AI",
+      "description": "Intelligente Agenten, die schlussfolgern, Werkzeuge nutzen und mehrstufige Arbeitsabläufe ausführen können."
+    },
+    "automation": {
+      "label": "03 / Automatisierung",
+      "title": "AI Automation",
+      "description": "AI-gestützte Arbeitsabläufe, die Informationen, Entscheidungen und Aktionen verbinden und wiederkehrende Arbeit reduzieren.",
+      "steps": [
+        "Eingabe",
+        "KI",
+        "Aktion"
+      ]
+    },
+    "custom": {
+      "label": "04 / Individuelle Intelligenz",
+      "title": "Custom AI Solutions",
+      "description": "AI-Systeme, die auf Ihre konkreten Geschäftsanforderungen zugeschnitten sind, statt Ihr Problem in ein Standardmodell zu zwingen."
+    }
+  },
+  "technology": {
+    "eyebrow": "Technologiekompetenzen",
+    "titleLine1": "Wir entwickeln die Technologie",
+    "titleLine2": "hinter intelligenten Produkten.",
+    "description": "Von digitalen Plattformen bis zu vernetzten Geräten verwandeln unsere Engineering-Kompetenzen Ideen und Intelligenz in zuverlässige, praxisnahe Technologie.",
+    "explore": "Kompetenz entdecken",
+    "fullStack": {
+      "label": "01 / Full Stack",
+      "title": "Full-Stack-Entwicklung",
+      "description": "Von statischen und mehrseitigen Websites bis zu dynamischen Webanwendungen entwickeln wir vollständige Frontend- und Backend-Lösungen mit APIs, Datenbanken und skalierbarer Architektur.",
+      "tags": [
+        "Frontend",
+        "Backend",
+        "APIs",
+        "Datenbank"
+      ]
+    },
+    "software": {
+      "label": "02 / Software",
+      "title": "Softwareentwicklung",
+      "description": "Individuelle Softwarelösungen, entwickelt für Geschäftsprozesse, betriebliche Anforderungen und sich verändernde digitale Bedürfnisse."
+    },
+    "app": {
+      "label": "03 / Mobile",
+      "title": "App-Entwicklung",
+      "description": "Moderne mobile Anwendungen für Android und iOS mit intuitiver Bedienung, zuverlässiger Leistung und skalierbaren Integrationen."
+    },
+    "iot": {
+      "label": "04 / Vernetzte Systeme",
+      "title": "IoT-Lösungen",
+      "description": "Vernetzte IoT-Lösungen, die Sensoren, Geräte, Cloud-Plattformen, Automatisierung und intelligente Überwachung für reale Umgebungen verbinden.",
+      "tags": [
+        "Sensoren",
+        "Edge",
+        "Cloud",
+        "Automatisierung",
+        "KI"
+      ]
+    }
+  },
+  "process": {
+    "eyebrow": "So entwickeln wir Intelligenz",
+    "titleLine1": "Von der Herausforderung",
+    "titleLine2": "zum intelligenten System.",
+    "description": "Unser AI-Entwicklungsansatz verbindet Geschäftsverständnis, Daten, Modelle, Schlussfolgerung und Automatisierung zu einem praxisnahen Engineering-Prozess.",
+    "stages": [
+      {
+        "number": "01",
+        "title": "Entdecken",
+        "label": "Verstehen",
+        "description": "Wir beginnen damit, das Problem, das Geschäftsziel, den Arbeitsablauf und die mögliche Rolle von Intelligenz zu verstehen."
+      },
+      {
+        "number": "02",
+        "title": "Daten",
+        "label": "Vorbereiten",
+        "description": "Relevante Daten, Wissen und Systemeingaben werden identifiziert, strukturiert und für die AI-Lösung vorbereitet."
+      },
+      {
+        "number": "03",
+        "title": "Modell",
+        "label": "Entwickeln",
+        "description": "Wir entwickeln oder integrieren die Modelle, die zum Verstehen, Vorhersagen, Generieren oder intelligenten Entscheiden benötigt werden."
+      },
+      {
+        "number": "04",
+        "title": "Schlussfolgerung",
+        "label": "Denken",
+        "description": "Modelle werden mit Kontext, Werkzeugen und Logik verbunden, damit Systeme Aufgaben schrittweise bearbeiten können."
+      },
+      {
+        "number": "05",
+        "title": "Automatisierung",
+        "label": "Handeln",
+        "description": "Intelligenz wird mit Arbeitsabläufen verbunden, damit das System Aktionen auslösen, Werkzeuge nutzen und Prozesse automatisieren kann."
+      },
+      {
+        "number": "06",
+        "title": "Bereitstellung",
+        "label": "Skalieren",
+        "description": "Das fertige AI-System wird zuverlässig und skalierbar in das benötigte Produkt oder den Arbeitsablauf integriert."
+      }
+    ],
+    "outcomeLabel": "Das Ergebnis",
+    "outcomeTitle": "AI, die für das Problem entwickelt wird – nicht Technologie um der Technologie willen.",
+    "systemTitle": "Intelligentes System",
+    "systemSubtitle": "Bereit für den realen Einsatz"
+  },
+  "products": {
+    "eyebrow": "GenData Produkte",
+    "titleLine1": "Software entwickelt für",
+    "titleLine2": "echte Geschäftsabläufe.",
+    "description": "Eine wachsende Suite digitaler Produkte, die Lernen, Kundenmanagement, Geschäftsabläufe und Finanzprozesse vereinfachen soll.",
+    "explore": "Produkt entdecken",
+    "lms": {
+      "label": "01 / Lernplattform",
+      "title": "GenData LMS",
+      "description": "Eine moderne Lernmanagement-Plattform zum Organisieren von Kursen, Verwalten von Lernenden, Verfolgen des Fortschritts und Vereinfachen digitaler Schulungen.",
+      "features": [
+        "Kursverwaltung",
+        "Lernende",
+        "Fortschrittsverfolgung",
+        "Analysen"
+      ],
+      "dashboard": {
+        "courses": "Kurse",
+        "students": "Lernende",
+        "progress": "Fortschritt",
+        "activity": "Lernaktivität"
+      }
+    },
+    "cards": [
+      {
+        "id": "crm",
+        "number": "02",
+        "category": "Kundenmanagement",
+        "title": "CRM",
+        "description": "Eine zentrale Plattform zur Verwaltung von Kundenbeziehungen, Leads, Kommunikation und Vertriebsaktivitäten.",
+        "features": [
+          "Leads",
+          "Kunden",
+          "Pipeline"
+        ]
+      },
+      {
+        "id": "erp",
+        "number": "03",
+        "category": "Geschäftsabläufe",
+        "title": "ERP",
+        "description": "Ein integriertes System, das zentrale Geschäftsabläufe, Informationen und Workflows auf einer Plattform verbindet.",
+        "features": [
+          "Abläufe",
+          "Ressourcen",
+          "Berichte"
+        ]
+      },
+      {
+        "id": "billing",
+        "number": "04",
+        "category": "Finanzen & Abrechnung",
+        "title": "Billing",
+        "description": "Eine optimierte Abrechnungsplattform für Rechnungen, Zahlungen, Kundendaten und finanzielle Transparenz.",
+        "features": [
+          "Rechnungen",
+          "Zahlungen",
+          "Berichte"
+        ]
+      }
+    ]
+  },
+  "training": {
+    "eyebrow": "GenData Schulungen",
+    "titleLine1": "Lernen Sie die Technologien,",
+    "titleLine2": "die morgen prägen.",
+    "description": "Praxisorientierte Technologieschulungen für Studierende und Berufstätige, um durch strukturiertes Lernen und praktische Erfahrung branchenrelevante Fähigkeiten aufzubauen.",
+    "programs": [
+      {
+        "number": "01",
+        "title": "AI & Machine Learning",
+        "category": "Künstliche Intelligenz",
+        "description": "Erwerben Sie praktische Fähigkeiten in Machine Learning, AI-Modellentwicklung und intelligenten Systemen durch praxisnahes Lernen.",
+        "topics": [
+          "Python",
+          "Machine Learning",
+          "AI-Modelle"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Data Science",
+        "category": "Daten & KI",
+        "description": "Lernen Sie, Daten zu analysieren, Muster zu erkennen und mit modernen Data-Science-Methoden prädiktive Lösungen zu entwickeln.",
+        "topics": [
+          "Python",
+          "Statistik",
+          "Machine Learning"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Data Analytics",
+        "category": "Analytics",
+        "description": "Verwandeln Sie Rohdaten mit Analyse-, Visualisierungs- und Reporting-Tools in aussagekräftige Geschäftserkenntnisse.",
+        "topics": [
+          "Excel",
+          "SQL",
+          "Power BI"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Full Stack Development",
+        "category": "Entwicklung",
+        "description": "Lernen Sie, vollständige moderne Webanwendungen mit Frontend, Backend, APIs und Datenbanken zu entwickeln.",
+        "topics": [
+          "Frontend",
+          "Backend",
+          "Datenbank"
+        ]
+      }
+    ],
+    "ctaEyebrow": "Praktische Fähigkeiten aufbauen",
+    "ctaTitle": "Lernen Sie mit praxisorientierten Technologieschulungen.",
+    "ctaDescription": "Entdecken Sie unsere Schulungsprogramme und finden Sie den Technologiepfad, der zu Ihren Lernzielen passt.",
+    "ctaButton": "Schulungsprogramme ansehen",
+    "exploreAria": "{{title}} entdecken"
+  },
+  "insights": {
+    "eyebrow": "Einblicke & Ideen",
+    "titleLine1": "Ideen, Technologie und",
+    "titleLine2": "was wir erforschen.",
+    "description": "Perspektiven zu künstlicher Intelligenz, Software, vernetzter Technologie und den Ideen, die moderne digitale Systeme prägen.",
+    "viewAll": "Alle Einblicke ansehen"
+  },
+  "finalCta": {
+    "eyebrow": "Etwas Intelligentes starten",
+    "titleLine1": "Haben Sie eine Idee, die",
+    "titleLine2": "intelligent werden könnte?",
+    "description": "Von AI-Modellen und intelligenter Automatisierung bis zu Software, mobilen Anwendungen und vernetzten Systemen – gemeinsam erkunden wir, wie Technologie Ihre Idee in eine praktische Lösung verwandeln kann.",
+    "primary": "Gespräch starten",
+    "secondary": "Schulungen entdecken",
+    "connect": "Mit uns verbinden",
+    "tags": [
+      "AI Models",
+      "Agentic AI",
+      "AI Automation",
+      "Software",
+      "Apps",
+      "IoT"
+    ]
+  }
+}

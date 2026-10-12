@@ -1,0 +1,17 @@
+{
+  "description": "Building intelligent AI systems, digital products and connected technology designed for real-world applications.",
+  "connect": "Connect",
+  "sections": {
+    "services": "Services",
+    "products": "Products",
+    "explore": "Explore"
+  },
+  "explore": {
+    "training": "Training",
+    "insights": "Insights & Ideas",
+    "contact": "Contact"
+  },
+  "copyright": "All rights reserved.",
+  "privacy": "Privacy",
+  "terms": "Terms"
+}

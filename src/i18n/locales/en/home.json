@@ -1,0 +1,281 @@
+{
+  "hero": {
+    "eyebrow": "AI-Powered Technology",
+    "titleLine1": "AI built for",
+    "titleLine2": "real-world impact.",
+    "description": "GenData Tech develops intelligent AI models, agentic systems and automation solutions engineered around real-world challenges.",
+    "primaryCta": "Explore AI Capabilities",
+    "secondaryCta": "Let's Talk",
+    "tags": [
+      "AI Models",
+      "Custom AI",
+      "Software",
+      "Apps",
+      "IoT Solutions",
+      "IT Training"
+    ],
+    "scroll": "Scroll"
+  },
+  "aiCapabilities": {
+    "eyebrow": "Our AI Capabilities",
+    "titleLine1": "Intelligence engineered",
+    "titleLine2": "for real-world impact.",
+    "description": "From purpose-built AI models to autonomous agents and intelligent automation, we develop AI systems designed around specific challenges, workflows and goals.",
+    "models": {
+      "label": "01 / Models",
+      "title": "AI Model Development",
+      "description": "Purpose-built machine learning and AI models engineered around specific data, problems and operational requirements."
+    },
+    "agents": {
+      "label": "02 / Agents",
+      "title": "Agentic AI",
+      "description": "Intelligent agents capable of reasoning, interacting with tools and executing multi-step workflows."
+    },
+    "automation": {
+      "label": "03 / Automation",
+      "title": "AI Automation",
+      "description": "AI-driven workflows that connect information, decisions and actions to reduce repetitive work.",
+      "steps": [
+        "Input",
+        "AI",
+        "Action"
+      ]
+    },
+    "custom": {
+      "label": "04 / Custom Intelligence",
+      "title": "Custom AI Solutions",
+      "description": "AI systems designed around your specific business requirements rather than forcing your problem into a one-size-fits-all model."
+    }
+  },
+  "technology": {
+    "eyebrow": "Technology Capabilities",
+    "titleLine1": "Engineering the technology",
+    "titleLine2": "behind intelligent products.",
+    "description": "From digital platforms to connected devices, our engineering capabilities turn ideas and intelligence into reliable, real-world technology.",
+    "explore": "Explore capability",
+    "fullStack": {
+      "label": "01 / Full Stack",
+      "title": "Full Stack Development",
+      "description": "From static and multi-page websites to dynamic web applications, we build complete frontend and backend solutions with APIs, databases and scalable architecture.",
+      "tags": [
+        "Frontend",
+        "Backend",
+        "APIs",
+        "Database"
+      ]
+    },
+    "software": {
+      "label": "02 / Software",
+      "title": "Software Development",
+      "description": "Custom software solutions engineered around business processes, operational requirements and evolving digital needs."
+    },
+    "app": {
+      "label": "03 / Mobile",
+      "title": "App Development",
+      "description": "Modern mobile applications for Android and iOS designed around intuitive experiences, reliable performance and scalable integrations."
+    },
+    "iot": {
+      "label": "04 / Connected Systems",
+      "title": "IoT Solutions",
+      "description": "Connected IoT solutions combining sensors, devices, cloud platforms, automation and intelligent monitoring for real-world environments.",
+      "tags": [
+        "Sensors",
+        "Edge",
+        "Cloud",
+        "Automation",
+        "AI"
+      ]
+    }
+  },
+  "process": {
+    "eyebrow": "How We Build Intelligence",
+    "titleLine1": "From challenge",
+    "titleLine2": "to intelligent system.",
+    "description": "Our AI development approach connects business understanding, data, models, reasoning and automation into one practical engineering process.",
+    "stages": [
+      {
+        "number": "01",
+        "title": "Discover",
+        "label": "Understand",
+        "description": "We begin by understanding the problem, business objective, workflow and the role intelligence can play."
+      },
+      {
+        "number": "02",
+        "title": "Data",
+        "label": "Prepare",
+        "description": "Relevant data, knowledge and system inputs are identified, structured and prepared for the AI solution."
+      },
+      {
+        "number": "03",
+        "title": "Model",
+        "label": "Build",
+        "description": "We develop or integrate the models needed to understand, predict, generate or make intelligent decisions."
+      },
+      {
+        "number": "04",
+        "title": "Reasoning",
+        "label": "Think",
+        "description": "Models are connected with context, tools and logic to create systems capable of reasoning through tasks."
+      },
+      {
+        "number": "05",
+        "title": "Automation",
+        "label": "Act",
+        "description": "Intelligence is connected to workflows so the system can trigger actions, interact with tools and automate processes."
+      },
+      {
+        "number": "06",
+        "title": "Deploy",
+        "label": "Scale",
+        "description": "The final AI system is integrated into the required product or workflow with reliability and scalability in mind."
+      }
+    ],
+    "outcomeLabel": "The Outcome",
+    "outcomeTitle": "AI designed around the problem, not technology for technology's sake.",
+    "systemTitle": "Intelligent System",
+    "systemSubtitle": "Ready for real-world use"
+  },
+  "products": {
+    "eyebrow": "GenData Products",
+    "titleLine1": "Software built for",
+    "titleLine2": "how businesses actually work.",
+    "description": "A growing suite of digital products designed to simplify learning, customer management, business operations and financial workflows.",
+    "explore": "Explore Product",
+    "lms": {
+      "label": "01 / Learning Platform",
+      "title": "GenData LMS",
+      "description": "A modern learning management platform designed to organize courses, manage learners, track progress and simplify digital training experiences.",
+      "features": [
+        "Course Management",
+        "Learners",
+        "Progress Tracking",
+        "Analytics"
+      ],
+      "dashboard": {
+        "courses": "Courses",
+        "students": "Students",
+        "progress": "Progress",
+        "activity": "Learning activity"
+      }
+    },
+    "cards": [
+      {
+        "id": "crm",
+        "number": "02",
+        "category": "Customer Management",
+        "title": "CRM",
+        "description": "A centralized platform for managing customer relationships, leads, communication and sales activities.",
+        "features": [
+          "Leads",
+          "Customers",
+          "Pipeline"
+        ]
+      },
+      {
+        "id": "erp",
+        "number": "03",
+        "category": "Business Operations",
+        "title": "ERP",
+        "description": "An integrated system designed to connect core business operations, information and workflows in one platform.",
+        "features": [
+          "Operations",
+          "Resources",
+          "Reports"
+        ]
+      },
+      {
+        "id": "billing",
+        "number": "04",
+        "category": "Finance & Billing",
+        "title": "Billing",
+        "description": "A streamlined billing platform for invoices, payments, customer records and financial visibility.",
+        "features": [
+          "Invoices",
+          "Payments",
+          "Reports"
+        ]
+      }
+    ]
+  },
+  "training": {
+    "eyebrow": "GenData Training",
+    "titleLine1": "Learn the technologies",
+    "titleLine2": "shaping tomorrow.",
+    "description": "Practical technology training designed to help students and professionals develop industry-relevant skills through structured learning and hands-on experience.",
+    "programs": [
+      {
+        "number": "01",
+        "title": "AI & Machine Learning",
+        "category": "Artificial Intelligence",
+        "description": "Build practical skills in machine learning, AI model development and intelligent systems through hands-on learning.",
+        "topics": [
+          "Python",
+          "Machine Learning",
+          "AI Models"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Data Science",
+        "category": "Data & AI",
+        "description": "Learn to analyze data, discover patterns and develop predictive solutions using modern data science techniques.",
+        "topics": [
+          "Python",
+          "Statistics",
+          "Machine Learning"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Data Analytics",
+        "category": "Analytics",
+        "description": "Transform raw data into meaningful business insights using analysis, visualization and reporting tools.",
+        "topics": [
+          "Excel",
+          "SQL",
+          "Power BI"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Full Stack Development",
+        "category": "Development",
+        "description": "Learn to build complete modern web applications covering frontend interfaces, backend systems, APIs and databases.",
+        "topics": [
+          "Frontend",
+          "Backend",
+          "Database"
+        ]
+      }
+    ],
+    "ctaEyebrow": "Build practical skills",
+    "ctaTitle": "Start learning with practical, technology-focused training.",
+    "ctaDescription": "Explore our training programs and find the technology path that matches your learning goals.",
+    "ctaButton": "View Training Programs",
+    "exploreAria": "Explore {{title}}"
+  },
+  "insights": {
+    "eyebrow": "Insights & Ideas",
+    "titleLine1": "Ideas, technology and",
+    "titleLine2": "what we're exploring.",
+    "description": "Perspectives on artificial intelligence, software, connected technology and the ideas shaping modern digital systems.",
+    "viewAll": "View all insights"
+  },
+  "finalCta": {
+    "eyebrow": "Start Something Intelligent",
+    "titleLine1": "Have an idea that could",
+    "titleLine2": "become intelligent?",
+    "description": "From AI models and intelligent automation to software, mobile applications and connected systems, let's explore how technology can turn your idea into a practical solution.",
+    "primary": "Start a Conversation",
+    "secondary": "Explore Training",
+    "connect": "Connect with us",
+    "tags": [
+      "AI Models",
+      "Agentic AI",
+      "AI Automation",
+      "Software",
+      "Apps",
+      "IoT"
+    ]
+  }
+}

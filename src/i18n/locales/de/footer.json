@@ -1,0 +1,17 @@
+{
+  "description": "Wir entwickeln intelligente KI-Systeme, digitale Produkte und vernetzte Technologien für reale Anwendungen.",
+  "connect": "Verbinden",
+  "sections": {
+    "services": "Dienstleistungen",
+    "products": "Produkte",
+    "explore": "Entdecken"
+  },
+  "explore": {
+    "training": "Schulungen",
+    "insights": "Einblicke & Ideen",
+    "contact": "Kontakt"
+  },
+  "copyright": "Alle Rechte vorbehalten.",
+  "privacy": "Datenschutz",
+  "terms": "Nutzungsbedingungen"
+}
