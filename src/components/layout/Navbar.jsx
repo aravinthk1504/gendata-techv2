@@ -71,7 +71,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
           href={`/${currentLang}`}
           aria-label="GenData Tech — Home"
           onClick={() => setMenuOpen(false)}
-          className="flex shrink-0 items-center gap-2"
+          className="flex shrink-0 items-center gap-1"
         >
           <Image
             src="/assets/gendata-tech-mark.webp"
@@ -80,31 +80,31 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             height={58}
             priority
             unoptimized
-            className="h-[52px] w-[52px] object-contain lg:h-[58px] lg:w-[58px]"
+            className="h-11 w-11 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
           />
           <span className="flex flex-col">
             <span
-              className="bg-clip-text font-heading text-[18px] font-semibold leading-tight tracking-[-0.02em] text-transparent sm:text-[20px]"
+              className="bg-clip-text font-heading text-[21px] font-bold leading-none tracking-[-0.03em] text-transparent"
               style={{
                 backgroundImage: "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
               }}
             >
               GenData Tech
             </span>
-            <span className="mt-1 font-body text-[8px] font-medium tracking-[0.08em] text-[#057CFA] sm:text-[9px]">
+            <span className="mt-1 font-body text-[10px] font-medium tracking-[0.05em] text-[#057CFA]">
               Think - Build - Evolve
             </span>
           </span>
         </Link>
 
         {/* DESKTOP LINKS */}
-        <div className="hidden items-center gap-7 xl:flex 2xl:gap-8">
+        <div className="hidden items-center gap-8 xl:flex">
           {NAV_ITEMS.map(({ key, path }) => (
             <Link
               key={key}
               href={localizedHref(path)}
               aria-current={isActive(path) ? "page" : undefined}
-              className={`font-body text-[13px] font-medium transition-colors duration-300 ${
+              className={`font-body text-sm font-medium transition-colors duration-300 ${
                 isActive(path) ? "text-white" : "text-slate-300 hover:text-white"
               }`}
             >
@@ -139,7 +139,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
           <Link
             href={localizedHref("/contact")}
-            className="inline-flex items-center gap-2 rounded-full border border-[#057CFA]/40 bg-[#057CFA]/15 px-5 py-3 font-body text-xs font-semibold text-white transition hover:border-[#057CFA] hover:bg-[#057CFA]"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-6 py-3 font-body text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-[#057CFA] hover:bg-[#057CFA]"
           >
             {navigation.contact || "Let's Talk"}
           </Link>
