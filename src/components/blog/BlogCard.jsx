@@ -8,7 +8,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
   return (
     <motion.article
       initial={{
-        opacity: 0.92,
+        opacity: 0.55,
         y: 18,
       }}
       whileInView={{
