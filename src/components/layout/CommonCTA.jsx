@@ -19,7 +19,7 @@ function CommonCTA({
 
         <motion.div
           initial={{
-            opacity: 0.96,
+            opacity: 0,
             y: 24,
           }}
           whileInView={{
