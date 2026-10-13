@@ -34,7 +34,7 @@ function FinalCTA({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-28"
+      className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28"
     >
       <div className="mx-auto max-w-350">
         <motion.div
