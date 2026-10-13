@@ -403,7 +403,7 @@ function Contact() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 12,
                   }}
                   animate={
@@ -427,7 +427,7 @@ function Contact() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 20,
                   }}
                   animate={
@@ -455,7 +455,7 @@ function Contact() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 15,
                   }}
                   animate={
@@ -484,7 +484,7 @@ function Contact() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 15,
                   }}
                   animate={
@@ -542,7 +542,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   scale: 0.96,
                 }}
                 animate={
@@ -1015,7 +1015,7 @@ function Contact() {
                     {submitStatus === "success" && (
                       <motion.div
                         initial={{
-                          opacity: 0.6,
+                          opacity: 0.28,
                           y: 5,
                         }}
                         animate={{
@@ -1038,7 +1038,7 @@ function Contact() {
                     {submitStatus === "error" && (
                       <motion.div
                         initial={{
-                          opacity: 0.6,
+                          opacity: 0.28,
                           y: 5,
                         }}
                         animate={{
@@ -1107,7 +1107,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   y: 20,
                 }}
                 whileInView={{
@@ -1143,7 +1143,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   y: 20,
                 }}
                 whileInView={{
