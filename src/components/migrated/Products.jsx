@@ -261,7 +261,7 @@ function Products() {
 
        <section
   ref={heroRef}
-  className="relative flex min-h-[610px] items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-24 sm:min-h-[650px] sm:pb-16 sm:pt-28 lg:min-h-[610px] lg:px-10 lg:pb-12 lg:pt-24"
+  className="relative flex min-h-[610px] items-center overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:min-h-[650px] sm:pb-20 sm:pt-36 lg:min-h-[660px] lg:px-10 lg:pb-20 lg:pt-36"
 >
           {/* MAIN GLOW */}
 
