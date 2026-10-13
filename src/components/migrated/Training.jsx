@@ -693,7 +693,7 @@ function Training() {
       
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 lg:px-10 lg:pt-32"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
         >
           {/* MAIN GLOW */}
 
@@ -769,7 +769,7 @@ function Training() {
               <div className="max-w-[690px]">
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 12,
                   }}
                   animate={
@@ -790,7 +790,7 @@ function Training() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 20,
                   }}
                   animate={
@@ -805,7 +805,7 @@ function Training() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-[690px] font-heading text-[clamp(1.9rem,8vw,3rem)] font-semibold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
+                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
                 >
                   Learn the technology.
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -815,7 +815,7 @@ function Training() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -847,7 +847,7 @@ function Training() {
                     })
                   }
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 12,
                   }}
                   animate={
@@ -875,7 +875,7 @@ function Training() {
 
               <motion.div
                 initial={{
-                  opacity: 0.28,
+                  opacity: 0,
                   scale: 0.96,
                 }}
                 animate={
@@ -1158,7 +1158,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-learn`}
                         initial={{
-                          opacity: 0.28,
+                          opacity: 0,
                           x: 18,
                         }}
                         animate={{
@@ -1186,7 +1186,7 @@ function Training() {
                             <motion.div
                               key={item}
                               initial={{
-                                opacity: 0.28,
+                                opacity: 0,
                                 y: 8,
                               }}
                               animate={{
@@ -1217,7 +1217,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-tools`}
                         initial={{
-                          opacity: 0.28,
+                          opacity: 0,
                           x: 18,
                         }}
                         animate={{
@@ -1252,7 +1252,7 @@ function Training() {
                               <motion.div
                                 key={tool.name}
                                 initial={{
-                                  opacity: 0.28,
+                                  opacity: 0,
                                   y: 8,
                                 }}
                                 animate={{
@@ -1284,7 +1284,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-outcome`}
                         initial={{
-                          opacity: 0.28,
+                          opacity: 0,
                           x: 18,
                         }}
                         animate={{
@@ -1360,7 +1360,7 @@ function Training() {
                     <motion.div
                       key={benefit.title}
                       initial={{
-                        opacity: 0.28,
+                        opacity: 0,
                         y: 20,
                       }}
                       whileInView={{
@@ -1444,7 +1444,7 @@ function Training() {
                   <motion.div
                     key={item.title}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{
@@ -1509,7 +1509,7 @@ function Training() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{

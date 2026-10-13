@@ -261,7 +261,7 @@ function Products() {
 
        <section
   ref={heroRef}
-  className="relative flex min-h-[610px] items-center overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:min-h-[650px] sm:pb-20 sm:pt-36 lg:min-h-[660px] lg:px-10 lg:pb-20 lg:pt-36"
+  className="relative flex min-h-[610px] items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-24 sm:min-h-[650px] sm:pb-16 sm:pt-28 lg:min-h-[610px] lg:px-10 lg:pb-12 lg:pt-24"
 >
           {/* MAIN GLOW */}
 
@@ -341,7 +341,7 @@ function Products() {
               <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 12,
                   }}
                   animate={
@@ -365,7 +365,7 @@ function Products() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 20,
                   }}
                   animate={
@@ -383,7 +383,7 @@ function Products() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-4xl font-heading text-[clamp(1.9rem,8vw,3rem)] font-semibold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
+                  className="mt-4 max-w-4xl font-heading text-4xl font-semibold leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Digital products built
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -393,7 +393,7 @@ function Products() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -420,7 +420,7 @@ function Products() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 12,
                   }}
                   animate={
@@ -452,7 +452,7 @@ function Products() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 12,
                   }}
                   animate={
@@ -495,7 +495,7 @@ function Products() {
 
               <motion.div
                 initial={{
-                  opacity: 0.28,
+                  opacity: 0,
                   scale: 0.96,
                 }}
                 animate={
@@ -769,7 +769,7 @@ function Products() {
                   <motion.article
                     key={product.name}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 22,
                     }}
                     whileInView={{
@@ -873,7 +873,7 @@ function Products() {
                     <motion.div
                       key={principle.title}
                       initial={{
-                        opacity: 0.28,
+                        opacity: 0,
                         y: 20,
                       }}
                       whileInView={{
@@ -943,7 +943,7 @@ function Products() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{
@@ -1001,7 +1001,7 @@ function Products() {
 
               <motion.div
                 initial={{
-                  opacity: 0.28,
+                  opacity: 0,
                   y: 20,
                 }}
                 whileInView={{
