@@ -7,6 +7,8 @@ import { languages, isValidLanguage } from "../../i18n/config"
 import { getDictionary } from "../../i18n/dictionaries"
 import Navbar from "../../components/layout/Navbar"
 import Footer from "../../components/layout/Footer"
+import CustomCursor from "../../components/layout/CustomCursor"
+import ScrollToTop from "../../components/layout/ScrollToTop"
 
 import footerEN from "../../i18n/locales/en/footer.json"
 import footerDE from "../../i18n/locales/de/footer.json"
@@ -36,6 +38,8 @@ export default async function LanguageLayout({ children, params }) {
   return (
     <html lang={lang}>
       <body className={`${poppins.variable} ${montserrat.variable} antialiased`}>
+        <CustomCursor />
+        <ScrollToTop />
         <Navbar lang={lang} navigation={dictionary.nav} />
         {children}
         <Footer lang={lang} content={{ footer: lang === "de" ? footerDE : footerEN }} />
