@@ -38,7 +38,7 @@ function FinalCTA({ content, lang }) {
     >
       <div className="mx-auto max-w-350">
         <motion.div
-          initial={{ opacity: 0.96, y: 40 }}
+          initial={{ opacity: 0.48, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
@@ -109,7 +109,7 @@ function FinalCTA({ content, lang }) {
 
           <div className="relative z-10 max-w-4xl">
             <motion.div
-              initial={{ opacity: 0.96, y: 15 }}
+              initial={{ opacity: 0.48, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="flex items-center gap-3"
@@ -136,7 +136,7 @@ function FinalCTA({ content, lang }) {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0.96, y: 30 }}
+              initial={{ opacity: 0.48, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
@@ -147,7 +147,7 @@ function FinalCTA({ content, lang }) {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0.96, y: 20 }}
+              initial={{ opacity: 0.48, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
@@ -157,7 +157,7 @@ function FinalCTA({ content, lang }) {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0.96, y: 20 }}
+              initial={{ opacity: 0.48, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.22 }}
@@ -185,7 +185,7 @@ function FinalCTA({ content, lang }) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0.96, y: 15 }}
+              initial={{ opacity: 0.48, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
@@ -224,7 +224,7 @@ function FinalCTA({ content, lang }) {
           </div>
 
           <motion.div
-            initial={{ opacity: 0.96 }}
+            initial={{ opacity: 0.48 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.35 }}
