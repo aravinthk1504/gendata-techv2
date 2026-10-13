@@ -411,7 +411,7 @@ function Services() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0.6,
                     y: 15,
                   }}
                   animate={
@@ -435,7 +435,7 @@ function Services() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0.6,
                     y: 25,
                   }}
                   animate={
@@ -453,7 +453,7 @@ function Services() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(1.9rem,8vw,3rem)] font-semibold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
                 >
                   AI-focused services built around
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -463,7 +463,7 @@ function Services() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0.6,
                     y: 18,
                   }}
                   animate={
@@ -490,7 +490,7 @@ function Services() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0.6,
                     y: 15,
                   }}
                   animate={
@@ -529,7 +529,7 @@ function Services() {
 
               <motion.div
                 initial={{
-                  opacity: 0.96,
+                  opacity: 0.6,
                   scale: 0.96,
                 }}
                 animate={
@@ -755,7 +755,7 @@ function Services() {
                   <motion.div
                     key={service.title}
                     initial={{
-                      opacity: 0.96,
+                      opacity: 0.6,
                       y: 22,
                     }}
                     whileInView={{
@@ -854,7 +854,7 @@ function Services() {
                   <motion.div
                     key={outcome.title}
                     initial={{
-                      opacity: 0.96,
+                      opacity: 0.6,
                       y: 20,
                     }}
                     whileInView={{
@@ -916,7 +916,7 @@ function Services() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.96,
+                      opacity: 0.6,
                       y: 20,
                     }}
                     whileInView={{
@@ -974,7 +974,7 @@ function Services() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0.96,
+                        opacity: 0.6,
                         y: 20,
                       }}
                       whileInView={{
@@ -1048,7 +1048,7 @@ function Services() {
                 <motion.article
                   key={insight.title}
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0.6,
                     y: 20,
                   }}
                   whileInView={{
@@ -1178,7 +1178,7 @@ function Services() {
           <div className="relative mx-auto max-w-[1400px]">
             <motion.div
               initial={{
-                opacity: 0.96,
+                opacity: 0.6,
                 y: 25,
               }}
               whileInView={{
