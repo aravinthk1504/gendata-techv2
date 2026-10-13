@@ -218,7 +218,7 @@ function AICapabilities({ content, lang }) {
         <div className="mb-12 grid gap-7 sm:mb-14 lg:mb-16 lg:grid-cols-2 lg:items-end">
           <div>
             <motion.p
-              initial={{ opacity: 0.28, y: 15 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
@@ -227,7 +227,7 @@ function AICapabilities({ content, lang }) {
             </motion.p>
 
             <motion.h2
-              initial={{ opacity: 0.28, y: 25 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
@@ -241,7 +241,7 @@ function AICapabilities({ content, lang }) {
           </div>
 
           <motion.p
-            initial={{ opacity: 0.28, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-xl font-body text-sm leading-7 text-slate-200 lg:justify-self-end lg:text-base"
@@ -252,7 +252,7 @@ function AICapabilities({ content, lang }) {
 
         <div className="grid gap-4 lg:grid-cols-12">
           <motion.article
-            initial={{ opacity: 0.28, y: 35 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
@@ -275,7 +275,7 @@ function AICapabilities({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.28, y: 35 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
@@ -295,7 +295,7 @@ function AICapabilities({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.28, y: 35 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
@@ -315,7 +315,7 @@ function AICapabilities({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.28, y: 35 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.18 }}

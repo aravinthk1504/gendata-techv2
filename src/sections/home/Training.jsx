@@ -16,7 +16,7 @@ function Training({ content, lang }) {
   return (
     <section
       id="training"
-      className="relative overflow-hidden bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-36"
+      className="relative overflow-hidden bg-[#F7F9FC] px-6 py-28 lg:px-10 lg:py-36"
     >
       {/* =========================================
           BACKGROUND
@@ -35,7 +35,7 @@ function Training({ content, lang }) {
           <div className="lg:col-span-8">
             <motion.p
               initial={{
-                opacity: 0.28,
+                opacity: 0,
                 y: 15,
               }}
               whileInView={{
@@ -50,7 +50,7 @@ function Training({ content, lang }) {
 
             <motion.h2
               initial={{
-                opacity: 0.28,
+                opacity: 0,
                 y: 30,
               }}
               whileInView={{
@@ -70,7 +70,7 @@ function Training({ content, lang }) {
 
           <motion.p
             initial={{
-              opacity: 0.28,
+              opacity: 0,
               y: 20,
             }}
             whileInView={{
@@ -93,7 +93,7 @@ function Training({ content, lang }) {
             <motion.article
               key={program.title}
               initial={{
-                opacity: 0.28,
+                opacity: 0,
                 y: 20,
               }}
               whileInView={{
@@ -176,7 +176,7 @@ function Training({ content, lang }) {
 
         <motion.div
           initial={{
-            opacity: 0.28,
+            opacity: 0,
             y: 30,
           }}
           whileInView={{
