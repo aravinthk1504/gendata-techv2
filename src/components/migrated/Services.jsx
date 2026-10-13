@@ -720,7 +720,7 @@ function Services() {
             TECHNOLOGY SERVICES
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             {/* SECTION INTRO */}
 
@@ -828,7 +828,7 @@ function Services() {
             HOW WE HELP
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -895,7 +895,7 @@ function Services() {
             SERVICE APPROACH
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
@@ -952,7 +952,7 @@ function Services() {
             WHY GENDATA TECH
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
@@ -1016,7 +1016,7 @@ function Services() {
           INSIGHTS
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             {/* SECTION HEADER */}
 
@@ -1091,7 +1091,7 @@ function Services() {
     FAQ
 ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             {/* FAQ HEADER */}
 
