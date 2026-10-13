@@ -1,5 +1,3 @@
-export const instant = false
-
 export const metadata = {
   title: "GenData Tech | Choose Language",
   description:
