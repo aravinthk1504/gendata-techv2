@@ -551,7 +551,7 @@ function About() {
             WHO WE ARE
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
               {/* LEFT */}
@@ -677,7 +677,7 @@ function About() {
             MISSION + VISION
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -772,7 +772,7 @@ function About() {
             PRINCIPLES
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
               {/* INTRO */}
@@ -837,7 +837,7 @@ function About() {
             WHAT WE BUILD
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
@@ -900,7 +900,7 @@ function About() {
             OUR APPROACH
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] rounded-full bg-[#057CFA]/7 blur-[150px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -968,7 +968,7 @@ function About() {
             JOURNEY
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
               {/* INTRO */}
@@ -1052,7 +1052,7 @@ function About() {
             FINAL CTA
         ====================================================== */}
 
-        <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <motion.div
               initial={{
