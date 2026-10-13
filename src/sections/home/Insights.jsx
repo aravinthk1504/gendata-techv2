@@ -29,7 +29,7 @@ function Insights({ content, lang }) {
           <div className="lg:col-span-8">
             <motion.p
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 15,
               }}
               whileInView={{
@@ -44,7 +44,7 @@ function Insights({ content, lang }) {
 
             <motion.h2
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 30,
               }}
               whileInView={{
@@ -67,7 +67,7 @@ function Insights({ content, lang }) {
           <div className="lg:col-span-4 lg:justify-self-end">
             <motion.p
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 20,
               }}
               whileInView={{
