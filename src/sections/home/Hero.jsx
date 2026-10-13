@@ -20,7 +20,7 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-[680px] min-h-screen items-center overflow-hidden"
     >
       <AnimatedBackground />
 
@@ -30,7 +30,7 @@ function Hero({ content, lang }) {
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-10 pt-24 sm:pb-12 sm:pt-28 lg:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-16 pt-32 sm:pb-20 sm:pt-36 lg:px-10 lg:pt-40">
         <div className="mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0.85, y: 15 }}
