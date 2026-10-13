@@ -240,7 +240,7 @@ function Footer({ lang = "en", content = {} }) {
 
         <div className="flex flex-col gap-4 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-[12px] text-slate-300">
-            © {new Date().getFullYear()} GenData Tech. {t("footer.copyright")}
+            © {2026} GenData Tech. {t("footer.copyright")}
           </p>
 
           <div className="flex gap-5">
