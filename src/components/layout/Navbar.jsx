@@ -65,7 +65,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 backdrop-blur-xl xl:absolute xl:border-0 xl:bg-transparent xl:backdrop-blur-none"
+      className="fixed inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 xl:absolute xl:border-0 xl:bg-transparent"
     >
       <nav
         aria-label="Main navigation"
