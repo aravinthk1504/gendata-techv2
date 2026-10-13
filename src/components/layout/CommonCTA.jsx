@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import { FiArrowRight } from "react-icons/fi"
 import Link from "../layout/LocalizedLink"
+import { useParams } from "next/navigation"
 
 
 function CommonCTA({
@@ -12,6 +13,18 @@ function CommonCTA({
   buttonText = "Contact Us",
   buttonLink = "/contact",
 }) {
+  const { lang } = useParams()
+  const de = lang === "de"
+  const localize = (value) => {
+    if (!de) return value
+    const translations = {
+      "Start a Conversation": "Gespräch beginnen",
+      "Have something you would like to discuss?": "Möchten Sie ein Projekt mit uns besprechen?",
+      "Share your requirement with GenData Tech and we can help identify the right next step.": "Teilen Sie Ihre Anforderungen mit GenData Tech. Gemeinsam finden wir die nächsten Schritte.",
+      "Contact Us": "Kontakt aufnehmen",
+    }
+    return translations[value] ?? value
+  }
   return (
     <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-24">
 
@@ -43,17 +56,17 @@ function CommonCTA({
             <div>
 
               <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                {eyebrow}
+                {localize(eyebrow)}
               </p>
 
 
               <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                {title}
+                {localize(title)}
               </h2>
 
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
-                {description}
+                {localize(description)}
               </p>
 
             </div>
@@ -63,7 +76,7 @@ function CommonCTA({
               to={buttonLink}
               className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
             >
-              {buttonText}
+              {localize(buttonText)}
 
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </Link>
