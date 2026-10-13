@@ -210,7 +210,7 @@ function AICapabilities({ content, lang }) {
     <section
       id="ai-capabilities"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28"
+      className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-36"
     >
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-brand-primary/8 blur-[160px]" />
 
