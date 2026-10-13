@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import { motion } from "motion/react"
 
 import {
@@ -11,7 +12,9 @@ import {
 } from "react-icons/fi"
 
 
-function BlogCard({ post, index = 0, lang = "en" }) {
+function BlogCard({ post, index = 0, lang }) {
+  const params = useParams()
+  const currentLang = lang || params?.lang || "en"
   const isEvent = post.type === "event"
 
   return (
@@ -23,7 +26,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
       className="group flex h-full flex-col"
     >
       <Link
-        href={`/${lang}/blog/${post.slug}`}
+        href={`/${currentLang}/blog/${post.slug}`}
         className="relative block aspect-[16/10] overflow-hidden rounded-[24px] bg-[#06152c]"
         aria-label={`Open ${post.title}`}
       >
@@ -56,7 +59,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
             <div className="absolute inset-0 flex items-center justify-center p-8">
               <div className="max-w-[260px] text-center">
                 <p className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
-                  {isEvent ? "Event" : lang === "de" ? "Einblick" : "Insight"}
+                  {isEvent ? "Event" : currentLang === "de" ? "Einblick" : "Insight"}
                 </p>
 
                 <p className="mt-3 font-heading text-lg font-semibold leading-7 text-white">
@@ -75,7 +78,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
                 : "border-white/10 bg-black/20 text-blue-100"
             }`}
           >
-            {isEvent ? "Event" : lang === "de" ? "Artikel" : "Article"}
+            {isEvent ? "Event" : currentLang === "de" ? "Artikel" : "Article"}
           </span>
         </div>
 
@@ -106,7 +109,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
           )}
         </div>
 
-        <Link href={`/${lang}/blog/${post.slug}`}>
+        <Link href={`/${currentLang}/blog/${post.slug}`}>
           <h3 className="mt-4 font-heading text-xl font-semibold leading-snug tracking-[-0.025em] text-slate-950 transition-colors duration-300 group-hover:text-[#002DCC] sm:text-2xl">
             {post.title}
           </h3>
@@ -124,10 +127,10 @@ function BlogCard({ post, index = 0, lang = "en" }) {
         )}
 
         <Link
-          href={`/${lang}/blog/${post.slug}`}
+          href={`/${currentLang}/blog/${post.slug}`}
           className="mt-6 inline-flex w-fit items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
         >
-          {isEvent ? (lang === "de" ? "Event ansehen" : "View event") : (lang === "de" ? "Artikel lesen" : "Read article")}
+          {isEvent ? (currentLang === "de" ? "Event ansehen" : "View event") : (currentLang === "de" ? "Artikel lesen" : "Read article")}
 
           <FiArrowUpRight className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
