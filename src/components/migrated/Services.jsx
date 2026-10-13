@@ -411,7 +411,7 @@ function Services() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -435,7 +435,7 @@ function Services() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 25,
                   }}
                   animate={
@@ -453,7 +453,7 @@ function Services() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-[clamp(1.9rem,8vw,3rem)] font-semibold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
+                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
                 >
                   AI-focused services built around
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -463,7 +463,7 @@ function Services() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 18,
                   }}
                   animate={
@@ -490,7 +490,7 @@ function Services() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -529,7 +529,7 @@ function Services() {
 
               <motion.div
                 initial={{
-                  opacity: 0.28,
+                  opacity: 0,
                   scale: 0.96,
                 }}
                 animate={
@@ -755,7 +755,7 @@ function Services() {
                   <motion.div
                     key={service.title}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 22,
                     }}
                     whileInView={{
@@ -854,7 +854,7 @@ function Services() {
                   <motion.div
                     key={outcome.title}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{
@@ -916,7 +916,7 @@ function Services() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.28,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{
@@ -974,7 +974,7 @@ function Services() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0.28,
+                        opacity: 0,
                         y: 20,
                       }}
                       whileInView={{
@@ -1048,7 +1048,7 @@ function Services() {
                 <motion.article
                   key={insight.title}
                   initial={{
-                    opacity: 0.28,
+                    opacity: 0,
                     y: 20,
                   }}
                   whileInView={{
@@ -1172,13 +1172,13 @@ function Services() {
             FINAL CTA
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] rounded-full bg-[#057CFA]/10 blur-[150px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
             <motion.div
               initial={{
-                opacity: 0.28,
+                opacity: 0,
                 y: 25,
               }}
               whileInView={{
