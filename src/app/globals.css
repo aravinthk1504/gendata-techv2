@@ -88,3 +88,27 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .gd-mobile-menu { animation: none; }
 }
+
+/* Responsive layout safeguards for the migrated Vite sections. */
+@media (max-width: 639px) {
+  main,
+  main > section {
+    max-width: 100%;
+  }
+  main section h1,
+  main section h2,
+  main section h3,
+  main section p {
+    overflow-wrap: break-word;
+  }
+  main section {
+    scroll-margin-top: 84px;
+  }
+  main section .max-w-350 {
+    min-width: 0;
+  }
+  /* Motion visuals may exceed small screens; keep text columns shrinkable. */
+  main section :is(.grid, .flex) > * {
+    min-width: 0;
+  }
+}
