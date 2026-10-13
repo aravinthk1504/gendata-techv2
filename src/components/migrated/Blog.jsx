@@ -144,7 +144,7 @@ function Blog() {
 
               <div className="max-w-[690px]">
                 <motion.p
-                  initial={{ opacity: 0.96, y: 12 }}
+                  initial={{ opacity: 0.6, y: 12 }}
                   animate={
                     heroInView
                       ? { opacity: 1, y: 0 }
@@ -158,7 +158,7 @@ function Blog() {
 
 
                 <motion.h1
-                  initial={{ opacity: 0.96, y: 20 }}
+                  initial={{ opacity: 0.6, y: 20 }}
                   animate={
                     heroInView
                       ? { opacity: 1, y: 0 }
@@ -168,7 +168,7 @@ function Blog() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
+                  className="mt-4 max-w-[690px] font-heading text-[clamp(1.9rem,8vw,3rem)] font-semibold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
                 >
                   Insights that inform.
 
@@ -179,7 +179,7 @@ function Blog() {
 
 
                 <motion.p
-                  initial={{ opacity: 0.96, y: 15 }}
+                  initial={{ opacity: 0.6, y: 15 }}
                   animate={
                     heroInView
                       ? { opacity: 1, y: 0 }
@@ -199,7 +199,7 @@ function Blog() {
 
                 <motion.a
                   href="#insights"
-                  initial={{ opacity: 0.96, y: 12 }}
+                  initial={{ opacity: 0.6, y: 12 }}
                   animate={
                     heroInView
                       ? { opacity: 1, y: 0 }
@@ -219,7 +219,7 @@ function Blog() {
 
               <motion.div
                 initial={{
-                  opacity: 0.96,
+                  opacity: 0.6,
                   scale: 0.96,
                 }}
                 animate={
