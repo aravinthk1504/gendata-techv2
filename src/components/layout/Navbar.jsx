@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { FiMenu, FiX } from "react-icons/fi"
-import { AnimatePresence, motion } from "motion/react"
 
 const NAV_ITEMS = [
   { key: "home", path: "" },
@@ -21,14 +20,28 @@ export default function Navbar({ lang = "en", navigation = {} }) {
   const currentLang = lang === "de" ? "de" : "en"
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Close the mobile menu with Escape for keyboard accessibility.
+  // Keep the menu accessible and prevent the page from scrolling underneath it.
   useEffect(() => {
     if (!menuOpen) return
-    const onKeyDown = (event) => {
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const closeOnEscape = (event) => {
       if (event.key === "Escape") setMenuOpen(false)
     }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
+
+    const closeOnResize = () => {
+      if (window.innerWidth >= 1280) setMenuOpen(false)
+    }
+
+    window.addEventListener("keydown", closeOnEscape)
+    window.addEventListener("resize", closeOnResize)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", closeOnEscape)
+      window.removeEventListener("resize", closeOnResize)
+    }
   }, [menuOpen])
 
   const localizedHref = (path = "") => `/${currentLang}${path}`
@@ -47,18 +60,18 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className={`absolute inset-x-0 top-0 z-50 w-full ${menuOpen ? "bg-[#030b18]/95 backdrop-blur-xl" : "bg-transparent"}`}
+      className="absolute inset-x-0 top-0 z-[100] w-full"
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex min-h-[80px] w-full max-w-[1400px] items-center justify-between gap-5 px-6 py-3 lg:min-h-[88px] lg:px-10"
+        className="relative z-[80] mx-auto flex min-h-[72px] w-full max-w-[1400px] items-center justify-between gap-2 px-4 py-3 sm:min-h-[80px] sm:px-6 lg:min-h-[88px] lg:px-10"
       >
         {/* LOGO AND WORDMARK */}
         <Link
           href={`/${currentLang}`}
           aria-label="GenData Tech — Home"
           onClick={() => setMenuOpen(false)}
-          className="flex shrink-0 items-center gap-1"
+          className="flex min-w-0 items-center gap-1 sm:shrink-0"
         >
           <Image
             src="/assets/gendata-tech-mark.webp"
@@ -67,18 +80,18 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             height={58}
             priority
             unoptimized
-            className="h-11 w-11 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+            className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
           />
-          <span className="flex flex-col">
+          <span className="flex min-w-0 flex-col">
             <span
-              className="bg-clip-text font-heading text-[21px] font-bold leading-none tracking-[-0.03em] text-transparent"
+              className="whitespace-nowrap bg-clip-text font-heading text-[16px] font-bold leading-none tracking-[-0.03em] text-transparent min-[375px]:text-[19px] sm:text-[21px]"
               style={{
                 backgroundImage: "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
               }}
             >
               GenData Tech
             </span>
-            <span className="mt-1 font-body text-[10px] font-medium tracking-[0.05em] text-[#057CFA]">
+            <span className="mt-1 hidden font-body text-[9px] font-medium tracking-[0.05em] text-[#057CFA] min-[375px]:block sm:text-[10px]">
               Think - Build - Evolve
             </span>
           </span>
@@ -135,7 +148,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
         {/* MOBILE MENU TOGGLE */}
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white transition hover:bg-white/10 xl:hidden"
+          className="relative z-[90] inline-flex h-11 w-11 shrink-0 touch-manipulation items-center justify-center rounded-full border border-white/20 bg-[#06152c]/85 text-white transition hover:bg-[#002DCC] focus-visible:ring-2 focus-visible:ring-[#057CFA] xl:hidden"
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           aria-controls="gendata-mobile-navigation"
           aria-expanded={menuOpen}
@@ -145,69 +158,74 @@ export default function Navbar({ lang = "en", navigation = {} }) {
         </button>
       </nav>
 
-      {/* MOBILE NAVIGATION */}
-      <AnimatePresence initial={false}>
+      {/* Mobile navigation overlay: viewport anchored, never clipped by the hero. */}
       {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.24 }}
-          id="gendata-mobile-navigation"
-          className="mx-4 mb-4 overflow-hidden rounded-[22px] border border-white/10 bg-[#06152c]/98 p-5 shadow-2xl backdrop-blur-xl xl:hidden sm:mx-6"
-        >
-          <div className="flex flex-col">
-            {NAV_ITEMS.map(({ key, path }) => (
-              <Link
-                key={key}
-                href={localizedHref(path)}
-                aria-current={isActive(path) ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-                className={`border-b border-white/[0.07] py-3.5 font-body text-sm font-medium transition ${
-                  isActive(path) ? "text-[#58bafc]" : "text-slate-200 hover:text-white"
-                }`}
-              >
-                {navigation[key] || key}
-              </Link>
-            ))}
-          </div>
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 z-[60] bg-[#030b18]/80 xl:hidden"
+            aria-label={currentLang === "de" ? "Menü schließen" : "Close menu"}
+            onClick={() => setMenuOpen(false)}
+          />
 
-          <div className="mt-5 flex items-center justify-between gap-4">
-            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400">
-              {currentLang === "de" ? "Sprache" : "Language"}
-            </span>
-            <div className="flex gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1">
-              {[
-                { code: "en", label: "EN" },
-                { code: "de", label: "DE" },
-              ].map(({ code, label }) => (
+          <div
+            id="gendata-mobile-navigation"
+            role="region"
+            aria-label={currentLang === "de" ? "Mobiles Menü" : "Mobile navigation"}
+            className="gd-mobile-menu fixed inset-x-3 top-[76px] z-[70] max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#06152c] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.45)] xl:hidden sm:inset-x-6 sm:top-[85px]"
+          >
+            <div className="flex flex-col">
+              {NAV_ITEMS.map(({ key, path }) => (
                 <Link
-                  key={code}
-                  href={languageHref(code)}
-                  hrefLang={code}
-                  aria-label={code === "en" ? "Switch to English" : "Zur deutschen Version wechseln"}
-                  aria-current={currentLang === code ? "true" : undefined}
+                  key={key}
+                  href={localizedHref(path)}
+                  aria-current={isActive(path) ? "page" : undefined}
                   onClick={() => setMenuOpen(false)}
-                  className={`rounded-full px-4 py-2 font-body text-[11px] font-semibold ${
-                    currentLang === code ? "bg-[#057CFA] text-white" : "text-slate-300"
+                  className={`flex min-h-12 items-center border-b border-white/10 py-3 font-body text-sm font-medium transition-colors ${
+                    isActive(path) ? "text-[#58bafc]" : "text-slate-200 hover:text-white"
                   }`}
                 >
-                  {label}
+                  {navigation[key] || key}
                 </Link>
               ))}
             </div>
-          </div>
 
-          <Link
-            href={localizedHref("/contact")}
-            onClick={() => setMenuOpen(false)}
-            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#057CFA] px-5 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
-          >
-            {navigation.contact || "Let's Talk"}
-          </Link>
-        </motion.div>
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+              <span className="font-body text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                {currentLang === "de" ? "Sprache" : "Language"}
+              </span>
+              <div className="flex gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1">
+                {[
+                  { code: "en", label: "EN" },
+                  { code: "de", label: "DE" },
+                ].map(({ code, label }) => (
+                  <Link
+                    key={code}
+                    href={languageHref(code)}
+                    hrefLang={code}
+                    aria-label={code === "en" ? "Switch to English" : "Zur deutschen Version wechseln"}
+                    aria-current={currentLang === code ? "true" : undefined}
+                    onClick={() => setMenuOpen(false)}
+                    className={`rounded-full px-4 py-2 font-body text-xs font-semibold ${
+                      currentLang === code ? "bg-[#057CFA] text-white" : "text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href={localizedHref("/contact")}
+              onClick={() => setMenuOpen(false)}
+              className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#057CFA] px-5 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#002DCC]"
+            >
+              {navigation.contact || "Let's Talk"}
+            </Link>
+          </div>
+        </>
       )}
-      </AnimatePresence>
     </header>
   )
 }
