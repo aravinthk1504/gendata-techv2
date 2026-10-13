@@ -693,7 +693,7 @@ function Training() {
       
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 lg:px-10 lg:pt-32"
         >
           {/* MAIN GLOW */}
 
