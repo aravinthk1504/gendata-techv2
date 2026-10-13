@@ -36,6 +36,7 @@ function Products() {
 
   const heroInView = useInView(heroRef, {
     margin: "-10% 0px -10% 0px",
+    once: true,
   });
 
   const reduceMotion = useReducedMotion();
