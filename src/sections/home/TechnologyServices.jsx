@@ -23,7 +23,7 @@ function FullStackVisual() {
         {layers.map((layer, index) => (
           <div key={layer.name} className="relative">
             <motion.div
-              initial={{ opacity: 0.48, y: 10 }}
+              initial={{ opacity: 0.28, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.07 }}
@@ -316,7 +316,7 @@ function TechnologyServices({ content, lang }) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <motion.p
-              initial={{ opacity: 0.48, y: 15 }}
+              initial={{ opacity: 0.28, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
@@ -324,7 +324,7 @@ function TechnologyServices({ content, lang }) {
               {t("technology.eyebrow")}
             </motion.p>
             <motion.h2
-              initial={{ opacity: 0.48, y: 30 }}
+              initial={{ opacity: 0.28, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
@@ -338,7 +338,7 @@ function TechnologyServices({ content, lang }) {
           </div>
 
           <motion.p
-            initial={{ opacity: 0.48, y: 20 }}
+            initial={{ opacity: 0.28, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-md font-body text-sm leading-7 text-slate-600 lg:col-span-4 lg:justify-self-end lg:text-base"
@@ -349,7 +349,7 @@ function TechnologyServices({ content, lang }) {
 
         <div className="mt-14 grid gap-5 sm:mt-16 lg:mt-20 lg:grid-cols-2">
           <motion.article
-            initial={{ opacity: 0.48, y: 35 }}
+            initial={{ opacity: 0.28, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65 }}
@@ -391,7 +391,7 @@ function TechnologyServices({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.48, y: 35 }}
+            initial={{ opacity: 0.28, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.08 }}
@@ -419,7 +419,7 @@ function TechnologyServices({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.48, y: 35 }}
+            initial={{ opacity: 0.28, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.14 }}
@@ -447,7 +447,7 @@ function TechnologyServices({ content, lang }) {
           </motion.article>
 
           <motion.article
-            initial={{ opacity: 0.48, y: 35 }}
+            initial={{ opacity: 0.28, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.18 }}
