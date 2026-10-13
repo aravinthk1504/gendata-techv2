@@ -341,7 +341,7 @@ function Products() {
               <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 12,
                   }}
                   animate={
@@ -365,7 +365,7 @@ function Products() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 20,
                   }}
                   animate={
@@ -393,7 +393,7 @@ function Products() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 15,
                   }}
                   animate={
@@ -420,7 +420,7 @@ function Products() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 12,
                   }}
                   animate={
@@ -452,7 +452,7 @@ function Products() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 12,
                   }}
                   animate={
@@ -495,7 +495,7 @@ function Products() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   scale: 0.96,
                 }}
                 animate={
@@ -769,7 +769,7 @@ function Products() {
                   <motion.article
                     key={product.name}
                     initial={{
-                      opacity: 0.6,
+                      opacity: 0.28,
                       y: 22,
                     }}
                     whileInView={{
@@ -873,7 +873,7 @@ function Products() {
                     <motion.div
                       key={principle.title}
                       initial={{
-                        opacity: 0.6,
+                        opacity: 0.28,
                         y: 20,
                       }}
                       whileInView={{
@@ -943,7 +943,7 @@ function Products() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.6,
+                      opacity: 0.28,
                       y: 20,
                     }}
                     whileInView={{
@@ -1001,7 +1001,7 @@ function Products() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   y: 20,
                 }}
                 whileInView={{
