@@ -56,7 +56,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
             <div className="absolute inset-0 flex items-center justify-center p-8">
               <div className="max-w-[260px] text-center">
                 <p className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
-                  {isEvent ? "Event" : "Insight"}
+                  {isEvent ? "Event" : lang === "de" ? "Einblick" : "Insight"}
                 </p>
 
                 <p className="mt-3 font-heading text-lg font-semibold leading-7 text-white">
@@ -75,7 +75,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
                 : "border-white/10 bg-black/20 text-blue-100"
             }`}
           >
-            {isEvent ? "Event" : "Article"}
+            {isEvent ? "Event" : lang === "de" ? "Artikel" : "Article"}
           </span>
         </div>
 
@@ -127,7 +127,7 @@ function BlogCard({ post, index = 0, lang = "en" }) {
           href={`/${lang}/blog/${post.slug}`}
           className="mt-6 inline-flex w-fit items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
         >
-          {isEvent ? "View event" : "Read article"}
+          {isEvent ? (lang === "de" ? "Event ansehen" : "View event") : (lang === "de" ? "Artikel lesen" : "Read article")}
 
           <FiArrowUpRight className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
