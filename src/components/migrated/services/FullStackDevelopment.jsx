@@ -422,7 +422,7 @@ function FullStackDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -447,7 +447,7 @@ function FullStackDevelopment() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 25,
                   }}
                   animate={
@@ -477,7 +477,7 @@ function FullStackDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 18,
                   }}
                   animate={
@@ -505,7 +505,7 @@ function FullStackDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -540,7 +540,7 @@ function FullStackDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 15,
                   }}
                   animate={
@@ -589,7 +589,7 @@ function FullStackDevelopment() {
 
               <motion.div
                 initial={{
-                  opacity: 0.96,
+                  opacity: 0,
                   scale: 0.96,
                 }}
                 animate={
@@ -892,7 +892,7 @@ function FullStackDevelopment() {
                 <motion.div
                   key={item.number}
                   initial={{
-                    opacity: 0.96,
+                    opacity: 0,
                     y: 20,
                   }}
                   whileInView={{
@@ -1004,7 +1004,7 @@ function FullStackDevelopment() {
                     <motion.div
                       key={stack.category}
                       initial={{
-                        opacity: 0.96,
+                        opacity: 0,
                         y: 20,
                       }}
                       whileInView={{
@@ -1110,7 +1110,7 @@ function FullStackDevelopment() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.96,
+                      opacity: 0,
                       y: 20,
                     }}
                     whileInView={{
@@ -1195,7 +1195,7 @@ function FullStackDevelopment() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0.96,
+                        opacity: 0,
                         y: 20,
                       }}
                       whileInView={{
@@ -1377,7 +1377,7 @@ function FullStackDevelopment() {
 
             <motion.div
               initial={{
-                opacity: 0.96,
+                opacity: 0,
                 y: 25,
               }}
               whileInView={{
