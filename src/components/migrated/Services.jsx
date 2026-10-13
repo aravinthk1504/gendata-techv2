@@ -411,7 +411,7 @@ function Services() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 15,
                   }}
                   animate={
@@ -435,7 +435,7 @@ function Services() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 25,
                   }}
                   animate={
@@ -463,7 +463,7 @@ function Services() {
 
                 <motion.p
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 18,
                   }}
                   animate={
@@ -490,7 +490,7 @@ function Services() {
 
                 <motion.div
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 15,
                   }}
                   animate={
@@ -529,7 +529,7 @@ function Services() {
 
               <motion.div
                 initial={{
-                  opacity: 0.6,
+                  opacity: 0.28,
                   scale: 0.96,
                 }}
                 animate={
@@ -755,7 +755,7 @@ function Services() {
                   <motion.div
                     key={service.title}
                     initial={{
-                      opacity: 0.6,
+                      opacity: 0.28,
                       y: 22,
                     }}
                     whileInView={{
@@ -854,7 +854,7 @@ function Services() {
                   <motion.div
                     key={outcome.title}
                     initial={{
-                      opacity: 0.6,
+                      opacity: 0.28,
                       y: 20,
                     }}
                     whileInView={{
@@ -916,7 +916,7 @@ function Services() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0.6,
+                      opacity: 0.28,
                       y: 20,
                     }}
                     whileInView={{
@@ -974,7 +974,7 @@ function Services() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0.6,
+                        opacity: 0.28,
                         y: 20,
                       }}
                       whileInView={{
@@ -1048,7 +1048,7 @@ function Services() {
                 <motion.article
                   key={insight.title}
                   initial={{
-                    opacity: 0.6,
+                    opacity: 0.28,
                     y: 20,
                   }}
                   whileInView={{
@@ -1178,7 +1178,7 @@ function Services() {
           <div className="relative mx-auto max-w-[1400px]">
             <motion.div
               initial={{
-                opacity: 0.6,
+                opacity: 0.28,
                 y: 25,
               }}
               whileInView={{
