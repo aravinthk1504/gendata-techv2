@@ -20,15 +20,6 @@ export default function Navbar({ lang = "en", navigation = {} }) {
   const pathname = usePathname() || `/${lang}`
   const currentLang = lang === "de" ? "de" : "en"
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  // Apply a subtle solid background when the visitor scrolls past the hero.
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   // Close the mobile menu with Escape for keyboard accessibility.
   useEffect(() => {
@@ -56,11 +47,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || menuOpen
-          ? "border-b border-white/10 bg-[#030b18]/95 shadow-[0_12px_35px_rgba(0,0,0,0.15)] backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
+      className={`absolute inset-x-0 top-0 z-50 w-full ${menuOpen ? "bg-[#030b18]/95 backdrop-blur-xl" : "bg-transparent"}`}
     >
       <nav
         aria-label="Main navigation"
