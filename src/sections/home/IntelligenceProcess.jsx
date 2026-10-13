@@ -87,7 +87,7 @@ function IntelligenceProcess({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#06152c] px-6 py-20 sm:py-24 lg:px-10 lg:py-36"
+      className="relative overflow-hidden bg-[#06152c] px-6 py-20 sm:py-24 lg:px-10 lg:py-28"
     >
       <div className="pointer-events-none absolute -left-40 top-20 h-120 w-120 rounded-full bg-brand-primary/10 blur-[150px]" />
       <div className="pointer-events-none absolute -right-40 bottom-0 h-130 w-130 rounded-full bg-brand-accent/8 blur-[160px]" />
