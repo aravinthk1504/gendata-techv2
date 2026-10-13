@@ -69,7 +69,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
     >
       <nav
         aria-label="Main navigation"
-        className="relative z-[80] mx-auto flex min-h-[72px] w-full max-w-[1400px] items-center justify-between gap-2 px-4 py-3 sm:min-h-[80px] sm:px-6 lg:min-h-[88px] lg:px-10"
+        className="relative z-[80] mx-auto flex min-h-[76px] w-full max-w-[1400px] items-center justify-between gap-2 px-6 py-4 sm:min-h-[80px] lg:min-h-[88px] lg:px-10"
       >
         {/* LOGO AND WORDMARK */}
         <Link
@@ -87,16 +87,16 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             unoptimized
             className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
           />
-          <span className="flex min-w-0 flex-col">
+          <span className="hidden min-w-0 flex-col sm:flex">
             <span
-              className="whitespace-nowrap bg-clip-text font-heading text-[16px] font-bold leading-none tracking-[-0.03em] text-transparent min-[375px]:text-[19px] sm:text-[21px]"
+              className="whitespace-nowrap bg-clip-text font-heading text-[21px] font-bold leading-none tracking-[-0.03em] text-transparent"
               style={{
                 backgroundImage: "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
               }}
             >
               GenData Tech
             </span>
-            <span className="mt-1 hidden font-body text-[9px] font-medium tracking-[0.05em] text-[#057CFA] min-[375px]:block sm:text-[10px]">
+            <span className="mt-1 font-body text-[10px] font-medium tracking-[0.05em] text-[#057CFA]">
               Think - Build - Evolve
             </span>
           </span>
