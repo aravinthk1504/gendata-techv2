@@ -71,11 +71,20 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
+/* The mobile navigation is anchored to the viewport, not the hero. */
+.gd-mobile-menu {
+  animation: gd-menu-enter 220ms ease-out both;
+  -webkit-overflow-scrolling: touch;
+}
+@keyframes gd-menu-enter {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 639px) {
+  /* Maintain comfortable gutters and prevent long technical headings from spilling. */
+  main { min-width: 0; }
+  main h1, main h2 { overflow-wrap: break-word; }
+}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  .gd-mobile-menu { animation: none; }
 }
