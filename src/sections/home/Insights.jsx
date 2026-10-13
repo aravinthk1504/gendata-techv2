@@ -17,7 +17,7 @@ function Insights({ content, lang }) {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+    <section className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-36">
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-blue-50 blur-[150px]" />
 
       <div className="relative mx-auto max-w-350">
