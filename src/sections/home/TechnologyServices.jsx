@@ -130,7 +130,7 @@ function SoftwareVisual() {
   const modules = ["Module A", "Module B", "Module C"];
 
   return (
-    <div className="relative mt-7 flex h-48 items-center justify-center sm:mt-8 sm:h-44">
+    <div className="relative mt-auto flex h-48 shrink-0 items-center justify-center pt-6 sm:h-44">
       <div className="absolute left-0 flex flex-col gap-3 sm:left-1">
         {modules.map((module, index) => (
           <motion.div
@@ -180,7 +180,7 @@ function SoftwareVisual() {
 
 function AppVisual() {
   return (
-    <div className="relative mt-7 flex h-48 items-center justify-center sm:mt-8 sm:h-44">
+    <div className="relative mt-auto flex h-48 shrink-0 items-center justify-center pt-6 sm:h-44">
       <motion.div
         animate={{ y: [0, 5, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -395,7 +395,7 @@ function TechnologyServices({ content, lang }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.08 }}
-            className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9"
+            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:min-h-[520px] lg:p-9"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
               {t("technology.software.label")}
@@ -409,7 +409,7 @@ function TechnologyServices({ content, lang }) {
             <SoftwareVisual />
             <Link
               href={localizedPath("/services")}
-              className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+              className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
             >
               {t("technology.explore")}{" "}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -423,7 +423,7 @@ function TechnologyServices({ content, lang }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.14 }}
-            className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9"
+            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:min-h-[520px] lg:p-9"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
               {t("technology.app.label")}
@@ -437,7 +437,7 @@ function TechnologyServices({ content, lang }) {
             <AppVisual />
             <Link
               href={localizedPath("/services")}
-              className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+              className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
             >
               {t("technology.explore")}{" "}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
