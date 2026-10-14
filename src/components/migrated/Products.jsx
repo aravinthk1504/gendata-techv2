@@ -263,7 +263,7 @@ function Products() {
 
        <section
   ref={heroRef}
-  className="relative flex min-h-[610px] items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-24 sm:min-h-[650px] sm:pb-16 sm:pt-28 lg:min-h-[610px] lg:px-10 lg:pb-12 lg:pt-24"
+  className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
 >
           {/* MAIN GLOW */}
 
@@ -336,8 +336,8 @@ function Products() {
             }}
           />
 
-        <div className="relative mx-auto w-full max-w-[1400px]">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
+        <div className="relative mx-auto flex min-h-[570px] w-full max-w-[1400px] items-center py-10 lg:min-h-[610px] lg:py-8">
+            <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
               {/* HERO COPY */}
 
               <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
@@ -385,7 +385,7 @@ function Products() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-4xl font-heading text-4xl font-semibold leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
+                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
                 >
                   Digital products built
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -515,7 +515,7 @@ function Products() {
                   duration: 0.65,
                   delay: 0.15,
                 }}
-                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex"
+                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
                 {/* OUTER RING */}
 

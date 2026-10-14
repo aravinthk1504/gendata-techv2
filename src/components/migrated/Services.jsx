@@ -333,7 +333,7 @@ function Services() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-28 lg:pt-40"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
         >
           {/* MAIN GLOW */}
 
@@ -406,8 +406,8 @@ function Services() {
             }}
           />
 
-          <div className="relative mx-auto max-w-[1400px]">
-            <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative mx-auto flex min-h-[570px] w-full max-w-[1400px] items-center py-10 lg:min-h-[610px] lg:py-8">
+            <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
               {/* HERO LEFT */}
 
               <div>
@@ -455,7 +455,7 @@ function Services() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
+                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
                 >
                   AI-focused services built around
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -549,7 +549,7 @@ function Services() {
                   duration: 0.7,
                   delay: 0.16,
                 }}
-                className="relative mx-auto hidden h-[420px] w-full max-w-[480px] items-center justify-center lg:flex"
+                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
                 {/* OUTER RING */}
 
