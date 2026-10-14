@@ -144,7 +144,7 @@ function IntelligenceProcess({ content, lang }) {
 
           <div className="absolute left-7 right-7 top-7 hidden h-px overflow-hidden lg:block">
             <motion.div
-              animate={shouldAnimate ? { x: ["-15%", "115%"] } : { x: "-15%" }}
+              animate={shouldAnimate ? { x: ["-100%", "570%"] } : { x: "-100%" }}
               transition={{
                 duration: 7,
                 repeat: shouldAnimate ? Infinity : 0,
