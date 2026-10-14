@@ -1,5 +1,7 @@
 "use client"
 
+import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
+
 import { useRef, useState } from "react"
 
 import {
@@ -1082,7 +1084,7 @@ function AIMLDevelopment() {
 
             <div className="relative mt-14">
 
-              <div className="absolute left-0 right-0 top-5 hidden h-px bg-gradient-to-r from-transparent via-[#057CFA]/25 to-transparent xl:block" />
+              <ProcessFlowGlow breakpoint="xl" />
 
 
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
