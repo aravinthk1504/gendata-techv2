@@ -179,6 +179,30 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             aria-label={currentLang === "de" ? "Mobiles Menü" : "Mobile navigation"}
             className="gd-mobile-menu fixed inset-x-3 top-[76px] z-[70] max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#06152c] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.45)] xl:hidden sm:inset-x-6 sm:top-[85px]"
           >
+            <div className="mb-5 flex items-center gap-3 border-b border-white/10 pb-5">
+              <Image
+                src="/assets/gendata-tech-mark.webp"
+                alt="GenData Tech"
+                width={48}
+                height={48}
+                unoptimized
+                className="h-12 w-12 shrink-0 object-contain"
+              />
+              <div className="min-w-0">
+                <p
+                  className="bg-clip-text font-heading text-lg font-bold leading-tight tracking-[-0.03em] text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
+                  }}
+                >
+                  GenData Tech
+                </p>
+                <p className="mt-1 font-body text-[9px] font-medium tracking-[0.05em] text-[#057CFA]">
+                  Think - Build - Evolve
+                </p>
+              </div>
+            </div>
             <div className="flex flex-col">
               {NAV_ITEMS.map(({ key, path }) => (
                 <Link
