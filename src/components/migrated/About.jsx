@@ -1,5 +1,7 @@
 "use client"
 
+import ProcessFlowGlow from "../layout/ProcessFlowGlow"
+
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 
@@ -923,7 +925,7 @@ function About() {
             <div className="relative mt-14">
               {/* DESKTOP LINE */}
 
-              <div className="absolute left-0 right-0 top-5 hidden h-px bg-gradient-to-r from-transparent via-[#057CFA]/25 to-transparent lg:block" />
+              <ProcessFlowGlow />
 
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
                 {approach.map((step, index) => (

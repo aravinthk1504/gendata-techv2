@@ -1,5 +1,7 @@
 "use client"
 
+import ProcessFlowGlow from "../layout/ProcessFlowGlow"
+
 import { useRef, useState } from "react";
 
 import {
@@ -1502,7 +1504,7 @@ function Training() {
             </div>
 
             <div className="relative mt-14">
-              <div className="absolute left-0 right-0 top-5 hidden h-px bg-gradient-to-r from-transparent via-[#057CFA]/25 to-transparent lg:block" />
+              <ProcessFlowGlow />
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
                 {trainingProcess.map((step, index) => (
