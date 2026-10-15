@@ -17,16 +17,33 @@ function FlowLine({ vertical = false, className = "" }) {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none relative shrink-0 overflow-hidden bg-slate-200 ${vertical ? "w-[2px]" : "h-[2px]"} ${className}`}
+      className={`pointer-events-none relative shrink-0 overflow-hidden rounded-full ${vertical ? "w-[3px]" : "h-[3px]"} ${className} bg-blue-200`}
     >
-      {!reduceMotion && (
+      {reduceMotion ? (
+        <span className="absolute inset-0 bg-brand-accent/70" />
+      ) : (
         <motion.span
-          className={`absolute rounded-full shadow-[0_0_12px_rgba(5,124,250,0.8)] ${vertical ? "left-0 top-0 h-1/2 w-full bg-gradient-to-b from-transparent via-brand-accent to-transparent" : "left-0 top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-brand-accent to-transparent"}`}
+          className={`absolute rounded-full bg-brand-accent shadow-[0_0_12px_3px_rgba(5,124,250,0.65)] ${vertical ? "left-0 top-0 h-1/2 w-full" : "left-0 top-0 h-full w-1/2"}`}
+          initial={false}
           animate={vertical ? { top: ["-50%", "100%"] } : { left: ["-50%", "100%"] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
         />
       )}
     </div>
+  );
+}
+
+function FullStackSpine() {
+  const reduceMotion = useReducedMotion();
+  return reduceMotion ? (
+    <span className="absolute inset-0 bg-brand-accent/60" />
+  ) : (
+    <motion.span
+      className="absolute left-0 top-0 h-20 w-full rounded-full bg-brand-accent shadow-[0_0_14px_4px_rgba(5,124,250,0.55)]"
+      initial={false}
+      animate={{ top: ["-15%", "100%"] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+    />
   );
 }
 
@@ -42,53 +59,42 @@ function FullStackVisual() {
     <div className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/60 blur-[70px] lg:h-60 lg:w-60 lg:bg-blue-100/70 lg:blur-[80px]" />
 
-      {/* Mobile / tablet: vertical architecture flow */}
-      <div className="relative z-10 mx-auto flex w-full max-w-sm flex-col items-stretch gap-0 px-1 pb-2 lg:hidden">
+      {/* Mobile / tablet: cards share a single centered, animated spine. */}
+      <div className="relative z-10 mx-auto grid w-full max-w-sm min-w-0 gap-7 px-1 pb-2 lg:hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-7 left-1/2 z-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-full bg-blue-200"
+        >
+          <FullStackSpine />
+        </div>
         {layers.map((layer, index) => (
-          <div key={layer.name} className="relative min-w-0">
-            <motion.div
-              initial={{ opacity: 1, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: index * 0.07 }}
-              className={`relative flex items-center justify-between rounded-2xl border bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.05)] ${
-                index === 0 ? "border-brand-accent/30" : "border-slate-200"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-[10px] font-semibold ${
-                    index === 0
-                      ? "bg-brand-accent text-white"
-                      : "bg-slate-50 text-slate-500"
-                  }`}
-                >
-                  0{index + 1}
-                </span>
-
-                <div>
-                  <p
-                    className={`font-heading text-sm font-semibold ${
-                      index === 0 ? "text-brand-primary" : "text-slate-900"
-                    }`}
-                  >
-                    {layer.name}
-                  </p>
-                  <p className="mt-0.5 font-body text-[9px] text-slate-400">
-                    {layer.sub}
-                  </p>
-                </div>
-              </div>
-
-              <span className="font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-slate-300">
-                {index === layers.length - 1 ? "Store" : "Next"}
+          <motion.div
+            key={layer.name}
+            initial={{ opacity: 1, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35, delay: index * 0.07 }}
+            className={`relative z-10 flex min-w-0 items-center justify-between rounded-2xl border bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.05)] ${index === 0 ? "border-brand-accent/30" : "border-slate-200"}`}
+          >
+            <div className="flex min-w-0 items-center gap-3">
+              <span
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-[10px] font-semibold ${index === 0 ? "bg-brand-accent text-white" : "bg-slate-50 text-slate-500"}`}
+              >
+                0{index + 1}
               </span>
-            </motion.div>
-
-            {index !== layers.length - 1 && (
-              <FlowLine vertical className="mx-auto h-7" />
-            )}
-          </div>
+              <div className="min-w-0">
+                <p className={`font-heading text-sm font-semibold ${index === 0 ? "text-brand-primary" : "text-slate-900"}`}>
+                  {layer.name}
+                </p>
+                <p className="mt-0.5 font-body text-[9px] text-slate-400">
+                  {layer.sub}
+                </p>
+              </div>
+            </div>
+            <span className="ml-2 shrink-0 font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-slate-300">
+              {index === layers.length - 1 ? "Store" : "Next"}
+            </span>
+          </motion.div>
         ))}
       </div>
 
