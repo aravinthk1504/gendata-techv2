@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useRef } from "react";
 import Link from "next/link";
 import { homeText, localizedHref } from "../../lib/homeText";
 
@@ -10,6 +11,11 @@ const getProducts = (t) => t("products.cards", { returnObjects: true });
 
 function LMSDashboard({ content }) {
   const t = (key, variables) => homeText(content, key, variables);
+  // Observe the chart container instead of zero-height bars: zero-size
+  // IntersectionObserver targets are unreliable on physical mobile devices.
+  const activityRef = useRef(null);
+  const activityVisible = useInView(activityRef, { once: true, amount: 0.15 });
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
@@ -78,14 +84,16 @@ function LMSDashboard({ content }) {
                 <p className="font-body text-[6px] uppercase tracking-[0.1em] text-slate-500 sm:text-[7px]">
                   {t("products.lms.dashboard.activity")}
                 </p>
-                <div className="absolute inset-x-3 bottom-3 flex h-14 items-end gap-1.5 sm:inset-x-4 sm:bottom-4 sm:h-16 sm:gap-2">
+                <div ref={activityRef}
+                  className="absolute inset-x-3 bottom-3 flex h-14 items-end gap-1.5 sm:inset-x-4 sm:bottom-4 sm:h-16 sm:gap-2">
                   {[40, 62, 48, 76, 58, 88, 70].map((height, index) => (
                     <motion.div
                       key={index}
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${height}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.7, delay: index * 0.06 }}
+                      initial={false}
+                      animate={{ scaleY: activityVisible || reduceMotion ? 1 : 0.5 }}
+                      style={{ height: `${height}%`, transformOrigin: "bottom" }}
+                      transition={{ duration: reduceMotion ? 0 : 0.7, delay: index * 0.06 }}
+
                       className="flex-1 rounded-t-sm bg-linear-to-t from-brand-primary to-brand-accent"
                     />
                   ))}
@@ -109,19 +117,24 @@ function LMSDashboard({ content }) {
 }
 
 function ProductVisual({ type }) {
+  const chartRef = useRef(null);
+  const chartVisible = useInView(chartRef, { once: true, amount: 0.15 });
+  const reduceMotion = useReducedMotion();
+
   if (type === "crm") {
     const bars = [45, 68, 55, 86];
     return (
-      <div className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
+      <div ref={chartRef}
+       className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
         <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-100/70 blur-[45px]" />
         <div className="relative flex h-full items-end gap-3 rounded-xl border border-slate-200 bg-white p-3">
           {bars.map((height, index) => (
             <div key={index} className="flex h-full flex-1 items-end">
               <motion.div
-                initial={{ height: 0 }}
-                whileInView={{ height: `${height}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.08 }}
+                initial={false}
+                animate={{ scaleY: chartVisible || reduceMotion ? 1 : 0.5 }}
+                style={{ height: `${height}%`, transformOrigin: "bottom" }}
+                transition={{ duration: reduceMotion ? 0 : 0.7, delay: index * 0.08 }}
                 className={`w-full rounded-t-md ${
                   [
                     "bg-[#057CFA]",
@@ -168,17 +181,18 @@ function ProductVisual({ type }) {
   }
 
   return (
-    <div className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
+    <div ref={chartRef}
+       className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-emerald-100/70 blur-[45px]" />
       <div className="relative grid h-full grid-cols-[1fr_0.85fr] gap-3">
         <div className="flex items-end gap-1.5 rounded-xl border border-slate-200 bg-white p-3">
           {[38, 58, 46, 76, 64, 90].map((height, index) => (
             <motion.div
               key={index}
-              initial={{ height: 0 }}
-              whileInView={{ height: `${height}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.06 }}
+              initial={false}
+              animate={{ scaleY: chartVisible || reduceMotion ? 1 : 0.5 }}
+              style={{ height: `${height}%`, transformOrigin: "bottom" }}
+              transition={{ duration: reduceMotion ? 0 : 0.7, delay: index * 0.06 }}
               className={`flex-1 rounded-t-sm ${
                 [
                   "bg-blue-400",

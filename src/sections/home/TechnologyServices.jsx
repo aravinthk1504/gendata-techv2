@@ -15,13 +15,13 @@ function FullStackVisual() {
   ];
 
   return (
-    <div className="relative mt-8 overflow-hidden lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center">
+    <div className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/60 blur-[70px] lg:h-60 lg:w-60 lg:bg-blue-100/70 lg:blur-[80px]" />
 
       {/* Mobile / tablet: vertical architecture flow */}
-      <div className="relative z-10 mx-auto flex max-w-sm flex-col items-stretch gap-0 lg:hidden">
+      <div className="relative z-10 mx-auto flex w-full max-w-sm flex-col items-stretch gap-0 px-1 pb-2 lg:hidden">
         {layers.map((layer, index) => (
-          <div key={layer.name} className="relative">
+          <div key={layer.name} className="relative min-w-0">
             <motion.div
               initial={{ opacity: 1, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
