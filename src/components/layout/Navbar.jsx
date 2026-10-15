@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -18,35 +18,11 @@ const NAV_ITEMS = [
 export default function Navbar({ lang = "en", navigation = {} }) {
   const pathname = usePathname() || `/${lang}`
   const currentLang = lang === "de" ? "de" : "en"
-  const [menuOpen, setMenuOpen] = useState(false)
+  const mobileMenuRef = useRef(null)
 
-  // Keep the menu accessible and prevent the page from scrolling underneath it.
+  // Reset the native mobile disclosure after route changes.
   useEffect(() => {
-    if (!menuOpen) return
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-
-    const closeOnEscape = (event) => {
-      if (event.key === "Escape") setMenuOpen(false)
-    }
-
-    const closeOnResize = () => {
-      if (window.innerWidth >= 1280) setMenuOpen(false)
-    }
-
-    window.addEventListener("keydown", closeOnEscape)
-    window.addEventListener("resize", closeOnResize)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener("keydown", closeOnEscape)
-      window.removeEventListener("resize", closeOnResize)
-    }
-  }, [menuOpen])
-
-  // Close a previously opened mobile menu when the route changes.
-  useEffect(() => {
-    setMenuOpen(false)
+    if (mobileMenuRef.current) mobileMenuRef.current.open = false
   }, [pathname])
 
   const localizedHref = (path = "") => `/${currentLang}${path}`
@@ -65,7 +41,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 xl:absolute xl:border-0 xl:bg-transparent"
+      className="sticky inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 xl:absolute xl:border-0 xl:bg-transparent"
     >
       <nav
         aria-label="Main navigation"
@@ -75,7 +51,6 @@ export default function Navbar({ lang = "en", navigation = {} }) {
         <Link
           href={`/${currentLang}`}
           aria-label="GenData Tech — Home"
-          onClick={() => setMenuOpen(false)}
           className="flex min-w-0 items-center gap-1 sm:shrink-0"
         >
           <Image
@@ -150,39 +125,25 @@ export default function Navbar({ lang = "en", navigation = {} }) {
           </Link>
         </div>
 
-        {/* MOBILE MENU TOGGLE */}
-        <button
-          type="button"
-          className="relative z-[90] inline-flex h-11 w-11 shrink-0 touch-manipulation items-center justify-center rounded-full border border-white/20 bg-[#06152c]/85 text-white transition hover:bg-[#002DCC] focus-visible:ring-2 focus-visible:ring-[#057CFA] xl:hidden"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-controls="gendata-mobile-navigation"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          {menuOpen ? <FiX size={21} /> : <FiMenu size={21} />}
-        </button>
-      </nav>
-
-      {/* Mobile navigation overlay: viewport anchored, never clipped by the hero. */}
-      {menuOpen && (
-        <>
-          <button
-            type="button"
-            className="fixed inset-0 z-[60] bg-[#030b18]/80 xl:hidden"
-            aria-label={currentLang === "de" ? "Menü schließen" : "Close menu"}
-            onClick={() => setMenuOpen(false)}
-          />
+        {/* Native disclosure works on touch screens even before JS hydration. */}
+        <details ref={mobileMenuRef} className="group xl:hidden">
+          <summary
+            className="relative z-[90] flex h-11 w-11 cursor-pointer touch-manipulation list-none items-center justify-center rounded-full border border-white/20 bg-[#06152c]/85 text-white transition hover:bg-[#002DCC] focus-visible:outline-2 focus-visible:outline-[#057CFA] [&::-webkit-details-marker]:hidden"
+            aria-label={currentLang === "de" ? "Navigationsmenü" : "Navigation menu"}
+          >
+            <FiMenu size={21} className="group-open:hidden" aria-hidden="true" />
+            <FiX size={21} className="hidden group-open:block" aria-hidden="true" />
+          </summary>
 
           <div
             id="gendata-mobile-navigation"
-            role="region"
             aria-label={currentLang === "de" ? "Mobiles Menü" : "Mobile navigation"}
-            className="gd-mobile-menu fixed inset-x-3 top-[76px] z-[70] max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#06152c] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.45)] xl:hidden sm:inset-x-6 sm:top-[85px]"
+            className="gd-mobile-menu absolute inset-x-3 top-full z-[95] max-h-[calc(100dvh-90px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#06152c] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.45)] sm:inset-x-6"
           >
             <div className="mb-5 flex items-center gap-3 border-b border-white/10 pb-5">
               <Image
                 src="/assets/gendata-tech-mark.webp"
-                alt="GenData Tech"
+                alt=""
                 width={48}
                 height={48}
                 unoptimized
@@ -192,8 +153,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
                 <p
                   className="bg-clip-text font-heading text-lg font-bold leading-tight tracking-[-0.03em] text-transparent"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
+                    backgroundImage: "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
                   }}
                 >
                   GenData Tech
@@ -203,13 +163,16 @@ export default function Navbar({ lang = "en", navigation = {} }) {
                 </p>
               </div>
             </div>
+
             <div className="flex flex-col">
               {NAV_ITEMS.map(({ key, path }) => (
                 <Link
                   key={key}
                   href={localizedHref(path)}
                   aria-current={isActive(path) ? "page" : undefined}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    if (mobileMenuRef.current) mobileMenuRef.current.open = false
+                  }}
                   className={`flex min-h-12 items-center border-b border-white/10 py-3 font-body text-sm font-medium transition-colors ${
                     isActive(path) ? "text-[#58bafc]" : "text-slate-200 hover:text-white"
                   }`}
@@ -234,7 +197,9 @@ export default function Navbar({ lang = "en", navigation = {} }) {
                     hrefLang={code}
                     aria-label={code === "en" ? "Switch to English" : "Zur deutschen Version wechseln"}
                     aria-current={currentLang === code ? "true" : undefined}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => {
+                      if (mobileMenuRef.current) mobileMenuRef.current.open = false
+                    }}
                     className={`rounded-full px-4 py-2 font-body text-xs font-semibold ${
                       currentLang === code ? "bg-[#057CFA] text-white" : "text-slate-300 hover:text-white"
                     }`}
@@ -247,14 +212,16 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
             <Link
               href={localizedHref("/contact")}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                if (mobileMenuRef.current) mobileMenuRef.current.open = false
+              }}
               className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#057CFA] px-5 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#002DCC]"
             >
               {navigation.contact || "Let's Talk"}
             </Link>
           </div>
-        </>
-      )}
+        </details>
+      </nav>
     </header>
   )
 }
