@@ -1,10 +1,34 @@
 "use client"
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { homeText, localizedHref } from "../../lib/homeText";
 
 
+
+/**
+ * Draw the travelling blue highlight across the entire connector.
+ * Percentage-based left/top values are relative to the connector, rather
+ * than to the moving highlight itself, so the animation reaches the end.
+ */
+function FlowLine({ vertical = false, className = "" }) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none relative shrink-0 overflow-hidden bg-slate-200 ${vertical ? "w-[2px]" : "h-[2px]"} ${className}`}
+    >
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute rounded-full bg-linear-to-${vertical ? "b" : "r"} from-transparent via-brand-accent to-transparent shadow-[0_0_12px_rgba(5,124,250,0.8)] ${vertical ? "left-0 top-0 h-1/2 w-full" : "left-0 top-0 h-full w-1/2"}`}
+          animate={vertical ? { top: ["-50%", "100%"] } : { left: ["-50%", "100%"] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        />
+      )}
+    </div>
+  );
+}
 
 function FullStackVisual() {
   const layers = [
@@ -62,18 +86,7 @@ function FullStackVisual() {
             </motion.div>
 
             {index !== layers.length - 1 && (
-              <div className="relative mx-auto h-6 w-px overflow-hidden bg-slate-200">
-                <motion.span
-                  animate={{ y: ["-100%", "250%"] }}
-                  transition={{
-                    duration: 1.6,
-                    delay: index * 0.25,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute left-0 h-1/2 w-px bg-brand-accent"
-                />
-              </div>
+              <FlowLine vertical className="mx-auto h-7" />
             )}
           </div>
         ))}
@@ -106,18 +119,7 @@ function FullStackVisual() {
             </motion.div>
 
             {index !== layers.length - 1 && (
-              <div className="relative h-px w-8 overflow-hidden bg-slate-200">
-                <motion.span
-                  animate={{ x: ["-100%", "250%"] }}
-                  transition={{
-                    duration: 2,
-                    delay: index * 0.4,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute h-px w-1/2 bg-brand-accent"
-                />
-              </div>
+              <FlowLine className="w-8" />
             )}
           </div>
         ))}
@@ -149,7 +151,7 @@ function SoftwareVisual() {
         ))}
       </div>
 
-      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
+      <FlowLine className="min-w-0 flex-1" />
 
       <motion.div
         animate={{ scale: [1, 1.04, 1] }}
@@ -161,13 +163,7 @@ function SoftwareVisual() {
         </span>
       </motion.div>
 
-      <div className="relative h-px min-w-0 flex-1 overflow-hidden bg-slate-200">
-        <motion.span
-          animate={{ x: ["-100%", "250%"] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
-          className="absolute h-px w-1/2 bg-brand-accent"
-        />
-      </div>
+      <FlowLine className="min-w-0 flex-1" />
 
       <div className="relative z-10 flex h-16 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
         <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">
@@ -194,7 +190,7 @@ function AppVisual() {
         </div>
       </motion.div>
 
-      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
+      <FlowLine className="min-w-0 flex-1" />
 
       <motion.div
         animate={{
@@ -214,7 +210,7 @@ function AppVisual() {
         </span>
       </motion.div>
 
-      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
+      <FlowLine className="min-w-0 flex-1" />
 
       <motion.div
         animate={{ y: [0, -5, 0] }}
@@ -238,6 +234,7 @@ function AppVisual() {
 }
 
 function IoTVisual() {
+  const reduceMotion = useReducedMotion();
   const items = [
     { title: "Sensor", label: "Input" },
     { title: "Device", label: "Edge" },
@@ -246,10 +243,43 @@ function IoTVisual() {
   ];
 
   return (
-    <div className="relative mt-2 flex min-h-64 items-center justify-center overflow-hidden sm:min-h-65">
+    <div className="relative mt-8 flex min-h-64 items-center justify-center overflow-hidden sm:mt-2 sm:min-h-65">
       <div className="absolute h-55 w-55 rounded-full bg-blue-100/60 blur-[80px]" />
 
-      <div className="relative z-10 grid w-full max-w-sm grid-cols-2 gap-4 px-1 sm:flex sm:max-w-lg sm:items-center sm:justify-center sm:gap-0 sm:px-0">
+      <div className="relative z-10 grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-10 px-1 sm:flex sm:max-w-lg sm:items-center sm:justify-center sm:gap-0 sm:px-0">
+        {/* Mobile: one continuous connector path behind the four nodes. */}
+        <svg
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full sm:hidden"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M 25 21 H 75 V 50 H 25 V 79 H 75"
+            fill="none"
+            stroke="#cbd5e1"
+            strokeWidth="2"
+            vectorEffect="non-scaling-stroke"
+          />
+          {!reduceMotion && (
+            <motion.path
+              d="M 25 21 H 75 V 50 H 25 V 79 H 75"
+              fill="none"
+              stroke="#057CFA"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: [0, 1] }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatDelay: 0.5,
+                ease: "easeInOut",
+              }}
+            />
+          )}
+        </svg>
         {items.map((item, index) => (
           <div
             key={item.title}
@@ -275,18 +305,7 @@ function IoTVisual() {
             </motion.div>
 
             {index !== items.length - 1 && (
-              <div className="relative hidden h-px w-5 overflow-hidden bg-slate-200 sm:block sm:w-9">
-                <motion.span
-                  animate={{ x: ["-100%", "250%"] }}
-                  transition={{
-                    duration: 1.8,
-                    delay: index * 0.35,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute h-px w-1/2 bg-brand-accent"
-                />
-              </div>
+              <FlowLine className="hidden sm:block sm:w-9" />
             )}
           </div>
         ))}
@@ -378,7 +397,7 @@ function TechnologyServices({ content, lang }) {
                 </div>
                 <Link
                   href={localizedPath("/services")}
-                  className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+                  className="mt-8 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:inline-flex"
                 >
                   {t("technology.explore")}{" "}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -387,6 +406,15 @@ function TechnologyServices({ content, lang }) {
                 </Link>
               </div>
               <FullStackVisual />
+              <Link
+                href={localizedPath("/services")}
+                className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
+              >
+                {t("technology.explore")}{" "}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </div>
           </motion.article>
 
@@ -476,7 +504,7 @@ function TechnologyServices({ content, lang }) {
                 </div>
                 <Link
                   href={localizedPath("/services")}
-                  className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+                  className="mt-8 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:inline-flex"
                 >
                   {t("technology.explore")}{" "}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -485,6 +513,15 @@ function TechnologyServices({ content, lang }) {
                 </Link>
               </div>
               <IoTVisual />
+              <Link
+                href={localizedPath("/services")}
+                className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
+              >
+                {t("technology.explore")}{" "}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </div>
           </motion.article>
         </div>
