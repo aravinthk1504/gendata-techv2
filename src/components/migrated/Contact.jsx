@@ -960,26 +960,30 @@ function Contact() {
                           name="offering"
                           value={formData.offering}
                           onChange={handleInputChange}
-                          disabled={!formData.category}
                           required
-                          className={`w-full appearance-none rounded-xl border px-4 py-3.5 pr-11 font-body text-sm outline-none transition ${
-                            formData.category
-                              ? "border-slate-200 bg-white text-slate-700 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
-                              : "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400"
-                          }`}
+                          className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 pr-11 font-body text-sm text-slate-700 outline-none transition focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
                         >
                           <option value="">
                             {formData.category
                               ? "Select an option"
-                              : "Select a category first"}
+                              : "Select a category or choose an option"}
                           </option>
 
-                          {formData.category &&
-                            offeringOptions[formData.category]?.map((item) => (
-                              <option key={item} value={item}>
-                                {item}
-                              </option>
-                            ))}
+                          {formData.category
+                            ? offeringOptions[formData.category]?.map((item) => (
+                                <option key={item} value={item}>
+                                  {item}
+                                </option>
+                              ))
+                            : Object.entries(offeringOptions).map(([group, options]) => (
+                                <optgroup key={group} label={group}>
+                                  {options.map((item) => (
+                                    <option key={`${group}-${item}`} value={item}>
+                                      {item}
+                                    </option>
+                                  ))}
+                                </optgroup>
+                              ))}
                         </select>
 
                         <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
