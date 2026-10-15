@@ -191,14 +191,7 @@ function Contact() {
       // no-cors returns an opaque response: delivery is not verifiable.
       setSubmitStatus("unverified");
 
-      /* setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        category: "",
-        offering: "",
-        message: "",
-      }); */
+      // Keep input values available because the server receipt is opaque.
     } catch (error) {
       console.error("Contact form error:", error);
 
@@ -1035,9 +1028,9 @@ function Contact() {
                           opacity: 0,
                           y: -5,
                         }}
-                        className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+                        className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3"
                       >
-                        <p className="font-body text-xs font-medium leading-6 text-emerald-700">
+                        <p className="font-body text-xs font-medium leading-6 text-blue-800">
                           Your enquiry was sent, but receipt cannot be verified. Please contact us by email or WhatsApp if you do not receive a reply.
                         </p>
                       </motion.div>
