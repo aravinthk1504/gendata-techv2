@@ -12,7 +12,7 @@ import {
 } from "react-icons/fi"
 
 
-function BlogCard({ post, index = 0, lang }) {
+function BlogCard({ post, index = 0, lang, compact = false }) {
   const params = useParams()
   const currentLang = lang || params?.lang || "en"
   const isEvent = post.type === "event"
@@ -23,11 +23,11 @@ function BlogCard({ post, index = 0, lang }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group flex h-full flex-col"
+      className={compact ? "group flex h-full flex-col overflow-hidden rounded-[22px] border border-slate-200/80 bg-white p-3 shadow-[0_12px_35px_rgba(15,23,42,0.035)] sm:p-4" : "group flex h-full flex-col"}
     >
       <Link
         href={`/${currentLang}/blog/${post.slug}`}
-        className="relative block aspect-[16/10] overflow-hidden rounded-[24px] bg-[#06152c]"
+        className={compact ? "relative block aspect-video overflow-hidden rounded-[16px] bg-[#06152c]" : "relative block aspect-[16/10] overflow-hidden rounded-[24px] bg-[#06152c]"}
         aria-label={`Open ${post.title}`}
       >
         {post.image ? (
@@ -70,7 +70,7 @@ function BlogCard({ post, index = 0, lang }) {
           </div>
         )}
 
-        <div className="absolute left-5 top-5">
+        <div className={compact ? "hidden" : "absolute left-5 top-5"}>
           <span
             className={`rounded-full border px-3 py-1.5 font-body text-[8px] font-semibold uppercase tracking-[0.15em] backdrop-blur-md ${
               isEvent
@@ -82,13 +82,13 @@ function BlogCard({ post, index = 0, lang }) {
           </span>
         </div>
 
-        <div className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white backdrop-blur-md transition duration-300 group-hover:border-[#057CFA] group-hover:bg-[#057CFA]">
+        <div className={compact ? "absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white backdrop-blur-md transition duration-300 group-hover:border-[#057CFA] group-hover:bg-[#057CFA]" : "absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white backdrop-blur-md transition duration-300 group-hover:border-[#057CFA] group-hover:bg-[#057CFA]"}>
           <FiArrowUpRight />
         </div>
       </Link>
 
 
-      <div className="flex flex-1 flex-col pt-6">
+      <div className={compact ? "flex flex-1 flex-col px-1 pb-1 pt-4" : "flex flex-1 flex-col pt-6"}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="font-body text-[10px] font-semibold uppercase tracking-[0.15em] text-[#002DCC]">
             {post.category}
@@ -110,16 +110,18 @@ function BlogCard({ post, index = 0, lang }) {
         </div>
 
         <Link href={`/${currentLang}/blog/${post.slug}`}>
-          <h3 className="mt-4 font-heading text-xl font-semibold leading-snug tracking-[-0.025em] text-slate-950 transition-colors duration-300 group-hover:text-[#002DCC] sm:text-2xl">
+          <h3 className={compact ? "mt-3 line-clamp-2 min-h-12 font-heading text-base font-semibold leading-6 tracking-[-0.025em] text-slate-950 transition-colors duration-300 group-hover:text-[#002DCC]" : "mt-4 font-heading text-xl font-semibold leading-snug tracking-[-0.025em] text-slate-950 transition-colors duration-300 group-hover:text-[#002DCC] sm:text-2xl"}>
             {post.title}
           </h3>
         </Link>
 
-        <p className="mt-4 font-body text-sm leading-7 text-slate-500">
-          {post.excerpt}
-        </p>
+        {!compact && (
+          <p className="mt-4 font-body text-sm leading-7 text-slate-500">
+            {post.excerpt}
+          </p>
+        )}
 
-        {isEvent && post.location && (
+        {!compact && isEvent && post.location && (
           <div className="mt-4 flex items-center gap-2 font-body text-[11px] text-slate-400">
             <FiMapPin className="shrink-0" />
             <span>{post.location}</span>
@@ -128,7 +130,7 @@ function BlogCard({ post, index = 0, lang }) {
 
         <Link
           href={`/${currentLang}/blog/${post.slug}`}
-          className="mt-6 inline-flex w-fit items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
+          className={compact ? "mt-auto inline-flex w-fit items-center gap-2 pt-4 font-body text-xs font-semibold text-[#002DCC]" : "mt-6 inline-flex w-fit items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"}
         >
           {isEvent ? (currentLang === "de" ? "Event ansehen" : "View event") : (currentLang === "de" ? "Artikel lesen" : "Read article")}
 
