@@ -19,11 +19,11 @@ function LMSDashboard({ content }) {
 
   return (
     <motion.div
-      initial={{ opacity: 1, y: 20 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="relative mx-auto w-full max-w-md lg:max-w-none"
+      className="relative mx-auto mb-2 w-full min-w-0 max-w-md lg:mb-0 lg:max-w-none"
     >
       <div className="absolute inset-8 rounded-full bg-brand-accent/8 blur-[90px]" />
 
@@ -312,7 +312,7 @@ function Products({ content, lang }) {
 
               <Link
                 href={localizedPath("/products/lms")}
-                className="group mt-7 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-10"
+                className="group mt-7 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-10 lg:inline-flex"
               >
                 {t("products.explore")}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -322,6 +322,15 @@ function Products({ content, lang }) {
             </div>
 
             <LMSDashboard content={content} />
+            <Link
+              href={localizedPath("/products/lms")}
+              className="group inline-flex w-fit items-center gap-3 pb-1 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent lg:hidden"
+            >
+              {t("products.explore")}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
         </motion.article>
 
