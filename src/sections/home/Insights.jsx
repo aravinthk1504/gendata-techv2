@@ -238,7 +238,7 @@ function Insights({ content, lang }) {
         </div>
 
         <div
-          className="mt-14 sm:mt-16 lg:mt-18"
+          className="mx-auto mt-14 w-full max-w-[824px] sm:mt-16 lg:mt-18"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           onFocusCapture={() => setFocused(true)}
@@ -284,7 +284,7 @@ function Insights({ content, lang }) {
                     inert={!onScreen}
                     className="min-w-0 w-full shrink-0 md:w-[calc((100%-1.5rem)/2)]"
                   >
-                    <BlogCard post={post} index={index % total} lang={lang} />
+                    <BlogCard post={post} index={index % total} lang={lang} compact />
                   </div>
                 );
               })}
