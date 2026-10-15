@@ -8,7 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
    AI MODEL VISUAL
 ========================================================= */
 
-function ModelVisual() {
+function ModelVisual({ shouldAnimate }) {
   const bars = [42, 65, 48, 82, 58, 92, 72, 54];
 
   return (
@@ -24,23 +24,27 @@ function ModelVisual() {
         }}
       />
 
-      {/* CSS animations run on physical devices even before Motion hydration. */}
       <div className="absolute inset-x-5 bottom-4 flex h-22 items-end justify-between gap-2 sm:inset-x-6 sm:bottom-5 sm:h-26 lg:h-28">
         {bars.map((height, index) => (
-          <div
+          <motion.div
             key={index}
-            style={{
-              height: `${height}%`,
-              transformOrigin: "bottom",
-              animationDelay: `${index * -0.21}s`,
-            }}
-            className="gd-ai-model-bar w-full rounded-t-sm bg-linear-to-t from-brand-primary/40 to-brand-accent"
+            initial={{ height: "10%" }}
+            whileInView={{ height: `${height}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.07 }}
+            className="w-full rounded-t-sm bg-linear-to-t from-brand-primary/40 to-brand-accent"
           />
         ))}
       </div>
-      <div
-        aria-hidden="true"
-        className="gd-ai-model-scan pointer-events-none absolute inset-y-0 left-0 w-20 bg-linear-to-r from-transparent via-blue-300/10 to-transparent"
+
+      <motion.div
+        animate={shouldAnimate ? { x: ["-20%", "120%"] } : { x: "-20%" }}
+        transition={{
+          duration: 4,
+          repeat: shouldAnimate ? Infinity : 0,
+          ease: "linear",
+        }}
+        className="absolute inset-y-0 w-20 bg-linear-to-r from-transparent via-blue-300/10 to-transparent"
       />
     </div>
   );
@@ -266,7 +270,7 @@ function AICapabilities({ content, lang }) {
               <p className="mt-4 max-w-xl font-body text-sm leading-7 text-slate-300">
                 {t("aiCapabilities.models.description")}
               </p>
-              <ModelVisual />
+              <ModelVisual shouldAnimate={shouldAnimate} />
             </div>
           </motion.article>
 
