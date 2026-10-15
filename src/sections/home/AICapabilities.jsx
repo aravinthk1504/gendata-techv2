@@ -133,24 +133,21 @@ function AutomationVisual({ shouldAnimate, content }) {
   const steps = t("aiCapabilities.automation.steps", { returnObjects: true });
 
   return (
-    <div className="mt-6 flex h-28 items-center justify-between sm:mt-8 sm:h-30 lg:mt-10 lg:h-34">
+    <div className="mt-7 flex min-h-28 w-full min-w-0 items-center justify-center gap-0 sm:mt-8 sm:min-h-30 lg:mt-10 lg:min-h-34">
       {steps.map((step, index) => (
-        <div key={step} className="flex flex-1 items-center">
+        <div key={step} className="flex min-w-0 items-center">
           <motion.div
             whileHover={{ y: -4 }}
-            className="relative z-10 flex h-14 min-w-14 items-center justify-center rounded-xl border border-white/10 bg-white/4 px-2 sm:h-16 sm:min-w-16 sm:px-3"
+            className="relative z-10 flex h-14 min-w-0 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/4 px-3 sm:h-16 sm:px-4"
           >
-            <span className="font-body text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-300 sm:text-[10px]">
+            <span className="whitespace-nowrap font-body text-[9px] font-semibold uppercase tracking-[0.08em] text-slate-300 sm:text-[10px] sm:tracking-[0.12em]">
               {step}
             </span>
           </motion.div>
-
           {index !== steps.length - 1 && (
-            <div className="relative mx-2 h-px flex-1 overflow-hidden bg-white/10">
+            <div className="relative mx-1 h-px w-7 shrink-0 overflow-hidden bg-white/15 sm:mx-2 sm:w-9">
               <motion.span
-                animate={
-                  shouldAnimate ? { x: ["-100%", "200%"] } : { x: "-100%" }
-                }
+                animate={shouldAnimate ? { x: ["-100%", "200%"] } : { x: "-100%" }}
                 transition={{
                   duration: 2,
                   delay: index * 0.5,
