@@ -21,7 +21,7 @@ function FlowLine({ vertical = false, className = "" }) {
     >
       {!reduceMotion && (
         <motion.span
-          className={`absolute rounded-full bg-linear-to-${vertical ? "b" : "r"} from-transparent via-brand-accent to-transparent shadow-[0_0_12px_rgba(5,124,250,0.8)] ${vertical ? "left-0 top-0 h-1/2 w-full" : "left-0 top-0 h-full w-1/2"}`}
+          className={`absolute rounded-full shadow-[0_0_12px_rgba(5,124,250,0.8)] ${vertical ? "left-0 top-0 h-1/2 w-full bg-gradient-to-b from-transparent via-brand-accent to-transparent" : "left-0 top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-brand-accent to-transparent"}`}
           animate={vertical ? { top: ["-50%", "100%"] } : { left: ["-50%", "100%"] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
@@ -255,7 +255,7 @@ function IoTVisual() {
           preserveAspectRatio="none"
         >
           <path
-            d="M 25 21 H 75 V 50 H 25 V 79 H 75"
+            d="M 25 25 H 75 V 50 H 25 V 75 H 75"
             fill="none"
             stroke="#cbd5e1"
             strokeWidth="2"
@@ -263,7 +263,7 @@ function IoTVisual() {
           />
           {!reduceMotion && (
             <motion.path
-              d="M 25 21 H 75 V 50 H 25 V 79 H 75"
+              d="M 25 25 H 75 V 50 H 25 V 75 H 75"
               fill="none"
               stroke="#057CFA"
               strokeWidth="2.5"
