@@ -10,9 +10,13 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 function ModelVisual({ shouldAnimate }) {
   const bars = [42, 65, 48, 82, 58, 92, 72, 54];
+  const reduceMotion = useReducedMotion();
+  const visualRef = useRef(null);
+  const visualInView = useInView(visualRef, { amount: 0.1, once: true });
+  const animateBars = visualInView && !reduceMotion;
 
   return (
-    <div className="relative mt-6 h-36 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-8 sm:h-40 lg:mt-10 lg:h-42">
+    <div ref={visualRef} className="relative mt-6 h-36 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-8 sm:h-40 lg:mt-10 lg:h-42">
       <div
         className="absolute inset-0 opacity-20"
         style={{
@@ -23,28 +27,36 @@ function ModelVisual({ shouldAnimate }) {
           backgroundSize: "32px 32px",
         }}
       />
-
       <div className="absolute inset-x-5 bottom-4 flex h-22 items-end justify-between gap-2 sm:inset-x-6 sm:bottom-5 sm:h-26 lg:h-28">
         {bars.map((height, index) => (
           <motion.div
             key={index}
-            initial={{ height: "10%" }}
-            whileInView={{ height: `${height}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.07 }}
+            initial={false}
+            animate={
+              reduceMotion
+                ? { height: `${height}%`, scaleY: 1 }
+                : animateBars
+                  ? { height: `${height}%`, scaleY: [0.84, 1, 0.84] }
+                  : { height: "10%", scaleY: 1 }
+            }
+            transition={{
+              height: { duration: 0.8, delay: index * 0.07 },
+              scaleY: { duration: 2.4, delay: index * 0.12, repeat: Infinity, ease: "easeInOut" },
+            }}
+            style={{ transformOrigin: "bottom" }}
             className="w-full rounded-t-sm bg-linear-to-t from-brand-primary/40 to-brand-accent"
           />
         ))}
       </div>
-
       <motion.div
-        animate={shouldAnimate ? { x: ["-20%", "120%"] } : { x: "-20%" }}
-        transition={{
-          duration: 4,
-          repeat: shouldAnimate ? Infinity : 0,
-          ease: "linear",
-        }}
-        className="absolute inset-y-0 w-20 bg-linear-to-r from-transparent via-blue-300/10 to-transparent"
+        initial={false}
+        animate={
+          shouldAnimate && visualInView && !reduceMotion
+            ? { left: ["-80px", "100%"] }
+            : { left: "-80px" }
+        }
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        className="pointer-events-none absolute inset-y-0 w-20 bg-linear-to-r from-transparent via-blue-300/15 to-transparent"
       />
     </div>
   );
