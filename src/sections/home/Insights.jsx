@@ -9,8 +9,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 import BlogCard from "../../components/blog/BlogCard";
 import { blogPosts } from "../../data/blogData";
 
-// Show six real cards; native scroll-snap and direct indexing keep mobile
-// arrow and indicator navigation predictable.
+// Six newest blog posts, maintained newest-first in blogData.js.
 const latestPosts = blogPosts.slice(0, 6);
 const count = latestPosts.length;
 
@@ -18,84 +17,103 @@ function Insights({ content, lang }) {
   const t = (key, variables) => homeText(content, key, variables);
   const localizedPath = (path) => localizedHref(lang, path);
 
-  const viewportRef = useRef(null);
-  const activeRef = useRef(0);
-  const settleRef = useRef(null);
+  // Directly switch React-rendered posts. No scrollTo, scroll snapping,
+  // CSS transforms based on measured widths, or phone-specific offsets.
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [touching, setTouching] = useState(false);
+  const [inView, setInView] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const slideAreaRef = useRef(null);
+  const touchStartRef = useRef(null);
 
   const labels = lang === "de"
-    ? { previous: "Vorheriger Beitrag", next: "Nächster Beitrag", goTo: "Zum Beitrag", region: "Aktuelle Blogbeiträge" }
-    : { previous: "Previous article", next: "Next article", goTo: "Go to article", region: "Latest blog insights" };
+    ? {
+        previous: "Vorheriger Beitrag",
+        next: "Nächster Beitrag",
+        goTo: "Zum Beitrag",
+        region: "Aktuelle Blogbeiträge",
+      }
+    : {
+        previous: "Previous article",
+        next: "Next article",
+        goTo: "Go to article",
+        region: "Latest blog insights",
+      };
 
-  const getStep = () => {
-    const viewport = viewportRef.current;
-    if (!viewport) return 0;
-    const card = viewport.querySelector("[data-insight-slide]");
-    if (!card) return 0;
-    const gap = Number.parseFloat(window.getComputedStyle(card.parentElement).gap) || 24;
-    return card.getBoundingClientRect().width + gap;
+  const move = useCallback((step) => {
+    if (count < 2) return;
+    setDirection(step < 0 ? -1 : 1);
+    setActiveIndex((current) => (current + step + count) % count);
+  }, []);
+
+  const goTo = useCallback((index) => {
+    if (index < 0 || index >= count) return;
+    setActiveIndex((current) => {
+      setDirection(index < current ? -1 : 1);
+      return index;
+    });
+  }, []);
+
+  const handleTouchStart = (event) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    setTouching(true);
   };
 
-  const goTo = useCallback((index, smooth = true) => {
-    const viewport = viewportRef.current;
-    if (!viewport || !count) return;
-    const bounded = ((index % count) + count) % count;
-    const card = viewport.querySelectorAll("[data-insight-slide]")[bounded];
-    if (!card) return;
-    activeRef.current = bounded;
-    setActiveIndex(bounded);
-    const offset = card.getBoundingClientRect().left - viewport.getBoundingClientRect().left + viewport.scrollLeft;
-    viewport.scrollTo({ left: offset, behavior: smooth && !reduceMotion ? "smooth" : "instant" });
-  }, [reduceMotion]);
-
-  const move = useCallback((direction) => {
-    const next = (activeRef.current + direction + count) % count;
-    goTo(next, next !== 0 && next !== count - 1);
-  }, [goTo]);
-
-  const onScroll = () => {
-    if (settleRef.current) window.clearTimeout(settleRef.current);
-    settleRef.current = window.setTimeout(() => {
-      const viewport = viewportRef.current;
-      const step = getStep();
-      if (!viewport || step <= 0) return;
-      const current = Math.min(count - 1, Math.max(0, Math.round(viewport.scrollLeft / step)));
-      activeRef.current = current;
-      setActiveIndex(current);
-    }, 250);
+  const handleTouchEnd = (event) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    setTouching(false);
+    const touch = event.changedTouches[0];
+    if (!start || !touch) return;
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    // Horizontal gestures change cards; vertical page scrolling is untouched.
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      move(dx < 0 ? 1 : -1);
+    }
   };
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const setPreference = () => setReduceMotion(media.matches);
+    const updateMotion = () => setReduceMotion(media.matches);
+    updateMotion();
+    media.addEventListener?.("change", updateMotion);
+
+    const element = slideAreaRef.current;
     const observer = typeof IntersectionObserver !== "undefined"
-      ? new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.1 })
+      ? new IntersectionObserver(
+          ([entry]) => setInView(Boolean(entry?.isIntersecting)),
+          { threshold: 0.1 },
+        )
       : null;
-    if (viewportRef.current) observer?.observe(viewportRef.current);
-    if (!observer) setVisible(true);
-    setPreference();
-    media.addEventListener?.("change", setPreference);
-    const align = () => goTo(activeRef.current, false);
-    window.addEventListener("resize", align);
+    if (element) observer?.observe(element);
+    if (!observer) setInView(true);
+
     return () => {
       observer?.disconnect();
-      media.removeEventListener?.("change", setPreference);
-      window.removeEventListener("resize", align);
-      if (settleRef.current) window.clearTimeout(settleRef.current);
+      media.removeEventListener?.("change", updateMotion);
     };
-  }, [goTo]);
+  }, []);
 
+  // Advance one blog every five seconds when visible and not in use.
   useEffect(() => {
-    if (hovered || focused || !visible || reduceMotion || count < 2) return;
-    const timer = window.setInterval(() => {
+    if (!inView || hovered || focused || touching || reduceMotion || count < 2) {
+      return;
+    }
+    const interval = window.setInterval(() => {
       if (!document.hidden) move(1);
     }, 5000);
-    return () => window.clearInterval(timer);
-  }, [hovered, focused, visible, reduceMotion, move]);
+    return () => window.clearInterval(interval);
+  }, [activeIndex, inView, hovered, focused, touching, reduceMotion, move]);
+
+  const visiblePosts = count
+    ? [latestPosts[activeIndex], latestPosts[(activeIndex + 1) % count]]
+    : [];
 
   return (
     <section className="relative overflow-hidden bg-white px-6 py-28 lg:px-10 lg:py-36">
@@ -149,38 +167,44 @@ function Insights({ content, lang }) {
         </div>
 
         <div
-          className="mx-auto mt-14 w-full max-w-[824px] sm:mt-16 lg:mt-18"
+          className="relative z-10 mx-auto mt-14 w-full max-w-[824px] sm:mt-16 lg:mt-18"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          onFocusCapture={(event) => {
-            if (event.target.matches(":focus-visible")) setFocused(true);
-          }}
+          onFocusCapture={() => setFocused(true)}
           onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setFocused(false);
+            }
           }}
         >
           <div
-            ref={viewportRef}
+            ref={slideAreaRef}
             role="region"
             aria-roledescription="carousel"
             aria-label={labels.region}
-            onScroll={onScroll}
-            className="overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={() => {
+              touchStartRef.current = null;
+              setTouching(false);
+            }}
+            className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2"
+            style={{ touchAction: "pan-y" }}
           >
-            <div className="relative flex items-stretch gap-6">
-              {latestPosts.map((post, index) => (
-                <div
-                  key={post.id}
-                  data-insight-slide
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={String(index + 1) + " / " + String(count)}
-                  className="min-w-0 w-full shrink-0 snap-start md:w-[calc((100%-1.5rem)/2)]"
-                >
-                  <BlogCard post={post} index={index} lang={lang} compact />
-                </div>
-              ))}
-            </div>
+            {visiblePosts.map((post, slot) => (
+              <motion.div
+                key={String(slot) + "-" + post.id}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={String(((activeIndex + slot) % count) + 1) + " / " + String(count)}
+                initial={{ opacity: 1, x: direction * 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.35, ease: "easeOut" }}
+                className={slot === 0 ? "min-w-0" : "hidden min-w-0 md:block"}
+              >
+                <BlogCard post={post} index={(activeIndex + slot) % count} lang={lang} compact />
+              </motion.div>
+            ))}
           </div>
 
           <div className="mt-8 flex items-center justify-between gap-3">
@@ -192,14 +216,15 @@ function Insights({ content, lang }) {
                   onClick={() => goTo(index)}
                   aria-label={labels.goTo + " " + String(index + 1)}
                   aria-current={activeIndex === index ? "true" : undefined}
-                  className="group flex h-10 w-6 items-center justify-center"
+                  className="group relative z-10 flex h-11 w-7 touch-manipulation items-center justify-center"
                 >
                   <span
-                    className={"block h-1.5 rounded-full transition-all duration-300 " + (
-                      activeIndex === index
+                    className={
+                      "block h-1.5 rounded-full transition-all duration-300 " +
+                      (activeIndex === index
                         ? "w-6 bg-brand-primary"
-                        : "w-1.5 bg-slate-300 group-hover:bg-brand-accent"
-                    )}
+                        : "w-1.5 bg-slate-300 group-hover:bg-brand-accent")
+                    }
                   />
                 </button>
               ))}
@@ -210,7 +235,7 @@ function Insights({ content, lang }) {
                 type="button"
                 onClick={() => move(-1)}
                 aria-label={labels.previous}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 transition hover:border-brand-accent hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                className="relative z-10 flex h-11 w-11 touch-manipulation items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 transition hover:border-brand-accent hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
               >
                 <FiChevronLeft aria-hidden="true" />
               </button>
@@ -218,7 +243,7 @@ function Insights({ content, lang }) {
                 type="button"
                 onClick={() => move(1)}
                 aria-label={labels.next}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 transition hover:border-brand-accent hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                className="relative z-10 flex h-11 w-11 touch-manipulation items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 transition hover:border-brand-accent hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
               >
                 <FiChevronRight aria-hidden="true" />
               </button>
