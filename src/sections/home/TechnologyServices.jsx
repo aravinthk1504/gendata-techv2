@@ -130,8 +130,8 @@ function SoftwareVisual() {
   const modules = ["Module A", "Module B", "Module C"];
 
   return (
-    <div className="relative mt-auto flex h-48 shrink-0 items-center justify-center pt-6 sm:h-44">
-      <div className="absolute left-0 flex flex-col gap-3 sm:left-1">
+    <div className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48">
+      <div className="relative z-10 flex w-16 shrink-0 flex-col gap-3 sm:w-20">
         {modules.map((module, index) => (
           <motion.div
             key={module}
@@ -142,26 +142,26 @@ function SoftwareVisual() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="flex h-10 w-22 items-center justify-center rounded-lg border border-slate-200 bg-white font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-slate-500 shadow-sm sm:h-9 sm:w-20"
+            className="flex h-10 w-full items-center justify-center rounded-lg border border-slate-200 bg-white font-body text-[7px] font-semibold uppercase tracking-[0.06em] text-slate-500 shadow-sm sm:h-9 sm:text-[8px]"
           >
             {module}
           </motion.div>
         ))}
       </div>
 
-      <div className="absolute left-[29%] h-px w-[17%] bg-slate-200 sm:left-[32%] sm:w-[16%]" />
+      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
 
       <motion.div
         animate={{ scale: [1, 1.04, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
-        className="relative z-10 flex h-22 w-22 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_15px_40px_rgba(0,45,204,0.18)] sm:h-20 sm:w-20"
+        className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_15px_40px_rgba(0,45,204,0.18)] sm:h-20 sm:w-20"
       >
         <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
           Core
         </span>
       </motion.div>
 
-      <div className="absolute right-[20%] h-px w-[17%] overflow-hidden bg-slate-200 sm:right-[22%] sm:w-[16%]">
+      <div className="relative h-px min-w-0 flex-1 overflow-hidden bg-slate-200">
         <motion.span
           animate={{ x: ["-100%", "250%"] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
@@ -169,7 +169,7 @@ function SoftwareVisual() {
         />
       </div>
 
-      <div className="absolute right-0 flex h-18 w-18 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
+      <div className="relative z-10 flex h-16 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
         <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">
           Data
         </span>
@@ -180,11 +180,11 @@ function SoftwareVisual() {
 
 function AppVisual() {
   return (
-    <div className="relative mt-auto flex h-48 shrink-0 items-center justify-center pt-6 sm:h-44">
+    <div className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48">
       <motion.div
         animate={{ y: [0, 5, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-[4%] flex h-30 w-20 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:left-[12%] sm:h-27 sm:w-17"
+        className="relative z-10 flex h-28 w-14 shrink-0 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:h-27 sm:w-17"
       >
         <div className="text-center">
           <div className="mx-auto h-8 w-8 rounded-lg bg-blue-50 sm:h-7 sm:w-7" />
@@ -194,7 +194,7 @@ function AppVisual() {
         </div>
       </motion.div>
 
-      <div className="absolute left-[27%] h-px w-[16%] bg-slate-200 sm:left-[31%] sm:w-[15%]" />
+      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
 
       <motion.div
         animate={{
@@ -205,7 +205,7 @@ function AppVisual() {
           ],
         }}
         transition={{ duration: 3, repeat: Infinity }}
-        className="relative z-10 flex h-22 w-22 items-center justify-center rounded-2xl bg-linear-to-br from-brand-primary to-brand-accent sm:h-20 sm:w-20"
+        className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-brand-primary to-brand-accent sm:h-20 sm:w-20"
       >
         <span className="text-center font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-white">
           App
@@ -214,7 +214,7 @@ function AppVisual() {
         </span>
       </motion.div>
 
-      <div className="absolute right-[27%] h-px w-[16%] bg-slate-200 sm:right-[31%] sm:w-[15%]" />
+      <div aria-hidden="true" className="h-px min-w-0 flex-1 bg-slate-200" />
 
       <motion.div
         animate={{ y: [0, -5, 0] }}
@@ -224,7 +224,7 @@ function AppVisual() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute right-[4%] flex h-30 w-20 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:right-[12%] sm:h-27 sm:w-17"
+        className="relative z-10 flex h-28 w-14 shrink-0 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:h-27 sm:w-17"
       >
         <div className="text-center">
           <div className="mx-auto h-8 w-8 rounded-full bg-slate-100 sm:h-7 sm:w-7" />
