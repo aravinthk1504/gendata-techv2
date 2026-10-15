@@ -403,7 +403,7 @@ function Contact() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -413,7 +413,7 @@ function Contact() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 12,
                         }
                   }
@@ -427,7 +427,7 @@ function Contact() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   animate={
@@ -437,7 +437,7 @@ function Contact() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 20,
                         }
                   }
@@ -455,7 +455,7 @@ function Contact() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -465,7 +465,7 @@ function Contact() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -484,7 +484,7 @@ function Contact() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -494,7 +494,7 @@ function Contact() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -542,7 +542,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -552,7 +552,7 @@ function Contact() {
                         scale: 1,
                       }
                     : {
-                        opacity: 0,
+                        opacity: 1,
                         scale: 0.96,
                       }
                 }
@@ -1015,7 +1015,7 @@ function Contact() {
                     {submitStatus === "success" && (
                       <motion.div
                         initial={{
-                          opacity: 0,
+                          opacity: 1,
                           y: 5,
                         }}
                         animate={{
@@ -1038,7 +1038,7 @@ function Contact() {
                     {submitStatus === "error" && (
                       <motion.div
                         initial={{
-                          opacity: 0,
+                          opacity: 1,
                           y: 5,
                         }}
                         animate={{
@@ -1107,7 +1107,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 20,
                 }}
                 whileInView={{
@@ -1143,7 +1143,7 @@ function Contact() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 20,
                 }}
                 whileInView={{
@@ -1289,7 +1289,7 @@ function Contact() {
                         <motion.div
                           initial={{
                             height: 0,
-                            opacity: 0,
+                            opacity: 1,
                           }}
                           animate={{
                             height: "auto",

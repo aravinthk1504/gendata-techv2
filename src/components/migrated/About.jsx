@@ -306,7 +306,7 @@ function About() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -316,7 +316,7 @@ function About() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -330,7 +330,7 @@ function About() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 25,
                   }}
                   animate={
@@ -340,7 +340,7 @@ function About() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 25,
                         }
                   }
@@ -358,7 +358,7 @@ function About() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 18,
                   }}
                   animate={
@@ -368,7 +368,7 @@ function About() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 18,
                         }
                   }
@@ -386,7 +386,7 @@ function About() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -396,7 +396,7 @@ function About() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -425,7 +425,7 @@ function About() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -435,7 +435,7 @@ function About() {
                         scale: 1,
                       }
                     : {
-                        opacity: 0,
+                        opacity: 1,
                         scale: 0.96,
                       }
                 }
@@ -560,7 +560,7 @@ function About() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 25,
                 }}
                 whileInView={{
@@ -587,7 +587,7 @@ function About() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 25,
                 }}
                 whileInView={{
@@ -640,7 +640,7 @@ function About() {
                 <motion.div
                   key={stat.label}
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   whileInView={{
@@ -698,7 +698,7 @@ function About() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 25,
                 }}
                 whileInView={{
@@ -734,7 +734,7 @@ function About() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   y: 25,
                 }}
                 whileInView={{
@@ -801,7 +801,7 @@ function About() {
                   <motion.div
                     key={principle.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -864,7 +864,7 @@ function About() {
                   <motion.div
                     key={capability.title}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -932,7 +932,7 @@ function About() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -1001,7 +1001,7 @@ function About() {
                     <motion.div
                       key={item.number}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         x: 15,
                       }}
                       whileInView={{
@@ -1058,7 +1058,7 @@ function About() {
           <div className="mx-auto max-w-[1400px]">
             <motion.div
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 25,
               }}
               whileInView={{

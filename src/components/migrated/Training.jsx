@@ -771,7 +771,7 @@ function Training() {
               <div className="max-w-[690px]">
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -792,7 +792,7 @@ function Training() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   animate={
@@ -817,7 +817,7 @@ function Training() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -849,7 +849,7 @@ function Training() {
                     })
                   }
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -877,7 +877,7 @@ function Training() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -1160,7 +1160,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-learn`}
                         initial={{
-                          opacity: 0,
+                          opacity: 1,
                           x: 18,
                         }}
                         animate={{
@@ -1188,7 +1188,7 @@ function Training() {
                             <motion.div
                               key={item}
                               initial={{
-                                opacity: 0,
+                                opacity: 1,
                                 y: 8,
                               }}
                               animate={{
@@ -1219,7 +1219,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-tools`}
                         initial={{
-                          opacity: 0,
+                          opacity: 1,
                           x: 18,
                         }}
                         animate={{
@@ -1254,7 +1254,7 @@ function Training() {
                               <motion.div
                                 key={tool.name}
                                 initial={{
-                                  opacity: 0,
+                                  opacity: 1,
                                   y: 8,
                                 }}
                                 animate={{
@@ -1286,7 +1286,7 @@ function Training() {
                       <motion.div
                         key={`${selectedTrack.id}-outcome`}
                         initial={{
-                          opacity: 0,
+                          opacity: 1,
                           x: 18,
                         }}
                         animate={{
@@ -1362,7 +1362,7 @@ function Training() {
                     <motion.div
                       key={benefit.title}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1446,7 +1446,7 @@ function Training() {
                   <motion.div
                     key={item.title}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -1511,7 +1511,7 @@ function Training() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -1588,7 +1588,7 @@ function Training() {
                         <motion.div
                           initial={{
                             height: 0,
-                            opacity: 0,
+                            opacity: 1,
                           }}
                           animate={{
                             height: "auto",
