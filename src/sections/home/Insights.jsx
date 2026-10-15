@@ -9,22 +9,11 @@ import { homeText, localizedHref } from "../../lib/homeText";
 import BlogCard from "../../components/blog/BlogCard";
 import { blogPosts } from "../../data/blogData";
 
-// New articles are added to the top of blogData.js.
+// Homepage highlights the six newest entries from blogData.js.
 const latestPosts = blogPosts.slice(0, 6);
-const total = latestPosts.length;
-const clones = Math.min(2, total);
-// Edge copies keep the first and last transitions continuous on mobile and desktop.
-const slides = [
-  ...latestPosts.slice(-clones),
-  ...latestPosts,
-  ...latestPosts.slice(0, clones),
-];
-
-const normalize = (position) => {
-  if (position < clones) return position + total;
-  if (position >= total + clones) return position - total;
-  return position;
-};
+const count = latestPosts.length;
+// Two extra cards keep the two-card desktop layout continuous at the end.
+const carouselPosts = [...latestPosts, ...latestPosts.slice(0, 2)];
 
 function Insights({ content, lang }) {
   const t = (key, variables) => homeText(content, key, variables);
@@ -32,21 +21,16 @@ function Insights({ content, lang }) {
 
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
-  const movingRef = useRef(false);
-  const touchStartRef = useRef(null);
+  const activeRef = useRef(0);
+  const settleTimerRef = useRef(null);
 
-  const [position, setPosition] = useState(clones);
-  const [stepSize, setStepSize] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(1);
-  const [transitionEnabled, setTransitionEnabled] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [touching, setTouching] = useState(false);
-  const [visibleOnPage, setVisibleOnPage] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
   const [pageActive, setPageActive] = useState(true);
   const [reduceMotion, setReduceMotion] = useState(false);
 
-  const activeIndex = total ? ((position - clones) % total + total) % total : 0;
   const labels = lang === "de"
     ? {
         previous: "Vorheriger Beitrag",
@@ -61,129 +45,122 @@ function Insights({ content, lang }) {
         region: "Latest blog insights",
       };
 
-  // Measure the actual slide width rather than guessing offsets from the
-  // browser's scroll position. This fixes mobile arrows and progress dots.
-  useEffect(() => {
+  // Native scroll-snap works before hydration and preserves real touch swiping.
+  // In particular, the cards are never hidden while waiting for measurements.
+  const scrollToCard = useCallback((index, smooth = true) => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!viewport || !track || !total) return;
+    const card = track?.children[index];
+    if (!viewport || !track || !card) return;
+    const left = card.offsetLeft - track.offsetLeft;
+    viewport.scrollTo({
+      left,
+      behavior: smooth && !reduceMotion ? "smooth" : "instant",
+    });
+  }, [reduceMotion]);
 
-    const measure = () => {
-      const firstSlide = track.children[clones];
-      if (!firstSlide) return;
-      const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 24;
-      const width = firstSlide.getBoundingClientRect().width;
-      if (width <= 0) return;
-      setStepSize(width + gap);
-      setVisibleCount(window.matchMedia("(min-width: 768px)").matches ? 2 : 1);
-      // Resizing should never cause a long animated jump.
-      setTransitionEnabled(false);
-      movingRef.current = false;
-    };
+  const goTo = useCallback((index, smooth = true) => {
+    if (index < 0 || index >= count) return;
+    activeRef.current = index;
+    setActiveIndex(index);
+    scrollToCard(index, smooth);
+  }, [scrollToCard]);
 
-    measure();
-    const observer = typeof ResizeObserver !== "undefined"
-      ? new ResizeObserver(measure)
-      : null;
-    observer?.observe(viewport);
-    window.addEventListener("resize", measure);
-    return () => {
-      observer?.disconnect();
-      window.removeEventListener("resize", measure);
-    };
+  const move = useCallback((direction) => {
+    if (count <= 1) return;
+    const current = activeRef.current;
+    const next = current + direction;
+    if (next < 0) {
+      // Wrap directly to the final real post.
+      goTo(count - 1, false);
+    } else if (next === count) {
+      // Scroll forward to the first cloned post. Scroll-settle then resets
+      // to the original first post with no visual jump.
+      activeRef.current = 0;
+      setActiveIndex(0);
+      scrollToCard(count, true);
+    } else {
+      goTo(next);
+    }
+  }, [goTo, scrollToCard]);
+
+  const finishScroll = useCallback(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    if (!viewport || !track || !count) return;
+    let nearest = 0;
+    let difference = Infinity;
+    for (let i = 0; i < track.children.length; i += 1) {
+      const distance = Math.abs(
+        (track.children[i].offsetLeft - track.offsetLeft) - viewport.scrollLeft
+      );
+      if (distance < difference) {
+        difference = distance;
+        nearest = i;
+      }
+    }
+
+    const logical = nearest % count;
+    activeRef.current = logical;
+    setActiveIndex(logical);
+
+    if (nearest >= count) {
+      // Prevent a smooth-scroll jump when resetting the duplicate edge card.
+      const realCard = track.children[logical];
+      if (realCard) {
+        const original = viewport.style.scrollBehavior;
+        viewport.style.scrollBehavior = "auto";
+        viewport.scrollLeft = realCard.offsetLeft - track.offsetLeft;
+        viewport.style.scrollBehavior = original;
+      }
+    }
   }, []);
 
+  const handleScroll = useCallback(() => {
+    if (settleTimerRef.current) clearTimeout(settleTimerRef.current);
+    settleTimerRef.current = setTimeout(finishScroll, 180);
+  }, [finishScroll]);
+
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotion = () => setReduceMotion(media.matches);
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReduceMotion(preference.matches);
     const updateVisibility = () => setPageActive(!document.hidden);
     const element = viewportRef.current;
-
     const observer = typeof IntersectionObserver !== "undefined" && element
       ? new IntersectionObserver(
-          ([entry]) => setVisibleOnPage(entry.isIntersecting),
-          { threshold: 0.15 },
+          ([entry]) => setOnScreen(entry.isIntersecting),
+          { threshold: 0.1 },
         )
       : null;
 
     observer?.observe(element);
-    if (!observer) setVisibleOnPage(true);
-    updateMotion();
+    if (!observer) setOnScreen(true);
+    updatePreference();
     updateVisibility();
-    media.addEventListener("change", updateMotion);
+    preference.addEventListener("change", updatePreference);
     document.addEventListener("visibilitychange", updateVisibility);
 
     return () => {
       observer?.disconnect();
-      media.removeEventListener("change", updateMotion);
+      preference.removeEventListener("change", updatePreference);
       document.removeEventListener("visibilitychange", updateVisibility);
+      if (settleTimerRef.current) clearTimeout(settleTimerRef.current);
     };
   }, []);
 
-  const navigate = useCallback((next) => {
-    if (total < 2 || !stepSize || movingRef.current) return;
-    if (reduceMotion) {
-      setTransitionEnabled(false);
-      setPosition(normalize(next));
-      return;
-    }
-    movingRef.current = true;
-    setTransitionEnabled(true);
-    setPosition(next);
-  }, [reduceMotion, stepSize]);
-
-  const move = useCallback((direction) => {
-    navigate(position + direction);
-  }, [navigate, position]);
-
-  const goTo = useCallback((index) => {
-    if (index === activeIndex || movingRef.current) return;
-    // Pick the closest equivalent index, so even last-to-first dot
-    // navigation advances by one card instead of jumping six cards.
-    const candidates = [
-      clones + index - total,
-      clones + index,
-      clones + index + total,
-    ].filter((candidate) => candidate >= clones - 1 && candidate <= clones + total);
-    const nearest = candidates.reduce(
-      (best, candidate) => Math.abs(candidate - position) < Math.abs(best - position)
-        ? candidate
-        : best,
-      candidates[0],
-    );
-    navigate(nearest);
-  }, [activeIndex, navigate, position]);
-
-  const handleTransitionEnd = (event) => {
-    if (event.target !== trackRef.current || event.propertyName !== "transform") return;
-    movingRef.current = false;
-    const middlePosition = normalize(position);
-    if (middlePosition !== position) {
-      setTransitionEnabled(false);
-      setPosition(middlePosition);
-    }
-  };
-
-  const handleTouchStart = (event) => {
-    touchStartRef.current = event.touches[0]?.clientX ?? null;
-    setTouching(true);
-  };
-
-  const handleTouchEnd = (event) => {
-    const start = touchStartRef.current;
-    touchStartRef.current = null;
-    setTouching(false);
-    if (start === null) return;
-    const delta = (event.changedTouches[0]?.clientX ?? start) - start;
-    if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1);
-  };
-
-  const paused = hovered || focused || touching || !pageActive || !visibleOnPage || reduceMotion;
+  // Re-align the current card after responsive layout changes.
   useEffect(() => {
-    if (paused || !stepSize || total < 2) return;
+    const handleResize = () => scrollToCard(activeRef.current, false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [scrollToCard]);
+
+  const paused = hovered || focused || !pageActive || !onScreen || reduceMotion;
+  useEffect(() => {
+    if (paused || count <= 1) return;
     const timer = window.setInterval(() => move(1), 5000);
     return () => window.clearInterval(timer);
-  }, [paused, stepSize, move]);
+  }, [paused, move, activeIndex]);
 
   return (
     <section className="relative overflow-hidden bg-white px-6 py-28 lg:px-10 lg:py-36">
@@ -241,7 +218,9 @@ function Insights({ content, lang }) {
           className="mx-auto mt-14 w-full max-w-[824px] sm:mt-16 lg:mt-18"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          onFocusCapture={() => setFocused(true)}
+          onFocusCapture={(event) => {
+            if (event.target.matches(":focus-visible")) setFocused(true);
+          }}
           onBlurCapture={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
           }}
@@ -251,43 +230,21 @@ function Insights({ content, lang }) {
             role="region"
             aria-roledescription="carousel"
             aria-label={labels.region}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onTouchCancel={() => {
-              touchStartRef.current = null;
-              setTouching(false);
-            }}
-            className="overflow-hidden"
-            style={{ touchAction: "pan-y" }}
+            onScroll={handleScroll}
+            className="overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            <div
-              ref={trackRef}
-              aria-live="off"
-              onTransitionEnd={handleTransitionEnd}
-              className={`flex w-full items-stretch gap-6 ${transitionEnabled && !reduceMotion ? "transition-transform duration-500 ease-out" : ""}`}
-              style={{
-                transform: stepSize
-                  ? `translate3d(-${position * stepSize}px, 0, 0)`
-                  : "translate3d(0, 0, 0)",
-                visibility: stepSize ? "visible" : "hidden",
-              }}
-            >
-              {slides.map((post, index) => {
-                const onScreen = index >= position && index < position + visibleCount;
-                return (
-                  <div
-                    key={`${index}-${post.id}`}
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label={`${((index - clones + total) % total) + 1} / ${total}`}
-                    aria-hidden={!onScreen}
-                    inert={!onScreen}
-                    className="min-w-0 w-full shrink-0 md:w-[calc((100%-1.5rem)/2)]"
-                  >
-                    <BlogCard post={post} index={index % total} lang={lang} compact />
-                  </div>
-                );
-              })}
+            <div ref={trackRef} className="relative flex items-stretch gap-6">
+              {carouselPosts.map((post, index) => (
+                <div
+                  key={String(index) + "-" + post.id}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={String((index % count) + 1) + " / " + String(count)}
+                  className="min-w-0 w-full shrink-0 snap-start md:w-[calc((100%-1.5rem)/2)]"
+                >
+                  <BlogCard post={post} index={index % count} lang={lang} compact />
+                </div>
+              ))}
             </div>
           </div>
 
@@ -298,16 +255,16 @@ function Insights({ content, lang }) {
                   key={post.id}
                   type="button"
                   onClick={() => goTo(index)}
-                  aria-label={`${labels.goTo} ${index + 1}`}
+                  aria-label={labels.goTo + " " + String(index + 1)}
                   aria-current={activeIndex === index ? "true" : undefined}
                   className="group flex h-10 w-6 items-center justify-center"
                 >
                   <span
-                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    className={"block h-1.5 rounded-full transition-all duration-300 " + (
                       activeIndex === index
                         ? "w-6 bg-brand-primary"
                         : "w-1.5 bg-slate-300 group-hover:bg-brand-accent"
-                    }`}
+                    )}
                   />
                 </button>
               ))}
