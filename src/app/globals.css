@@ -117,25 +117,3 @@ button:focus-visible {
 @media (pointer: fine) and (min-width: 768px) {
   body, a, button { cursor: none; }
 }
-
-/* AI model capability visual: pulse bars and sweep the scanning highlight. */
-.gd-ai-model-bar {
-  animation: gd-ai-model-pulse 2.8s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes gd-ai-model-pulse {
-  0%, 100% { transform: scaleY(.58); opacity: .7; }
-  50% { transform: scaleY(1); opacity: 1; }
-}
-
-.gd-ai-model-scan {
-  animation: gd-ai-model-sweep 4.5s linear infinite;
-  will-change: left;
-}
-
-@keyframes gd-ai-model-sweep {
-  0% { left: -80px; opacity: 0; }
-  15%, 85% { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
-}
