@@ -94,7 +94,7 @@ function LMSDashboard({ content }) {
                       style={{ height: `${height}%`, transformOrigin: "bottom" }}
                       transition={{ duration: reduceMotion ? 0 : 0.7, delay: index * 0.06 }}
 
-                      className="flex-1 rounded-t-sm bg-linear-to-t from-brand-primary to-brand-accent"
+                      className={`flex-1 rounded-t-sm ${["bg-gradient-to-t from-blue-700 to-sky-400", "bg-gradient-to-t from-cyan-600 to-cyan-300", "bg-gradient-to-t from-violet-600 to-violet-400", "bg-gradient-to-t from-indigo-700 to-indigo-400", "bg-gradient-to-t from-emerald-600 to-emerald-400", "bg-gradient-to-t from-blue-600 to-blue-300", "bg-gradient-to-t from-teal-600 to-teal-300"][index]}`}
                     />
                   ))}
                 </div>
@@ -285,9 +285,6 @@ function Products({ content, lang }) {
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span className="font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:text-[10px] sm:tracking-[0.2em]">
                   {t("products.lms.label")}
-                </span>
-                <span className="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 font-body text-[8px] font-semibold uppercase tracking-[0.12em] text-brand-primary">
-                  LMS
                 </span>
               </div>
 
