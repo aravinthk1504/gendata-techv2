@@ -413,7 +413,7 @@ function AIMLDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -423,7 +423,7 @@ function AIMLDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -438,7 +438,7 @@ function AIMLDevelopment() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 25,
                   }}
                   animate={
@@ -448,7 +448,7 @@ function AIMLDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 25,
                         }
                   }
@@ -468,7 +468,7 @@ function AIMLDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 18,
                   }}
                   animate={
@@ -478,7 +478,7 @@ function AIMLDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 18,
                         }
                   }
@@ -496,7 +496,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -506,7 +506,7 @@ function AIMLDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -531,7 +531,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -541,7 +541,7 @@ function AIMLDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -578,7 +578,7 @@ function AIMLDevelopment() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -588,7 +588,7 @@ function AIMLDevelopment() {
                         scale: 1,
                       }
                     : {
-                        opacity: 0,
+                        opacity: 1,
                         scale: 0.96,
                       }
                 }
@@ -876,7 +876,7 @@ function AIMLDevelopment() {
                 <motion.div
                   key={item.number}
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   whileInView={{
@@ -988,7 +988,7 @@ function AIMLDevelopment() {
                     <motion.div
                       key={stack.category}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1094,7 +1094,7 @@ function AIMLDevelopment() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -1180,7 +1180,7 @@ function AIMLDevelopment() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1312,7 +1312,7 @@ function AIMLDevelopment() {
                         <motion.div
                           initial={{
                             height: 0,
-                            opacity: 0,
+                            opacity: 1,
                           }}
                           animate={{
                             height: "auto",
@@ -1362,7 +1362,7 @@ function AIMLDevelopment() {
 
             <motion.div
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 25,
               }}
               whileInView={{

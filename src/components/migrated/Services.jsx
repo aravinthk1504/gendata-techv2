@@ -413,7 +413,7 @@ function Services() {
               <div>
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -423,7 +423,7 @@ function Services() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -437,7 +437,7 @@ function Services() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 25,
                   }}
                   animate={
@@ -447,7 +447,7 @@ function Services() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 25,
                         }
                   }
@@ -465,7 +465,7 @@ function Services() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 18,
                   }}
                   animate={
@@ -475,7 +475,7 @@ function Services() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 18,
                         }
                   }
@@ -492,7 +492,7 @@ function Services() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -502,7 +502,7 @@ function Services() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -531,7 +531,7 @@ function Services() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -541,7 +541,7 @@ function Services() {
                         scale: 1,
                       }
                     : {
-                        opacity: 0,
+                        opacity: 1,
                         scale: 0.96,
                       }
                 }
@@ -757,7 +757,7 @@ function Services() {
                   <motion.div
                     key={service.title}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 22,
                     }}
                     whileInView={{
@@ -856,7 +856,7 @@ function Services() {
                   <motion.div
                     key={outcome.title}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -918,7 +918,7 @@ function Services() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -976,7 +976,7 @@ function Services() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1050,7 +1050,7 @@ function Services() {
                 <motion.article
                   key={insight.title}
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   whileInView={{
@@ -1142,7 +1142,7 @@ function Services() {
                         <motion.div
                           initial={{
                             height: 0,
-                            opacity: 0,
+                            opacity: 1,
                           }}
                           animate={{
                             height: "auto",
@@ -1180,7 +1180,7 @@ function Services() {
           <div className="relative mx-auto max-w-[1400px]">
             <motion.div
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 25,
               }}
               whileInView={{

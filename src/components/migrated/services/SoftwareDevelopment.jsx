@@ -418,7 +418,7 @@ function SoftwareDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -428,7 +428,7 @@ function SoftwareDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 12,
                         }
                   }
@@ -443,7 +443,7 @@ function SoftwareDevelopment() {
 
                 <motion.h1
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   animate={
@@ -453,7 +453,7 @@ function SoftwareDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 20,
                         }
                   }
@@ -473,7 +473,7 @@ function SoftwareDevelopment() {
 
                 <motion.p
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 15,
                   }}
                   animate={
@@ -483,7 +483,7 @@ function SoftwareDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 15,
                         }
                   }
@@ -501,7 +501,7 @@ function SoftwareDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -511,7 +511,7 @@ function SoftwareDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 12,
                         }
                   }
@@ -536,7 +536,7 @@ function SoftwareDevelopment() {
 
                 <motion.div
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 12,
                   }}
                   animate={
@@ -546,7 +546,7 @@ function SoftwareDevelopment() {
                           y: 0,
                         }
                       : {
-                          opacity: 0,
+                          opacity: 1,
                           y: 12,
                         }
                   }
@@ -585,7 +585,7 @@ function SoftwareDevelopment() {
 
               <motion.div
                 initial={{
-                  opacity: 0,
+                  opacity: 1,
                   scale: 0.96,
                 }}
                 animate={
@@ -595,7 +595,7 @@ function SoftwareDevelopment() {
                         scale: 1,
                       }
                     : {
-                        opacity: 0,
+                        opacity: 1,
                         scale: 0.96,
                       }
                 }
@@ -875,7 +875,7 @@ function SoftwareDevelopment() {
                 <motion.div
                   key={item.number}
                   initial={{
-                    opacity: 0,
+                    opacity: 1,
                     y: 20,
                   }}
                   whileInView={{
@@ -977,7 +977,7 @@ function SoftwareDevelopment() {
                     <motion.div
                       key={stack.category}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1080,7 +1080,7 @@ function SoftwareDevelopment() {
                   <motion.div
                     key={step.number}
                     initial={{
-                      opacity: 0,
+                      opacity: 1,
                       y: 20,
                     }}
                     whileInView={{
@@ -1162,7 +1162,7 @@ function SoftwareDevelopment() {
                     <motion.div
                       key={reason.title}
                       initial={{
-                        opacity: 0,
+                        opacity: 1,
                         y: 20,
                       }}
                       whileInView={{
@@ -1289,7 +1289,7 @@ function SoftwareDevelopment() {
                         <motion.div
                           initial={{
                             height: 0,
-                            opacity: 0,
+                            opacity: 1,
                           }}
                           animate={{
                             height: "auto",
@@ -1339,7 +1339,7 @@ function SoftwareDevelopment() {
 
             <motion.div
               initial={{
-                opacity: 0,
+                opacity: 1,
                 y: 25,
               }}
               whileInView={{
