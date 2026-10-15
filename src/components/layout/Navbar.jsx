@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FiMenu, FiX } from "react-icons/fi"
 
 const NAV_ITEMS = [
   { key: "home", path: "" },
@@ -41,11 +40,11 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className="sticky inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 xl:absolute xl:border-0 xl:bg-transparent"
+      className="absolute inset-x-0 top-0 z-[100] w-full"
     >
       <nav
         aria-label="Main navigation"
-        className="relative z-[80] mx-auto flex min-h-[76px] w-full max-w-[1400px] items-center justify-between gap-2 px-6 py-4 sm:min-h-[80px] lg:min-h-[88px] lg:px-10"
+        className="relative z-[80] mx-auto flex w-full max-w-[1400px] items-center justify-between gap-2 px-6 py-4 lg:px-10"
       >
         {/* LOGO AND WORDMARK */}
         <Link
@@ -60,9 +59,9 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             height={58}
             priority
             unoptimized
-            className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+            className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
           />
-          <span className="hidden min-w-0 flex-col sm:flex">
+          <span className="hidden min-w-0 flex-col sm:flex lg:hidden xl:flex">
             <span
               className="whitespace-nowrap bg-clip-text font-heading text-[21px] font-bold leading-none tracking-[-0.03em] text-transparent"
               style={{
@@ -78,13 +77,13 @@ export default function Navbar({ lang = "en", navigation = {} }) {
         </Link>
 
         {/* DESKTOP LINKS */}
-        <div className="hidden items-center gap-8 xl:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-7">
           {NAV_ITEMS.map(({ key, path }) => (
             <Link
               key={key}
               href={localizedHref(path)}
               aria-current={isActive(path) ? "page" : undefined}
-              className={`font-body text-sm font-medium transition-colors duration-300 ${
+              className={`font-body text-[13px] font-medium transition-colors duration-300 xl:text-sm ${
                 isActive(path) ? "text-white" : "text-slate-300 hover:text-white"
               }`}
             >
@@ -94,7 +93,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
         </div>
 
         {/* DESKTOP LANGUAGE + CTA */}
-        <div className="hidden shrink-0 items-center gap-3 xl:flex">
+        <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
           <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1" aria-label="Choose website language">
             {[
               { code: "en", label: "EN", accessible: "Switch to English" },
@@ -119,28 +118,29 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
           <Link
             href={localizedHref("/contact")}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-6 py-3 font-body text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-[#057CFA] hover:bg-[#057CFA]"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-2.5 font-body text-xs font-semibold text-white backdrop-blur-md transition duration-300 hover:border-[#057CFA] hover:bg-[#057CFA] xl:px-6 xl:py-3 xl:text-sm"
           >
             {navigation.contact || "Let's Talk"}
           </Link>
         </div>
 
         {/* Native disclosure works on touch screens even before JS hydration. */}
-        <details ref={mobileMenuRef} className="group xl:hidden">
+        <details ref={mobileMenuRef} className="group lg:hidden">
           <summary
-            className="relative z-[90] flex h-11 w-11 cursor-pointer touch-manipulation list-none items-center justify-center rounded-full border border-white/20 bg-[#06152c]/85 text-white transition hover:bg-[#002DCC] focus-visible:outline-2 focus-visible:outline-[#057CFA] [&::-webkit-details-marker]:hidden"
+            className="relative z-[90] flex h-10 w-10 cursor-pointer touch-manipulation list-none flex-col items-center justify-center gap-[5px] rounded-md focus-visible:outline-2 focus-visible:outline-[#057CFA] [&::-webkit-details-marker]:hidden"
             aria-label={currentLang === "de" ? "Navigationsmenü" : "Navigation menu"}
           >
-            <FiMenu size={21} className="group-open:hidden" aria-hidden="true" />
-            <FiX size={21} className="hidden group-open:block" aria-hidden="true" />
+            <span className="h-[2px] w-6 bg-white transition-transform duration-300 group-open:translate-y-[7px] group-open:rotate-45" />
+            <span className="h-[2px] w-6 bg-white transition-opacity duration-300 group-open:opacity-0" />
+            <span className="h-[2px] w-6 bg-white transition-transform duration-300 group-open:-translate-y-[7px] group-open:-rotate-45" />
           </summary>
 
           <div
             id="gendata-mobile-navigation"
             aria-label={currentLang === "de" ? "Mobiles Menü" : "Mobile navigation"}
-            className="gd-mobile-menu absolute inset-x-3 top-full z-[95] max-h-[calc(100dvh-90px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#06152c] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.45)] sm:inset-x-6"
+            className="gd-mobile-menu absolute inset-x-4 top-full z-[95] max-h-[calc(100dvh-84px)] overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-[#06142f]/95 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:inset-x-6"
           >
-            <div className="mb-5 flex items-center gap-3 border-b border-white/10 pb-5">
+            <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-5">
               <Image
                 src="/assets/gendata-tech-mark.webp"
                 alt=""
@@ -164,7 +164,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
               </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-5">
               {NAV_ITEMS.map(({ key, path }) => (
                 <Link
                   key={key}
@@ -173,7 +173,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
                   onClick={() => {
                     if (mobileMenuRef.current) mobileMenuRef.current.open = false
                   }}
-                  className={`flex min-h-12 items-center border-b border-white/10 py-3 font-body text-sm font-medium transition-colors ${
+                  className={`flex min-h-7 items-center font-body text-sm font-medium transition-colors ${
                     isActive(path) ? "text-[#58bafc]" : "text-slate-200 hover:text-white"
                   }`}
                 >
@@ -182,7 +182,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
               ))}
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
               <span className="font-body text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400">
                 {currentLang === "de" ? "Sprache" : "Language"}
               </span>
