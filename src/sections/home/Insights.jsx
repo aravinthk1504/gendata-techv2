@@ -9,163 +9,97 @@ import { homeText, localizedHref } from "../../lib/homeText";
 import BlogCard from "../../components/blog/BlogCard";
 import { blogPosts } from "../../data/blogData";
 
-// Homepage highlights the six newest entries from blogData.js.
+// Show six real cards; native scroll-snap and direct indexing keep mobile
+// arrow and indicator navigation predictable.
 const latestPosts = blogPosts.slice(0, 6);
 const count = latestPosts.length;
-// Two extra cards keep the two-card desktop layout continuous at the end.
-const carouselPosts = [...latestPosts, ...latestPosts.slice(0, 2)];
 
 function Insights({ content, lang }) {
   const t = (key, variables) => homeText(content, key, variables);
   const localizedPath = (path) => localizedHref(lang, path);
 
   const viewportRef = useRef(null);
-  const trackRef = useRef(null);
   const activeRef = useRef(0);
-  const settleTimerRef = useRef(null);
-
+  const settleRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [onScreen, setOnScreen] = useState(false);
-  const [pageActive, setPageActive] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   const labels = lang === "de"
-    ? {
-        previous: "Vorheriger Beitrag",
-        next: "Nächster Beitrag",
-        goTo: "Zum Beitrag",
-        region: "Aktuelle Blogbeiträge",
-      }
-    : {
-        previous: "Previous article",
-        next: "Next article",
-        goTo: "Go to article",
-        region: "Latest blog insights",
-      };
+    ? { previous: "Vorheriger Beitrag", next: "Nächster Beitrag", goTo: "Zum Beitrag", region: "Aktuelle Blogbeiträge" }
+    : { previous: "Previous article", next: "Next article", goTo: "Go to article", region: "Latest blog insights" };
 
-  // Native scroll-snap works before hydration and preserves real touch swiping.
-  // In particular, the cards are never hidden while waiting for measurements.
-  const scrollToCard = useCallback((index, smooth = true) => {
+  const getStep = () => {
     const viewport = viewportRef.current;
-    const track = trackRef.current;
-    const card = track?.children[index];
-    if (!viewport || !track || !card) return;
-    const left = card.offsetLeft - track.offsetLeft;
-    viewport.scrollTo({
-      left,
-      behavior: smooth && !reduceMotion ? "smooth" : "instant",
-    });
-  }, [reduceMotion]);
+    if (!viewport) return 0;
+    const card = viewport.querySelector("[data-insight-slide]");
+    if (!card) return 0;
+    const gap = Number.parseFloat(window.getComputedStyle(card.parentElement).gap) || 24;
+    return card.getBoundingClientRect().width + gap;
+  };
 
   const goTo = useCallback((index, smooth = true) => {
-    if (index < 0 || index >= count) return;
-    activeRef.current = index;
-    setActiveIndex(index);
-    scrollToCard(index, smooth);
-  }, [scrollToCard]);
+    const viewport = viewportRef.current;
+    if (!viewport || !count) return;
+    const bounded = ((index % count) + count) % count;
+    const card = viewport.querySelectorAll("[data-insight-slide]")[bounded];
+    if (!card) return;
+    activeRef.current = bounded;
+    setActiveIndex(bounded);
+    const offset = card.getBoundingClientRect().left - viewport.getBoundingClientRect().left + viewport.scrollLeft;
+    viewport.scrollTo({ left: offset, behavior: smooth && !reduceMotion ? "smooth" : "instant" });
+  }, [reduceMotion]);
 
   const move = useCallback((direction) => {
-    if (count <= 1) return;
-    const current = activeRef.current;
-    const next = current + direction;
-    if (next < 0) {
-      // Wrap directly to the final real post.
-      goTo(count - 1, false);
-    } else if (next === count) {
-      // Scroll forward to the first cloned post. Scroll-settle then resets
-      // to the original first post with no visual jump.
-      activeRef.current = 0;
-      setActiveIndex(0);
-      scrollToCard(count, true);
-    } else {
-      goTo(next);
-    }
-  }, [goTo, scrollToCard]);
+    const next = (activeRef.current + direction + count) % count;
+    goTo(next, next !== 0 && next !== count - 1);
+  }, [goTo]);
 
-  const finishScroll = useCallback(() => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track || !count) return;
-    let nearest = 0;
-    let difference = Infinity;
-    for (let i = 0; i < track.children.length; i += 1) {
-      const distance = Math.abs(
-        (track.children[i].offsetLeft - track.offsetLeft) - viewport.scrollLeft
-      );
-      if (distance < difference) {
-        difference = distance;
-        nearest = i;
-      }
-    }
-
-    const logical = nearest % count;
-    activeRef.current = logical;
-    setActiveIndex(logical);
-
-    if (nearest >= count) {
-      // Prevent a smooth-scroll jump when resetting the duplicate edge card.
-      const realCard = track.children[logical];
-      if (realCard) {
-        const original = viewport.style.scrollBehavior;
-        viewport.style.scrollBehavior = "auto";
-        viewport.scrollLeft = realCard.offsetLeft - track.offsetLeft;
-        viewport.style.scrollBehavior = original;
-      }
-    }
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (settleTimerRef.current) clearTimeout(settleTimerRef.current);
-    settleTimerRef.current = setTimeout(finishScroll, 180);
-  }, [finishScroll]);
+  const onScroll = () => {
+    if (settleRef.current) window.clearTimeout(settleRef.current);
+    settleRef.current = window.setTimeout(() => {
+      const viewport = viewportRef.current;
+      const step = getStep();
+      if (!viewport || step <= 0) return;
+      const current = Math.min(count - 1, Math.max(0, Math.round(viewport.scrollLeft / step)));
+      activeRef.current = current;
+      setActiveIndex(current);
+    }, 250);
+  };
 
   useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setReduceMotion(preference.matches);
-    const updateVisibility = () => setPageActive(!document.hidden);
-    const element = viewportRef.current;
-    const observer = typeof IntersectionObserver !== "undefined" && element
-      ? new IntersectionObserver(
-          ([entry]) => setOnScreen(entry.isIntersecting),
-          { threshold: 0.1 },
-        )
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const setPreference = () => setReduceMotion(media.matches);
+    const observer = typeof IntersectionObserver !== "undefined"
+      ? new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.1 })
       : null;
-
-    observer?.observe(element);
-    if (!observer) setOnScreen(true);
-    updatePreference();
-    updateVisibility();
-    preference.addEventListener("change", updatePreference);
-    document.addEventListener("visibilitychange", updateVisibility);
-
+    if (viewportRef.current) observer?.observe(viewportRef.current);
+    if (!observer) setVisible(true);
+    setPreference();
+    media.addEventListener?.("change", setPreference);
+    const align = () => goTo(activeRef.current, false);
+    window.addEventListener("resize", align);
     return () => {
       observer?.disconnect();
-      preference.removeEventListener("change", updatePreference);
-      document.removeEventListener("visibilitychange", updateVisibility);
-      if (settleTimerRef.current) clearTimeout(settleTimerRef.current);
+      media.removeEventListener?.("change", setPreference);
+      window.removeEventListener("resize", align);
+      if (settleRef.current) window.clearTimeout(settleRef.current);
     };
-  }, []);
+  }, [goTo]);
 
-  // Re-align the current card after responsive layout changes.
   useEffect(() => {
-    const handleResize = () => scrollToCard(activeRef.current, false);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [scrollToCard]);
-
-  const paused = hovered || focused || !pageActive || !onScreen || reduceMotion;
-  useEffect(() => {
-    if (paused || count <= 1) return;
-    const timer = window.setInterval(() => move(1), 5000);
+    if (hovered || focused || !visible || reduceMotion || count < 2) return;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) move(1);
+    }, 5000);
     return () => window.clearInterval(timer);
-  }, [paused, move, activeIndex]);
+  }, [hovered, focused, visible, reduceMotion, move]);
 
   return (
     <section className="relative overflow-hidden bg-white px-6 py-28 lg:px-10 lg:py-36">
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-blue-50 blur-[150px]" />
-
       <div className="relative mx-auto max-w-350">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
@@ -230,19 +164,20 @@ function Insights({ content, lang }) {
             role="region"
             aria-roledescription="carousel"
             aria-label={labels.region}
-            onScroll={handleScroll}
+            onScroll={onScroll}
             className="overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            <div ref={trackRef} className="relative flex items-stretch gap-6">
-              {carouselPosts.map((post, index) => (
+            <div className="relative flex items-stretch gap-6">
+              {latestPosts.map((post, index) => (
                 <div
-                  key={String(index) + "-" + post.id}
+                  key={post.id}
+                  data-insight-slide
                   role="group"
                   aria-roledescription="slide"
-                  aria-label={String((index % count) + 1) + " / " + String(count)}
+                  aria-label={String(index + 1) + " / " + String(count)}
                   className="min-w-0 w-full shrink-0 snap-start md:w-[calc((100%-1.5rem)/2)]"
                 >
-                  <BlogCard post={post} index={index % count} lang={lang} compact />
+                  <BlogCard post={post} index={index} lang={lang} compact />
                 </div>
               ))}
             </div>
