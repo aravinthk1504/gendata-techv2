@@ -224,11 +224,8 @@ function FinalCTA({ content, lang }) {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.35 }}
-            className="relative z-10 mt-12 border-t border-white/[0.08] pt-6 sm:mt-14 sm:pt-7"
+            initial={false}
+            className="relative z-10 mt-8 border-t border-white/[0.08] pt-6 sm:mt-14 sm:pt-7"
           >
             <div className="flex flex-wrap gap-x-8 gap-y-3">
               {t("finalCta.tags", { returnObjects: true }).map((item) => (
