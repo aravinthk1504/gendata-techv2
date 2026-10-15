@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { homeText, localizedHref } from "../../lib/homeText";
 
 /* =========================================================
@@ -11,40 +11,41 @@ import { homeText, localizedHref } from "../../lib/homeText";
 function ModelVisual() {
   const bars = [42, 65, 48, 82, 58, 92, 72, 54];
   const visualRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const hasAnimated = useRef(false);
   const reduceMotion = useReducedMotion();
 
-  // Observe the chart itself, not the much taller capabilities section.
-  // A scroll/resize check also covers mobile browsers where intersection
-  // notifications can be delayed when a page first hydrates.
+  // Keep final bar heights in HTML so a delayed mobile hydration never
+  // leaves the bars stuck at 10%. Animate once after entering the viewport.
   useEffect(() => {
     const element = visualRef.current;
-    if (!element || isVisible) return;
-
-    const checkVisibility = () => {
+    if (!element) return;
+    const run = () => {
+      if (hasAnimated.current) return;
       const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 12 && rect.bottom > 0) {
-        setIsVisible(true);
+      if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
+      hasAnimated.current = true;
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        element.querySelectorAll("[data-model-bar]").forEach((bar, index) => {
+          bar.animate?.(
+            [{ transform: "scaleY(0.08)" }, { transform: "scaleY(1)" }],
+            { duration: 850, delay: index * 85, easing: "ease-out", iterations: 1 },
+          );
+        });
       }
     };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0, rootMargin: "0px 0px 100px 0px" },
-    );
-    observer.observe(element);
-    window.addEventListener("scroll", checkVisibility, { passive: true });
-    window.addEventListener("resize", checkVisibility);
-    checkVisibility();
-
+    const observer = typeof IntersectionObserver !== "undefined"
+      ? new IntersectionObserver(run, { threshold: 0.05 })
+      : null;
+    observer?.observe(element);
+    window.addEventListener("scroll", run, { passive: true });
+    window.addEventListener("resize", run);
+    run();
     return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", checkVisibility);
-      window.removeEventListener("resize", checkVisibility);
+      observer?.disconnect();
+      window.removeEventListener("scroll", run);
+      window.removeEventListener("resize", run);
     };
-  }, [isVisible]);
+  }, []);
 
   return (
     <div
@@ -63,11 +64,10 @@ function ModelVisual() {
       />
       <div className="absolute inset-x-5 bottom-4 flex h-22 items-end justify-between gap-2 sm:inset-x-6 sm:bottom-5 sm:h-26 lg:h-28">
         {bars.map((height, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={false}
-            animate={{ height: isVisible || reduceMotion ? `${height}%` : "10%" }}
-            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : index * 0.08, ease: "easeOut" }}
+            data-model-bar
+            style={{ height: `${height}%`, transformOrigin: "bottom" }}
             className="w-full rounded-t-sm bg-linear-to-t from-brand-primary/40 to-brand-accent"
           />
         ))}
