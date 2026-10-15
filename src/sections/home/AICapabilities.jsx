@@ -1,22 +1,56 @@
 "use client"
 
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { homeText, localizedHref } from "../../lib/homeText";
 
 /* =========================================================
    AI MODEL VISUAL
 ========================================================= */
 
-function ModelVisual({ shouldAnimate }) {
+function ModelVisual() {
   const bars = [42, 65, 48, 82, 58, 92, 72, 54];
-  const reduceMotion = useReducedMotion();
   const visualRef = useRef(null);
-  const visualInView = useInView(visualRef, { amount: 0.1, once: true });
-  const animateBars = visualInView && !reduceMotion;
+  const [isVisible, setIsVisible] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  // Observe the chart itself, not the much taller capabilities section.
+  // A scroll/resize check also covers mobile browsers where intersection
+  // notifications can be delayed when a page first hydrates.
+  useEffect(() => {
+    const element = visualRef.current;
+    if (!element || isVisible) return;
+
+    const checkVisibility = () => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 12 && rect.bottom > 0) {
+        setIsVisible(true);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0, rootMargin: "0px 0px 100px 0px" },
+    );
+    observer.observe(element);
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    window.addEventListener("resize", checkVisibility);
+    checkVisibility();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", checkVisibility);
+      window.removeEventListener("resize", checkVisibility);
+    };
+  }, [isVisible]);
 
   return (
-    <div ref={visualRef} className="relative mt-6 h-36 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-8 sm:h-40 lg:mt-10 lg:h-42">
+    <div
+      ref={visualRef}
+      className="relative mt-6 h-36 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-8 sm:h-40 lg:mt-10 lg:h-42"
+    >
       <div
         className="absolute inset-0 opacity-20"
         style={{
@@ -32,32 +66,12 @@ function ModelVisual({ shouldAnimate }) {
           <motion.div
             key={index}
             initial={false}
-            animate={
-              reduceMotion
-                ? { height: `${height}%`, scaleY: 1 }
-                : animateBars
-                  ? { height: `${height}%`, scaleY: [0.84, 1, 0.84] }
-                  : { height: "10%", scaleY: 1 }
-            }
-            transition={{
-              height: { duration: 0.8, delay: index * 0.07 },
-              scaleY: { duration: 2.4, delay: index * 0.12, repeat: Infinity, ease: "easeInOut" },
-            }}
-            style={{ transformOrigin: "bottom" }}
+            animate={{ height: isVisible || reduceMotion ? `${height}%` : "10%" }}
+            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : index * 0.08, ease: "easeOut" }}
             className="w-full rounded-t-sm bg-linear-to-t from-brand-primary/40 to-brand-accent"
           />
         ))}
       </div>
-      <motion.div
-        initial={false}
-        animate={
-          shouldAnimate && visualInView && !reduceMotion
-            ? { left: ["-80px", "100%"] }
-            : { left: "-80px" }
-        }
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        className="pointer-events-none absolute inset-y-0 w-20 bg-linear-to-r from-transparent via-blue-300/15 to-transparent"
-      />
     </div>
   );
 }
@@ -282,7 +296,7 @@ function AICapabilities({ content, lang }) {
               <p className="mt-4 max-w-xl font-body text-sm leading-7 text-slate-300">
                 {t("aiCapabilities.models.description")}
               </p>
-              <ModelVisual shouldAnimate={shouldAnimate} />
+              <ModelVisual />
             </div>
           </motion.article>
 
