@@ -25,25 +25,25 @@ function LMSDashboard({ content }) {
       transition={{ duration: 0.7 }}
       className="relative mx-auto w-full max-w-md lg:max-w-none"
     >
-      <div className="absolute inset-8 rounded-full bg-brand-accent/15 blur-[90px]" />
+      <div className="absolute inset-8 rounded-full bg-brand-accent/8 blur-[90px]" />
 
-      <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[#0a1830] shadow-[0_28px_70px_rgba(0,0,0,0.28)]">
-        <div className="flex h-9 items-center gap-2 border-b border-white/8 px-4 sm:h-11 sm:px-5">
-          <span className="h-2 w-2 rounded-full bg-white/15" />
-          <span className="h-2 w-2 rounded-full bg-white/15" />
-          <span className="h-2 w-2 rounded-full bg-white/15" />
-          <div className="ml-3 h-2 w-20 rounded-full bg-white/8 sm:ml-5 sm:w-28" />
+      <div className="relative overflow-hidden rounded-[20px] border border-slate-200 bg-[#F8FAFD] shadow-[0_20px_55px_rgba(15,23,42,0.07)]">
+        <div className="flex h-9 items-center gap-2 border-b border-slate-200 bg-white px-4 sm:h-11 sm:px-5">
+          <span className="h-2 w-2 rounded-full bg-slate-300" />
+          <span className="h-2 w-2 rounded-full bg-slate-300" />
+          <span className="h-2 w-2 rounded-full bg-slate-300" />
+          <div className="ml-3 h-2 w-20 rounded-full bg-slate-200 sm:ml-5 sm:w-28" />
         </div>
 
         <div className="grid grid-cols-[50px_1fr] sm:grid-cols-[70px_1fr]">
-          <div className="border-r border-white/8 p-3 sm:p-4">
+          <div className="border-r border-slate-200 bg-white p-3 sm:p-4">
             <div className="mx-auto h-6 w-6 rounded-md bg-brand-accent sm:h-7 sm:w-7" />
             <div className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
               {[1, 2, 3, 4].map((item) => (
                 <div
                   key={item}
                   className={`mx-auto h-1.5 rounded-full ${
-                    item === 1 ? "w-7 bg-brand-accent/60" : "w-6 bg-white/8"
+                    item === 1 ? "w-7 bg-brand-accent/60" : "w-6 bg-slate-200"
                   }`}
                 />
               ))}
@@ -53,10 +53,10 @@ function LMSDashboard({ content }) {
           <div className="p-4 sm:p-5 lg:p-6">
             <div className="flex items-start justify-between">
               <div>
-                <div className="h-2 w-14 rounded-full bg-white/15 sm:w-18" />
-                <div className="mt-2 h-3 w-24 rounded-full bg-white/80 sm:mt-3 sm:h-4 sm:w-32" />
+                <div className="h-2 w-14 rounded-full bg-slate-300 sm:w-18" />
+                <div className="mt-2 h-3 w-24 rounded-full bg-slate-800 sm:mt-3 sm:h-4 sm:w-32" />
               </div>
-              <div className="h-7 w-7 rounded-full bg-blue-400/20 sm:h-8 sm:w-8" />
+              <div className="h-7 w-7 rounded-full bg-blue-100 sm:h-8 sm:w-8" />
             </div>
 
             <div className="mt-5 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-3">
@@ -67,12 +67,12 @@ function LMSDashboard({ content }) {
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className="min-w-0 rounded-xl border border-white/8 bg-white/4 p-2.5 sm:p-3"
+                  className="min-w-0 rounded-xl border border-slate-200 bg-white p-2.5 sm:p-3"
                 >
                   <p className="truncate font-body text-[6px] uppercase tracking-[0.08em] text-slate-500 sm:text-[7px] sm:tracking-[0.12em]">
                     {label}
                   </p>
-                  <p className="mt-1.5 font-heading text-xs font-semibold text-white sm:mt-2 sm:text-base">
+                  <p className="mt-1.5 font-heading text-xs font-semibold text-slate-900 sm:mt-2 sm:text-base">
                     {value}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ function LMSDashboard({ content }) {
             </div>
 
             <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-[1.35fr_0.65fr]">
-              <div className="relative h-28 overflow-hidden rounded-xl border border-white/8 bg-white/3 p-3 sm:h-30 sm:p-4">
+              <div className="relative h-28 overflow-hidden rounded-xl border border-slate-200 bg-white p-3 sm:h-30 sm:p-4">
                 <p className="font-body text-[6px] uppercase tracking-[0.1em] text-slate-500 sm:text-[7px]">
                   {t("products.lms.dashboard.activity")}
                 </p>
@@ -100,10 +100,10 @@ function LMSDashboard({ content }) {
                 </div>
               </div>
 
-              <div className="flex h-24 items-center justify-center rounded-xl border border-white/8 bg-white/3 sm:h-30">
-                <div className="relative flex h-15 w-15 items-center justify-center rounded-full border-[6px] border-white/8 sm:h-17 sm:w-17">
+              <div className="flex h-24 items-center justify-center rounded-xl border border-slate-200 bg-white sm:h-30">
+                <div className="relative flex h-15 w-15 items-center justify-center rounded-full border-[6px] border-slate-200 sm:h-17 sm:w-17">
                   <div className="absolute inset-[-6px] rounded-full border-[6px] border-transparent border-r-brand-accent border-t-brand-accent" />
-                  <span className="font-heading text-[10px] font-semibold text-white sm:text-xs">
+                  <span className="font-heading text-[10px] font-semibold text-slate-900 sm:text-xs">
                     84%
                   </span>
                 </div>
@@ -275,10 +275,10 @@ function Products({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.12 }}
           transition={{ duration: 0.7 }}
-          className="relative mt-12 overflow-hidden rounded-[28px] bg-[#06152c] p-5 sm:mt-16 sm:p-8 lg:mt-20 lg:rounded-[32px] lg:p-14"
+          className="group relative mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:mt-16 sm:p-8 lg:mt-20 lg:rounded-[32px] lg:p-14"
         >
-          <div className="absolute -left-30 bottom-0 h-100 w-100 rounded-full bg-brand-primary/20 blur-[120px]" />
-          <div className="absolute -right-20 top-0 h-100 w-100 rounded-full bg-brand-accent/12 blur-[130px]" />
+          <div className="absolute -left-30 bottom-0 h-100 w-100 rounded-full bg-brand-primary/5 blur-[120px]" />
+          <div className="absolute -right-20 top-0 h-100 w-100 rounded-full bg-brand-accent/6 blur-[130px]" />
 
           <div className="relative grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-14">
             <div>
@@ -286,16 +286,16 @@ function Products({ content, lang }) {
                 <span className="font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:text-[10px] sm:tracking-[0.2em]">
                   {t("products.lms.label")}
                 </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-body text-[8px] font-semibold uppercase tracking-[0.12em] text-blue-100">
+                <span className="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 font-body text-[8px] font-semibold uppercase tracking-[0.12em] text-brand-primary">
                   LMS
                 </span>
               </div>
 
-              <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:mt-7 sm:text-5xl">
+              <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:mt-7 sm:text-5xl">
                 {t("products.lms.title")}
               </h3>
 
-              <p className="mt-4 max-w-xl font-body text-sm leading-6 text-slate-300 sm:mt-5 sm:leading-7 lg:text-base">
+              <p className="mt-4 max-w-xl font-body text-sm leading-6 text-slate-500 sm:mt-5 sm:leading-7 lg:text-base">
                 {t("products.lms.description")}
               </p>
 
@@ -303,7 +303,7 @@ function Products({ content, lang }) {
                 {t("products.lms.features", { returnObjects: true }).map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-white/4 px-3 py-1.5 font-body text-[8px] font-medium text-slate-300 sm:py-2 sm:text-[9px]"
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-[8px] font-medium text-slate-600 sm:py-2 sm:text-[9px]"
                   >
                     {item}
                   </span>
@@ -312,7 +312,7 @@ function Products({ content, lang }) {
 
               <Link
                 href={localizedPath("/products/lms")}
-                className="group mt-7 inline-flex w-auto items-center gap-3 rounded-full bg-brand-accent px-5 py-3 font-body text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 sm:mt-10 sm:px-6 sm:py-3.5"
+                className="group mt-7 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-10"
               >
                 {t("products.explore")}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
