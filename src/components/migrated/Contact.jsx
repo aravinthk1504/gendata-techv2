@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   AnimatePresence,
@@ -59,7 +59,7 @@ function Contact() {
       "IoT Solutions",
     ],
 
-    Products: ["GenData LMS", "CRM", "ERP", "Billing"],
+    Products: ["GenData LMS", "GenData CRM", "GenData ERP", "GenData Billing"],
 
     Training: [
       "AI & Machine Learning",
@@ -92,6 +92,19 @@ function Contact() {
     offering: "",
     message: "",
   });
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const category = query.get("category") || "";
+    const offering = query.get("offering") || "";
+    const options = offeringOptions[category];
+    if (!options) return;
+    setFormData((previous) => ({
+      ...previous,
+      category,
+      offering: options.includes(offering) ? offering : "",
+    }));
+  }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -175,16 +188,10 @@ function Contact() {
         body: JSON.stringify(submissionData),
       });
 
-      setSubmitStatus("success");
+      // no-cors returns an opaque response: delivery is not verifiable.
+      setSubmitStatus("unverified");
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        category: "",
-        offering: "",
-        message: "",
-      });
+      // Keep input values available because the server receipt is opaque.
     } catch (error) {
       console.error("Contact form error:", error);
 
@@ -960,30 +967,21 @@ function Contact() {
                           name="offering"
                           value={formData.offering}
                           onChange={handleInputChange}
+                          disabled={!formData.category}
                           required
                           className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 pr-11 font-body text-sm text-slate-700 outline-none transition focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
                         >
                           <option value="">
                             {formData.category
                               ? "Select an option"
-                              : "Select a category or choose an option"}
+                              : "Select a category first"}
                           </option>
 
-                          {formData.category
-                            ? offeringOptions[formData.category]?.map((item) => (
-                                <option key={item} value={item}>
-                                  {item}
-                                </option>
-                              ))
-                            : Object.entries(offeringOptions).map(([group, options]) => (
-                                <optgroup key={group} label={group}>
-                                  {options.map((item) => (
-                                    <option key={`${group}-${item}`} value={item}>
-                                      {item}
-                                    </option>
-                                  ))}
-                                </optgroup>
-                              ))}
+                          {(offeringOptions[formData.category] || []).map((item) => (
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                          ))}
                         </select>
 
                         <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -1016,7 +1014,7 @@ function Contact() {
                   {/* FORM STATUS */}
 
                   <AnimatePresence>
-                    {submitStatus === "success" && (
+                    {submitStatus === "unverified" && (
                       <motion.div
                         initial={{
                           opacity: 1,
@@ -1030,11 +1028,10 @@ function Contact() {
                           opacity: 0,
                           y: -5,
                         }}
-                        className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+                        className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3"
                       >
-                        <p className="font-body text-xs font-medium leading-6 text-emerald-700">
-                          Your enquiry has been submitted. Our team will review
-                          it and get back to you.
+                        <p className="font-body text-xs font-medium leading-6 text-blue-800">
+                          Your enquiry was sent, but receipt cannot be verified. Please contact us by email or WhatsApp if you do not receive a reply.
                         </p>
                       </motion.div>
                     )}

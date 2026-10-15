@@ -1073,7 +1073,7 @@ function AppDevelopment() {
 
             <div className="relative mt-14">
 
-              <ProcessFlowGlow breakpoint="xl" />
+              <ProcessFlowGlow breakpoint="xl" columns={7} />
 
 
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
