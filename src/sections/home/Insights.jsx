@@ -9,11 +9,22 @@ import { homeText, localizedHref } from "../../lib/homeText";
 import BlogCard from "../../components/blog/BlogCard";
 import { blogPosts } from "../../data/blogData";
 
-// blogData.js is maintained newest-first; display the newest six entries.
+// New articles are added to the top of blogData.js.
 const latestPosts = blogPosts.slice(0, 6);
-const postCount = latestPosts.length;
-// Three identical sets allow native touch swipes to wrap without a visible jump.
-const carouselPosts = [...latestPosts, ...latestPosts, ...latestPosts];
+const total = latestPosts.length;
+const clones = Math.min(2, total);
+// Edge copies keep the first and last transitions continuous on mobile and desktop.
+const slides = [
+  ...latestPosts.slice(-clones),
+  ...latestPosts,
+  ...latestPosts.slice(0, clones),
+];
+
+const normalize = (position) => {
+  if (position < clones) return position + total;
+  if (position >= total + clones) return position - total;
+  return position;
+};
 
 function Insights({ content, lang }) {
   const t = (key, variables) => homeText(content, key, variables);
@@ -21,16 +32,21 @@ function Insights({ content, lang }) {
 
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
-  const slideIndexRef = useRef(postCount);
-  const scrollTimerRef = useRef(null);
+  const movingRef = useRef(false);
+  const touchStartRef = useRef(null);
 
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [hasFocus, setHasFocus] = useState(false);
-  const [isTouching, setIsTouching] = useState(false);
-  const [pageVisible, setPageVisible] = useState(true);
+  const [position, setPosition] = useState(clones);
+  const [stepSize, setStepSize] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [transitionEnabled, setTransitionEnabled] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [touching, setTouching] = useState(false);
+  const [visibleOnPage, setVisibleOnPage] = useState(false);
+  const [pageActive, setPageActive] = useState(true);
   const [reduceMotion, setReduceMotion] = useState(false);
 
+  const activeIndex = total ? ((position - clones) % total + total) % total : 0;
   const labels = lang === "de"
     ? {
         previous: "Vorheriger Beitrag",
@@ -45,110 +61,129 @@ function Insights({ content, lang }) {
         region: "Latest blog insights",
       };
 
-  // Offsets come from the actual rendered cards, so one slide is correct
-  // for all three responsive layouts (1 mobile, 2 tablet, 3 desktop).
-  const scrollToSlide = useCallback((index, animated = true) => {
+  // Measure the actual slide width rather than guessing offsets from the
+  // browser's scroll position. This fixes mobile arrows and progress dots.
+  useEffect(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    const slide = track?.children[index];
-    if (!viewport || !slide) return;
+    if (!viewport || !track || !total) return;
 
-    viewport.scrollTo({
-      left: slide.offsetLeft,
-      behavior: animated && !reduceMotion ? "smooth" : "instant",
-    });
-  }, [reduceMotion]);
+    const measure = () => {
+      const firstSlide = track.children[clones];
+      if (!firstSlide) return;
+      const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 24;
+      const width = firstSlide.getBoundingClientRect().width;
+      if (width <= 0) return;
+      setStepSize(width + gap);
+      setVisibleCount(window.matchMedia("(min-width: 768px)").matches ? 2 : 1);
+      // Resizing should never cause a long animated jump.
+      setTransitionEnabled(false);
+      movingRef.current = false;
+    };
 
-  const settleScroll = useCallback(() => {
-    const viewport = viewportRef.current;
-    const slides = trackRef.current?.children;
-    if (!viewport || !slides?.length || postCount < 1) return;
-
-    let nearest = postCount;
-    let distance = Infinity;
-    for (let i = 0; i < slides.length; i += 1) {
-      const difference = Math.abs(slides[i].offsetLeft - viewport.scrollLeft);
-      if (difference < distance) {
-        distance = difference;
-        nearest = i;
-      }
-    }
-
-    // When we reach the edge copies, move to the matching middle-set card
-    // without an animation. The visible blog item stays exactly the same.
-    let centered = nearest;
-    if (nearest < postCount) centered += postCount;
-    if (nearest >= postCount * 2) centered -= postCount;
-
-    slideIndexRef.current = centered;
-    setActiveSlide(centered % postCount);
-    if (centered !== nearest) scrollToSlide(centered, false);
-  }, [scrollToSlide]);
-
-  const handleScroll = useCallback(() => {
-    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
-    scrollTimerRef.current = setTimeout(settleScroll, 150);
-  }, [settleScroll]);
-
-  const move = useCallback((step) => {
-    if (postCount <= 1) return;
-    const nextIndex = Math.min(
-      postCount * 3 - 1,
-      Math.max(0, slideIndexRef.current + step),
-    );
-    slideIndexRef.current = nextIndex;
-    setActiveSlide(nextIndex % postCount);
-    scrollToSlide(nextIndex);
-  }, [scrollToSlide]);
-
-  const goTo = useCallback((index) => {
-    slideIndexRef.current = postCount + index;
-    setActiveSlide(index);
-    scrollToSlide(postCount + index);
-  }, [scrollToSlide]);
-
-  useEffect(() => {
-    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotionPreference = () => setReduceMotion(motionPreference.matches);
-    const updateVisibility = () => setPageVisible(!document.hidden);
-
-    updateMotionPreference();
-    updateVisibility();
-    motionPreference.addEventListener("change", updateMotionPreference);
-    document.addEventListener("visibilitychange", updateVisibility);
-
+    measure();
+    const observer = typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(measure)
+      : null;
+    observer?.observe(viewport);
+    window.addEventListener("resize", measure);
     return () => {
-      motionPreference.removeEventListener("change", updateMotionPreference);
-      document.removeEventListener("visibilitychange", updateVisibility);
+      observer?.disconnect();
+      window.removeEventListener("resize", measure);
     };
   }, []);
 
   useEffect(() => {
-    // Align the middle copy on mount and keep the selected item aligned
-    // when the number of visible cards changes at a breakpoint.
-    const resize = () => scrollToSlide(slideIndexRef.current, false);
-    resize();
-    window.addEventListener("resize", resize);
-    const observer = typeof ResizeObserver !== "undefined"
-      ? new ResizeObserver(resize)
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotion = () => setReduceMotion(media.matches);
+    const updateVisibility = () => setPageActive(!document.hidden);
+    const element = viewportRef.current;
+
+    const observer = typeof IntersectionObserver !== "undefined" && element
+      ? new IntersectionObserver(
+          ([entry]) => setVisibleOnPage(entry.isIntersecting),
+          { threshold: 0.15 },
+        )
       : null;
-    if (viewportRef.current) observer?.observe(viewportRef.current);
+
+    observer?.observe(element);
+    if (!observer) setVisibleOnPage(true);
+    updateMotion();
+    updateVisibility();
+    media.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateVisibility);
 
     return () => {
       observer?.disconnect();
-      window.removeEventListener("resize", resize);
-      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+      media.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateVisibility);
     };
-  }, [scrollToSlide]);
+  }, []);
 
-  // Pause automatically when reading, swiping, focusing controls, tabbing
-  // away or when the visitor has requested reduced motion.
-  const isPaused = isHovered || hasFocus || isTouching || !pageVisible || reduceMotion;
+  const navigate = useCallback((next) => {
+    if (total < 2 || !stepSize || movingRef.current) return;
+    if (reduceMotion) {
+      setTransitionEnabled(false);
+      setPosition(normalize(next));
+      return;
+    }
+    movingRef.current = true;
+    setTransitionEnabled(true);
+    setPosition(next);
+  }, [reduceMotion, stepSize]);
+
+  const move = useCallback((direction) => {
+    navigate(position + direction);
+  }, [navigate, position]);
+
+  const goTo = useCallback((index) => {
+    if (index === activeIndex || movingRef.current) return;
+    // Pick the closest equivalent index, so even last-to-first dot
+    // navigation advances by one card instead of jumping six cards.
+    const candidates = [
+      clones + index - total,
+      clones + index,
+      clones + index + total,
+    ].filter((candidate) => candidate >= clones - 1 && candidate <= clones + total);
+    const nearest = candidates.reduce(
+      (best, candidate) => Math.abs(candidate - position) < Math.abs(best - position)
+        ? candidate
+        : best,
+      candidates[0],
+    );
+    navigate(nearest);
+  }, [activeIndex, navigate, position]);
+
+  const handleTransitionEnd = (event) => {
+    if (event.target !== trackRef.current || event.propertyName !== "transform") return;
+    movingRef.current = false;
+    const middlePosition = normalize(position);
+    if (middlePosition !== position) {
+      setTransitionEnabled(false);
+      setPosition(middlePosition);
+    }
+  };
+
+  const handleTouchStart = (event) => {
+    touchStartRef.current = event.touches[0]?.clientX ?? null;
+    setTouching(true);
+  };
+
+  const handleTouchEnd = (event) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    setTouching(false);
+    if (start === null) return;
+    const delta = (event.changedTouches[0]?.clientX ?? start) - start;
+    if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1);
+  };
+
+  const paused = hovered || focused || touching || !pageActive || !visibleOnPage || reduceMotion;
   useEffect(() => {
-    if (isPaused || postCount <= 1) return;
-    const interval = setInterval(() => move(1), 5000);
-    return () => clearInterval(interval);
-  }, [isPaused, move, activeSlide]);
+    if (paused || !stepSize || total < 2) return;
+    const timer = window.setInterval(() => move(1), 5000);
+    return () => window.clearInterval(timer);
+  }, [paused, stepSize, move]);
 
   return (
     <section className="relative overflow-hidden bg-white px-6 py-28 lg:px-10 lg:py-36">
@@ -204,58 +239,75 @@ function Insights({ content, lang }) {
 
         <div
           className="mt-14 sm:mt-16 lg:mt-18"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onFocusCapture={() => setHasFocus(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
           onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget)) {
-              setHasFocus(false);
-            }
+            if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
           }}
-          onTouchStart={() => setIsTouching(true)}
-          onTouchEnd={() => setIsTouching(false)}
-          onTouchCancel={() => setIsTouching(false)}
         >
           <div
             ref={viewportRef}
             role="region"
             aria-roledescription="carousel"
             aria-label={labels.region}
-            onScroll={handleScroll}
-            className="overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={() => {
+              touchStartRef.current = null;
+              setTouching(false);
+            }}
+            className="overflow-hidden"
+            style={{ touchAction: "pan-y" }}
           >
-            <div ref={trackRef} className="relative flex items-stretch gap-6">
-              {carouselPosts.map((post, index) => (
-                <div
-                  key={String(Math.floor(index / postCount)) + "-" + post.id}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={String((index % postCount) + 1) + " / " + String(postCount)}
-                  className="min-w-0 shrink-0 basis-full snap-start md:basis-[calc((100%-1.5rem)/2)] xl:basis-[calc((100%-3rem)/3)]"
-                >
-                  <BlogCard post={post} index={index % postCount} lang={lang} />
-                </div>
-              ))}
+            <div
+              ref={trackRef}
+              aria-live="off"
+              onTransitionEnd={handleTransitionEnd}
+              className={`flex w-full items-stretch gap-6 ${transitionEnabled && !reduceMotion ? "transition-transform duration-500 ease-out" : ""}`}
+              style={{
+                transform: stepSize
+                  ? `translate3d(-${position * stepSize}px, 0, 0)`
+                  : "translate3d(0, 0, 0)",
+                visibility: stepSize ? "visible" : "hidden",
+              }}
+            >
+              {slides.map((post, index) => {
+                const onScreen = index >= position && index < position + visibleCount;
+                return (
+                  <div
+                    key={`${index}-${post.id}`}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`${((index - clones + total) % total) + 1} / ${total}`}
+                    aria-hidden={!onScreen}
+                    inert={!onScreen}
+                    className="min-w-0 w-full shrink-0 md:w-[calc((100%-1.5rem)/2)]"
+                  >
+                    <BlogCard post={post} index={index % total} lang={lang} />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-2" aria-label={labels.region}>
+          <div className="mt-8 flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-1" aria-label={labels.region}>
               {latestPosts.map((post, index) => (
                 <button
                   key={post.id}
                   type="button"
                   onClick={() => goTo(index)}
-                  aria-label={labels.goTo + " " + String(index + 1)}
-                  aria-current={activeSlide === index ? "true" : undefined}
-                  className="group flex h-9 w-6 items-center justify-center"
+                  aria-label={`${labels.goTo} ${index + 1}`}
+                  aria-current={activeIndex === index ? "true" : undefined}
+                  className="group flex h-10 w-6 items-center justify-center"
                 >
                   <span
-                    className={"block h-1.5 rounded-full transition-all duration-300 " + (
-                      activeSlide === index
+                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                      activeIndex === index
                         ? "w-6 bg-brand-primary"
                         : "w-1.5 bg-slate-300 group-hover:bg-brand-accent"
-                    )}
+                    }`}
                   />
                 </button>
               ))}
