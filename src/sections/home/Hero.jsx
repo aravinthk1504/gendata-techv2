@@ -21,7 +21,7 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[92svh] items-start overflow-hidden lg:min-h-[88svh] lg:items-center"
+      className="relative flex min-h-[94svh] items-start overflow-hidden lg:min-h-[88svh] lg:items-center"
     >
       <AnimatedBackground />
 
