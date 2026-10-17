@@ -773,7 +773,7 @@ function Contact() {
                             </div>
 
                             <div>
-                              <p className="font-body text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.15em] text-slate-400">
                                 {item.label}
                               </p>
 
@@ -829,7 +829,7 @@ function Contact() {
 
               <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
                 <div>
-                  <p className="font-body text-[11px] font-semibold uppercase tracking-[0.22em] text-[#002DCC]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-[#002DCC]">
                     Start Your Enquiry
                   </p>
 
@@ -1086,7 +1086,7 @@ function Contact() {
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <div>
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
+                <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
                   Locations
                 </p>
 
@@ -1190,7 +1190,7 @@ function Contact() {
           <div className="relative mx-auto max-w-[1400px]">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
               <div>
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#057CFA]">
+                <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#057CFA]">
                   Before You Get in Touch
                 </p>
 
@@ -1249,7 +1249,7 @@ function Contact() {
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
                 Frequently Asked Questions
               </p>
 
