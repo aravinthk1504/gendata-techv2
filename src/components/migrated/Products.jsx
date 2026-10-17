@@ -707,7 +707,7 @@ function Products() {
             PRODUCT INTRODUCTION
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
               <div>
@@ -746,7 +746,7 @@ function Products() {
             PRODUCTS
         ====================================================== */}
 
-        <section ref={productsRef} id="products" className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section ref={productsRef} id="products" className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
@@ -848,7 +848,7 @@ function Products() {
             WHY OUR PRODUCTS
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
@@ -918,7 +918,7 @@ function Products() {
             PRODUCT APPROACH
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -982,7 +982,7 @@ function Products() {
             CONNECTED PRODUCT ECOSYSTEM
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
               <div>
@@ -1063,7 +1063,7 @@ function Products() {
             FAQ
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
