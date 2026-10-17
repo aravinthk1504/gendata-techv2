@@ -21,11 +21,11 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[100svh] items-start overflow-hidden lg:min-h-screen lg:items-center"
+      className="relative flex min-h-[92svh] items-start overflow-hidden lg:min-h-[88svh] lg:items-center"
     >
       <AnimatedBackground />
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:py-32">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:pb-16 lg:pt-28">
         <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
