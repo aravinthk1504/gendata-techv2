@@ -360,7 +360,7 @@ function Products() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   GenData Tech Products
                 </motion.p>
@@ -813,7 +813,7 @@ function Products() {
                       {/* CAPABILITIES */}
 
                       <div className="mt-6 border-t border-slate-100 pt-5">
-                        <p className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                           Core Capabilities
                         </p>
 
@@ -1044,7 +1044,7 @@ function Products() {
                       key={item.product}
                       className="rounded-2xl border border-slate-100 bg-[#F9FAFC] p-5"
                     >
-                      <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-[#057CFA]">
+                      <p className="font-body text-[12px] font-semibold uppercase tracking-[0.17em] text-[#057CFA]">
                         {item.label}
                       </p>
 
