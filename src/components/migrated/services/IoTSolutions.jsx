@@ -493,7 +493,7 @@ function IoTSolutions() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
                   GenData Tech develops connected IoT systems that
                   combine sensors, controllers, monitoring,
@@ -568,7 +568,7 @@ function IoTSolutions() {
 
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                     >
                       {item}
                     </span>
@@ -695,7 +695,7 @@ function IoTSolutions() {
                     IoT
                   </span>
 
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     Connected Layer
                   </span>
 
@@ -724,7 +724,7 @@ function IoTSolutions() {
                   }}
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Sensors
                   </p>
                 </motion.div>
@@ -750,7 +750,7 @@ function IoTSolutions() {
                   }}
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Automation
                   </p>
                 </motion.div>
@@ -776,7 +776,7 @@ function IoTSolutions() {
                   }}
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Monitoring
                   </p>
                 </motion.div>
@@ -1061,7 +1061,7 @@ function IoTSolutions() {
                 From physical environment to connected system.
               </h2>
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 IoT development combines device planning, sensor
                 integration, programming, connectivity and software
                 integration through one connected process.
@@ -1106,7 +1106,7 @@ function IoTSolutions() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                    <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                       {step.description}
                     </p>
 
@@ -1372,7 +1372,7 @@ function IoTSolutions() {
                     Have an IoT monitoring or automation requirement?
                   </h2>
 
-                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                     Share what needs to be monitored, connected or
                     automated. We can discuss the suitable device,
                     sensor and software direction.
