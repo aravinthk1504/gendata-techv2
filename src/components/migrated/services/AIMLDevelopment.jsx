@@ -405,7 +405,7 @@ function AIMLDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+            <div className="grid min-w-0 items-center gap-10 sm:gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
 
               {/* HERO COPY */}
 
@@ -456,7 +456,7 @@ function AIMLDevelopment() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8.3vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-[clamp(2.75rem,4vw,3.75rem)]"
                 >
                   Build intelligent systems
 
@@ -486,7 +486,7 @@ function AIMLDevelopment() {
                     duration: 0.6,
                     delay: 0.16,
                   }}
-                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 lg:mt-5"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
                 >
                   GenData Tech develops AI and machine learning
                   solutions designed around data, workflows and
