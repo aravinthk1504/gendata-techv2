@@ -226,7 +226,7 @@ function About() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-6 lg:pt-32"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-20"
         >
           {/* MAIN GLOW */}
 
@@ -299,8 +299,8 @@ function About() {
             }}
           />
 
-          <div className="relative mx-auto w-full max-w-[1400px]">
-            <div className="grid w-full min-w-0 items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[430px] lg:py-8">
+            <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
               {/* HERO COPY */}
 
               <div>
