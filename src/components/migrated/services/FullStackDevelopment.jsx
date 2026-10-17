@@ -416,7 +416,7 @@ function FullStackDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+            <div className="grid min-w-0 items-center gap-10 sm:gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
@@ -467,7 +467,7 @@ function FullStackDevelopment() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Build complete applications
 
