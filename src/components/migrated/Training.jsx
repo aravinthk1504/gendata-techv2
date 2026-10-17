@@ -695,7 +695,7 @@ function Training() {
       
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-12"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-10"
         >
           {/* MAIN GLOW */}
 
@@ -762,7 +762,7 @@ function Training() {
 
           {/* HERO CONTENT AREA */}
 
-          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[370px] lg:py-0">
+          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:py-0">
             <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
               {/* ==================================================
                       LEFT CONTENT
