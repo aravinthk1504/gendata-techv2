@@ -1066,7 +1066,7 @@ function Services() {
                   }}
                   className="group flex h-full flex-col rounded-[24px] border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-[#057CFA]/30 hover:shadow-[0_20px_50px_rgba(15,23,42,0.06)]"
                 >
-                  <p className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
                     {insight.category}
                   </p>
 
@@ -1197,7 +1197,7 @@ function Services() {
             >
               <div className="grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-end">
                 <div>
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Not Sure What You Need?
                   </p>
 
