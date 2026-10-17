@@ -8,6 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
+import InfinityVisual from "./InfinityVisual";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -30,8 +31,9 @@ function Hero({ content, lang }) {
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-10 pt-24 sm:pb-12 sm:pt-28 lg:px-10">
-        <div className="mx-auto max-w-5xl text-center">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-30 sm:pb-16 sm:pt-36 lg:px-10 lg:py-32">
+        <div className="grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          <div className="min-w-0 text-left">
           <motion.div
             initial={{ opacity: 1, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,7 +54,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.08 }}
-            className="font-heading text-5xl font-semibold leading-[1.02] tracking-[-0.045em] text-white sm:text-6xl md:text-7xl lg:text-[88px]"
+            className="max-w-3xl font-heading text-[clamp(2.25rem,8.8vw,3.5rem)] font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-6xl lg:text-[clamp(3rem,4.5vw,4.25rem)]"
           >
             {t("hero.titleLine1")}
             <span className="block bg-linear-to-r from-white via-blue-100 to-brand-accent bg-clip-text text-transparent">
@@ -64,7 +66,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18 }}
-            className="mx-auto mt-6 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg"
+            className="mt-6 max-w-xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
           >
             {t("hero.description")}
           </motion.p>
@@ -73,7 +75,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-8 sm:flex-row"
+            className="mt-8 flex flex-wrap items-center justify-start gap-3 sm:gap-4"
           >
             <Link
               href={localizedPath("/services")}
@@ -97,7 +99,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.55 }}
-            className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-4 border-t border-white/8 pt-5 sm:mt-12"
+            className="mt-9 flex max-w-xl flex-wrap items-center justify-start gap-x-5 gap-y-3 border-t border-white/8 pt-5 sm:mt-10"
           >
             {t("hero.tags", { returnObjects: true }).map(
               (item, index) => (
@@ -112,13 +114,15 @@ function Hero({ content, lang }) {
               ),
             )}
           </motion.div>
+          </div>
+          <InfinityVisual />
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="relative z-20 mt-6 hidden md:block"
+          className="relative z-20 mt-7 hidden md:block"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="font-body text-[9px] uppercase tracking-[0.3em] text-slate-200">
