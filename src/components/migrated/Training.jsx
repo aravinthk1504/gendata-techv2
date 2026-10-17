@@ -695,7 +695,7 @@ function Training() {
       
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-6"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-20"
         >
           {/* MAIN GLOW */}
 
@@ -762,7 +762,7 @@ function Training() {
 
           {/* HERO CONTENT AREA */}
 
-          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:py-0">
+          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[430px] lg:py-8">
             <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
               {/* ==================================================
                       LEFT CONTENT
@@ -892,7 +892,7 @@ function Training() {
                   duration: 0.65,
                   delay: 0.15,
                 }}
-                className="relative hidden h-[300px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
+                className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
                 <motion.div
                   className="absolute h-[295px] w-[295px] rounded-full border border-white/[0.06]"
