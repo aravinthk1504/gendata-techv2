@@ -480,7 +480,7 @@ function Contact() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
                   Tell us what you are looking to build, improve or explore.
                   We&apos;ll review your requirement and help identify the right
@@ -512,7 +512,7 @@ function Contact() {
                   className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3"
                 >
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
                       Availability
                     </p>
 
@@ -522,7 +522,7 @@ function Contact() {
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
                       Response
                     </p>
 
@@ -532,7 +532,7 @@ function Contact() {
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
                       Presence
                     </p>
 
@@ -650,7 +650,7 @@ function Contact() {
                     Connect
                   </span>
 
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     GenData Tech
                   </span>
                 </motion.div>
@@ -674,7 +674,7 @@ function Contact() {
                   }}
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Services
                   </p>
                 </motion.div>
@@ -696,7 +696,7 @@ function Contact() {
                   }}
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Products
                   </p>
                 </motion.div>
@@ -718,7 +718,7 @@ function Contact() {
                   }}
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Training
                   </p>
                 </motion.div>
@@ -1207,7 +1207,7 @@ function Contact() {
                     The Problem
                   </h3>
 
-                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                     Tell us what you are trying to solve, improve or create.
                   </p>
                 </div>
@@ -1219,7 +1219,7 @@ function Contact() {
                     Your Requirement
                   </h3>
 
-                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                     Share the functionality, users or expected outcome you
                     currently know.
                   </p>
@@ -1232,7 +1232,7 @@ function Contact() {
                     The Next Step
                   </h3>
 
-                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                     We can help identify an appropriate technology or direction
                     from there.
                   </p>
