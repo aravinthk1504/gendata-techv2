@@ -412,7 +412,7 @@ function IoTSolutions() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid min-w-0 min-h-[490px] items-center gap-10 sm:min-h-[440px] sm:gap-12 lg:min-h-[420px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
+            <div className="grid min-w-0 min-h-[500px] items-center gap-10 sm:min-h-[450px] sm:gap-12 lg:min-h-[430px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
