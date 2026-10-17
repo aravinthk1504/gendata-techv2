@@ -226,7 +226,7 @@ function About() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-10 lg:pt-32"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-6 lg:pt-32"
         >
           {/* MAIN GLOW */}
 
@@ -445,7 +445,7 @@ function About() {
                 }}
                 className="relative mx-auto w-full max-w-[470px]"
               >
-                <div className="relative flex min-h-[370px] items-center justify-center">
+                <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[340px]">
                   {/* BACKGROUND RING */}
 
                   <motion.div
