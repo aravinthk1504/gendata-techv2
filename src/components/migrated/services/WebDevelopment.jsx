@@ -410,7 +410,7 @@ function WebDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid min-w-0 min-h-[530px] items-center gap-10 sm:min-h-[465px] sm:gap-12 lg:min-h-[465px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
+            <div className="grid min-w-0 min-h-[530px] items-center gap-10 sm:min-h-[530px] sm:gap-12 lg:min-h-[465px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
