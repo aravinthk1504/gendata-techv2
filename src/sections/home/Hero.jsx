@@ -61,7 +61,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18 }}
-            className="mt-6 max-w-xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+            className="mt-6 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
           >
             {t("hero.description")}
           </motion.p>
