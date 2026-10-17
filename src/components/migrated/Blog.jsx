@@ -151,7 +151,7 @@ function Blog() {
                       : {}
                   }
                   transition={{ duration: 0.5 }}
-                  className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   GenData Tech / Insights & Events
                 </motion.p>
@@ -370,7 +370,7 @@ function Blog() {
 
                       <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
                         <div>
-                          <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                          <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                             Featured Insight
                           </p>
 
@@ -386,7 +386,7 @@ function Blog() {
 
                 <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-12">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-[#002DCC]">
+                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-[#002DCC]">
                       {featuredPost.category}
                     </span>
 
