@@ -215,7 +215,7 @@ function Footer({ lang = "en", content = {} }) {
           <div className="grid gap-10 sm:grid-cols-3">
             {Object.entries(footerLinks).map(([section, links]) => (
               <div key={section}>
-                <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-100">
+                <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-slate-100">
                   {section}
                 </p>
 
