@@ -139,7 +139,7 @@ function BlogDetails() {
                 {isEvent ? (
                   <>
                     {post.eventDate && (
-                      <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-slate-400">
+                      <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-slate-300">
                         <FiCalendar />
 
                         {post.eventDate}
@@ -147,7 +147,7 @@ function BlogDetails() {
                     )}
                   </>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-slate-400">
+                  <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-slate-300">
                     <FiClock />
 
                     {post.readTime}
@@ -174,13 +174,13 @@ function BlogDetails() {
               </motion.h1>
 
 
-              <p className="mt-6 max-w-3xl font-body text-base leading-8 text-slate-300">
+              <p className="mt-6 max-w-3xl font-body text-base leading-8 text-slate-200">
                 {post.excerpt}
               </p>
 
 
               {post.publishedDate && (
-                <p className="mt-6 font-body text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                <p className="mt-6 font-body text-[10px] uppercase tracking-[0.16em] text-slate-300">
                   Published {post.publishedDate}
                 </p>
               )}
