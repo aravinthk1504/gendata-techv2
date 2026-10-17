@@ -731,7 +731,7 @@ function Contact() {
             CONTACT WORKSPACE
         ====================================================== */}
 
-        <section className="bg-[#F4F7FB] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F4F7FB] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-10">
               {/* ==================================================
@@ -1082,7 +1082,7 @@ function Contact() {
             LOCATIONS
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <div>
@@ -1184,7 +1184,7 @@ function Contact() {
             BEFORE YOU GET IN TOUCH
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[160px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -1246,7 +1246,7 @@ function Contact() {
             FAQ
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
