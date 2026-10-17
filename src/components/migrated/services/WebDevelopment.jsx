@@ -410,7 +410,7 @@ function WebDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid min-w-0 items-center gap-10 sm:gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
+            <div className="grid min-w-0 min-h-[490px] items-center gap-10 sm:min-h-[440px] sm:gap-12 lg:min-h-[420px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
@@ -491,7 +491,7 @@ function WebDevelopment() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
                 >
                   GenData Tech develops modern, responsive and
                   performance-focused websites for businesses,
@@ -524,7 +524,7 @@ function WebDevelopment() {
 
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
+                    className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                   >
                     Discuss Your Website
 
@@ -554,7 +554,7 @@ function WebDevelopment() {
                     duration: 0.55,
                     delay: 0.22,
                   }}
-                  className="mt-6 flex flex-wrap gap-2"
+                  className="mt-6 flex flex-wrap gap-2.5"
                 >
 
                   {[
