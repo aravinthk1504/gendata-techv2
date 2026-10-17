@@ -36,7 +36,7 @@ export default async function LanguageLayout({ children, params }) {
   const dictionary = await getDictionary(lang)
 
   return (
-    <html lang={lang}>
+    <html lang={lang} data-scroll-behavior="smooth">
       <body suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable} antialiased`}>
         <CustomCursor />
         <ScrollToTop />
