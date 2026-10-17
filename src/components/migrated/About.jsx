@@ -376,7 +376,7 @@ function About() {
                     duration: 0.6,
                     delay: 0.16,
                   }}
-                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
                   GenData Tech is an AI-focused technology company building
                   intelligent systems, digital products and engineering
@@ -410,7 +410,7 @@ function About() {
                     (item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                       >
                         {item}
                       </span>
@@ -531,7 +531,7 @@ function About() {
                               {layer.label}
                             </p>
 
-                            <p className="mt-1 font-body text-[10px] text-slate-500">
+                            <p className="mt-1 font-body text-[10px] text-slate-300">
                               {layer.sub}
                             </p>
                           </div>
@@ -723,7 +723,7 @@ function About() {
                   Build intelligence that works in the real world.
                 </h3>
 
-                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
+                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
                   Our mission is to build practical intelligent systems and
                   digital products that solve real problems through AI,
                   automation and strong engineering.
@@ -760,7 +760,7 @@ function About() {
                   Grow into a trusted AI-focused technology company.
                 </h3>
 
-                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
+                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
                   Our vision is to establish GenData Tech as a technology
                   company known for useful, scalable and thoughtfully engineered
                   AI-driven solutions.
@@ -915,7 +915,7 @@ function About() {
                 From problem to working system.
               </h2>
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 Technology starts with understanding the problem. Our approach
                 keeps each stage connected from discovery through continuous
                 improvement.
@@ -1085,7 +1085,7 @@ function About() {
                     Building something that needs intelligence?
                   </h2>
 
-                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                     Talk to us about AI, automation, digital products or
                     engineering solutions.
                   </p>
