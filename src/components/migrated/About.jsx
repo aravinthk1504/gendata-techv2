@@ -1029,7 +1029,7 @@ function About() {
 
                           <span className="h-1 w-1 rounded-full bg-slate-300" />
 
-                          <span className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
+                          <span className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
                             {item.label}
                           </span>
                         </div>
@@ -1077,7 +1077,7 @@ function About() {
 
               <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Build With GenData Tech
                   </p>
 
