@@ -2,7 +2,8 @@
 
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import Script from "next/script"
 
 import {
   motion,
@@ -41,6 +42,33 @@ function AIMLDevelopment() {
   const heroShouldAnimate =
     heroInView && !reduceMotion
 
+  // Keep the trial isolated to the desktop hero. The existing graphic is the
+  // fallback if the scene is loading, unavailable, or motion is reduced.
+  const splineViewerRef = useRef(null)
+  const [splineDesktop, setSplineDesktop] = useState(false)
+  const [splineReady, setSplineReady] = useState(false)
+  const showSplineTrial = splineDesktop && heroInView && !reduceMotion
+  const animateOriginalHeroVisual = heroShouldAnimate && !splineReady
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)")
+    const sync = () => setSplineDesktop(media.matches)
+    sync()
+    media.addEventListener("change", sync)
+    return () => media.removeEventListener("change", sync)
+  }, [])
+
+  useEffect(() => {
+    if (!showSplineTrial) setSplineReady(false)
+  }, [showSplineTrial])
+
+  useEffect(() => {
+    if (!showSplineTrial || !splineViewerRef.current) return
+    const viewer = splineViewerRef.current
+    const handleLoad = () => setSplineReady(true)
+    viewer.addEventListener("load", handleLoad)
+    return () => viewer.removeEventListener("load", handleLoad)
+  }, [showSplineTrial])
 
   /* ======================================================
       FAQ
@@ -598,13 +626,18 @@ function AIMLDevelopment() {
                 }}
                 className="relative mx-auto hidden h-[420px] w-full max-w-[480px] items-center justify-center lg:flex"
               >
-
+                <div
+                  className={`relative flex h-full w-full items-center justify-center transition-opacity duration-500 ${
+                    splineReady ? "pointer-events-none opacity-0" : "opacity-100"
+                  }`}
+                  aria-hidden={splineReady}
+                >
                 {/* OUTER RING */}
 
                 <motion.div
                   className="absolute h-[350px] w-[350px] rounded-full border border-white/[0.06]"
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           rotate: 360,
                         }
@@ -613,7 +646,7 @@ function AIMLDevelopment() {
                         }
                   }
                   transition={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           duration: 35,
                           repeat: Infinity,
@@ -633,7 +666,7 @@ function AIMLDevelopment() {
                 <motion.div
                   className="absolute h-[250px] w-[250px] rounded-full border border-[#057CFA]/15"
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           rotate: -360,
                         }
@@ -642,7 +675,7 @@ function AIMLDevelopment() {
                         }
                   }
                   transition={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           duration: 26,
                           repeat: Infinity,
@@ -661,7 +694,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           scale: [1, 1.04, 1],
                         }
@@ -670,7 +703,7 @@ function AIMLDevelopment() {
                         }
                   }
                   transition={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           duration: 3,
                           repeat: Infinity,
@@ -700,7 +733,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           y: [0, -7, 0],
                         }
@@ -711,7 +744,7 @@ function AIMLDevelopment() {
                   transition={{
                     duration: 4,
                     repeat:
-                      heroShouldAnimate
+                      animateOriginalHeroVisual
                         ? Infinity
                         : 0,
                     ease: "easeInOut",
@@ -726,7 +759,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           x: [0, 6, 0],
                         }
@@ -737,7 +770,7 @@ function AIMLDevelopment() {
                   transition={{
                     duration: 4.8,
                     repeat:
-                      heroShouldAnimate
+                      animateOriginalHeroVisual
                         ? Infinity
                         : 0,
                     ease: "easeInOut",
@@ -752,7 +785,7 @@ function AIMLDevelopment() {
 
                 <motion.div
                   animate={
-                    heroShouldAnimate
+                    animateOriginalHeroVisual
                       ? {
                           y: [0, 7, 0],
                         }
@@ -763,7 +796,7 @@ function AIMLDevelopment() {
                   transition={{
                     duration: 5,
                     repeat:
-                      heroShouldAnimate
+                      animateOriginalHeroVisual
                         ? Infinity
                         : 0,
                     ease: "easeInOut",
@@ -775,6 +808,31 @@ function AIMLDevelopment() {
                   </p>
                 </motion.div>
 
+                </div>
+
+                {showSplineTrial && (
+                  <>
+                    <Script
+                      src="https://cdn.spline.design/@splinetool/viewer@2.0.75/build/spline-viewer.js"
+                      type="module"
+                      strategy="afterInteractive"
+                    />
+                    <div
+                      className={`absolute inset-0 z-20 transition-opacity duration-500 ${
+                        splineReady ? "opacity-100" : "pointer-events-none opacity-0"
+                      }`}
+                    >
+                      <spline-viewer
+                        ref={splineViewerRef}
+                        url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"
+                        background="#030b18"
+                        loading="auto"
+                        unloadable="true"
+                        className="block h-full w-full"
+                      />
+                    </div>
+                  </>
+                )}
               </motion.div>
 
             </div>
