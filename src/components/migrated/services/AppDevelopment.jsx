@@ -795,7 +795,7 @@ function AppDevelopment() {
             SERVICE OVERVIEW
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -848,7 +848,7 @@ function AppDevelopment() {
             WHAT WE OFFER
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -927,7 +927,7 @@ function AppDevelopment() {
         ====================================================== */}
 
         {/*
-        <section className="bg-white px-6 py-20 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -944,7 +944,7 @@ function AppDevelopment() {
             TECHNOLOGY STACK
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1045,7 +1045,7 @@ function AppDevelopment() {
             DEVELOPMENT PROCESS
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
@@ -1129,7 +1129,7 @@ function AppDevelopment() {
             WHY GENDATA TECH
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1222,7 +1222,7 @@ function AppDevelopment() {
             FAQ
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1336,7 +1336,7 @@ function AppDevelopment() {
             FINAL CTA
         ====================================================== */}
 
-        <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-24">
+        <section className="bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
