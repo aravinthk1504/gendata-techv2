@@ -123,7 +123,7 @@ function IntelligenceProcess({ content, lang }) {
               className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
             >
               {t("process.titleLine1")}
-              <span className="block text-slate-400">
+              <span className="block text-slate-300">
                 {t("process.titleLine2")}
               </span>
             </motion.h2>
@@ -207,7 +207,7 @@ function IntelligenceProcess({ content, lang }) {
                 <p className="font-heading text-sm font-semibold text-white">
                   {t("process.systemTitle")}
                 </p>
-                <p className="mt-1 font-body text-xs text-slate-400">
+                <p className="mt-1 font-body text-xs text-slate-200">
                   {t("process.systemSubtitle")}
                 </p>
               </div>
