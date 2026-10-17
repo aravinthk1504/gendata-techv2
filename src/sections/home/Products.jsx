@@ -283,7 +283,7 @@ function Products({ content, lang }) {
           <div className="relative grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-14">
             <div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:text-[10px] sm:tracking-[0.2em]">
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:tracking-[0.2em]">
                   {t("products.lms.label")}
                 </span>
               </div>
