@@ -1,24 +1,36 @@
 "use client"
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { homeText, localizedHref } from "../../lib/homeText";
 
 
 
+
+/**
+ * Each diagram animates only while its own card is in view. Reduced-motion
+ * visitors see the complete, static diagram, including every connector.
+ */
+function useCardMotion() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { margin: "0px 0px -5% 0px" });
+  const reduceMotion = useReducedMotion();
+  return { ref, active: inView && !reduceMotion };
+}
+
 /**
  * Static gray connectors on mobile, like the IoT diagram.
  * Only desktop screens use the moving blue highlight.
  */
-function FlowLine({ vertical = false, className = "" }) {
-  const reduceMotion = useReducedMotion();
+function FlowLine({ vertical = false, className = "", active = false }) {
 
   return (
     <div
       aria-hidden="true"
       className={`pointer-events-none relative shrink-0 overflow-hidden bg-slate-300 ${vertical ? "w-[2px]" : "h-[2px]"} ${className}`}
     >
-      {!reduceMotion && (
+      {active && (
         <motion.span
           className={`absolute hidden rounded-full bg-brand-accent shadow-[0_0_10px_rgba(5,124,250,0.65)] lg:block ${vertical ? "left-0 top-0 h-1/2 w-full" : "left-0 top-0 h-full w-1/2"}`}
           initial={false}
@@ -30,7 +42,8 @@ function FlowLine({ vertical = false, className = "" }) {
   );
 }
 
-function FullStackVisual() {
+function FullStackVisual({ desktop }) {
+  const { ref, active } = useCardMotion();
   const layers = [
     { name: "Frontend", sub: "UI / Web" },
     { name: "API", sub: "Integration" },
@@ -39,7 +52,7 @@ function FullStackVisual() {
   ];
 
   return (
-    <div className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
+    <div ref={ref} className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/60 blur-[70px] lg:h-60 lg:w-60 lg:bg-blue-100/70 lg:blur-[80px]" />
 
       {/* Mobile/tablet: aligned gray connectors between each pair of cards. */}
@@ -102,7 +115,7 @@ function FullStackVisual() {
             </motion.div>
 
             {index !== layers.length - 1 && (
-              <FlowLine className="w-8" />
+              <FlowLine className="w-8" active={desktop && active} />
             )}
           </div>
         ))}
@@ -111,20 +124,21 @@ function FullStackVisual() {
   );
 }
 
-function SoftwareVisual() {
+function SoftwareVisual({ desktop }) {
+  const { ref, active } = useCardMotion();
   const modules = ["Module A", "Module B", "Module C"];
 
   return (
-    <div className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
+    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
       <div className="relative z-10 flex w-16 shrink-0 flex-col gap-3 sm:w-20">
         {modules.map((module, index) => (
           <motion.div
             key={module}
-            animate={{ x: [0, 4, 0] }}
+            animate={active ? { x: [0, 4, 0] } : { x: 0 }}
             transition={{
               duration: 3,
               delay: index * 0.35,
-              repeat: Infinity,
+              repeat: active ? Infinity : 0,
               ease: "easeInOut",
             }}
             className="flex h-10 w-full items-center justify-center rounded-lg border border-slate-200 bg-white font-body text-[7px] font-semibold uppercase tracking-[0.06em] text-slate-500 shadow-sm sm:h-9 sm:text-[8px]"
@@ -134,11 +148,11 @@ function SoftwareVisual() {
         ))}
       </div>
 
-      <FlowLine className="min-w-0 flex-1" />
+      <FlowLine className="min-w-0 flex-1" active={desktop && active} />
 
       <motion.div
-        animate={{ scale: [1, 1.04, 1] }}
-        transition={{ duration: 3, repeat: Infinity }}
+        animate={active ? { scale: [1, 1.04, 1] } : { scale: 1 }}
+        transition={{ duration: 3, repeat: active ? Infinity : 0 }}
         className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_15px_40px_rgba(0,45,204,0.18)] sm:h-20 sm:w-20"
       >
         <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
@@ -146,7 +160,7 @@ function SoftwareVisual() {
         </span>
       </motion.div>
 
-      <FlowLine className="min-w-0 flex-1" />
+      <FlowLine className="min-w-0 flex-1" active={desktop && active} />
 
       <div className="relative z-10 flex h-16 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
         <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">
@@ -157,12 +171,13 @@ function SoftwareVisual() {
   );
 }
 
-function AppVisual() {
+function AppVisual({ desktop }) {
+  const { ref, active } = useCardMotion();
   return (
-    <div className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
+    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
       <motion.div
-        animate={{ y: [0, 5, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        animate={active ? { y: [0, 5, 0] } : { y: 0 }}
+        transition={{ duration: 4, repeat: active ? Infinity : 0, ease: "easeInOut" }}
         className="relative z-10 flex h-28 w-14 shrink-0 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:h-27 sm:w-17"
       >
         <div className="text-center">
@@ -173,17 +188,11 @@ function AppVisual() {
         </div>
       </motion.div>
 
-      <FlowLine className="min-w-0 flex-1" />
+      <FlowLine className="min-w-0 flex-1" active={desktop && active} />
 
       <motion.div
-        animate={{
-          boxShadow: [
-            "0 0 0 rgba(5,124,250,0)",
-            "0 0 30px rgba(5,124,250,0.18)",
-            "0 0 0 rgba(5,124,250,0)",
-          ],
-        }}
-        transition={{ duration: 3, repeat: Infinity }}
+        animate={active ? { scale: [1, 1.035, 1] } : { scale: 1 }}
+        transition={{ duration: 3, repeat: active ? Infinity : 0 }}
         className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-brand-primary to-brand-accent sm:h-20 sm:w-20"
       >
         <span className="text-center font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-white">
@@ -193,14 +202,14 @@ function AppVisual() {
         </span>
       </motion.div>
 
-      <FlowLine className="min-w-0 flex-1" />
+      <FlowLine className="min-w-0 flex-1" active={desktop && active} />
 
       <motion.div
-        animate={{ y: [0, -5, 0] }}
+        animate={active ? { y: [0, -5, 0] } : { y: 0 }}
         transition={{
           duration: 4,
           delay: 0.5,
-          repeat: Infinity,
+          repeat: active ? Infinity : 0,
           ease: "easeInOut",
         }}
         className="relative z-10 flex h-28 w-14 shrink-0 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:h-27 sm:w-17"
@@ -216,7 +225,8 @@ function AppVisual() {
   );
 }
 
-function IoTVisual() {
+function IoTVisual({ desktop }) {
+  const { ref, active } = useCardMotion();
   const items = [
     { title: "Sensor", label: "Input" },
     { title: "Device", label: "Edge" },
@@ -225,7 +235,7 @@ function IoTVisual() {
   ];
 
   return (
-    <div className="relative mt-8 flex min-h-64 items-center justify-center overflow-hidden sm:mt-2 sm:min-h-65">
+    <div ref={ref} className="relative mt-8 flex min-h-64 items-center justify-center overflow-hidden sm:mt-2 sm:min-h-65">
       <div className="absolute h-55 w-55 rounded-full bg-blue-100/60 blur-[80px]" />
 
       <div className="relative z-10 grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-10 px-1 sm:flex sm:max-w-lg sm:items-center sm:justify-center sm:gap-0 sm:px-0">
@@ -250,8 +260,8 @@ function IoTVisual() {
             className="relative flex items-center justify-center sm:justify-start"
           >
             <motion.div
-              animate={index === 3 ? { scale: [1, 1.07, 1] } : {}}
-              transition={{ duration: 3, repeat: Infinity }}
+              animate={index === 3 && active ? { scale: [1, 1.07, 1] } : { scale: 1 }}
+              transition={{ duration: 3, repeat: active && index === 3 ? Infinity : 0 }}
               className={`flex h-24 w-24 flex-col items-center justify-center rounded-full border sm:h-20 sm:w-20 ${
                 index === 3
                   ? "border-brand-accent bg-brand-primary text-white shadow-[0_12px_35px_rgba(0,45,204,0.2)]"
@@ -269,7 +279,7 @@ function IoTVisual() {
             </motion.div>
 
             {index !== items.length - 1 && (
-              <FlowLine className="hidden sm:block sm:w-9" />
+              <FlowLine className="hidden sm:block sm:w-9" active={desktop && active} />
             )}
           </div>
         ))}
@@ -279,6 +289,16 @@ function IoTVisual() {
 }
 
 function TechnologyServices({ content, lang }) {
+  // Avoid running invisible desktop-only line animations on real touchscreens.
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktop(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+
   const t = (key, variables) => homeText(content, key, variables);
   const localizedPath = (path) => localizedHref(lang, path);
 
@@ -369,7 +389,7 @@ function TechnologyServices({ content, lang }) {
                   </span>
                 </Link>
               </div>
-              <FullStackVisual />
+              <FullStackVisual desktop={desktop} />
               <Link
                 href={localizedPath("/services")}
                 className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
@@ -398,7 +418,7 @@ function TechnologyServices({ content, lang }) {
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
               {t("technology.software.description")}
             </p>
-            <SoftwareVisual />
+            <SoftwareVisual desktop={desktop} />
             <Link
               href={localizedPath("/services")}
               className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
@@ -426,7 +446,7 @@ function TechnologyServices({ content, lang }) {
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
               {t("technology.app.description")}
             </p>
-            <AppVisual />
+            <AppVisual desktop={desktop} />
             <Link
               href={localizedPath("/services")}
               className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
@@ -476,7 +496,7 @@ function TechnologyServices({ content, lang }) {
                   </span>
                 </Link>
               </div>
-              <IoTVisual />
+              <IoTVisual desktop={desktop} />
               <Link
                 href={localizedPath("/services")}
                 className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
