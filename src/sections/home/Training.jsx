@@ -16,7 +16,7 @@ function Training({ content, lang }) {
   return (
     <section
       id="training"
-      className="relative overflow-hidden bg-[#F7F9FC] px-6 py-28 lg:px-10 lg:py-36"
+      className="relative overflow-hidden bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24"
     >
       {/* =========================================
           BACKGROUND
