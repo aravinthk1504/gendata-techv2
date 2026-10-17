@@ -263,7 +263,7 @@ function Products() {
 
        <section
   ref={heroRef}
-  className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
+  className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-20"
 >
           {/* MAIN GLOW */}
 
@@ -336,11 +336,11 @@ function Products() {
             }}
           />
 
-        <div className="relative mx-auto flex min-h-[570px] w-full max-w-[1400px] items-center py-10 lg:min-h-[610px] lg:py-8">
-            <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[430px] lg:py-8">
+            <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
               {/* HERO COPY */}
 
-              <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
+              <div className="min-w-0 w-full max-w-3xl text-left lg:max-w-none">
                 <motion.p
                   initial={{
                     opacity: 1,
@@ -385,7 +385,7 @@ function Products() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Digital products built
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
@@ -413,7 +413,7 @@ function Products() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mx-auto mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base lg:mx-0"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base"
                 >
                   GenData Tech develops digital products that bring information,
                   users and workflows together through structured software
@@ -440,7 +440,7 @@ function Products() {
                     duration: 0.55,
                     delay: 0.22,
                   }}
-                  className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start"
+                  className="mt-6 flex flex-wrap justify-start gap-2"
                 >
                   {["LMS", "CRM", "ERP", "Billing"].map((item) => (
                     <span
@@ -472,7 +472,7 @@ function Products() {
                     duration: 0.55,
                     delay: 0.28,
                   }}
-                  className="mt-6 flex justify-center lg:justify-start"
+                  className="mt-6 flex justify-start"
                 >
                   <button
                     type="button"
