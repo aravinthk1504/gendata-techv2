@@ -435,7 +435,7 @@ function WebDevelopment() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   Web Development
                 </motion.p>
@@ -1352,7 +1352,7 @@ function WebDevelopment() {
 
                 <div>
 
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Build Your Website
                   </p>
 
