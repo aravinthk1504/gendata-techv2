@@ -90,7 +90,7 @@ function BlogDetails() {
             ARTICLE / EVENT HERO
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-14 sm:pt-32 sm:pb-16 lg:px-10">
 
           <div className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]" />
 
@@ -168,7 +168,7 @@ function BlogDetails() {
                 transition={{
                   duration: 0.6,
                 }}
-                className="mt-6 max-w-4xl font-heading text-4xl font-semibold leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
+                className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
               >
                 {post.title}
               </motion.h1>
