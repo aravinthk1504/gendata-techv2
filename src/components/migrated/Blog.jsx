@@ -189,7 +189,7 @@ function Blog() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-300 sm:text-base"
+                  className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
                   Explore technical articles, practical ideas,
                   lectures, workshops and events from GenData Tech
@@ -275,7 +275,7 @@ function Blog() {
                   <span className="mt-3 font-heading text-sm font-semibold text-white">
                     Ideas
                   </span>
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     Learn • Share
                   </span>
                 </div>
@@ -302,7 +302,7 @@ function Blog() {
                     key={item.label}
                     className={`absolute ${item.className} rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm`}
                   >
-                    <span className="font-body text-[9px] font-semibold text-slate-300">
+                    <span className="font-body text-[9px] font-semibold text-slate-200">
                       {item.label}
                     </span>
                   </div>
