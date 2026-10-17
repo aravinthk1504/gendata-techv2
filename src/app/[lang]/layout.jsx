@@ -37,7 +37,7 @@ export default async function LanguageLayout({ children, params }) {
 
   return (
     <html lang={lang}>
-      <body className={`${poppins.variable} ${montserrat.variable} antialiased`}>
+      <body suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable} antialiased`}>
         <CustomCursor />
         <ScrollToTop />
         <Navbar lang={lang} navigation={dictionary.nav} />
