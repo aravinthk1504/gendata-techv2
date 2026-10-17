@@ -456,7 +456,7 @@ function AIMLDevelopment() {
                     duration: 0.65,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8.3vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-[clamp(2.75rem,4vw,3.75rem)]"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Build intelligent systems
 
