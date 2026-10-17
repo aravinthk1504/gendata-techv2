@@ -82,7 +82,7 @@ function Blog() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-10"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-6"
         >
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
@@ -234,7 +234,7 @@ function Blog() {
                   duration: 0.65,
                   delay: 0.15,
                 }}
-                className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
+                className="relative hidden h-[300px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
                 <motion.div
                   className="absolute h-[295px] w-[295px] rounded-full border border-white/[0.06]"
