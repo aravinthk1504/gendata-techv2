@@ -554,7 +554,7 @@ function BlogDetails() {
         ====================================================== */}
 
         {relatedPosts.length > 0 && (
-          <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+          <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
             <div className="mx-auto w-full max-w-[1400px]">
 
