@@ -40,7 +40,7 @@ function Hero({ content, lang }) {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent" />
             </span>
 
-            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.24em] text-blue-100">
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-blue-100">
               {t("hero.eyebrow")}
             </span>
           </motion.div>
