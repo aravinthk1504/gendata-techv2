@@ -143,7 +143,7 @@ function FinalCTA({ content, lang }) {
               className="mt-7 max-w-4xl font-heading text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
             >
               {t("finalCta.titleLine1")}
-              <span className="block text-slate-400">{t("finalCta.titleLine2")}</span>
+              <span className="block text-slate-300">{t("finalCta.titleLine2")}</span>
             </motion.h2>
 
             <motion.p
@@ -231,7 +231,7 @@ function FinalCTA({ content, lang }) {
               {t("finalCta.tags", { returnObjects: true }).map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-brand-accent" />
-                  <span className="font-body text-[12px] font-medium uppercase tracking-[0.12em] text-slate-400">
+                  <span className="font-body text-[12px] font-medium uppercase tracking-[0.12em] text-slate-300">
                     {item}
                   </span>
                 </div>
