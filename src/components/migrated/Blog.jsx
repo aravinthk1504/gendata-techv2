@@ -82,7 +82,7 @@ function Blog() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-[88px] lg:px-10"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-20"
         >
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
@@ -139,8 +139,8 @@ function Blog() {
             }}
           />
 
-          <div className="relative mx-auto flex min-h-[570px] w-full max-w-[1400px] items-center py-10 lg:min-h-[610px] lg:py-8">
-            <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[430px] lg:py-8">
+            <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
 
               <div className="max-w-[690px]">
                 <motion.p
@@ -168,7 +168,7 @@ function Blog() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-[690px] font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Insights that inform.
 
