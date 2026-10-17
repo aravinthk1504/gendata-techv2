@@ -124,7 +124,7 @@ function Training({ content, lang }) {
                 {/* TITLE */}
 
                 <div>
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-primary">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-brand-primary">
                     {program.category}
                   </p>
 
