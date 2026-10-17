@@ -1402,7 +1402,7 @@ function FullStackDevelopment() {
 
                 <div>
 
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Build a Full Stack Application
                   </p>
 
