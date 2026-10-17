@@ -483,7 +483,7 @@ function Services() {
                     duration: 0.6,
                     delay: 0.16,
                   }}
-                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+                  className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
                   GenData Tech combines artificial intelligence, software
                   engineering, web, mobile and IoT technologies to build
@@ -516,7 +516,7 @@ function Services() {
                     (item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[12px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[12px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                       >
                         {item}
                       </span>
@@ -662,7 +662,7 @@ function Services() {
                   }}
                   className="absolute right-0 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[12px] font-semibold text-slate-300">
+                  <p className="font-body text-[12px] font-semibold text-slate-200">
                     AI / ML
                   </p>
                 </motion.div>
@@ -686,7 +686,7 @@ function Services() {
                   }}
                   className="absolute bottom-16 left-0 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[12px] font-semibold text-slate-300">
+                  <p className="font-body text-[12px] font-semibold text-slate-200">
                     Software
                   </p>
                 </motion.div>
@@ -710,7 +710,7 @@ function Services() {
                   }}
                   className="absolute bottom-6 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[12px] font-semibold text-slate-300">
+                  <p className="font-body text-[12px] font-semibold text-slate-200">
                     IoT
                   </p>
                 </motion.div>
@@ -845,7 +845,7 @@ function Services() {
                   Technology should create a useful outcome.
                 </h2>
 
-                <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-300">
+                <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-200">
                   The technology may change, but our focus remains on what the
                   system needs to achieve.
                 </p>
@@ -882,7 +882,7 @@ function Services() {
                           {outcome.title}
                         </h3>
 
-                        <p className="mt-2 font-body text-xs leading-6 text-slate-300">
+                        <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                           {outcome.description}
                         </p>
                       </div>
@@ -1206,7 +1206,7 @@ function Services() {
                     direction.
                   </h2>
 
-                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                     You don&apos;t need to know the exact technology before
                     contacting us. Share the requirement and we can discuss the
                     most suitable technical approach.
@@ -1225,7 +1225,7 @@ function Services() {
                     ].map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[10px] font-semibold text-slate-300"
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[10px] font-semibold text-slate-200"
                       >
                         {item}
                       </span>
