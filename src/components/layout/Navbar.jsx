@@ -40,7 +40,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
 
   return (
     <header
-      className="absolute inset-x-0 top-0 z-[100] w-full"
+      className="fixed inset-x-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030b18]/95 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-xl"
     >
       <nav
         aria-label="Main navigation"
