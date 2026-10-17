@@ -1017,7 +1017,7 @@ function Training() {
         <section
           ref={trainingProgramsRef}
           id="training-programs"
-          className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28"
+          className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24"
         >
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
@@ -1335,7 +1335,7 @@ function Training() {
             WHAT LEARNERS GAIN
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
@@ -1405,7 +1405,7 @@ function Training() {
             WHO IT'S FOR
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
@@ -1484,7 +1484,7 @@ function Training() {
             TRAINING PROCESS
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
           <div className="relative mx-auto max-w-[1400px]">
@@ -1548,7 +1548,7 @@ function Training() {
             FAQ
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
