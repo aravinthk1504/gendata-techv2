@@ -257,7 +257,7 @@ function AICapabilities({ content, lang }) {
               className="mt-5 max-w-3xl font-heading text-4xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
             >
               {t("aiCapabilities.titleLine1")}
-              <span className="block text-slate-400">
+              <span className="block text-slate-300">
                 {t("aiCapabilities.titleLine2")}
               </span>
             </motion.h2>
@@ -290,7 +290,7 @@ function AICapabilities({ content, lang }) {
               <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
                 {t("aiCapabilities.models.title")}
               </h3>
-              <p className="mt-4 max-w-xl font-body text-sm leading-7 text-slate-300">
+              <p className="mt-4 max-w-xl font-body text-sm leading-7 text-slate-200">
                 {t("aiCapabilities.models.description")}
               </p>
               <ModelVisual />
@@ -311,7 +311,7 @@ function AICapabilities({ content, lang }) {
             <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
               {t("aiCapabilities.agents.title")}
             </h3>
-            <p className="mt-4 font-body text-sm leading-7 text-slate-300">
+            <p className="mt-4 font-body text-sm leading-7 text-slate-200">
               {t("aiCapabilities.agents.description")}
             </p>
             <AgentVisual shouldAnimate={shouldAnimate} />
@@ -331,7 +331,7 @@ function AICapabilities({ content, lang }) {
             <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
               {t("aiCapabilities.automation.title")}
             </h3>
-            <p className="mt-4 font-body text-sm leading-7 text-slate-300">
+            <p className="mt-4 font-body text-sm leading-7 text-slate-200">
               {t("aiCapabilities.automation.description")}
             </p>
             <AutomationVisual shouldAnimate={shouldAnimate} content={content} />
@@ -353,7 +353,7 @@ function AICapabilities({ content, lang }) {
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
                   {t("aiCapabilities.custom.title")}
                 </h3>
-                <p className="mt-4 font-body text-sm leading-7 text-slate-300">
+                <p className="mt-4 font-body text-sm leading-7 text-slate-200">
                   {t("aiCapabilities.custom.description")}
                 </p>
               </div>
