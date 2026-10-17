@@ -82,7 +82,7 @@ function Blog() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:px-10 lg:pt-32 lg:pb-20"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-24 sm:pt-36 sm:pb-28 lg:px-10 lg:pt-32 lg:pb-20"
         >
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
