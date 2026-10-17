@@ -832,7 +832,7 @@ function Training() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-300 sm:text-base"
+                  className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
                   Practical technology training designed to help learners
                   understand concepts, work with modern tools and apply their
@@ -935,7 +935,7 @@ function Training() {
                     Learn
                   </span>
 
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     Build • Apply
                   </span>
                 </div>
@@ -962,7 +962,7 @@ function Training() {
                     key={item.label}
                     className={`absolute ${item.className} rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm`}
                   >
-                    <span className="font-body text-[9px] font-semibold text-slate-300">
+                    <span className="font-body text-[9px] font-semibold text-slate-200">
                       {item.label}
                     </span>
                   </div>
@@ -1497,7 +1497,7 @@ function Training() {
                 Understand. Practice. Build. Apply.
               </h2>
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 Our training approach follows a progressive path from
                 understanding concepts to applying them practically.
               </p>
@@ -1534,7 +1534,7 @@ function Training() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                    <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                       {step.description}
                     </p>
                   </motion.div>
