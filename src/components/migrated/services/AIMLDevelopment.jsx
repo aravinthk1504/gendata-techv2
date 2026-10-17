@@ -65,9 +65,15 @@ function AIMLDevelopment() {
   useEffect(() => {
     if (!showSplineTrial || !splineViewerRef.current) return
     const viewer = splineViewerRef.current
-    const handleLoad = () => setSplineReady(true)
-    viewer.addEventListener("load", handleLoad)
-    return () => viewer.removeEventListener("load", handleLoad)
+    // Spline's web component dispatches "load-complete", not "load".
+    const handleLoadComplete = () => setSplineReady(true)
+    const handleContextLoss = () => setSplineReady(false)
+    viewer.addEventListener("load-complete", handleLoadComplete)
+    viewer.addEventListener("context-loss", handleContextLoss)
+    return () => {
+      viewer.removeEventListener("load-complete", handleLoadComplete)
+      viewer.removeEventListener("context-loss", handleContextLoss)
+    }
   }, [showSplineTrial])
 
   /* ======================================================
@@ -632,6 +638,12 @@ function AIMLDevelopment() {
                   }`}
                   aria-hidden={splineReady}
                 >
+                {showSplineTrial && !splineReady && (
+                  <span className="pointer-events-none absolute bottom-0 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-[#06152c]/80 px-3 py-1.5 font-body text-[11px] text-slate-200">
+                    Loading interactive 3D preview…
+                  </span>
+                )}
+
                 {/* OUTER RING */}
 
                 <motion.div
@@ -826,8 +838,8 @@ function AIMLDevelopment() {
                         ref={splineViewerRef}
                         url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"
                         background="#030b18"
-                        loading="auto"
-                        unloadable="true"
+                        loading="eager"
+                        unloadable="false"
                         className="block h-full w-full"
                       />
                     </div>
