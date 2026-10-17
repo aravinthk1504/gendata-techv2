@@ -413,7 +413,7 @@ function Products() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
                   GenData Tech develops digital products that bring information,
                   users and workflows together through structured software
@@ -445,7 +445,7 @@ function Products() {
                   {["LMS", "CRM", "ERP", "Billing"].map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                     >
                       {item}
                     </span>
@@ -598,7 +598,7 @@ function Products() {
                     Products
                   </span>
 
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     GenData Tech
                   </span>
                 </motion.div>
@@ -622,7 +622,7 @@ function Products() {
                   }}
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     LMS
                   </p>
                 </motion.div>
@@ -646,7 +646,7 @@ function Products() {
                   }}
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     CRM
                   </p>
                 </motion.div>
@@ -670,7 +670,7 @@ function Products() {
                   }}
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     ERP
                   </p>
                 </motion.div>
@@ -694,7 +694,7 @@ function Products() {
                   }}
                   className="absolute left-5 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Billing
                   </p>
                 </motion.div>
@@ -931,7 +931,7 @@ function Products() {
                 From user need to structured digital product.
               </h2>
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 Product development connects requirements, architecture, user
                 experience and engineering through one continuous process.
               </p>
@@ -968,7 +968,7 @@ function Products() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                    <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                       {step.description}
                     </p>
                   </motion.div>
