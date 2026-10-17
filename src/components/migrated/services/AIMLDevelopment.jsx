@@ -789,7 +789,7 @@ function AIMLDevelopment() {
             SERVICE OVERVIEW
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -845,7 +845,7 @@ function AIMLDevelopment() {
             WHAT WE OFFER
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -927,7 +927,7 @@ function AIMLDevelopment() {
         ====================================================== */}
 
         {/*
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -950,7 +950,7 @@ function AIMLDevelopment() {
             TECHNOLOGY STACK
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1054,7 +1054,7 @@ function AIMLDevelopment() {
             DEVELOPMENT PROCESS
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
@@ -1142,7 +1142,7 @@ function AIMLDevelopment() {
             WHY GENDATA TECH
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1239,7 +1239,7 @@ function AIMLDevelopment() {
             FAQ
         ====================================================== */}
 
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
@@ -1356,7 +1356,7 @@ function AIMLDevelopment() {
             FINAL CTA
         ====================================================== */}
 
-        <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
 
           <div className="mx-auto max-w-[1400px]">
 
