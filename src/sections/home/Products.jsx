@@ -230,7 +230,7 @@ function Products({ content, lang }) {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-36"
+      className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24"
     >
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-blue-50 blur-[140px]" />
 
