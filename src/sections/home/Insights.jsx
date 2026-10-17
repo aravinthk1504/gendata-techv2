@@ -66,7 +66,7 @@ function Insights({ content, lang }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-28 lg:px-10 lg:py-36">
+    <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-blue-50 blur-[150px]" />
       <div className="relative mx-auto max-w-350">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
