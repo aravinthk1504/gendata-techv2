@@ -330,7 +330,7 @@ function Contact() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-20 lg:pt-32"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-12 lg:pt-32"
         >
           {/* MAIN GLOW */}
 
@@ -403,8 +403,8 @@ function Contact() {
             }}
           />
 
-          <div className="relative mx-auto max-w-[1400px]">
-            <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative mx-auto max-w-[1400px] lg:flex lg:min-h-[370px] lg:items-center">
+            <div className="grid w-full min-w-0 items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
               {/* HERO COPY */}
 
               <div>
