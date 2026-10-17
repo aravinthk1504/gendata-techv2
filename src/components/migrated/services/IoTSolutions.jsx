@@ -333,7 +333,7 @@ function IoTSolutions() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-16 pt-28 sm:pb-20 sm:pt-32 lg:px-10 lg:pb-28 lg:pt-28"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-20 lg:pt-32"
         >
 
           {/* MAIN GLOW */}
@@ -412,7 +412,7 @@ function IoTSolutions() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="grid min-w-0 items-center gap-10 sm:gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
@@ -463,7 +463,7 @@ function IoTSolutions() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-4 max-w-4xl font-heading text-4xl font-semibold leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   Connect devices, data
 
