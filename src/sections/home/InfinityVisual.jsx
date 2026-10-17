@@ -71,7 +71,7 @@ export default function InfinityVisual() {
         )}
       </svg>
 
-      <div className="pointer-events-none -mt-7 flex items-center justify-center gap-3 text-center sm:-mt-10">
+      <div className="pointer-events-none -mt-7 hidden items-center justify-center gap-3 text-center sm:-mt-10 lg:flex">
         <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#057CFA]/60" />
         <span className="font-body text-[9px] font-semibold uppercase tracking-[0.22em] text-blue-200/75 sm:text-[10px]">
           Infinite Intelligence
