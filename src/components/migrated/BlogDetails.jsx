@@ -35,7 +35,7 @@ function BlogDetails() {
 
         <main className="flex min-h-[75vh] flex-col items-center justify-center bg-[#030b18] px-6 pt-[88px] text-center">
 
-          <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+          <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
             Content not found
           </p>
 
@@ -131,7 +131,7 @@ function BlogDetails() {
                 </span>
 
 
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-[#057CFA]">
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-[#057CFA]">
                   {post.category}
                 </span>
 
@@ -233,7 +233,7 @@ function BlogDetails() {
                   <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
 
                     <div>
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                      <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                         {post.category}
                       </p>
 
@@ -343,7 +343,7 @@ function BlogDetails() {
 
                   <div className="relative">
 
-                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                       Key Takeaway
                     </p>
 
@@ -443,7 +443,7 @@ function BlogDetails() {
 
               <aside className="h-fit rounded-[24px] border border-slate-200 bg-[#F7F9FC] p-6">
 
-                <p className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#002DCC]">
+                <p className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#002DCC]">
                   Event Details
                 </p>
 
