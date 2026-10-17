@@ -430,7 +430,7 @@ function AIMLDevelopment() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className="font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   AI / ML Development
                 </motion.p>
@@ -1385,7 +1385,7 @@ function AIMLDevelopment() {
 
                 <div>
 
-                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
+                  <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Start an AI Project
                   </p>
 
