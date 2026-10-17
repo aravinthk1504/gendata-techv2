@@ -493,7 +493,7 @@ function AppDevelopment() {
                     duration: 0.55,
                     delay: 0.15,
                   }}
-                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
                   GenData Tech develops mobile applications for
                   Android, iOS and connected business requirements
@@ -568,7 +568,7 @@ function AppDevelopment() {
 
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                     >
                       {item}
                     </span>
@@ -695,7 +695,7 @@ function AppDevelopment() {
                     Mobile
                   </span>
 
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
                     App Layer
                   </span>
 
@@ -724,7 +724,7 @@ function AppDevelopment() {
                   }}
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Android
                   </p>
                 </motion.div>
@@ -750,7 +750,7 @@ function AppDevelopment() {
                   }}
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     iOS
                   </p>
                 </motion.div>
@@ -776,7 +776,7 @@ function AppDevelopment() {
                   }}
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     APIs
                   </p>
                 </motion.div>
@@ -1062,7 +1062,7 @@ function AppDevelopment() {
                 From app idea to connected application.
               </h2>
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 Mobile development moves through user planning,
                 interface development, backend integration, testing
                 and deployment preparation.
@@ -1107,7 +1107,7 @@ function AppDevelopment() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                    <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                       {step.description}
                     </p>
 
@@ -1373,7 +1373,7 @@ function AppDevelopment() {
                     Have an app idea or mobile application requirement?
                   </h2>
 
-                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                     Share the users, functionality and expected
                     outcome. We can discuss the most suitable mobile
                     application direction.
