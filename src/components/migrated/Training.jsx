@@ -785,7 +785,7 @@ function Training() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   GenData Tech Training
                 </motion.p>
@@ -983,7 +983,7 @@ function Training() {
                 8
               </p>
 
-              <p className="mt-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                 Training Tracks
               </p>
             </div>
@@ -993,7 +993,7 @@ function Training() {
                 {studentsTrained}
               </p>
 
-              <p className="mt-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                 Students Trained
               </p>
             </div>
@@ -1003,7 +1003,7 @@ function Training() {
                 Practical
               </p>
 
-              <p className="mt-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                 Learning Approach
               </p>
             </div>
@@ -1083,7 +1083,7 @@ function Training() {
               <div className="border-b border-slate-100 px-6 py-7 sm:px-8 lg:px-10">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                       Track {selectedTrack.number}
                     </p>
 
@@ -1175,7 +1175,7 @@ function Training() {
                           duration: 0.25,
                         }}
                       >
-                        <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                           What You&apos;ll Learn
                         </p>
 
@@ -1234,7 +1234,7 @@ function Training() {
                           duration: 0.25,
                         }}
                       >
-                        <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                           Tools & Technologies
                         </p>
 
@@ -1301,7 +1301,7 @@ function Training() {
                           duration: 0.25,
                         }}
                       >
-                        <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
+                        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                           Learning Outcome
                         </p>
 
