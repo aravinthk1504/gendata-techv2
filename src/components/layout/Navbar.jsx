@@ -44,7 +44,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
     >
       <nav
         aria-label="Main navigation"
-        className="relative z-[80] mx-auto flex w-full max-w-[1400px] items-center justify-between gap-2 px-6 py-4 lg:px-10"
+        className="relative z-[80] mx-auto flex w-full max-w-[1400px] items-center justify-between gap-2 px-6 py-2.5 lg:px-10 lg:py-2"
       >
         {/* LOGO AND WORDMARK */}
         <Link
@@ -59,7 +59,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
             height={58}
             priority
             unoptimized
-            className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
+            className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11 lg:h-12 lg:w-12 xl:h-14 xl:w-14"
           />
           <span className="hidden min-w-0 flex-col sm:flex lg:hidden xl:flex">
             <span
