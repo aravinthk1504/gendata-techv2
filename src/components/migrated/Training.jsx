@@ -762,7 +762,7 @@ function Training() {
 
           {/* HERO CONTENT AREA */}
 
-          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[460px] lg:py-8">
+          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[465px] lg:py-8">
             <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
               {/* ==================================================
                       LEFT CONTENT
