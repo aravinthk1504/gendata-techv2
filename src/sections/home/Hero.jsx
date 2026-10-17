@@ -21,7 +21,7 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-[100svh] items-start overflow-hidden lg:min-h-screen lg:items-center"
     >
       <AnimatedBackground />
 
@@ -31,7 +31,7 @@ function Hero({ content, lang }) {
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-30 sm:pb-16 sm:pt-36 lg:px-10 lg:py-32">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:py-32">
         <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
@@ -118,13 +118,13 @@ function Hero({ content, lang }) {
           </div>
 
           {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
-          <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-end overflow-hidden lg:relative lg:inset-auto lg:z-auto lg:block lg:overflow-visible">
-            <div className="w-[130%] min-w-[360px] max-w-[600px] translate-x-[22%] opacity-55 lg:w-full lg:min-w-0 lg:max-w-none lg:translate-x-0 lg:opacity-100">
+          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
               <InfinityVisual />
             </div>
           </div>
           {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/90 via-[#030b18]/75 to-[#030b18]/55 lg:hidden" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
         </div>
 
         <motion.div
