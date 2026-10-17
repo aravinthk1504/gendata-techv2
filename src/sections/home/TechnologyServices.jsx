@@ -307,7 +307,7 @@ function TechnologyServices({ content, lang }) {
   const localizedPath = (path) => localizedHref(lang, path);
 
   return (
-    <section className="relative overflow-hidden bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-36">
+    <section className="relative overflow-hidden bg-[#F7F9FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
       <div className="pointer-events-none absolute -right-60 top-0 h-150 w-150 rounded-full bg-blue-100/50 blur-[160px]" />
       <div className="pointer-events-none absolute -left-60 bottom-0 h-130 w-130 rounded-full bg-indigo-50/50 blur-[150px]" />
 
