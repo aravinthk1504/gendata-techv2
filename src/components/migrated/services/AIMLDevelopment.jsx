@@ -486,7 +486,7 @@ function AIMLDevelopment() {
                     duration: 0.6,
                     delay: 0.16,
                   }}
-                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+                  className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
                   GenData Tech develops AI and machine learning
                   solutions designed around data, workflows and
@@ -561,7 +561,7 @@ function AIMLDevelopment() {
 
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
                     >
                       {item}
                     </span>
@@ -689,7 +689,7 @@ function AIMLDevelopment() {
                     AI / ML
                   </span>
 
-                  <span className="mt-1 font-body text-[8px] uppercase tracking-[0.2em] text-slate-500">
+                  <span className="mt-1 font-body text-[8px] uppercase tracking-[0.2em] text-slate-300">
                     Intelligence Layer
                   </span>
 
@@ -718,7 +718,7 @@ function AIMLDevelopment() {
                   }}
                   className="absolute right-0 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Models
                   </p>
                 </motion.div>
@@ -744,7 +744,7 @@ function AIMLDevelopment() {
                   }}
                   className="absolute bottom-16 left-0 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Automation
                   </p>
                 </motion.div>
@@ -770,7 +770,7 @@ function AIMLDevelopment() {
                   }}
                   className="absolute bottom-6 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
                     Agents
                   </p>
                 </motion.div>
@@ -1073,7 +1073,7 @@ function AIMLDevelopment() {
               </h2>
 
 
-              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+              <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                 AI development moves through multiple stages of
                 understanding, experimentation, validation and
                 integration.
@@ -1120,7 +1120,7 @@ function AIMLDevelopment() {
                     </h3>
 
 
-                    <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                    <p className="mt-2 font-body text-xs leading-6 text-slate-200">
                       {step.description}
                     </p>
 
@@ -1395,7 +1395,7 @@ function AIMLDevelopment() {
                   </h2>
 
 
-                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+                  <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
                     Share the problem, available data or expected
                     outcome. We can discuss the most suitable
                     technical direction.
