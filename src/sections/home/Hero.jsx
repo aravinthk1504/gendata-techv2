@@ -25,12 +25,6 @@ function Hero({ content, lang }) {
     >
       <AnimatedBackground />
 
-      <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 select-none lg:block">
-        <span className="font-heading text-[15vw] font-bold leading-none tracking-[-0.08em] text-white/[0.05]">
-          GenDataTech
-        </span>
-      </div>
-
       <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-12 pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:py-32">
         <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* Keep mobile hero copy above the decorative infinity background. */}
