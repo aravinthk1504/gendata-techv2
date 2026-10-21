@@ -524,7 +524,7 @@ function SoftwareDevelopment() {
 
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
+                    className="gd-hero-button gd-hero-button--primary group "
                   >
                     Discuss Your Software
 

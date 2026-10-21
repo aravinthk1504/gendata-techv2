@@ -864,7 +864,7 @@ function Training() {
                     duration: 0.55,
                     delay: 0.23,
                   }}
-                  className="group mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[#057CFA] px-6 py-3 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
+                  className="gd-hero-button gd-hero-button--primary group mt-7"
                 >
                   Explore Training
                   <FiArrowRight className="transition group-hover:translate-x-1" />
