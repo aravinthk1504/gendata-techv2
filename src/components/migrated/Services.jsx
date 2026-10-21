@@ -505,44 +505,28 @@ function Services() {
                 </motion.div>
               </div>
 
-              {/* Robot portrait with cyan arc and halftone texture. */}
+              {/* Approved realistic robot artwork. Place services-hero-robot.webp in /public/assets/.
+                  The gradient stays visible while the image is unavailable. */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, x: 18 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 18 }}
+                transition={{ duration: 0.7, delay: 0.12 }}
                 className="pointer-events-none relative mx-auto hidden h-[410px] w-full max-w-[490px] select-none lg:block"
-                aria-hidden="true"
+                role="img"
+                aria-label="Realistic futuristic AI robot framed by a blue-cyan technology arc"
               >
-                <div className="absolute inset-6 rounded-full bg-[#057CFA]/20 blur-[65px]" />
-                <div className="absolute right-[-8%] top-0 h-[106%] w-[106%] rounded-full border-[9px] border-[#20C7F4]/90" />
-                <div className="absolute right-[-5%] top-[4%] h-[98%] w-[98%] overflow-hidden rounded-full bg-gradient-to-br from-[#174A77] via-[#071D36] to-[#030B18]">
-                  <svg viewBox="0 0 440 440" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="gd-services-shell" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stopColor="#F0F8FF" />
-                        <stop offset=".52" stopColor="#96C2E4" />
-                        <stop offset="1" stopColor="#315B83" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M60 440 C80 345 135 317 204 302 L290 305 C363 325 416 367 440 440Z" fill="url(#gd-services-shell)" stroke="#59B9F7" strokeWidth="3" />
-                    <path d="M140 440 L160 349 L205 326 L222 440Z M310 440 L300 326 L348 356 L390 440Z" fill="#06192C" stroke="#39A9FA" strokeWidth="3"/>
-                    <path d="M192 289 L190 336 L243 372 L292 332 L284 289" fill="#123E68" stroke="#60D9FF" strokeWidth="3"/>
-                    <path d="M169 145 C175 88 211 50 264 54 C327 59 349 113 340 186 L319 246 L286 286 L233 302 L196 276 L173 224Z" fill="url(#gd-services-shell)" stroke="#D1F1FF" strokeWidth="3"/>
-                    <path d="M182 147 Q227 106 271 129" fill="none" stroke="#17456F" strokeWidth="5"/>
-                    <path d="M191 190 Q221 178 250 191 Q222 208 195 200Z" fill="#0B3151"/>
-                    <circle cx="222" cy="195" r="6" fill="#60D9FF"/>
-                    <path d="M262 199 L251 238 L266 244 M226 264 Q248 275 275 261" fill="none" stroke="#3C729B" strokeWidth="3" strokeLinecap="round"/>
-                    <path d="M293 90 C327 94 353 118 357 155 L351 221 L322 264 L309 234 L321 162Z" fill="#061A2F" stroke="#48B8F9" strokeWidth="3"/>
-                    <circle cx="332" cy="180" r="36" fill="#071A32" stroke="#168EEA" strokeWidth="6"/>
-                    <circle cx="332" cy="180" r="24" fill="none" stroke="#60D9FF" strokeWidth="3" strokeDasharray="9 5"/>
-                    <circle cx="332" cy="180" r="10" fill="#057CFA"/>
-                    <path d="M315 273 L338 307 L315 355 M292 302 L308 349 L280 392" fill="none" stroke="#20B9F9" strokeWidth="5"/>
-                    <path d="M169 145 L152 194 L171 235 M187 291 L174 331 L213 363" fill="none" stroke="#60D9FF" strokeWidth="3"/>
-                  </svg>
-                </div>
-                <div className="absolute -left-2 top-12 h-3 w-3 rounded-full bg-[#60D9FF] shadow-[0_0_18px_#057CFA]" />
-                <div className="absolute bottom-9 left-0 h-px w-24 bg-gradient-to-r from-transparent to-[#60D9FF]" />
-                <div className="absolute right-0 top-0 h-28 w-28 opacity-30" style={{ backgroundImage: "radial-gradient(#60D9FF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+                <div className="absolute inset-4 rounded-full bg-[#057CFA]/15 blur-[50px]" />
+                <div
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(90deg, #030b18 0%, rgba(3,11,24,0) 14%), url('/assets/services-hero-robot.webp')",
+                    WebkitMaskImage:
+                      "linear-gradient(to right, transparent 0%, black 10%, black 100%)",
+                    maskImage:
+                      "linear-gradient(to right, transparent 0%, black 10%, black 100%)",
+                  }}
+                />
               </motion.div>
             </div>
           </div>
