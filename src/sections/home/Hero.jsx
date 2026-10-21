@@ -74,7 +74,7 @@ function Hero({ content, lang }) {
           >
             <Link
               href={localizedPath("/services")}
-              className="group inline-flex min-w-55 items-center justify-center gap-3 rounded-full bg-brand-accent px-7 py-4 font-body text-sm font-semibold text-white shadow-[0_12px_40px_rgba(5,124,250,0.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500"
+              className="gd-hero-button gd-hero-button--primary group min-w-55"
             >
               {t("hero.primaryCta")}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -84,7 +84,7 @@ function Hero({ content, lang }) {
 
             <Link
               href={localizedPath("/contact")}
-              className="inline-flex min-w-40 items-center justify-center rounded-full border border-white/12 bg-white/4 px-7 py-4 font-body text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-white/20 hover:bg-white/8"
+              className="gd-hero-button gd-hero-button--secondary min-w-40"
             >
               {t("hero.secondaryCta")}
             </Link>
