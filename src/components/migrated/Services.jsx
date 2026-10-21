@@ -499,7 +499,7 @@ function Services() {
                   <a href="#technology-services" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#21D4F3] to-[#057CFA] px-6 py-3 font-body text-sm font-semibold text-[#030B18] transition hover:brightness-110">
                     Explore Capabilities <FiArrowRight />
                   </a>
-                  <Link href="/contact" className="inline-flex items-center rounded-full border border-[#057CFA] px-6 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#057CFA]/10">
+                  <Link to="/contact" className="inline-flex items-center rounded-full border border-[#057CFA] px-6 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#057CFA]/10">
                     Let’s Talk
                   </Link>
                 </motion.div>
