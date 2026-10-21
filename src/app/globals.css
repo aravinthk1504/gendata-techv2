@@ -117,3 +117,43 @@ button:focus-visible {
 @media (pointer: fine) and (min-width: 768px) {
   body, a, button { cursor: none; }
 }
+
+
+/* Unified hero CTAs: shared across Home, main pages and service-detail pages. */
+.gd-hero-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 220ms ease, border-color 220ms ease, filter 220ms ease, transform 220ms ease;
+}
+.gd-hero-button--primary {
+  background: linear-gradient(95deg, #21d4f3 0%, #057cfa 100%);
+  color: #030b18;
+}
+.gd-hero-button--primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.gd-hero-button--secondary {
+  border-color: #057cfa;
+  background: rgba(3, 11, 24, 0.25);
+  color: #fff;
+}
+.gd-hero-button--secondary:hover { background: rgba(5, 124, 250, 0.14); }
+.gd-hero-button:focus-visible {
+  outline: 2px solid #60d9ff;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gd-hero-button { transition: none; }
+  .gd-hero-button--primary:hover { transform: none; }
+}
