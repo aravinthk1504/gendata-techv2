@@ -496,37 +496,49 @@ function Services() {
                   transition={{ duration: 0.6, delay: 0.24 }}
                   className="mt-8 flex flex-wrap gap-3"
                 >
-                  <a href="#technology-services" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#21D4F3] to-[#057CFA] px-6 py-3 font-body text-sm font-semibold text-[#030B18] transition hover:brightness-110">
+                  <a href="#technology-services" className="gd-hero-button gd-hero-button--primary group">
                     Explore Capabilities <FiArrowRight />
                   </a>
-                  <Link to="/contact" className="inline-flex items-center rounded-full border border-[#057CFA] px-6 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#057CFA]/10">
+                  <Link to="/contact" className="gd-hero-button gd-hero-button--secondary">
                     Let’s Talk
                   </Link>
                 </motion.div>
               </div>
 
-              {/* Approved realistic robot artwork. Place services-hero-robot.webp in /public/assets/.
-                  The gradient stays visible while the image is unavailable. */}
+              {/* Realistic robot portrait framed as the approved cyan-arc composition. */}
               <motion.div
                 initial={{ opacity: 0, x: 18 }}
                 animate={heroInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 18 }}
                 transition={{ duration: 0.7, delay: 0.12 }}
                 className="pointer-events-none relative mx-auto hidden h-[410px] w-full max-w-[490px] select-none lg:block"
                 role="img"
-                aria-label="Realistic futuristic AI robot framed by a blue-cyan technology arc"
+                aria-label="Realistic futuristic AI robot portrait with a glowing cyan circular frame"
               >
-                <div className="absolute inset-4 rounded-full bg-[#057CFA]/15 blur-[50px]" />
+                {/* Halftone accents and a restrained ambient glow. */}
+                <div className="absolute inset-0 rounded-full bg-[#057CFA]/15 blur-[55px]" />
                 <div
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  className="absolute -right-9 -top-12 h-40 w-40 opacity-35"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(90deg, #030b18 0%, rgba(3,11,24,0) 14%), url('/assets/services-hero-robot.webp')",
-                    WebkitMaskImage:
-                      "linear-gradient(to right, transparent 0%, black 10%, black 100%)",
-                    maskImage:
-                      "linear-gradient(to right, transparent 0%, black 10%, black 100%)",
+                    backgroundImage: "radial-gradient(circle, #47BFFF 1.25px, transparent 1.6px)",
+                    backgroundSize: "12px 12px",
+                    maskImage: "linear-gradient(to bottom, black, transparent)",
                   }}
                 />
+                {/* True circular clipping prevents the rectangular-image appearance. */}
+                <div className="absolute -right-[7%] -top-[7%] aspect-square h-[118%] rounded-full border-[7px] border-[#22C7F5] shadow-[0_0_35px_rgba(5,124,250,0.24)]" />
+                <div className="absolute -right-[5.3%] -top-[4.8%] aspect-square h-[113%] overflow-hidden rounded-full border border-white/10 bg-[#06182B]">
+                  <div
+                    className="absolute inset-0 bg-cover bg-no-repeat"
+                    style={{
+                      backgroundImage: "url('/assets/services-hero-robot.webp')",
+                      backgroundPosition: "65% 40%",
+                      filter: "brightness(1.12) contrast(1.06)",
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#030b18]/25 via-transparent to-transparent" />
+                </div>
+                <span className="absolute left-1 top-12 h-2.5 w-2.5 rounded-full bg-[#60D9FF] shadow-[0_0_18px_#057CFA]" />
+                <span className="absolute bottom-10 left-0 h-px w-24 bg-gradient-to-r from-transparent to-[#60D9FF]" />
               </motion.div>
             </div>
           </div>
