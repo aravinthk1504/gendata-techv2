@@ -2,8 +2,7 @@
 
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
-import { useEffect, useRef, useState } from "react"
-import Script from "next/script"
+import { useRef, useState } from "react"
 
 import {
   motion,
@@ -41,40 +40,6 @@ function AIMLDevelopment() {
 
   const heroShouldAnimate =
     heroInView && !reduceMotion
-
-  // Keep the trial isolated to the desktop hero. The existing graphic is the
-  // fallback if the scene is loading, unavailable, or motion is reduced.
-  const splineViewerRef = useRef(null)
-  const [splineDesktop, setSplineDesktop] = useState(false)
-  const [splineReady, setSplineReady] = useState(false)
-  const showSplineTrial = splineDesktop && heroInView && !reduceMotion
-  const animateOriginalHeroVisual = heroShouldAnimate && !splineReady
-
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 1024px)")
-    const sync = () => setSplineDesktop(media.matches)
-    sync()
-    media.addEventListener("change", sync)
-    return () => media.removeEventListener("change", sync)
-  }, [])
-
-  useEffect(() => {
-    if (!showSplineTrial) setSplineReady(false)
-  }, [showSplineTrial])
-
-  useEffect(() => {
-    if (!showSplineTrial || !splineViewerRef.current) return
-    const viewer = splineViewerRef.current
-    // Spline's web component dispatches "load-complete", not "load".
-    const handleLoadComplete = () => setSplineReady(true)
-    const handleContextLoss = () => setSplineReady(false)
-    viewer.addEventListener("load-complete", handleLoadComplete)
-    viewer.addEventListener("context-loss", handleContextLoss)
-    return () => {
-      viewer.removeEventListener("load-complete", handleLoadComplete)
-      viewer.removeEventListener("context-loss", handleContextLoss)
-    }
-  }, [showSplineTrial])
 
   /* ======================================================
       FAQ
@@ -608,244 +573,149 @@ function AIMLDevelopment() {
 
 
 
-              {/* HERO VISUAL */}
-
-              <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 1,
-                        scale: 0.96,
-                      }
-                }
-                transition={{
-                  duration: 0.7,
-                  delay: 0.16,
-                }}
+              {/* Lightweight AI processor / data-flow illustration (no 3D runtime). */}
+              <div
                 className="relative mx-auto hidden h-[420px] w-full max-w-[480px] items-center justify-center lg:flex"
+                role="img"
+                aria-label="AI processor connected to data, models, agents, and automation"
               >
-                <div
-                  className={`relative flex h-full w-full items-center justify-center transition-opacity duration-500 ${
-                    splineReady ? "pointer-events-none opacity-0" : "opacity-100"
-                  }`}
-                  aria-hidden={splineReady}
+                <svg
+                  viewBox="0 0 480 420"
+                  className="block h-full w-full overflow-visible"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                {showSplineTrial && !splineReady && (
-                  <span className="pointer-events-none absolute bottom-0 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-[#06152c]/80 px-3 py-1.5 font-body text-[11px] text-slate-200">
-                    Loading interactive 3D preview…
-                  </span>
-                )}
+                  <defs>
+                    <linearGradient id="gd-ai-chip-bg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stopColor="#123b69" />
+                      <stop offset="1" stopColor="#051324" />
+                    </linearGradient>
+                    <linearGradient id="gd-ai-circuit-line" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stopColor="#057CFA" />
+                      <stop offset="1" stopColor="#60D9FF" />
+                    </linearGradient>
+                    <radialGradient id="gd-ai-ambient">
+                      <stop offset="0" stopColor="#057CFA" stopOpacity="0.24" />
+                      <stop offset="1" stopColor="#057CFA" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
 
-                {/* OUTER RING */}
-
-                <motion.div
-                  className="absolute h-[350px] w-[350px] rounded-full border border-white/[0.06]"
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          rotate: 360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    animateOriginalHeroVisual
-                      ? {
-                          duration: 35,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute left-1/2 top-[-5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-
-                {/* INNER RING */}
-
-                <motion.div
-                  className="absolute h-[250px] w-[250px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          rotate: -360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    animateOriginalHeroVisual
-                      ? {
-                          duration: 26,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute bottom-[25px] right-[20px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
-                </motion.div>
-
-
-                {/* CENTER */}
-
-                <motion.div
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          scale: [1, 1.04, 1],
-                        }
-                      : {
-                          scale: 1,
-                        }
-                  }
-                  transition={
-                    animateOriginalHeroVisual
-                      ? {
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="relative z-10 flex h-[150px] w-[150px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_70px_rgba(5,124,250,0.14)]"
-                >
-
-                  <FiCpu className="text-2xl text-[#057CFA]" />
-
-                  <span className="mt-3 font-heading text-sm font-semibold text-white">
-                    AI / ML
-                  </span>
-
-                  <span className="mt-1 font-body text-[8px] uppercase tracking-[0.2em] text-slate-300">
-                    Intelligence Layer
-                  </span>
-
-                </motion.div>
-
-
-                {/* NODE */}
-
-                <motion.div
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          y: [0, -7, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat:
-                      animateOriginalHeroVisual
-                        ? Infinity
-                        : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute right-0 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Models
-                  </p>
-                </motion.div>
-
-
-                <motion.div
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          x: [0, 6, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.8,
-                    repeat:
-                      animateOriginalHeroVisual
-                        ? Infinity
-                        : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-16 left-0 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Automation
-                  </p>
-                </motion.div>
-
-
-                <motion.div
-                  animate={
-                    animateOriginalHeroVisual
-                      ? {
-                          y: [0, 7, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat:
-                      animateOriginalHeroVisual
-                        ? Infinity
-                        : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-6 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Agents
-                  </p>
-                </motion.div>
-
-                </div>
-
-                {showSplineTrial && (
-                  <>
-                    <Script
-                      src="https://cdn.spline.design/@splinetool/viewer@2.0.75/build/spline-viewer.js"
-                      type="module"
-                      strategy="afterInteractive"
+                  {/* Static ambient glow and a subtle engineering grid. */}
+                  <ellipse cx="240" cy="210" rx="220" ry="190" fill="url(#gd-ai-ambient)" />
+                  {Array.from({ length: 9 }, (_, i) => (
+                    <path
+                      key={`grid-v-${i}`}
+                      d={`M ${40 + i * 50} 36 V 384`}
+                      stroke="#4C84BF"
+                      strokeWidth="0.7"
+                      strokeOpacity="0.10"
                     />
-                    <div
-                      className={`absolute inset-0 z-20 transition-opacity duration-500 ${
-                        splineReady ? "opacity-100" : "pointer-events-none opacity-0"
-                      }`}
-                    >
-                      <spline-viewer
-                        ref={splineViewerRef}
-                        url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"
-                        background="#030b18"
-                        loading="eager"
-                        unloadable="false"
-                        className="block h-full w-full"
+                  ))}
+                  {Array.from({ length: 7 }, (_, i) => (
+                    <path
+                      key={`grid-h-${i}`}
+                      d={`M 24 ${60 + i * 50} H 456`}
+                      stroke="#4C84BF"
+                      strokeWidth="0.7"
+                      strokeOpacity="0.10"
+                    />
+                  ))}
+
+                  {/* Four dedicated data paths, rather than circular orbits. */}
+                  {[
+                    "M128 103 H151 V173 H171",
+                    "M352 103 H329 V173 H309",
+                    "M128 317 H151 V247 H171",
+                    "M352 317 H329 V247 H309",
+                  ].map((d, index) => (
+                    <path
+                      key={`connector-${index}`}
+                      d={d}
+                      fill="none"
+                      stroke="url(#gd-ai-circuit-line)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeOpacity="0.7"
+                    />
+                  ))}
+
+                  {/* Small data signals run only while this hero is visible. */}
+                  {heroShouldAnimate && (
+                    <>
+                      <circle r="4" fill="#60D9FF">
+                        <animateMotion
+                          path="M128 103 H151 V173 H171"
+                          dur="3.6s"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                      <circle r="4" fill="#60D9FF">
+                        <animateMotion
+                          path="M352 103 H329 V173 H309"
+                          dur="4.1s"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                      <circle r="4" fill="#60D9FF">
+                        <animateMotion
+                          path="M128 317 H151 V247 H171"
+                          dur="3.9s"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                      <circle r="4" fill="#60D9FF">
+                        <animateMotion
+                          path="M352 317 H329 V247 H309"
+                          dur="4.5s"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                    </>
+                  )}
+
+                  {/* Squared central processor with static chip pins. */}
+                  <rect x="163" y="123" width="154" height="174" rx="27" fill="#057CFA" opacity="0.09" />
+                  <rect x="171" y="131" width="138" height="158" rx="23" fill="url(#gd-ai-chip-bg)" stroke="#268DD6" strokeWidth="1.8" />
+                  <rect x="184" y="144" width="112" height="132" rx="16" fill="#06152C" stroke="#60D9FF" strokeOpacity="0.28" />
+                  {[158,181,204,227,250].map(y => (
+                    <g key={`pin-${y}`} stroke="#4C9EFF" strokeWidth="2" strokeLinecap="round">
+                      <path d={`M162 ${y} h9`} />
+                      <path d={`M309 ${y} h9`} />
+                    </g>
+                  ))}
+                  <rect x="223" y="174" width="34" height="34" rx="9" fill="#057CFA" fillOpacity="0.17" stroke="#60D9FF" strokeOpacity="0.5" />
+                  <path d="M230 191 l6 -7 l-2 8 h11 l-6 8 l2 -8 h-11" fill="none" stroke="#60D9FF" strokeWidth="1.8" strokeLinejoin="round" />
+                  <text x="240" y="237" textAnchor="middle" fill="#FFFFFF" fontFamily="Arial, sans-serif" fontSize="21" fontWeight="700" letterSpacing="1">AI / ML</text>
+                  <text x="240" y="258" textAnchor="middle" fill="#B6D9FA" fontFamily="Arial, sans-serif" fontSize="9" letterSpacing="1.7">INTELLIGENCE</text>
+
+                  {[
+                    { x: 10, y: 72, label: "DATA", sub: "Inputs" },
+                    { x: 352, y: 72, label: "MODELS", sub: "Prediction" },
+                    { x: 10, y: 286, label: "AUTOMATION", sub: "Workflows" },
+                    { x: 352, y: 286, label: "AGENTS", sub: "Decisions" },
+                  ].map((node, index) => (
+                    <g key={node.label}>
+                      <rect
+                        x={node.x}
+                        y={node.y}
+                        width="118"
+                        height="62"
+                        rx="12"
+                        fill="#091C34"
+                        stroke="#4389CB"
+                        strokeOpacity="0.45"
                       />
-                    </div>
-                  </>
-                )}
-              </motion.div>
+                      <rect x={node.x + 13} y={node.y + 13} width="6" height="6" rx="2" fill={index % 2 ? "#60D9FF" : "#057CFA"} />
+                      <text x={node.x + 26} y={node.y + 20} fill="#F1F8FF" fontFamily="Arial, sans-serif" fontSize="11" fontWeight="700" letterSpacing="0.8">
+                        {node.label}
+                      </text>
+                      <text x={node.x + 13} y={node.y + 43} fill="#AEC6DE" fontFamily="Arial, sans-serif" fontSize="10">
+                        {node.sub}
+                      </text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
 
             </div>
 
