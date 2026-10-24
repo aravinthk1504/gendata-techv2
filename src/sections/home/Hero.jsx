@@ -41,7 +41,7 @@ function Hero({ content, lang }) {
             </span>
 
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-blue-100">
-              {t("hero.eyebrow")}
+              {lang === "en" ? "AI-Powered Solutions" : t("hero.eyebrow")}
             </span>
           </motion.div>
 
@@ -63,7 +63,7 @@ function Hero({ content, lang }) {
             transition={{ duration: 0.8, delay: 0.18 }}
             className="mt-6 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
           >
-            {t("hero.description")}
+            {lang === "en" ? "GenData Tech combines artificial intelligence, software engineering, web, mobile and IoT technologies to build practical digital systems around real business requirements." : t("hero.description")}
           </motion.p>
 
           <motion.div
@@ -76,7 +76,7 @@ function Hero({ content, lang }) {
               href={localizedPath("/services")}
               className="gd-hero-button gd-hero-button--primary group min-w-55"
             >
-              {t("hero.primaryCta")}
+              {lang === "en" ? "Explore Our Services" : t("hero.primaryCta")}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
