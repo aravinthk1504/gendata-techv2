@@ -124,7 +124,7 @@ function Hero({ content, lang }) {
             <img
               src="/images/home-hero-portrait.webp"
               alt="GenData Tech founder"
-              className="absolute bottom-[-60px] left-1/2 z-10 h-[min(680px,74svh)] w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_0_48px_rgba(3,105,255,.26)]"
+              className="absolute bottom-[-60px] left-1/2 z-10 h-[min(650px,75svh)] w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_0_48px_rgba(3,105,255,.26)]"
             />
 
             <div className="absolute left-[-2%] top-[15%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
@@ -147,7 +147,7 @@ function Hero({ content, lang }) {
             <img
               src="/images/home-hero-portrait.webp"
               alt=""
-              className="absolute -right-12 bottom-0 h-[390px] max-w-none opacity-40 sm:right-0 sm:h-[450px]"
+              className="absolute -right-12 bottom-0 h-[390px] w-auto max-w-none object-contain object-bottom opacity-40 sm:right-0 sm:h-[450px]"
             />
           </div>
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/45 lg:hidden" />
