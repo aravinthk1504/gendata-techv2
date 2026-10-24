@@ -8,8 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
-import dynamic from "next/dynamic";
-const GlassCube3D = dynamic(() => import("./GlassCube3D"), { ssr: false });
+import InfinityVisual from "./InfinityVisual";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -22,11 +21,11 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[calc(100svh-80px)] items-start overflow-hidden lg:items-center"
+      className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden sm:min-h-[94svh] lg:min-h-[88svh] lg:items-center"
     >
       <AnimatedBackground />
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-16 pt-20 sm:pt-24 lg:px-10 lg:pb-10 lg:pt-14">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-[78px] pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:pb-16 lg:pt-28">
         <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
@@ -112,18 +111,21 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* Genuine WebGL scene; fixed visual height cannot enlarge the hero grid. */}
-          <div className="pointer-events-none absolute inset-x-[-10%] top-[60px] z-0 h-[390px] opacity-35 sm:inset-x-0 sm:opacity-50 lg:relative lg:inset-auto lg:z-auto lg:h-[min(540px,66svh)] lg:min-h-[390px] lg:opacity-100">
-            <GlassCube3D />
+          {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
+          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
+              <InfinityVisual />
+            </div>
           </div>
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/40 lg:hidden" />
+          {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="relative z-20 mt-4 hidden lg:block"
+          className="relative z-20 mt-7 hidden md:block"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="font-body text-[9px] uppercase tracking-[0.3em] text-slate-200">
