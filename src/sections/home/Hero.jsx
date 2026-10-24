@@ -8,7 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
-import DataFlow from "./DataFlow";
+import InfinityVisual from "./InfinityVisual";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -26,7 +26,7 @@ function Hero({ content, lang }) {
       <AnimatedBackground />
 
       <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-[78px] pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:pb-16 lg:pt-28">
-        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:gap-3">
+        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
           <motion.div
@@ -41,7 +41,7 @@ function Hero({ content, lang }) {
             </span>
 
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-blue-100">
-              {lang === "en" ? "AI-Powered Solutions" : t("hero.eyebrow")}
+              {t("hero.eyebrow")}
             </span>
           </motion.div>
 
@@ -51,9 +51,9 @@ function Hero({ content, lang }) {
             transition={{ duration: 0.85, delay: 0.08 }}
             className="max-w-3xl font-heading text-[clamp(2.25rem,8.8vw,3.5rem)] font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-6xl lg:text-[clamp(3rem,4.5vw,4.25rem)]"
           >
-            {lang === "en" ? "Innovating with" : t("hero.titleLine1")}
+            {t("hero.titleLine1")}
             <span className="block bg-linear-to-r from-white via-blue-100 to-brand-accent bg-clip-text text-transparent">
-              {lang === "en" ? "cutting-edge technology." : t("hero.titleLine2")}
+              {t("hero.titleLine2")}
             </span>
           </motion.h1>
 
@@ -63,7 +63,7 @@ function Hero({ content, lang }) {
             transition={{ duration: 0.8, delay: 0.18 }}
             className="mt-6 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
           >
-            {lang === "en" ? "GenData Tech combines artificial intelligence, software engineering, web, mobile and IoT technologies to build practical digital systems around real business requirements." : t("hero.description")}
+            {t("hero.description")}
           </motion.p>
 
           <motion.div
@@ -76,7 +76,7 @@ function Hero({ content, lang }) {
               href={localizedPath("/services")}
               className="gd-hero-button gd-hero-button--primary group min-w-55"
             >
-              {lang === "en" ? "Explore Our Services" : t("hero.primaryCta")}
+              {t("hero.primaryCta")}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
@@ -111,12 +111,14 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* Desktop wave extends beyond the right column, as in the approved preview. */}
-          <div className="pointer-events-none absolute inset-x-[-18%] top-[9%] z-0 opacity-35 sm:inset-x-[-8%] sm:opacity-45 lg:relative lg:inset-auto lg:z-auto lg:w-[125%] lg:-translate-x-[8%] lg:opacity-100">
-            <DataFlow />
+          {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
+          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
+              <InfinityVisual />
+            </div>
           </div>
-          {/* Mobile keeps the flowing data as a subdued decorative background. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/45 lg:hidden" />
+          {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
         </div>
 
         <motion.div
