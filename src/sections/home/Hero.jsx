@@ -11,7 +11,7 @@ export default function Hero({ content, lang }) {
   const tags = t("hero.tags", { returnObjects: true });
 
   return (
-    <section className="relative flex min-h-[calc(100svh-88px)] items-center overflow-hidden bg-[#030b18] px-6 py-16 sm:py-20 lg:px-10">
+    <section className="relative flex min-h-[calc(100svh-88px)] items-center overflow-hidden bg-[#030b18] px-6 pb-24 pt-14 sm:pb-24 sm:pt-16 lg:px-10">
       <AnimatedBackground />
       <NeuralBackground />
       <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center text-center">
@@ -53,6 +53,10 @@ export default function Hero({ content, lang }) {
             ))}
           </div>
         )}
+      </div>
+      <div className="pointer-events-none absolute bottom-5 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
+        <span className="font-body text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-300">{t("hero.scroll")}</span>
+        <span className="relative h-8 w-px overflow-hidden bg-white/15"><span className="absolute inset-x-0 top-0 h-3 bg-[#19B9FF] motion-safe:animate-pulse" /></span>
       </div>
     </section>
   );
