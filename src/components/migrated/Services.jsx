@@ -334,7 +334,7 @@ function Services() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-[106px] sm:pt-36 sm:pb-[122px] lg:px-10 lg:pt-32 lg:pb-20"
+          className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden bg-[#030b18] px-6 pb-[78px] pt-28 sm:min-h-[94svh] sm:pb-16 sm:pt-36 lg:min-h-[88svh] lg:items-center lg:px-10 lg:pb-16 lg:pt-28"
         >
           {/* MAIN GLOW */}
 
@@ -407,8 +407,8 @@ function Services() {
             }}
           />
 
-          <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[410px] lg:py-8">
-            <div className="relative isolate grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+          <div className="relative z-10 mx-auto w-full max-w-[1400px]">
+            <div className="relative isolate grid w-full min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
               {/* HERO LEFT: keep copy readable above the subtle mobile ribbon. */}
 
               <div className="relative z-20 min-w-0">
@@ -528,8 +528,8 @@ function Services() {
 
               {/* Exactly the Home hero's 570px infinity ribbon sizing. On mobile,
                   render it behind the text, without a separate visual block. */}
-              <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block lg:justify-self-end">
-                <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-[570px] lg:translate-x-0 lg:opacity-100">
+              <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+                <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
                   <InfinityVisual />
                 </div>
               </div>
