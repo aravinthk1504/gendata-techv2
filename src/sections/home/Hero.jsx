@@ -8,7 +8,6 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
-import InfinityVisual from "./InfinityVisual";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -111,46 +110,61 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* Independent visual layers preserve the responsive layout and working CTAs. */}
-          <div className="pointer-events-none relative z-0 hidden min-h-[500px] w-full items-center justify-center lg:flex">
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(4,115,255,.28),transparent_68%)]" />
-            <div className="absolute inset-x-[-5%] top-[16%] opacity-90">
-              <InfinityVisual />
-            </div>
-            <div className="absolute inset-x-0 inset-y-[10%] rounded-full border border-[#057CFA]/15" />
-            <div className="absolute inset-x-[8%] inset-y-[18%] rounded-full border border-[#057CFA]/10" />
+          {/* New oversized luminous infinity scene — independent of the old InfinityVisual. */}
+          <div className="pointer-events-none relative z-0 hidden h-[min(700px,78svh)] min-h-[540px] w-full overflow-visible lg:block">
+            <div className="absolute -inset-x-20 inset-y-0 bg-[radial-gradient(ellipse_at_52%_54%,rgba(0,105,255,.36),transparent_67%)]" />
+            <div className="absolute inset-0 rounded-full border border-blue-500/15" />
+            <div className="absolute inset-[10%] rounded-full border border-blue-400/10" />
 
-            {/* Keep the portrait as its own asset, not a flattened screenshot. */}
+            {/* Large neon ribbon with layered bloom, matching the approved concept. */}
+            <svg aria-hidden="true" viewBox="0 0 700 520" className="absolute left-1/2 top-[14%] w-[125%] max-w-none -translate-x-1/2 overflow-visible">
+              <defs>
+                <linearGradient id="home-neon-loop" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#1256ff" />
+                  <stop offset="37%" stopColor="#00c8ff" />
+                  <stop offset="67%" stopColor="#16ecfa" />
+                  <stop offset="100%" stopColor="#196dff" />
+                </linearGradient>
+                <filter id="home-neon-glow" x="-55%" y="-100%" width="210%" height="300%">
+                  <feGaussianBlur stdDeviation="13" />
+                </filter>
+              </defs>
+              <path d="M350 260 C265 85 48 82 48 260 C48 438 260 440 350 260 C440 80 652 82 652 260 C652 442 435 440 350 260"
+                fill="none" stroke="#0785ff" strokeWidth="58" opacity=".58" filter="url(#home-neon-glow)" />
+              <path d="M350 260 C265 85 48 82 48 260 C48 438 260 440 350 260 C440 80 652 82 652 260 C652 442 435 440 350 260"
+                fill="none" stroke="#083a95" strokeWidth="51" opacity=".7" />
+              <path d="M350 260 C265 85 48 82 48 260 C48 438 260 440 350 260 C440 80 652 82 652 260 C652 442 435 440 350 260"
+                fill="none" stroke="url(#home-neon-loop)" strokeWidth="31" strokeLinecap="round" />
+              <path d="M350 260 C265 85 48 82 48 260 C48 438 260 440 350 260 C440 80 652 82 652 260 C652 442 435 440 350 260"
+                fill="none" stroke="#a4f7ff" strokeWidth="4" opacity=".75" />
+            </svg>
+
             <img
               src="/images/home-hero-portrait.webp"
               alt="GenData Tech founder"
-              className="absolute bottom-[-60px] left-1/2 z-10 h-[min(650px,75svh)] w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_0_48px_rgba(3,105,255,.26)]"
+              className="absolute bottom-[-65px] left-1/2 z-10 h-[min(735px,83svh)] w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_0_38px_rgba(0,91,239,.35)]"
             />
 
-            <div className="absolute left-[-2%] top-[15%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
-              <p className="text-sm font-semibold text-white">✧ AI Solutions</p>
+            <div className="absolute left-[-3%] top-[12%] z-20 min-w-[205px] rounded-2xl border border-cyan-400/70 bg-[#061d42]/85 px-5 py-4 shadow-[0_0_23px_rgba(0,153,255,.33)] backdrop-blur-xl">
+              <p className="text-base font-semibold text-white"><span className="mr-2 text-cyan-300">✧</span>AI Solutions</p>
               <p className="mt-1 text-xs text-blue-100">From idea to real impact</p>
             </div>
-            <div className="absolute right-[-2%] top-[15%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
-              <p className="text-sm font-semibold text-white">◎ Real Business Problems</p>
+            <div className="absolute right-[-4%] top-[12%] z-20 min-w-[215px] rounded-2xl border border-cyan-400/70 bg-[#061d42]/85 px-5 py-4 shadow-[0_0_23px_rgba(0,153,255,.33)] backdrop-blur-xl">
+              <p className="text-sm font-semibold text-white"><span className="mr-2 text-cyan-300">◎</span>Real Business Problems</p>
               <p className="mt-1 text-xs text-blue-100">Practical Solutions</p>
             </div>
-            <div className="absolute bottom-[13%] right-[-2%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
-              <p className="text-sm font-semibold text-white">⚙ Innovate</p>
-              <p className="text-xs text-blue-100">Build · Evolve</p>
+            <div className="absolute bottom-[14%] right-[-4%] z-20 min-w-[175px] rounded-2xl border border-cyan-400/70 bg-[#061d42]/85 px-5 py-4 shadow-[0_0_23px_rgba(0,153,255,.33)] backdrop-blur-xl">
+              <p className="text-sm font-semibold text-white"><span className="mr-2 text-cyan-300">⚙</span>Innovate</p>
+              <p className="mt-1 text-xs text-blue-100">Build · Evolve</p>
             </div>
           </div>
 
-          {/* On narrow screens the portrait sits underneath the copy, with a contrast wash. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[100px] z-0 h-[450px] lg:hidden">
-            <div className="absolute inset-0 opacity-55"><InfinityVisual /></div>
-            <img
-              src="/images/home-hero-portrait.webp"
-              alt=""
-              className="absolute -right-12 bottom-0 h-[390px] w-auto max-w-none object-contain object-bottom opacity-40 sm:right-0 sm:h-[450px]"
-            />
+          {/* Mobile: show the portrait softly behind readable hero copy; no old infinity SVG. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[100px] z-0 h-[470px] overflow-hidden lg:hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(0,122,255,.4),transparent_60%)]" />
+            <img src="/images/home-hero-portrait.webp" alt="" className="absolute -right-10 bottom-[-35px] h-[420px] w-auto max-w-none object-contain object-bottom opacity-45 sm:right-0 sm:h-[470px]" />
           </div>
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/45 lg:hidden" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/75 to-[#030b18]/40 lg:hidden" />
         </div>
 
         <motion.div
