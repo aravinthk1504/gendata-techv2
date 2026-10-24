@@ -11,7 +11,7 @@ export default function Hero({ content, lang }) {
   const tags = t("hero.tags", { returnObjects: true });
 
   return (
-    <section className="relative flex min-h-[calc(100svh-88px)] items-center overflow-hidden bg-[#030b18] px-6 pb-24 pt-14 sm:pb-24 sm:pt-16 lg:px-10">
+    <section className="relative flex min-h-[calc(100svh-48px)] items-center overflow-hidden bg-[#030b18] px-6 pb-24 pt-14 sm:pb-24 sm:pt-16 lg:px-10">
       <AnimatedBackground />
       <NeuralBackground />
       <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center text-center">
