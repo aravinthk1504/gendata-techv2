@@ -8,7 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
-import InfinityVisual from "./InfinityVisual";
+import NeuralCore from "./NeuralCore";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -111,14 +111,11 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
-          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
-            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
-              <InfinityVisual />
-            </div>
+          {/* Large clean neural core on desktop; subtle hero background on mobile. */}
+          <div className="pointer-events-none absolute inset-x-[-13%] top-[11%] z-0 opacity-35 sm:inset-x-0 sm:top-[6%] sm:opacity-45 lg:relative lg:inset-auto lg:top-auto lg:z-auto lg:opacity-100">
+            <NeuralCore />
           </div>
-          {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/55 lg:hidden" />
         </div>
 
         <motion.div
