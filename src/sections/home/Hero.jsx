@@ -26,7 +26,7 @@ function Hero({ content, lang }) {
       <AnimatedBackground />
 
       <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-[78px] pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:pb-16 lg:pt-28">
-        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:gap-6">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
           <motion.div
@@ -49,11 +49,11 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.08 }}
-            className="max-w-3xl font-heading text-[clamp(2.25rem,8.8vw,3.5rem)] font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-6xl lg:text-[clamp(3rem,4.5vw,4.25rem)]"
+            className="max-w-3xl font-heading text-[clamp(2.25rem,8.8vw,3.5rem)] font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-6xl lg:text-[clamp(2.75rem,4.25vw,4.25rem)]"
           >
-            {t("hero.titleLine1")}
+            {lang === "en" ? "Innovating with" : t("hero.titleLine1")}
             <span className="block bg-linear-to-r from-white via-blue-100 to-brand-accent bg-clip-text text-transparent">
-              {t("hero.titleLine2")}
+              {lang === "en" ? "cutting-edge technology." : t("hero.titleLine2")}
             </span>
           </motion.h1>
 
@@ -61,7 +61,7 @@ function Hero({ content, lang }) {
             initial={{ opacity: 1, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18 }}
-            className="mt-6 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
+            className="mt-6 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
           >
             {t("hero.description")}
           </motion.p>
@@ -111,14 +111,46 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
-          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
-            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
+          {/* Independent visual layers preserve the responsive layout and working CTAs. */}
+          <div className="pointer-events-none relative z-0 hidden min-h-[500px] w-full items-center justify-center lg:flex">
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(4,115,255,.28),transparent_68%)]" />
+            <div className="absolute inset-x-[-5%] top-[16%] opacity-90">
               <InfinityVisual />
             </div>
+            <div className="absolute inset-x-0 inset-y-[10%] rounded-full border border-[#057CFA]/15" />
+            <div className="absolute inset-x-[8%] inset-y-[18%] rounded-full border border-[#057CFA]/10" />
+
+            {/* Keep the portrait as its own asset, not a flattened screenshot. */}
+            <img
+              src="/images/home-hero-portrait.webp"
+              alt="GenData Tech founder"
+              className="absolute bottom-[-60px] left-1/2 z-10 h-[min(680px,74svh)] w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_0_48px_rgba(3,105,255,.26)]"
+            />
+
+            <div className="absolute left-[-2%] top-[15%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
+              <p className="text-sm font-semibold text-white">✧ AI Solutions</p>
+              <p className="mt-1 text-xs text-blue-100">From idea to real impact</p>
+            </div>
+            <div className="absolute right-[-2%] top-[15%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
+              <p className="text-sm font-semibold text-white">◎ Real Business Problems</p>
+              <p className="mt-1 text-xs text-blue-100">Practical Solutions</p>
+            </div>
+            <div className="absolute bottom-[13%] right-[-2%] z-20 rounded-2xl border border-sky-400/50 bg-[#08264b]/85 p-4 shadow-[0_0_26px_rgba(5,124,250,.22)] backdrop-blur-md">
+              <p className="text-sm font-semibold text-white">⚙ Innovate</p>
+              <p className="text-xs text-blue-100">Build · Evolve</p>
+            </div>
           </div>
-          {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
+
+          {/* On narrow screens the portrait sits underneath the copy, with a contrast wash. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[100px] z-0 h-[450px] lg:hidden">
+            <div className="absolute inset-0 opacity-55"><InfinityVisual /></div>
+            <img
+              src="/images/home-hero-portrait.webp"
+              alt=""
+              className="absolute -right-12 bottom-0 h-[390px] max-w-none opacity-40 sm:right-0 sm:h-[450px]"
+            />
+          </div>
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/45 lg:hidden" />
         </div>
 
         <motion.div
