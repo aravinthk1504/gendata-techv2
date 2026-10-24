@@ -8,7 +8,7 @@ import { homeText, localizedHref } from "../../lib/homeText";
 
 
 import AnimatedBackground from "./AnimatedBackground";
-import InfinityVisual from "./InfinityVisual";
+import GlassArchitecture from "./GlassArchitecture";
 
 function Hero({ content, lang }) {
   const sectionRef = useRef(null);
@@ -21,12 +21,12 @@ function Hero({ content, lang }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden sm:min-h-[94svh] lg:min-h-[88svh] lg:items-center"
+      className="relative flex min-h-[calc(100svh-72px)] items-start overflow-hidden sm:min-h-[calc(100svh-72px)] lg:min-h-[calc(100svh-88px)] lg:items-center"
     >
       <AnimatedBackground />
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-[78px] pt-28 sm:pb-16 sm:pt-36 lg:px-10 lg:pb-16 lg:pt-28">
-        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-16 pt-20 sm:pb-16 sm:pt-24 lg:px-10 lg:pb-10 lg:pt-16">
+        <div className="relative isolate grid min-w-0 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           {/* Keep mobile hero copy above the decorative infinity background. */}
           <div className="relative z-20 min-w-0 text-left">
           <motion.div
@@ -111,21 +111,18 @@ function Hero({ content, lang }) {
           </motion.div>
           </div>
 
-          {/* On mobile, one shared SVG becomes a subtle background, rather than a second block below the text. */}
-          <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
-            <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
-              <InfinityVisual />
-            </div>
+          {/* Glass architecture on desktop, softly positioned behind content on small screens. */}
+          <div className="pointer-events-none absolute inset-x-[-8%] top-[90px] z-0 opacity-35 sm:inset-x-[2%] sm:top-[80px] sm:opacity-45 lg:relative lg:inset-auto lg:z-auto lg:w-full lg:opacity-100">
+            <GlassArchitecture />
           </div>
-          {/* Protect headline and CTA contrast without obscuring the animated ribbon entirely. */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/80 to-[#030b18]/35 lg:hidden" />
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="relative z-20 mt-7 hidden md:block"
+          className="relative z-20 mt-5 hidden lg:block"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="font-body text-[9px] uppercase tracking-[0.3em] text-slate-200">
