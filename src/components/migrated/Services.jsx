@@ -25,6 +25,7 @@ import {
 } from "react-icons/fi";
 
 import Link from "../layout/LocalizedLink"
+import InfinityVisual from "../../sections/home/InfinityVisual"
 
 function Services() {
   /* ======================================================
@@ -525,195 +526,15 @@ function Services() {
                 </motion.div>
               </div>
 
-              {/* ==================================================
-                  HERO VISUAL
-              ================================================== */}
-
+              {/* Shared infinity ribbon previously used on Home:
+                  lightweight SVG with an in-view cyan highlight. */}
               <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 1,
-                        scale: 0.96,
-                      }
-                }
-                transition={{
-                  duration: 0.7,
-                  delay: 0.16,
-                }}
+                initial={{ opacity: 1, scale: 0.96 }}
+                animate={heroInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 0.96 }}
+                transition={{ duration: 0.7, delay: 0.16 }}
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                {/* OUTER RING */}
-
-                <motion.div
-                  className="absolute h-[350px] w-[350px] rounded-full border border-white/[0.06]"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: 360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 35,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute left-1/2 top-[-5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-                {/* INNER RING */}
-
-                <motion.div
-                  className="absolute h-[250px] w-[250px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: -360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 26,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute bottom-[25px] right-[20px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
-                </motion.div>
-
-                {/* CENTER */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          scale: [1, 1.04, 1],
-                        }
-                      : {
-                          scale: 1,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="relative z-10 flex h-[145px] w-[145px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_70px_rgba(5,124,250,0.14)]"
-                >
-                  <FiCpu className="text-xl text-[#057CFA]" />
-
-                  <span className="mt-3 font-heading text-sm font-semibold text-white">
-                    AI Core
-                  </span>
-
-                  <span className="mt-1 font-body text-[10px] uppercase tracking-[0.2em] text-slate-200">
-                    GenData Tech
-                  </span>
-                </motion.div>
-
-                {/* AI NODE */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, -7, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute right-0 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[12px] font-semibold text-slate-200">
-                    AI / ML
-                  </p>
-                </motion.div>
-
-                {/* SOFTWARE NODE */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, 6, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.8,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-16 left-0 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[12px] font-semibold text-slate-200">
-                    Software
-                  </p>
-                </motion.div>
-
-                {/* IOT NODE */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, 7, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-6 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[12px] font-semibold text-slate-200">
-                    IoT
-                  </p>
-                </motion.div>
+                <InfinityVisual />
               </motion.div>
             </div>
           </div>
