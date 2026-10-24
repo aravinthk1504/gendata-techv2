@@ -12,20 +12,20 @@ export default function NeuralBackground() {
   });
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_76%_48%,rgba(0,91,210,.16),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_76%_48%,rgba(0,105,230,.25),transparent_55%)]" />
       <svg viewBox="0 0 960 560" preserveAspectRatio="xMidYMid slice"
-        className="absolute right-[-30%] top-0 h-full w-[115%] opacity-30 sm:right-[-12%] sm:w-[85%] sm:opacity-45 lg:right-[-5%] lg:w-[66%]">
+        className="absolute right-[-30%] top-0 h-full w-[115%] opacity-45 sm:right-[-12%] sm:w-[85%] sm:opacity-60 lg:right-[-5%] lg:w-[66%]">
         <defs>
           <linearGradient id={id+"wire"} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#057CFA" stopOpacity=".1" />
-            <stop offset=".6" stopColor="#37C7FF" stopOpacity=".55" />
+            <stop offset=".6" stopColor="#37C7FF" stopOpacity=".76" />
             <stop offset="1" stopColor="#057CFA" stopOpacity=".12" />
           </linearGradient>
         </defs>
         {nodes.map((node, i) => {
           const neighbor = nodes[(i * 7 + 9) % nodes.length];
           return <path key={i} d={`M ${node.x} ${node.y} L ${neighbor.x} ${neighbor.y}`}
-            stroke={`url(#${id}wire)`} strokeWidth=".7" opacity=".5" />;
+            stroke={`url(#${id}wire)`} strokeWidth=".9" opacity=".7" />;
         })}
         {nodes.map((node, i) => (
           <g key={i}>
@@ -35,7 +35,7 @@ export default function NeuralBackground() {
           </g>
         ))}
       </svg>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#030b18]/95 via-[#030b18]/55 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/38 to-transparent" />
     </div>
   );
 }
