@@ -334,7 +334,7 @@ function Services() {
 
         <section
           ref={heroRef}
-          className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden bg-[#030b18] px-6 pb-[78px] pt-28 sm:min-h-[94svh] sm:pb-16 sm:pt-36 lg:min-h-[88svh] lg:items-center lg:px-10 lg:pb-16 lg:pt-28"
+          className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden bg-[#030b18] px-6 pb-[78px] pt-28 sm:min-h-[94svh] sm:pb-16 sm:pt-36 lg:min-h-[calc(88svh+40px)] lg:items-center lg:px-10 lg:pb-16 lg:pt-28"
         >
           {/* MAIN GLOW */}
 
