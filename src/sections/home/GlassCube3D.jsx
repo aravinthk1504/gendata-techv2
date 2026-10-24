@@ -1,12 +1,11 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import dynamic from "next/dynamic";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, RoundedBox, Edges, Environment } from "@react-three/drei";
+import { Float, RoundedBox, Edges } from "@react-three/drei";
 import * as THREE from "three";
 
-function GlassBox({ size, position, color = "#56c9ff", opacity = 0.16, speed = 0.1 }) {
+function GlassBox({ size, position, color = "#56c9ff", opacity = 0.16 }) {
   return (
     <RoundedBox args={size} radius={0.025} smoothness={3} position={position}>
       <meshPhysicalMaterial color={color} metalness={0.04} roughness={0.1} transmission={0.88} thickness={0.55} ior={1.46} transparent opacity={opacity} depthWrite={false} side={THREE.DoubleSide} />
@@ -50,13 +49,11 @@ function Scene() {
   );
 }
 
-const ClientScene = dynamic(() => Promise.resolve(Scene), { ssr:false });
-
 export default function GlassCube3D() {
   return (
     <div className="relative h-full w-full" aria-label="Slowly rotating illuminated glass architecture in three dimensions" role="img">
       <div className="pointer-events-none absolute inset-[18%] rounded-full bg-[#057cfa]/15 blur-[65px]" />
-      <ClientScene />
+      <Scene />
     </div>
   );
 }
