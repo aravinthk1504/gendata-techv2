@@ -2,40 +2,55 @@
 
 import { useId } from "react";
 
-// Decorative neural network only. Static, deterministic SVG; no GPU or layout shifts.
+// Full-width decorative neural network with CSS/SVG motion and no frame-loop.
 export default function NeuralBackground() {
   const id = useId().replace(/:/g, "");
-  const nodes = Array.from({ length: 34 }, (_, i) => {
-    const x = 65 + (i * 137) % 820;
-    const y = 45 + (i * 83 + Math.floor(i / 5) * 41) % 460;
-    return { x, y };
+  const nodes = Array.from({ length: 76 }, (_, i) => ({
+    x: 28 + ((i * 173 + Math.floor(i / 9) * 59) % 1150),
+    y: 25 + ((i * 101 + Math.floor(i / 7) * 43) % 630),
+  }));
+  const edges = nodes.flatMap((node, i) => {
+    const candidates = nodes.map((other,j) => ({
+      j, dist: Math.hypot(node.x-other.x, node.y-other.y)
+    })).filter(item=>item.j!==i && item.j>i && item.dist<230);
+    return candidates.sort((a,b)=>a.dist-b.dist).slice(0,2).map(item=>[i,item.j]);
   });
+
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_76%_48%,rgba(0,105,230,.25),transparent_55%)]" />
-      <svg viewBox="0 0 960 560" preserveAspectRatio="xMidYMid slice"
-        className="absolute right-[-30%] top-0 h-full w-[115%] opacity-45 sm:right-[-12%] sm:w-[85%] sm:opacity-60 lg:right-[-5%] lg:w-[66%]">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_45%_48%,rgba(3,94,206,.19),transparent_73%)]" />
+      <svg viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full opacity-75">
         <defs>
           <linearGradient id={id+"wire"} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#057CFA" stopOpacity=".1" />
-            <stop offset=".6" stopColor="#37C7FF" stopOpacity=".76" />
-            <stop offset="1" stopColor="#057CFA" stopOpacity=".12" />
+            <stop offset="0" stopColor="#057CFA" stopOpacity=".24" />
+            <stop offset=".5" stopColor="#40CFFF" stopOpacity=".68" />
+            <stop offset="1" stopColor="#057CFA" stopOpacity=".24" />
           </linearGradient>
         </defs>
-        {nodes.map((node, i) => {
-          const neighbor = nodes[(i * 7 + 9) % nodes.length];
-          return <path key={i} d={`M ${node.x} ${node.y} L ${neighbor.x} ${neighbor.y}`}
-            stroke={`url(#${id}wire)`} strokeWidth=".9" opacity=".7" />;
-        })}
-        {nodes.map((node, i) => (
-          <g key={i}>
-            <circle cx={node.x} cy={node.y} r={i % 8 === 0 ? 3.5 : 1.8}
-              fill={i % 5 === 0 ? "#8cecff" : "#168dff"} opacity={i % 4 === 0 ? ".85" : ".55"} />
-            {i % 9 === 0 && <circle cx={node.x} cy={node.y} r="9" fill="none" stroke="#0589ff" strokeOpacity=".24" strokeWidth="1" />}
-          </g>
-        ))}
+        <g className="gd-neural-drift">
+          {edges.map(([a,b],i)=>(
+            <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
+              stroke={`url(#${id}wire)`} strokeWidth={i%7===0?1.05:.65} opacity={i%5===0?.65:.36} />
+          ))}
+          {nodes.map((node,i)=>(
+            <g key={i} className="gd-neural-node" style={{animationDelay:`${-(i%13)*.47}s`, animationDuration:`${3.8+(i%7)*.7}s`}}>
+              <circle cx={node.x} cy={node.y} r={i%9===0?3.2:1.8}
+                fill={i%4===0?"#a6efff":"#148aff"} />
+              {i%11===0 && <circle cx={node.x} cy={node.y} r="8" fill="none" stroke="#19b9ff" strokeOpacity=".48" strokeWidth=".9" />}
+            </g>
+          ))}
+        </g>
       </svg>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/38 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(3,11,24,.52),transparent_75%)]" />
+      <style jsx>{`
+        .gd-neural-drift { animation: neural-drift 22s ease-in-out infinite alternate; transform-origin: center; }
+        .gd-neural-node { animation: neural-blink 4s ease-in-out infinite; }
+        @keyframes neural-drift { from { transform: translate(-9px, 5px); } to { transform: translate(10px, -7px); } }
+        @keyframes neural-blink { 0%,100% { opacity:.38; } 45% {opacity:1;} 70% {opacity:.55;} }
+        @media (prefers-reduced-motion: reduce) {
+          .gd-neural-drift, .gd-neural-node { animation: none; }
+        }
+      `}</style>
     </div>
   );
 }
