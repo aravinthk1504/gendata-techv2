@@ -25,6 +25,7 @@ import {
 } from "react-icons/fi";
 
 import Link from "../layout/LocalizedLink"
+import InfinityVisual from "../../sections/home/InfinityVisual"
 
 function Services() {
   /* ======================================================
@@ -457,9 +458,9 @@ function Services() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Engineering Intelligence.
-                  <span className="block bg-gradient-to-r from-white via-blue-100 to-[#60D9FF] bg-clip-text text-transparent">
-                    Creating Impact.
+                  AI-focused services built around
+                  <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
+                    real business problems.
                   </span>
                 </motion.h1>
 
@@ -485,60 +486,55 @@ function Services() {
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech transforms ambitious ideas into intelligent digital
-                  solutions through AI-led engineering, thoughtful design,
-                  and practical execution.
+                  GenData Tech combines artificial intelligence, software
+                  engineering, web, mobile and IoT technologies to build
+                  practical digital systems around real requirements.
                 </motion.p>
 
                 <motion.div
-                  initial={{ opacity: 1, y: 15 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 15 }}
-                  transition={{ duration: 0.6, delay: 0.24 }}
-                  className="mt-8 flex flex-wrap gap-3"
+                  initial={{
+                    opacity: 1,
+                    y: 15,
+                  }}
+                  animate={
+                    heroInView
+                      ? {
+                          opacity: 1,
+                          y: 0,
+                        }
+                      : {
+                          opacity: 1,
+                          y: 15,
+                        }
+                  }
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.24,
+                  }}
+                  className="mt-8 flex flex-wrap gap-2.5"
                 >
-                  <a href="#technology-services" className="gd-hero-button gd-hero-button--primary group">
-                    Explore Capabilities <FiArrowRight />
-                  </a>
-                  <Link to="/contact" className="gd-hero-button gd-hero-button--secondary">
-                    Let’s Talk
-                  </Link>
+                  {["AI / ML", "Software", "Web", "Mobile", "IoT"].map(
+                    (item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[12px] font-semibold uppercase tracking-[0.13em] text-slate-200"
+                      >
+                        {item}
+                      </span>
+                    ),
+                  )}
                 </motion.div>
               </div>
 
-              {/* Realistic robot portrait framed as the approved cyan-arc composition. */}
+              {/* Shared infinity ribbon previously used on Home:
+                  lightweight SVG with an in-view cyan highlight. */}
               <motion.div
-                initial={{ opacity: 0, x: 18 }}
-                animate={heroInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 18 }}
-                transition={{ duration: 0.7, delay: 0.12 }}
-                className="pointer-events-none relative mx-auto hidden h-[410px] w-full max-w-[490px] select-none lg:block"
-                role="img"
-                aria-label="Realistic futuristic AI robot portrait with a glowing cyan circular frame"
+                initial={{ opacity: 1, scale: 0.96 }}
+                animate={heroInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 0.96 }}
+                transition={{ duration: 0.7, delay: 0.16 }}
+                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                {/* Halftone accents and a restrained ambient glow. */}
-                <div className="absolute inset-0 rounded-full bg-[#057CFA]/15 blur-[55px]" />
-                <div
-                  className="absolute -right-9 -top-12 h-40 w-40 opacity-35"
-                  style={{
-                    backgroundImage: "radial-gradient(circle, #47BFFF 1.25px, transparent 1.6px)",
-                    backgroundSize: "12px 12px",
-                    maskImage: "linear-gradient(to bottom, black, transparent)",
-                  }}
-                />
-                {/* True circular clipping prevents the rectangular-image appearance. */}
-                <div className="absolute -right-[7%] -top-[7%] aspect-square h-[118%] rounded-full border-[7px] border-[#22C7F5] shadow-[0_0_35px_rgba(5,124,250,0.24)]" />
-                <div className="absolute -right-[5.3%] -top-[4.8%] aspect-square h-[113%] overflow-hidden rounded-full border border-white/10 bg-[#06182B]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-no-repeat"
-                    style={{
-                      backgroundImage: "url('/assets/services-hero-robot.webp')",
-                      backgroundPosition: "65% 40%",
-                      filter: "brightness(1.12) contrast(1.06)",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#030b18]/25 via-transparent to-transparent" />
-                </div>
-                <span className="absolute left-1 top-12 h-2.5 w-2.5 rounded-full bg-[#60D9FF] shadow-[0_0_18px_#057CFA]" />
-                <span className="absolute bottom-10 left-0 h-px w-24 bg-gradient-to-r from-transparent to-[#60D9FF]" />
+                <InfinityVisual />
               </motion.div>
             </div>
           </div>
