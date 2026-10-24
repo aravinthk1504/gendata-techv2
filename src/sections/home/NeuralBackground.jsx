@@ -27,13 +27,17 @@ export default function NeuralBackground() {
             <stop offset="1" stopColor="#057CFA" stopOpacity=".24" />
           </linearGradient>
         </defs>
-        <g className="gd-neural-drift">
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="-8 5;10 -7;-8 5" dur="19s" repeatCount="indefinite" />
           {edges.map(([a,b],i)=>(
             <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-              stroke={`url(#${id}wire)`} strokeWidth={i%7===0?1.05:.65} opacity={i%5===0?.65:.36} />
+              stroke={`url(#${id}wire)`} strokeWidth={i%7===0?1.35:.9} opacity={i%5===0?.75:.5}>
+              <animate attributeName="stroke-opacity" values=".3;1;.45;.3" dur={`${5+(i%6)}s`} begin={`${-(i%11)*.6}s`} repeatCount="indefinite" />
+            </line>
           ))}
           {nodes.map((node,i)=>(
-            <g key={i} className="gd-neural-node" style={{animationDelay:`${-(i%13)*.47}s`, animationDuration:`${3.8+(i%7)*.7}s`}}>
+            <g key={i}>
+              <animate attributeName="opacity" values=".35;1;.45;.35" dur={`${3.8+(i%7)*.7}s`} begin={`${-(i%13)*.47}s`} repeatCount="indefinite" />
               <circle cx={node.x} cy={node.y} r={i%9===0?3.2:1.8}
                 fill={i%4===0?"#a6efff":"#148aff"} />
               {i%11===0 && <circle cx={node.x} cy={node.y} r="8" fill="none" stroke="#19b9ff" strokeOpacity=".48" strokeWidth=".9" />}
@@ -41,16 +45,8 @@ export default function NeuralBackground() {
           ))}
         </g>
       </svg>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(3,11,24,.52),transparent_75%)]" />
-      <style jsx>{`
-        .gd-neural-drift { animation: neural-drift 22s ease-in-out infinite alternate; transform-origin: center; }
-        .gd-neural-node { animation: neural-blink 4s ease-in-out infinite; }
-        @keyframes neural-drift { from { transform: translate(-9px, 5px); } to { transform: translate(10px, -7px); } }
-        @keyframes neural-blink { 0%,100% { opacity:.38; } 45% {opacity:1;} 70% {opacity:.55;} }
-        @media (prefers-reduced-motion: reduce) {
-          .gd-neural-drift, .gd-neural-node { animation: none; }
-        }
-      `}</style>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(3,11,24,.40),transparent_75%)]" />
+
     </div>
   );
 }
