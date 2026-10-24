@@ -408,10 +408,10 @@ function Services() {
           />
 
           <div className="relative mx-auto flex w-full max-w-[1400px] items-center py-6 sm:py-8 lg:min-h-[410px] lg:py-8">
-            <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
-              {/* HERO LEFT */}
+            <div className="relative isolate grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+              {/* HERO LEFT: keep copy readable above the subtle mobile ribbon. */}
 
-              <div>
+              <div className="relative z-20 min-w-0">
                 <motion.p
                   initial={{
                     opacity: 1,
@@ -526,16 +526,15 @@ function Services() {
                 </motion.div>
               </div>
 
-              {/* Shared infinity ribbon previously used on Home:
-                  lightweight SVG with an in-view cyan highlight. */}
-              <motion.div
-                initial={{ opacity: 1, scale: 0.96 }}
-                animate={heroInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 0.96 }}
-                transition={{ duration: 0.7, delay: 0.16 }}
-                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
-              >
-                <InfinityVisual />
-              </motion.div>
+              {/* Exactly the Home hero's 570px infinity ribbon sizing. On mobile,
+                  render it behind the text, without a separate visual block. */}
+              <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block lg:justify-self-end">
+                <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-[570px] lg:translate-x-0 lg:opacity-100">
+                  <InfinityVisual />
+                </div>
+              </div>
+              {/* Keep service text and tags legible over the mobile ribbon. */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
             </div>
           </div>
         </section>
