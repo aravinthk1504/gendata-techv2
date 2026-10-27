@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react"
@@ -25,7 +26,11 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python"};
+
 function AIMLDevelopment() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -55,14 +60,14 @@ function AIMLDevelopment() {
   const offerings = [
     {
       number: "01",
-      title: "AI Model Development",
+      title: tr("AI Model Development"),
       description:
         "Custom artificial intelligence models designed around specific data, business requirements and application needs.",
     },
 
     {
       number: "02",
-      title: "Machine Learning Solutions",
+      title: tr("Machine Learning Solutions"),
       description:
         "Machine learning systems for prediction, classification, pattern recognition and intelligent decision support.",
     },
@@ -76,7 +81,7 @@ function AIMLDevelopment() {
 
     {
       number: "04",
-      title: "AI Automation",
+      title: tr("AI Automation"),
       description:
         "Intelligent automation designed to reduce repetitive work and connect AI with operational workflows.",
     },
@@ -90,7 +95,7 @@ function AIMLDevelopment() {
 
     {
       number: "06",
-      title: "Custom AI Solutions",
+      title: tr("Custom AI Solutions"),
       description:
         "Purpose-built AI applications combining models, automation, APIs and business logic into a tailored system.",
     },
@@ -106,7 +111,7 @@ function AIMLDevelopment() {
       icon: FiCode,
       category: "Programming",
       technologies: [
-        "Python",
+        tr("Python"),
       ],
     },
 
@@ -167,49 +172,49 @@ function AIMLDevelopment() {
   const process = [
     {
       number: "01",
-      title: "Requirement",
+      title: tr("Requirement"),
       description:
         "Understand the problem, goal and expected AI outcome.",
     },
 
     {
       number: "02",
-      title: "Data Understanding",
+      title: tr("Data Understanding"),
       description:
         "Review available data, structure, quality and model requirements.",
     },
 
     {
       number: "03",
-      title: "Model Design",
+      title: tr("Model Design"),
       description:
         "Select suitable algorithms, architecture and development strategy.",
     },
 
     {
       number: "04",
-      title: "Training",
+      title: tr("Training"),
       description:
         "Train and refine the model using prepared data and suitable methods.",
     },
 
     {
       number: "05",
-      title: "Evaluation",
+      title: tr("Evaluation"),
       description:
         "Evaluate model performance using relevant metrics and validation.",
     },
 
     {
       number: "06",
-      title: "Integration",
+      title: tr("Integration"),
       description:
         "Connect the model with the application, API or required workflow.",
     },
 
     {
       number: "07",
-      title: "Deployment",
+      title: tr("Deployment"),
       description:
         "Prepare the AI system for practical use and future improvement.",
     },
@@ -431,7 +436,7 @@ function AIMLDevelopment() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  AI / ML Development
+                  {tr("AI / ML Development")}
                 </motion.p>
 
 
@@ -554,7 +559,7 @@ function AIMLDevelopment() {
                   {[
                     "Machine Learning",
                     "Deep Learning",
-                    "AI Automation",
+                    tr("AI Automation"),
                     "Agentic AI",
                   ].map((item) => (
 
@@ -738,7 +743,7 @@ function AIMLDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Service Overview
+                  {tr("Service Overview")}
                 </p>
 
 
@@ -792,7 +797,7 @@ function AIMLDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                What We Offer
+                {tr("What We Offer")}
               </p>
 
 
@@ -872,7 +877,7 @@ function AIMLDevelopment() {
           <div className="mx-auto max-w-[1400px]">
 
             <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-              Use Cases
+              {tr("Use Cases")}
             </p>
 
             <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -899,7 +904,7 @@ function AIMLDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Technology Stack
+                  {tr("Technology Stack")}
                 </p>
 
 
@@ -1004,7 +1009,7 @@ function AIMLDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Development Process
+                {tr("Development Process")}
               </p>
 
 
@@ -1091,7 +1096,7 @@ function AIMLDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Why GenData Tech
+                  {tr("Why GenData Tech")}
                 </p>
 
 
@@ -1186,7 +1191,7 @@ function AIMLDevelopment() {
             <div className="mx-auto max-w-3xl text-center">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
 
@@ -1348,7 +1353,7 @@ function AIMLDevelopment() {
                   to="/contact"
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Discuss Your Requirement
+                  {tr("Discuss Your Requirement")}
 
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </Link>
