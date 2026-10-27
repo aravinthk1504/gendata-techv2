@@ -51,7 +51,7 @@ function FullStackVisual() {
   ];
 
   return (
-    <div ref={ref} className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
+    <div ref={ref} className="relative mt-8 w-full min-w-0 overflow-visible pb-3 lg:mt-2 lg:flex lg:min-h-60 lg:items-center lg:justify-center lg:overflow-hidden lg:pb-0">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/60 blur-[70px] lg:h-60 lg:w-60 lg:bg-blue-100/70 lg:blur-[80px]" />
 
       {/* Mobile/tablet: aligned gray connectors between each pair of cards. */}
@@ -128,7 +128,7 @@ function SoftwareVisual() {
   const modules = ["Module A", "Module B", "Module C"];
 
   return (
-    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
+    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-4 lg:h-36 lg:pt-0">
       <div className="relative z-10 flex w-16 shrink-0 flex-col gap-3 sm:w-20">
         {modules.map((module, index) => (
           <motion.div
@@ -173,7 +173,7 @@ function SoftwareVisual() {
 function AppVisual() {
   const { ref, active } = useCardMotion();
   return (
-    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-6 lg:h-40 lg:pt-0">
+    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-4 lg:h-36 lg:pt-0">
       <motion.div
         animate={active ? { y: [0, 5, 0] } : { y: 0 }}
         transition={{ duration: 4, repeat: active ? Infinity : 0, ease: "easeInOut" }}
@@ -234,7 +234,7 @@ function IoTVisual() {
   ];
 
   return (
-    <div ref={ref} className="relative mt-8 flex min-h-64 items-center justify-center overflow-hidden sm:mt-2 sm:min-h-65">
+    <div ref={ref} className="relative mt-8 flex min-h-64 items-center justify-center overflow-hidden sm:mt-2 sm:min-h-60">
       <div className="absolute h-55 w-55 rounded-full bg-blue-100/60 blur-[80px]" />
 
       <div className="relative z-10 grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-10 px-1 sm:flex sm:max-w-lg sm:items-center sm:justify-center sm:gap-0 sm:px-0">
@@ -354,7 +354,7 @@ function TechnologyServices({ content, lang }) {
           </motion.p>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:mt-16 lg:mt-20 lg:grid-cols-2">
+        <div className="mt-12 grid gap-5 sm:mt-14 lg:mt-14 lg:grid-cols-2">
           <motion.article
             initial={{ opacity: 1, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
