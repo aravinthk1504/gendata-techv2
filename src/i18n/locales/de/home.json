@@ -217,7 +217,7 @@
       },
       {
         "number": "02",
-        "title": "Data Science",
+        "title": "Datenwissenschaft",
         "category": "Daten & KI",
         "description": "Lernen Sie, Daten zu analysieren, Muster zu erkennen und mit modernen Data-Science-Methoden prädiktive Lösungen zu entwickeln.",
         "topics": [
@@ -228,7 +228,7 @@
       },
       {
         "number": "03",
-        "title": "Data Analytics",
+        "title": "Datenanalyse",
         "category": "Analytics",
         "description": "Verwandeln Sie Rohdaten mit Analyse-, Visualisierungs- und Reporting-Tools in aussagekräftige Geschäftserkenntnisse.",
         "topics": [
@@ -239,7 +239,7 @@
       },
       {
         "number": "04",
-        "title": "Full Stack Development",
+        "title": "Full-Stack-Entwicklung",
         "category": "Entwicklung",
         "description": "Lernen Sie, vollständige moderne Webanwendungen mit Frontend, Backend, APIs und Datenbanken zu entwickeln.",
         "topics": [
