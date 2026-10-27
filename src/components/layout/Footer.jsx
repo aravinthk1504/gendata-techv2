@@ -73,22 +73,22 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: FaGithub,
-    href: "#",
+    href: "https://github.com/gendatatech?tab=repositories",
   },
   {
     name: "Instagram",
     icon: FaInstagram,
-    href: "#",
+    href: "https://www.instagram.com/gendata_tech",
   },
   {
     name: "Facebook",
     icon: FaFacebookF,
-    href: "#",
+    href: "https://www.facebook.com/share/19Zj8BtEBo",
   },
   {
     name: "LinkedIn",
     icon: FaLinkedinIn,
-    href: "#",
+    href: "https://www.linkedin.com/in/gendata-tech",
   },
 ];
 
