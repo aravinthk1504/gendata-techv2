@@ -126,7 +126,7 @@ function ProductVisual({ type, content }) {
     const bars = [45, 68, 55, 86];
     return (
       <div ref={chartRef}
-       className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
+       className="relative mt-5 h-28 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-6 sm:h-32 sm:p-5">
         <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-100/70 blur-[45px]" />
         <div className="relative flex h-full items-end gap-3 rounded-xl border border-slate-200 bg-white p-3">
           {bars.map((height, index) => (
@@ -154,7 +154,7 @@ function ProductVisual({ type, content }) {
 
   if (type === "erp") {
     return (
-      <div className="relative mt-6 flex h-32 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] sm:mt-8 sm:h-36">
+      <div className="relative mt-5 flex h-28 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] sm:mt-6 sm:h-32">
         <div className="absolute h-24 w-24 rounded-full border border-dashed border-brand-accent/30" />
         <div className="relative z-10 flex h-15 w-15 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_12px_30px_rgba(0,45,204,0.18)] sm:h-16 sm:w-16">
           <span className="font-heading text-[9px] font-semibold text-white">
@@ -183,7 +183,7 @@ function ProductVisual({ type, content }) {
 
   return (
     <div ref={chartRef}
-       className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
+       className="relative mt-5 h-28 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-6 sm:h-32 sm:p-5">
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-emerald-100/70 blur-[45px]" />
       <div className="relative grid h-full grid-cols-[1fr_0.85fr] gap-3">
         <div className="flex items-end gap-1.5 rounded-xl border border-slate-200 bg-white p-3">
@@ -276,7 +276,7 @@ function Products({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.12 }}
           transition={{ duration: 0.7 }}
-          className="group relative mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:mt-14 sm:p-8 lg:mt-14 lg:rounded-[32px] lg:p-8"
+          className="group relative mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:mt-14 sm:p-8 lg:mt-14 lg:rounded-[32px] lg:p-7"
         >
           <div className="absolute -left-30 bottom-0 h-100 w-100 rounded-full bg-brand-primary/5 blur-[120px]" />
           <div className="absolute -right-20 top-0 h-100 w-100 rounded-full bg-brand-accent/6 blur-[130px]" />
@@ -289,7 +289,7 @@ function Products({ content, lang }) {
                 </span>
               </div>
 
-              <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:mt-7 sm:text-5xl">
+              <h3 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:mt-5 sm:text-4xl">
                 {t("products.lms.title")}
               </h3>
 
@@ -297,7 +297,7 @@ function Products({ content, lang }) {
                 {t("products.lms.description")}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2 sm:mt-8">
+              <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                 {t("products.lms.features", { returnObjects: true }).map((item) => (
                   <span
                     key={item}
@@ -310,7 +310,7 @@ function Products({ content, lang }) {
 
               <Link
                 href={localizedPath("/products/lms")}
-                className="group mt-7 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-10 lg:inline-flex"
+                className="group mt-7 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-7 lg:inline-flex"
               >
                 {t("products.explore")}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -340,7 +340,7 @@ function Products({ content, lang }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, delay: index * 0.08 }}
-              className="group flex flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-8"
+              className="group flex flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-6 lg:p-6"
             >
               <div className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2">
                 <span className="shrink-0 font-body text-[10px] font-semibold uppercase leading-4 tracking-[0.2em] text-brand-primary">
@@ -351,7 +351,7 @@ function Products({ content, lang }) {
                 </span>
               </div>
 
-              <h3 className="mt-6 text-left font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-7 sm:text-3xl">
+              <h3 className="mt-6 text-left font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-5 sm:text-2xl">
                 GenData {product.title}
               </h3>
 
