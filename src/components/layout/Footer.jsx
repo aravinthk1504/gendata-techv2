@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 
 const logoMark = "/assets/gendata-tech-mark.webp"
 
-import { FaGithub, FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 const getFooterLinks = (t, lang) => ({
   [t("footer.sections.services")]: [
@@ -89,6 +89,11 @@ const socialLinks = [
     name: "LinkedIn",
     icon: FaLinkedinIn,
     href: "https://www.linkedin.com/in/gendata-tech",
+  },
+  {
+    name: "WhatsApp",
+    icon: FaWhatsapp,
+    href: "https://wa.me/918428683895",
   },
 ];
 
