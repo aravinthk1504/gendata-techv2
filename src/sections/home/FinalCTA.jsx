@@ -11,7 +11,6 @@ import {
   FaGithub,
   FaInstagram,
   FaFacebookF,
-  FaWhatsapp,
   FaLinkedinIn,
 } from "react-icons/fa";
 
