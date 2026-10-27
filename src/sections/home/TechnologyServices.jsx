@@ -41,13 +41,13 @@ function FlowLine({ vertical = false, className = "", active = false }) {
   );
 }
 
-function FullStackVisual() {
+function FullStackVisual({ lang }) {
   const { ref, active } = useCardMotion();
   const layers = [
     { name: "Frontend", sub: "UI / Web" },
     { name: "API", sub: "Integration" },
-    { name: "Backend", sub: "Logic" },
-    { name: "Database", sub: "Data" },
+    { name: "Backend", sub: lang === "de" ? "Logik" : "Logic" },
+    { name: "Database", sub: lang === "de" ? "Daten" : "Data" },
   ];
 
   return (
@@ -123,7 +123,7 @@ function FullStackVisual() {
   );
 }
 
-function SoftwareVisual() {
+function SoftwareVisual({ lang }) {
   const { ref, active } = useCardMotion();
   const modules = ["Module A", "Module B", "Module C"];
 
@@ -155,7 +155,7 @@ function SoftwareVisual() {
         className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_15px_40px_rgba(0,45,204,0.18)] sm:h-20 sm:w-20"
       >
         <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
-          Core
+          {lang === "de" ? "Kern" : "Core"}
         </span>
       </motion.div>
 
@@ -163,14 +163,14 @@ function SoftwareVisual() {
 
       <div className="relative z-10 flex h-16 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
         <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">
-          Data
+          {lang === "de" ? "Daten" : "Data"}
         </span>
       </div>
     </div>
   );
 }
 
-function AppVisual() {
+function AppVisual({ lang }) {
   const { ref, active } = useCardMotion();
   return (
     <div ref={ref} className="relative mx-auto mt-auto flex h-44 w-full max-w-[440px] min-w-0 shrink-0 items-center justify-between gap-0 pt-5 sm:h-44 lg:mt-3 lg:h-32 lg:pt-0">
@@ -197,7 +197,7 @@ function AppVisual() {
         <span className="text-center font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-white">
           App
           <br />
-          Core
+          {lang === "de" ? "Kern" : "Core"}
         </span>
       </motion.div>
 
@@ -224,13 +224,13 @@ function AppVisual() {
   );
 }
 
-function IoTVisual() {
+function IoTVisual({ lang }) {
   const { ref, active } = useCardMotion();
   const items = [
-    { title: "Sensor", label: "Input" },
-    { title: "Device", label: "Edge" },
-    { title: "Cloud", label: "Connect" },
-    { title: "AI", label: "Intelligence" },
+    { title: "Sensor", label: lang === "de" ? "Eingabe" : "Input" },
+    { title: lang === "de" ? "Gerät" : "Device", label: "Edge" },
+    { title: "Cloud", label: lang === "de" ? "Vernetzt" : "Connect" },
+    { title: lang === "de" ? "KI" : "AI", label: lang === "de" ? "Intelligenz" : "Intelligence" },
   ];
 
   return (
@@ -393,7 +393,7 @@ function TechnologyServices({ content, lang }) {
                   </span>
                 </Link>
               </div>
-              <FullStackVisual />
+              <FullStackVisual lang={lang} />
               <Link
                 href={localizedPath("/services")}
                 className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
@@ -422,7 +422,7 @@ function TechnologyServices({ content, lang }) {
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
               {t("technology.software.description")}
             </p>
-            <SoftwareVisual />
+            <SoftwareVisual lang={lang} />
             <Link
               href={localizedPath("/services")}
               className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
@@ -450,7 +450,7 @@ function TechnologyServices({ content, lang }) {
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
               {t("technology.app.description")}
             </p>
-            <AppVisual />
+            <AppVisual lang={lang} />
             <Link
               href={localizedPath("/services")}
               className="mt-4 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
@@ -500,7 +500,7 @@ function TechnologyServices({ content, lang }) {
                   </span>
                 </Link>
               </div>
-              <IoTVisual />
+              <IoTVisual lang={lang} />
               <Link
                 href={localizedPath("/services")}
                 className="mt-3 inline-flex w-fit items-center gap-3 font-body text-xs font-semibold text-brand-primary lg:hidden"
