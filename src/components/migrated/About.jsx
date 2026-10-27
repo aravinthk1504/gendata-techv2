@@ -378,7 +378,7 @@ function About() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  About GenData Tech
+                  {lang === "de" ? "Über GenData Tech" : "About GenData Tech"}
                 </motion.p>
 
                 <motion.h1
@@ -403,9 +403,9 @@ function About() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Engineering intelligence for
+                  {lang === "de" ? "Intelligente Lösungen für" : "Engineering intelligence for"}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    real-world impact.
+                    {lang === "de" ? "die Praxis." : "real-world impact."}
                   </span>
                 </motion.h1>
 
@@ -431,10 +431,7 @@ function About() {
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech is an AI-focused technology company building
-                  intelligent systems, digital products and engineering
-                  solutions designed around practical business and real-world
-                  challenges.
+                  {lang === "de" ? "GenData Tech entwickelt als KI-orientiertes Technologieunternehmen\n                  intelligente Systeme, digitale Produkte und technische\n                  Lösungen für konkrete geschäftliche Herausforderungen." : "GenData Tech is an AI-focused technology company building\n                  intelligent systems, digital products and engineering\n                  solutions designed around practical business and real-world\n                  challenges."}
                 </motion.p>
 
                 <motion.div
@@ -628,11 +625,11 @@ function About() {
                 }}
               >
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Who We Are
+                  {lang === "de" ? "Wer wir sind" : "Who We Are"}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  An AI-focused company focused on practical intelligent systems.
+                  {lang === "de" ? "Ein KI-orientiertes Unternehmen für praxisnahe intelligente Systeme." : "An AI-focused company focused on practical intelligent systems."}
                 </h2>
               </motion.div>
 
@@ -738,11 +735,11 @@ function About() {
           <div className="relative mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Our Direction
+                {lang === "de" ? "Unsere Ausrichtung" : "Our Direction"}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                Guided by purpose. Built with direction.
+                {lang === "de" ? "Von klaren Zielen geleitet. Mit Weitblick entwickelt." : "Guided by purpose. Built with direction."}
               </h2>
             </div>
 
@@ -769,11 +766,11 @@ function About() {
                 <div className="absolute left-0 top-10 h-16 w-[2px] bg-[#057CFA]" />
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
-                  Mission
+                  {lang === "de" ? "Mission" : "Mission"}
                 </p>
 
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
-                  Build intelligence that works in the real world.
+                  {lang === "de" ? "Intelligente Lösungen für die reale Welt entwickeln." : "Build intelligence that works in the real world."}
                 </h3>
 
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
@@ -806,11 +803,11 @@ function About() {
                 <div className="absolute left-0 top-10 h-16 w-[2px] bg-[#002DCC]" />
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
-                  Vision
+                  {lang === "de" ? "Vision" : "Vision"}
                 </p>
 
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
-                  Grow into a trusted AI-focused technology company.
+                  {lang === "de" ? "Ein vertrauenswürdiges KI-Unternehmen aufbauen." : "Grow into a trusted AI-focused technology company."}
                 </h3>
 
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
@@ -834,16 +831,15 @@ function About() {
 
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Our Principles
+                  {lang === "de" ? "Unsere Grundsätze" : "Our Principles"}
                 </p>
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  How we think about technology.
+                  {lang === "de" ? "Wie wir Technologie verstehen." : "How we think about technology."}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-900">
-                  A small set of principles guides how we approach technology,
-                  products and problem solving.
+                  {lang === "de" ? "Klare Grundsätze prägen unseren Umgang mit Technologie,\n                  Produkten und Problemlösungen." : "A small set of principles guides how we approach technology,\n                  products and problem solving."}
                 </p>
               </div>
 
@@ -896,11 +892,11 @@ function About() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                What We Build
+                {lang === "de" ? "Was wir entwickeln" : "What We Build"}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Intelligence connected with engineering.
+                {lang === "de" ? "Intelligenz trifft auf Engineering." : "Intelligence connected with engineering."}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
