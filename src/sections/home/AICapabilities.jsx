@@ -50,7 +50,7 @@ function ModelVisual() {
   return (
     <div
       ref={visualRef}
-      className="relative mt-6 h-36 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-8 sm:h-40 lg:mt-10 lg:h-42"
+      className="relative mt-5 h-32 overflow-hidden rounded-2xl border border-white/8 bg-white/3 sm:mt-6 sm:h-36 lg:mt-7 lg:h-36"
     >
       <div
         className="absolute inset-0 opacity-20"
@@ -82,7 +82,7 @@ function ModelVisual() {
 
 function AgentVisual({ shouldAnimate }) {
   return (
-    <div className="relative mt-6 flex h-36 items-center justify-center sm:mt-8 sm:h-40 lg:mt-10 lg:h-42">
+    <div className="relative mt-5 flex h-32 items-center justify-center sm:mt-6 sm:h-36 lg:mt-7 lg:h-36">
       <motion.div
         animate={shouldAnimate ? { rotate: 360 } : { rotate: 0 }}
         transition={{
@@ -133,7 +133,7 @@ function AutomationVisual({ shouldAnimate, content }) {
   const steps = t("aiCapabilities.automation.steps", { returnObjects: true });
 
   return (
-    <div className="mt-7 flex min-h-28 w-full min-w-0 items-center justify-center gap-0 sm:mt-8 sm:min-h-30 lg:mt-10 lg:min-h-34">
+    <div className="mt-5 flex min-h-24 w-full min-w-0 items-center justify-center gap-0 sm:mt-6 sm:min-h-28 lg:mt-7 lg:min-h-28">
       {steps.map((step, index) => (
         <div key={step} className="flex min-w-0 items-center">
           <motion.div
@@ -178,7 +178,7 @@ function CustomAIVisual({ shouldAnimate }) {
   ];
 
   return (
-    <div className="relative mt-6 h-34 sm:mt-8 sm:h-38 lg:h-40">
+    <div className="relative mt-5 h-30 sm:mt-6 sm:h-34 lg:h-36">
       <svg
         className="absolute inset-0 h-full w-full"
         viewBox="0 0 400 150"
@@ -280,7 +280,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-8"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-6 lg:col-span-7 lg:p-7"
           >
             <div className="absolute right-0 top-0 h-50 w-50 rounded-full bg-brand-accent/8 blur-[90px] transition duration-500 group-hover:bg-brand-accent/12" />
             <div className="relative">
@@ -303,7 +303,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-8"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-6 lg:col-span-5 lg:p-7"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">
               {t("aiCapabilities.agents.label")}
@@ -323,7 +323,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-8"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-6 lg:col-span-5 lg:p-7"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">
               {t("aiCapabilities.automation.label")}
@@ -343,7 +343,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.18 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-linear-to-br from-brand-primary/12 to-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-8"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-linear-to-br from-brand-primary/12 to-white/3 p-6 sm:p-6 lg:col-span-7 lg:p-7"
           >
             <div className="grid gap-4 sm:grid-cols-2 sm:items-center lg:gap-5">
               <div>
