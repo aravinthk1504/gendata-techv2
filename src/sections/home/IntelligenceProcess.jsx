@@ -120,7 +120,7 @@ function IntelligenceProcess({ content, lang }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
+              className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-5xl"
             >
               {t("process.titleLine1")}
               <span className="block text-slate-300">
@@ -172,7 +172,7 @@ function IntelligenceProcess({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative mt-16 overflow-hidden rounded-3xl border border-white/8 bg-white/3 px-6 py-7 sm:mt-20 sm:px-9 sm:py-8 lg:mt-24 lg:px-12 lg:py-10"
+          className="relative mt-16 overflow-hidden rounded-3xl border border-white/8 bg-white/3 px-6 py-7 sm:mt-20 sm:px-9 sm:py-8 lg:mt-20 lg:px-12 lg:py-10"
         >
           <div className="absolute right-0 top-1/2 h-50 w-50 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[90px]" />
 
