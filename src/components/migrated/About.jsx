@@ -654,25 +654,15 @@ function About() {
                 className="space-y-5"
               >
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  GenData Tech focuses primarily on AI model development,
-                  Agentic AI, AI automation and customized intelligent
-                  solutions. Our goal is to transform real requirements into
-                  systems that are useful, understandable and built for
-                  practical application.
+                  {lang === "de" ? "GenData Tech konzentriert sich auf die Entwicklung von KI-Modellen, agentenbasierter KI, KI-Automatisierung und individuellen intelligenten Lösungen. Unser Ziel ist es, konkrete Anforderungen in verständliche, nützliche und praxistaugliche Systeme umzusetzen." : "GenData Tech focuses primarily on AI model development, Agentic AI, AI automation and customized intelligent solutions. Our goal is to transform real requirements into systems that are useful, understandable and built for practical application."}
                 </p>
 
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  Alongside AI, our engineering capabilities include full-stack
-                  development, software development, mobile applications and IoT
-                  solutions — allowing us to connect intelligence with the
-                  platforms and systems where it creates value.
+                  {lang === "de" ? "Neben KI umfassen unsere Entwicklungskompetenzen Full-Stack- und Softwareentwicklung, mobile Anwendungen sowie IoT-Lösungen. So verbinden wir Intelligenz mit den Plattformen und Systemen, in denen sie Mehrwert schafft." : "Alongside AI, our engineering capabilities include full-stack development, software development, mobile applications and IoT solutions — allowing us to connect intelligence with the platforms and systems where it creates value."}
                 </p>
 
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  We are still growing, learning and expanding our capabilities.
-                  Our focus is on building the foundation of a technology
-                  company that approaches problems with both intelligence and
-                  engineering discipline.
+                  {lang === "de" ? "Wir wachsen weiter, lernen dazu und erweitern unsere Kompetenzen. Dabei schaffen wir die Grundlage für ein Technologieunternehmen, das Herausforderungen mit Intelligenz und technischer Sorgfalt angeht." : "We are still growing, learning and expanding our capabilities. Our focus is on building the foundation of a technology company that approaches problems with both intelligence and engineering discipline."}
                 </p>
               </motion.div>
             </div>
@@ -774,9 +764,7 @@ function About() {
                 </h3>
 
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
-                  Our mission is to build practical intelligent systems and
-                  digital products that solve real problems through AI,
-                  automation and strong engineering.
+                  {lang === "de" ? "Unsere Mission ist es, praxistaugliche intelligente Systeme und digitale Produkte zu entwickeln, die mithilfe von KI, Automatisierung und solider Softwareentwicklung reale Probleme lösen." : "Our mission is to build practical intelligent systems and digital products that solve real problems through AI, automation and strong engineering."}
                 </p>
               </motion.div>
 
@@ -811,9 +799,7 @@ function About() {
                 </h3>
 
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
-                  Our vision is to establish GenData Tech as a technology
-                  company known for useful, scalable and thoughtfully engineered
-                  AI-driven solutions.
+                  {lang === "de" ? "Unsere Vision ist es, GenData Tech als Technologieunternehmen zu etablieren, das für nützliche, skalierbare und sorgfältig entwickelte KI-Lösungen steht." : "Our vision is to establish GenData Tech as a technology company known for useful, scalable and thoughtfully engineered AI-driven solutions."}
                 </p>
               </motion.div>
             </div>
@@ -900,8 +886,7 @@ function About() {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Our capabilities combine AI with the software, platforms and
-                connected systems required to put intelligence into practice.
+                {lang === "de" ? "Unsere Kompetenzen verbinden KI mit Software, Plattformen und vernetzten Systemen, um intelligente Lösungen praktisch nutzbar zu machen." : "Our capabilities combine AI with the software, platforms and connected systems required to put intelligence into practice."}
               </p>
             </div>
 
@@ -957,17 +942,15 @@ function About() {
           <div className="relative mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Our Approach
+                {lang === "de" ? "Unser Vorgehen" : "Our Approach"}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From problem to working system.
+                {lang === "de" ? "Vom Problem zur funktionierenden Lösung." : "From problem to working system."}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
-                Technology starts with understanding the problem. Our approach
-                keeps each stage connected from discovery through continuous
-                improvement.
+                {lang === "de" ? "Technologie beginnt damit, das Problem zu verstehen. Unser Ansatz verbindet alle Phasen – von der Analyse bis zur kontinuierlichen Verbesserung." : "Technology starts with understanding the problem. Our approach keeps each stage connected from discovery through continuous improvement."}
               </p>
             </div>
 
@@ -1026,17 +1009,15 @@ function About() {
 
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Our Journey
+                  {lang === "de" ? "Unser Weg" : "Our Journey"}
                 </p>
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Two years of building the foundation.
+                  {lang === "de" ? "Zwei Jahre Grundlagenarbeit." : "Two years of building the foundation."}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
-                  GenData Tech is still at an early stage. The journey so far is
-                  about learning, delivering and steadily strengthening our
-                  AI-focused technology direction.
+                  {lang === "de" ? "GenData Tech befindet sich noch in einer frühen Entwicklungsphase. Unser bisheriger Weg ist geprägt von Lernen, praktischer Umsetzung und dem stetigen Ausbau unserer KI-Kompetenzen." : "GenData Tech is still at an early stage. The journey so far is about learning, delivering and steadily strengthening our AI-focused technology direction."}
                 </p>
               </div>
 
@@ -1127,16 +1108,15 @@ function About() {
               <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
                 <div>
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Build With GenData Tech
+                    {lang === "de" ? "Mit GenData Tech entwickeln" : "Build With GenData Tech"}
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Building something that needs intelligence?
+                    {lang === "de" ? "Sie planen eine intelligente Lösung?" : "Building something that needs intelligence?"}
                   </h2>
 
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
-                    Talk to us about AI, automation, digital products or
-                    engineering solutions.
+                    {lang === "de" ? "Sprechen Sie mit uns über KI, Automatisierung, digitale Produkte oder technische Lösungen." : "Talk to us about AI, automation, digital products or engineering solutions."}
                   </p>
                 </div>
 
@@ -1145,7 +1125,7 @@ function About() {
                     to="/Contact"
                     className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                   >
-                    Contact Us
+                    {lang === "de" ? "Kontakt aufnehmen" : "Contact Us"}
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
 
@@ -1153,7 +1133,7 @@ function About() {
                     to="/"
                     className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:border-[#057CFA]/40 hover:bg-white/[0.07]"
                   >
-                    Explore GenData Tech
+                    {lang === "de" ? "GenData Tech entdecken" : "Explore GenData Tech"}
                   </Link>
                 </div>
               </div>
