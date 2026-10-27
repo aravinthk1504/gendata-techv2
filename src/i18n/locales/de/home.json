@@ -155,7 +155,8 @@
         "courses": "Kurse",
         "students": "Lernende",
         "progress": "Fortschritt",
-        "activity": "Lernaktivität"
+        "activity": "Lernaktivität",
+        "paid": "Bezahlt"
       }
     },
     "cards": [
