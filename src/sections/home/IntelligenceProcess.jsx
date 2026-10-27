@@ -2,7 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef } from "react";
-import { homeText, localizedHref } from "../../lib/homeText";
+import { homeText } from "../../lib/homeText";
 
 const getStages = (t) => t("process.stages", { returnObjects: true });
 
@@ -15,7 +15,7 @@ function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
       transition={{ duration: 0.65, delay: index * 0.08 }}
       className="group relative"
     >
-      <div className="relative z-10 mb-5 flex items-center sm:mb-6 lg:mb-10">
+      <div className="relative z-10 mb-5 flex items-center sm:mb-6 lg:mb-7">
         <motion.div
           whileHover={{ scale: 1.08 }}
           className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-brand-accent/30 bg-[#06152c]"
@@ -76,7 +76,7 @@ function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
   );
 }
 
-function IntelligenceProcess({ content, lang }) {
+function IntelligenceProcess({ content }) {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" });
   const reduceMotion = useReducedMotion();
@@ -154,7 +154,7 @@ function IntelligenceProcess({ content, lang }) {
             />
           </div>
 
-          <div className="grid gap-10 sm:gap-11 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
+          <div className="grid gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
             {stages.map((stage, index) => (
               <PipelineNode
                 key={stage.title}
@@ -167,53 +167,7 @@ function IntelligenceProcess({ content, lang }) {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 1, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative mt-12 overflow-hidden rounded-3xl border border-white/8 bg-white/3 px-6 py-7 sm:mt-14 sm:px-9 sm:py-8 lg:mt-14 lg:px-10 lg:py-8"
-        >
-          <div className="absolute right-0 top-1/2 h-50 w-50 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[90px]" />
 
-          <div className="relative grid gap-7 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8">
-            <div>
-              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
-                {t("process.outcomeLabel")}
-              </p>
-
-              <h3 className="mt-4 max-w-3xl font-heading text-2xl font-semibold leading-snug text-white sm:text-3xl">
-                {t("process.outcomeTitle")}
-              </h3>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-full border border-brand-accent/30 bg-brand-accent/10">
-                <motion.span
-                  animate={
-                    shouldAnimate
-                      ? { scale: [1, 1.5, 1], opacity: [1, 0.4, 1] }
-                      : { scale: 1, opacity: 1 }
-                  }
-                  transition={{
-                    duration: 2.5,
-                    repeat: shouldAnimate ? Infinity : 0,
-                  }}
-                  className="h-2.5 w-2.5 rounded-full bg-brand-accent shadow-[0_0_18px_rgba(5,124,250,0.9)]"
-                />
-              </div>
-
-              <div>
-                <p className="font-heading text-sm font-semibold text-white">
-                  {t("process.systemTitle")}
-                </p>
-                <p className="mt-1 font-body text-xs text-slate-200">
-                  {t("process.systemSubtitle")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
