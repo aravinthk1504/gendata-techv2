@@ -208,7 +208,7 @@ function ProductVisual({ type }) {
         </div>
         <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-3">
           <span className="rounded-full bg-emerald-50 px-2 py-1 text-center font-body text-[6px] font-semibold text-emerald-600">
-            Paid
+            {t("products.lms.dashboard.paid")}
           </span>
           <p className="font-heading text-[10px] font-semibold text-slate-800">
             INV-2048
