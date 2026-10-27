@@ -139,7 +139,7 @@ function IntelligenceProcess({ content, lang }) {
           </motion.p>
         </div>
 
-        <div className="relative mt-14 sm:mt-16 lg:mt-20">
+        <div className="relative mt-12 sm:mt-14 lg:mt-14">
           <div className="absolute left-7 right-7 top-7 hidden h-px bg-white/8 lg:block" />
 
           <div className="absolute left-7 right-7 top-7 hidden h-px overflow-hidden lg:block">
@@ -172,7 +172,7 @@ function IntelligenceProcess({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative mt-16 overflow-hidden rounded-3xl border border-white/8 bg-white/3 px-6 py-7 sm:mt-20 sm:px-9 sm:py-8 lg:mt-20 lg:px-12 lg:py-10"
+          className="relative mt-12 overflow-hidden rounded-3xl border border-white/8 bg-white/3 px-6 py-7 sm:mt-14 sm:px-9 sm:py-8 lg:mt-14 lg:px-10 lg:py-8"
         >
           <div className="absolute right-0 top-1/2 h-50 w-50 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[90px]" />
 
