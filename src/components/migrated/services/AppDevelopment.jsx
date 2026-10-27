@@ -29,7 +29,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Mobile applications designed for Android devices around practical functionality, usability and business requirements.":"Android-Anwendungen mit praxisnahen Funktionen, guter Bedienbarkeit und Orientierung an Geschäftsanforderungen.","Mobile applications designed for iPhone and iPad experiences based on the product and application requirements.":"Mobile Anwendungen für iPhone und iPad, abgestimmt auf die Anforderungen des Produkts.","Applications designed to support multiple mobile platforms through a shared development approach where suitable.":"Anwendungen für mehrere mobile Plattformen mit gemeinsamer Entwicklungsbasis, sofern sinnvoll.","Mobile apps connected with backend systems, databases, authentication services and external APIs.":"Mobile Apps mit Anbindung an Backend-Systeme, Datenbanken, Authentifizierungsdienste und externe APIs.","App functionality such as notifications, user accounts, role-based access and connected user workflows.":"App-Funktionen wie Benachrichtigungen, Nutzerkonten, rollenbasierter Zugriff und vernetzte Prozesse.","Custom mobile applications developed around internal operations, customer interactions and specific business processes.":"Individuelle mobile Anwendungen für interne Abläufe, Kundeninteraktionen und konkrete Geschäftsprozesse."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Mobile applications designed for Android devices around practical functionality, usability and business requirements.":"Android-Anwendungen mit praxisnahen Funktionen, guter Bedienbarkeit und Orientierung an Geschäftsanforderungen.","Mobile applications designed for iPhone and iPad experiences based on the product and application requirements.":"Mobile Anwendungen für iPhone und iPad, abgestimmt auf die Anforderungen des Produkts.","Applications designed to support multiple mobile platforms through a shared development approach where suitable.":"Anwendungen für mehrere mobile Plattformen mit gemeinsamer Entwicklungsbasis, sofern sinnvoll.","Mobile apps connected with backend systems, databases, authentication services and external APIs.":"Mobile Apps mit Anbindung an Backend-Systeme, Datenbanken, Authentifizierungsdienste und externe APIs.","App functionality such as notifications, user accounts, role-based access and connected user workflows.":"App-Funktionen wie Benachrichtigungen, Nutzerkonten, rollenbasierter Zugriff und vernetzte Prozesse.","Custom mobile applications developed around internal operations, customer interactions and specific business processes.":"Individuelle mobile Anwendungen für interne Abläufe, Kundeninteraktionen und konkrete Geschäftsprozesse.","Understand the app idea, target users and required functionality.":"App-Idee, Zielgruppe und benötigte Funktionen verstehen.","Define user flow, application features and technical direction.":"Nutzerabläufe, App-Funktionen und technische Ausrichtung festlegen.","Plan the mobile interface and user experience for key screens.":"Mobile Benutzeroberflächen und Nutzererlebnis für die wichtigsten Ansichten planen.","Build the application features and required mobile functionality.":"App-Funktionen und benötigte mobile Funktionalitäten entwickeln.","Connect backend services, APIs, databases and external systems.":"Backend-Dienste, APIs, Datenbanken und externe Systeme anbinden.","Validate application behavior, usability and mobile responsiveness.":"App-Verhalten, Benutzerfreundlichkeit und Darstellung auf Mobilgeräten prüfen.","Prepare the application for deployment and production use.":"Die App für die Bereitstellung und den produktiven Einsatz vorbereiten.","User-focused Planning":"Nutzerorientierte Planung","We begin with the users, workflows and expected outcome before deciding the technical direction.":"Wir betrachten zuerst Nutzer, Abläufe und gewünschte Ergebnisse, bevor wir die technische Richtung festlegen.","App + Backend Thinking":"App und Backend gemeinsam betrachten","We consider the mobile application together with its APIs, databases and supporting backend services.":"Wir betrachten die mobile Anwendung als Gesamtsystem mit APIs, Datenbanken und unterstützenden Backend-Diensten.","Practical Functionality":"Praxisorientierte Funktionen","Features are planned around what the application needs to achieve rather than adding unnecessary complexity.":"Funktionen richten sich nach dem Nutzen der App statt nach unnötiger Komplexität.","Built to Evolve":"Für Weiterentwicklung konzipiert","The application structure can be planned with future features, integrations and product growth in mind.":"Wir planen die App-Struktur mit Blick auf zukünftige Funktionen, Integrationen und Produktwachstum.","What types of mobile applications does GenData Tech develop?":"Welche Arten mobiler Anwendungen entwickelt GenData Tech?","We develop mobile applications for business, product and operational requirements, including apps that connect with backend services, APIs and databases.":"Wir entwickeln mobile Anwendungen für Unternehmen, Produkte und betriebliche Abläufe, einschließlich Apps mit Backend-, API- und Datenbankanbindungen.","Do you provide Android app development?":"Bieten Sie Android-App-Entwicklung an?","Yes. Android application development can be provided depending on the required functionality, users and technical requirements.":"Ja. Wir entwickeln Android-Apps entsprechend den benötigten Funktionen, Nutzern und technischen Anforderungen.","Do you provide iOS app development?":"Bieten Sie iOS-App-Entwicklung an?","Yes. iOS application development can be planned based on the project requirements and target users.":"Ja. Wir planen und entwickeln iOS-Apps auf Basis der Projektanforderungen und Zielgruppen.","Can you build one app for both Android and iOS?":"Können Sie eine App für Android und iOS entwickeln?","Yes, a cross-platform approach can be considered when it fits the required functionality, performance expectations and product direction.":"Ja. Eine plattformübergreifende Lösung kommt infrage, wenn sie zu Funktionen, Leistungsanforderungen und Produktzielen passt.","Can the mobile app connect with a website or existing software?":"Kann eine App mit einer Website oder vorhandener Software verbunden werden?","Yes. Mobile applications can connect with existing systems through APIs or backend services when the current architecture supports the required integration.":"Ja. Apps lassen sich über APIs oder Backend-Dienste mit bestehenden Systemen verbinden, sofern deren Architektur dies unterstützt.","Can you add login, user roles and notifications?":"Können Sie Anmeldung, Benutzerrollen und Benachrichtigungen integrieren?","Yes. Authentication, user accounts, role-based access and notification features can be included when required by the application.":"Ja. Authentifizierung, Benutzerkonten, rollenbasierte Zugriffe und Benachrichtigungen können bei Bedarf integriert werden.","Can AI features be integrated into a mobile application?":"Lassen sich KI-Funktionen in eine mobile App integrieren?","Yes. AI capabilities can be connected to a mobile application through APIs or backend services when they provide a useful application feature.":"Ja. Sinnvolle KI-Funktionen können über APIs oder Backend-Dienste mit der App verbunden werden.","Can I discuss an app idea even if I do not have the full specification?":"Kann ich eine App-Idee auch ohne vollständige Spezifikation besprechen?","Yes. You can share the app idea, target users and main functionality. The technical requirements can then be discussed and structured further.":"Ja. Beschreiben Sie Ihre Idee, Zielgruppe und wichtigsten Funktionen. Anschließend können wir die technischen Anforderungen gemeinsam ausarbeiten.","Build mobile experiences":"Mobile Anwendungen entwickeln","around practical functionality.":"mit praxisorientierten Funktionen.","Discuss Your App":"App-Projekt besprechen","Mobile applications designed around users and workflows.":"Mobile Anwendungen für Nutzer und Arbeitsabläufe.","Mobile development capabilities for connected applications.":"Kompetenzen für die Entwicklung vernetzter mobiler Anwendungen.","Future real mobile application project showcase goes here.":"Hier werden künftig echte App-Projekte vorgestellt.","Technologies for connected mobile applications.":"Technologien für vernetzte mobile Anwendungen.","From app idea to connected application.":"Von der App-Idee zur vernetzten Anwendung.","Mobile development with the complete system in mind.":"Mobile Entwicklung mit Blick auf das Gesamtsystem.","Questions about app development.":"Fragen zur App-Entwicklung.","Build Your Mobile App":"Mobile App entwickeln","Have an app idea or mobile application requirement?":"Sie haben eine App-Idee oder benötigen eine mobile Anwendung?","App Layer":"App-Ebene"};
 
 function AppDevelopment() {
   const { lang } = useParams();
@@ -175,49 +175,49 @@ function AppDevelopment() {
       number: "01",
       title: tr("Requirement"),
       description:
-        "Understand the app idea, target users and required functionality.",
+        tr("Understand the app idea, target users and required functionality."),
     },
 
     {
       number: "02",
       title: tr("Planning"),
       description:
-        "Define user flow, application features and technical direction.",
+        tr("Define user flow, application features and technical direction."),
     },
 
     {
       number: "03",
       title: tr("Interface"),
       description:
-        "Plan the mobile interface and user experience for key screens.",
+        tr("Plan the mobile interface and user experience for key screens."),
     },
 
     {
       number: "04",
       title: tr("Development"),
       description:
-        "Build the application features and required mobile functionality.",
+        tr("Build the application features and required mobile functionality."),
     },
 
     {
       number: "05",
       title: tr("Integration"),
       description:
-        "Connect backend services, APIs, databases and external systems.",
+        tr("Connect backend services, APIs, databases and external systems."),
     },
 
     {
       number: "06",
       title: tr("Testing"),
       description:
-        "Validate application behavior, usability and mobile responsiveness.",
+        tr("Validate application behavior, usability and mobile responsiveness."),
     },
 
     {
       number: "07",
       title: tr("Delivery"),
       description:
-        "Prepare the application for deployment and production use.",
+        tr("Prepare the application for deployment and production use."),
     },
   ]
 
@@ -229,30 +229,30 @@ function AppDevelopment() {
   const reasons = [
     {
       icon: FiTarget,
-      title: "User-focused Planning",
+      title: tr("User-focused Planning"),
       description:
-        "We begin with the users, workflows and expected outcome before deciding the technical direction.",
+        tr("We begin with the users, workflows and expected outcome before deciding the technical direction."),
     },
 
     {
       icon: FiLayers,
-      title: "App + Backend Thinking",
+      title: tr("App + Backend Thinking"),
       description:
-        "We consider the mobile application together with its APIs, databases and supporting backend services.",
+        tr("We consider the mobile application together with its APIs, databases and supporting backend services."),
     },
 
     {
       icon: FiZap,
-      title: "Practical Functionality",
+      title: tr("Practical Functionality"),
       description:
-        "Features are planned around what the application needs to achieve rather than adding unnecessary complexity.",
+        tr("Features are planned around what the application needs to achieve rather than adding unnecessary complexity."),
     },
 
     {
       icon: FiRepeat,
-      title: "Built to Evolve",
+      title: tr("Built to Evolve"),
       description:
-        "The application structure can be planned with future features, integrations and product growth in mind.",
+        tr("The application structure can be planned with future features, integrations and product growth in mind."),
     },
   ]
 
@@ -264,58 +264,58 @@ function AppDevelopment() {
   const faqs = [
     {
       question:
-        "What types of mobile applications does GenData Tech develop?",
+        tr("What types of mobile applications does GenData Tech develop?"),
       answer:
-        "We develop mobile applications for business, product and operational requirements, including apps that connect with backend services, APIs and databases.",
+        tr("We develop mobile applications for business, product and operational requirements, including apps that connect with backend services, APIs and databases."),
     },
 
     {
       question:
-        "Do you provide Android app development?",
+        tr("Do you provide Android app development?"),
       answer:
-        "Yes. Android application development can be provided depending on the required functionality, users and technical requirements.",
+        tr("Yes. Android application development can be provided depending on the required functionality, users and technical requirements."),
     },
 
     {
       question:
-        "Do you provide iOS app development?",
+        tr("Do you provide iOS app development?"),
       answer:
-        "Yes. iOS application development can be planned based on the project requirements and target users.",
+        tr("Yes. iOS application development can be planned based on the project requirements and target users."),
     },
 
     {
       question:
-        "Can you build one app for both Android and iOS?",
+        tr("Can you build one app for both Android and iOS?"),
       answer:
-        "Yes, a cross-platform approach can be considered when it fits the required functionality, performance expectations and product direction.",
+        tr("Yes, a cross-platform approach can be considered when it fits the required functionality, performance expectations and product direction."),
     },
 
     {
       question:
-        "Can the mobile app connect with a website or existing software?",
+        tr("Can the mobile app connect with a website or existing software?"),
       answer:
-        "Yes. Mobile applications can connect with existing systems through APIs or backend services when the current architecture supports the required integration.",
+        tr("Yes. Mobile applications can connect with existing systems through APIs or backend services when the current architecture supports the required integration."),
     },
 
     {
       question:
-        "Can you add login, user roles and notifications?",
+        tr("Can you add login, user roles and notifications?"),
       answer:
-        "Yes. Authentication, user accounts, role-based access and notification features can be included when required by the application.",
+        tr("Yes. Authentication, user accounts, role-based access and notification features can be included when required by the application."),
     },
 
     {
       question:
-        "Can AI features be integrated into a mobile application?",
+        tr("Can AI features be integrated into a mobile application?"),
       answer:
-        "Yes. AI capabilities can be connected to a mobile application through APIs or backend services when they provide a useful application feature.",
+        tr("Yes. AI capabilities can be connected to a mobile application through APIs or backend services when they provide a useful application feature."),
     },
 
     {
       question:
-        "Can I discuss an app idea even if I do not have the full specification?",
+        tr("Can I discuss an app idea even if I do not have the full specification?"),
       answer:
-        "Yes. You can share the app idea, target users and main functionality. The technical requirements can then be discussed and structured further.",
+        tr("Yes. You can share the app idea, target users and main functionality. The technical requirements can then be discussed and structured further."),
     },
   ]
 
@@ -464,10 +464,10 @@ function AppDevelopment() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Build mobile experiences
+                  {tr("Build mobile experiences")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    around practical functionality.
+                    {tr("around practical functionality.")}
                   </span>
                 </motion.h1>
 
@@ -527,7 +527,7 @@ function AppDevelopment() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your App
+                    {tr("Discuss Your App")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -695,7 +695,7 @@ function AppDevelopment() {
                   </span>
 
                   <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    App Layer
+                    {tr("App Layer")}
                   </span>
 
                 </motion.div>
@@ -807,7 +807,7 @@ function AppDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Mobile applications designed around users and workflows.
+                  {tr("Mobile applications designed around users and workflows.")}
                 </h2>
 
               </div>
@@ -858,7 +858,7 @@ function AppDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Mobile development capabilities for connected applications.
+                {tr("Mobile development capabilities for connected applications.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -930,7 +930,7 @@ function AppDevelopment() {
 
           <div className="mx-auto max-w-[1400px]">
 
-            Future real mobile application project showcase goes here.
+            {tr("Future real mobile application project showcase goes here.")}
 
           </div>
 
@@ -956,7 +956,7 @@ function AppDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Technologies for connected mobile applications.
+                  {tr("Technologies for connected mobile applications.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1058,7 +1058,7 @@ function AppDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From app idea to connected application.
+                {tr("From app idea to connected application.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1141,7 +1141,7 @@ function AppDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Mobile development with the complete system in mind.
+                  {tr("Mobile development with the complete system in mind.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1232,7 +1232,7 @@ function AppDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about app development.
+                {tr("Questions about app development.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -1365,11 +1365,11 @@ function AppDevelopment() {
                 <div>
 
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Build Your Mobile App
+                    {tr("Build Your Mobile App")}
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Have an app idea or mobile application requirement?
+                    {tr("Have an app idea or mobile application requirement?")}
                   </h2>
 
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1385,7 +1385,7 @@ function AppDevelopment() {
                   to="/contact"
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Discuss Your App
+                  {tr("Discuss Your App")}
 
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </Link>
