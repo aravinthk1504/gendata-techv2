@@ -10,26 +10,26 @@ const logoMark = "/assets/gendata-tech-mark.webp"
 
 import { FaGithub, FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
-const getFooterLinks = (t) => ({
+const getFooterLinks = (t, lang) => ({
   [t("footer.sections.services")]: [
     {
-      label: "AI/ML Development",
+      label: lang === "de" ? "KI-/ML-Entwicklung" : "AI/ML Development",
       path: "/services/ai-ml-development",
     },
     {
-      label: "Full Stack Development",
+      label: lang === "de" ? "Full-Stack-Entwicklung" : "Full Stack Development",
       path: "/services/full-stack-development",
     },
     {
-      label: "Software Development",
+      label: lang === "de" ? "Softwareentwicklung" : "Software Development",
       path: "/services/software-development",
     },
     {
-      label: "App Development",
+      label: lang === "de" ? "App-Entwicklung" : "App Development",
       path: "/services/app-development",
     },
     {
-      label: "IoT Solutions",
+      label: lang === "de" ? "IoT-Lösungen" : "IoT Solutions",
       path: "/services/iot-solutions",
     },
   ],
@@ -95,7 +95,7 @@ const socialLinks = [
 function Footer({ lang = "en", content = {} }) {
   const t = (key, variables) => homeText(content, key, variables);
   const localizedPath = (path) => localizedHref(lang, path);
-  const footerLinks = getFooterLinks(t);
+  const footerLinks = getFooterLinks(t, lang);
 
   return (
     <footer id="footer-legal" className="relative overflow-hidden bg-[#030b18] px-6 pb-7 pt-20 lg:px-10 lg:pt-24">
@@ -175,7 +175,7 @@ function Footer({ lang = "en", content = {} }) {
 
             <div className="mt-8">
               <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-200">
-                Connect
+                {t("footer.connect")}
               </p>
 
               <div className="mt-4 flex gap-2">
@@ -248,14 +248,14 @@ function Footer({ lang = "en", content = {} }) {
               href="#footer-legal"
               className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
             >
-              Privacy
+              {t("footer.privacy")}
             </Link>
 
             <Link
               href="#footer-legal"
               className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
             >
-              Terms
+              {t("footer.terms")}
             </Link>
           </div>
         </div>
