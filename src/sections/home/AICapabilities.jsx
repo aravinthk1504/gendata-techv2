@@ -80,7 +80,7 @@ function ModelVisual() {
    AGENTIC AI VISUAL
 ========================================================= */
 
-function AgentVisual({ shouldAnimate }) {
+function AgentVisual({ shouldAnimate, lang }) {
   return (
     <div className="relative mt-5 flex h-32 items-center justify-center sm:mt-6 sm:h-36 lg:mt-7 lg:h-36">
       <motion.div
@@ -113,7 +113,7 @@ function AgentVisual({ shouldAnimate }) {
         className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border border-brand-accent/30 bg-brand-accent/10 shadow-[0_0_45px_rgba(5,124,250,0.15)] sm:h-18 sm:w-18"
       >
         <span className="font-heading text-sm font-semibold text-white">
-          AGENT
+          {lang === "de" ? "AGENT" : "AGENT"}
         </span>
       </motion.div>
 
@@ -314,7 +314,7 @@ function AICapabilities({ content, lang }) {
             <p className="mt-4 font-body text-sm leading-7 text-slate-200">
               {t("aiCapabilities.agents.description")}
             </p>
-            <AgentVisual shouldAnimate={shouldAnimate} />
+            <AgentVisual shouldAnimate={shouldAnimate} lang={lang} />
           </motion.article>
 
           <motion.article
