@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react";
@@ -27,7 +28,11 @@ import {
 import Link from "../layout/LocalizedLink"
 import InfinityVisual from "../../sections/home/InfinityVisual"
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","AI-focused services built around":"KI-orientierte Leistungen für","real business problems.":"reale Geschäftsanforderungen.","One technology partner. Multiple engineering capabilities.":"Ein Technologiepartner. Vielfältige Entwicklungskompetenzen.","Technology should create a useful outcome.":"Technologie soll echten Mehrwert schaffen.","A clear path from requirement to delivery.":"Von der Anforderung bis zur Umsetzung.","Built around intelligence, engineering and practical thinking.":"KI, Engineering und praxisorientiertes Denken.","Questions about our technology services.":"Antworten zu unseren Technologiedienstleistungen.","Not Sure What You Need?":"Sie sind noch unsicher?","How We Help":"So unterstützen wir Sie"};
+
 function Services() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO ANIMATION
   ====================================================== */
@@ -51,13 +56,13 @@ function Services() {
   const services = [
     {
       icon: FiCpu,
-      title: "AI / ML Development",
+      title: tr("AI / ML Development"),
       description:
         "Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.",
       useCases: [
         "AI Models",
         "Machine Learning",
-        "AI Automation",
+        tr("AI Automation"),
         "Agentic AI",
       ],
       path: "/services/ai-ml-development",
@@ -65,7 +70,7 @@ function Services() {
 
     {
       icon: FiLayers,
-      title: "Full Stack Development",
+      title: tr("Full Stack Development"),
       description:
         "Complete application development covering frontend, backend, databases, APIs and system integration.",
       useCases: ["Web Applications", "Dashboards", "Business Platforms"],
@@ -74,25 +79,25 @@ function Services() {
 
     {
       icon: FiMonitor,
-      title: "Web Development",
+      title: tr("Web Development"),
       description:
         "Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.",
-      useCases: ["Corporate Websites", "Startup Websites", "Product Websites"],
+      useCases: [tr("Corporate Websites"), tr("Startup Websites"), tr("Product Websites")],
       path: "/services/web-development",
     },
 
     {
       icon: FiCode,
-      title: "Software Development",
+      title: tr("Software Development"),
       description:
         "Custom software systems designed around business processes, internal operations and digital workflows.",
-      useCases: ["Business Software", "Internal Tools", "Management Systems"],
+      useCases: ["Business Software", tr("Internal Tools"), tr("Management Systems")],
       path: "/services/software-development",
     },
 
     {
       icon: FiSmartphone,
-      title: "App Development",
+      title: tr("App Development"),
       description:
         "Mobile applications designed around practical functionality, modern user experiences and connected services.",
       useCases: ["Android Apps", "iOS Apps", "Business Apps"],
@@ -101,10 +106,10 @@ function Services() {
 
     {
       icon: FiCpu,
-      title: "IoT Solutions",
+      title: tr("IoT Solutions"),
       description:
         "Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.",
-      useCases: ["Sensor Monitoring", "Automation", "Connected Systems"],
+      useCases: [tr("Sensor Monitoring"), "Automation", "Connected Systems"],
       path: "/services/iot-solutions",
     },
   ];
@@ -158,7 +163,7 @@ function Services() {
   const approach = [
     {
       number: "01",
-      title: "Understand",
+      title: tr("Understand"),
       description: "Understand the problem, users and expected outcome.",
     },
 
@@ -170,7 +175,7 @@ function Services() {
 
     {
       number: "03",
-      title: "Build",
+      title: tr("Build"),
       description: "Develop the solution using suitable technologies.",
     },
 
@@ -433,7 +438,7 @@ function Services() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  Our Services
+                  {tr("Our Services")}
                 </motion.p>
 
                 <motion.h1
@@ -458,9 +463,9 @@ function Services() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  AI-focused services built around
+                  {tr("AI-focused services built around")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    real business problems.
+                    {tr("real business problems.")}
                   </span>
                 </motion.h1>
 
@@ -550,11 +555,11 @@ function Services() {
             <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Technology Services
+                  {tr("Technology Services")}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  One technology partner. Multiple engineering capabilities.
+                  {tr("One technology partner. Multiple engineering capabilities.")}
                 </h2>
               </div>
 
@@ -658,11 +663,11 @@ function Services() {
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                  How We Help
+                  {tr("How We Help")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                  Technology should create a useful outcome.
+                  {tr("Technology should create a useful outcome.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-200">
@@ -726,7 +731,7 @@ function Services() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                A clear path from requirement to delivery.
+                {tr("A clear path from requirement to delivery.")}
               </h2>
             </div>
 
@@ -780,11 +785,11 @@ function Services() {
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Why GenData Tech
+                  {tr("Why GenData Tech")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Built around intelligence, engineering and practical thinking.
+                  {tr("Built around intelligence, engineering and practical thinking.")}
                 </h2>
               </div>
 
@@ -846,7 +851,7 @@ function Services() {
             <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Insights
+                  {tr("Insights")}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -920,11 +925,11 @@ function Services() {
 
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about our technology services.
+                {tr("Questions about our technology services.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -1018,7 +1023,7 @@ function Services() {
               <div className="grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-end">
                 <div>
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Not Sure What You Need?
+                    {tr("Not Sure What You Need?")}
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
@@ -1057,7 +1062,7 @@ function Services() {
                       to="/contact"
                       className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                     >
-                      Start a Project
+                      {tr("Start a Project")}
                       <FiArrowRight className="transition group-hover:translate-x-1" />
                     </Link>
                   </div>
