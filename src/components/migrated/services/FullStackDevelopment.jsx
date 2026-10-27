@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react"
@@ -27,7 +28,11 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python"};
+
 function FullStackDevelopment() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -58,35 +63,35 @@ function FullStackDevelopment() {
   const offerings = [
     {
       number: "01",
-      title: "Frontend Development",
+      title: tr("Frontend Development"),
       description:
         "Modern, responsive and interactive user interfaces designed for web applications, dashboards and digital platforms.",
     },
 
     {
       number: "02",
-      title: "Backend Development",
+      title: tr("Backend Development"),
       description:
         "Backend systems responsible for application logic, data processing, APIs, authentication and business workflows.",
     },
 
     {
       number: "03",
-      title: "API Development",
+      title: tr("API Development"),
       description:
         "REST APIs and backend integrations that connect frontend applications, databases and external services.",
     },
 
     {
       number: "04",
-      title: "Database Integration",
+      title: tr("Database Integration"),
       description:
         "Structured database integration for storing, managing and retrieving application data efficiently.",
     },
 
     {
       number: "05",
-      title: "Authentication & Security",
+      title: tr("Authentication & Security"),
       description:
         "User authentication, authorization and access-control systems designed around application requirements.",
     },
@@ -121,7 +126,7 @@ function FullStackDevelopment() {
       icon: FiServer,
       category: "Backend",
       technologies: [
-        "Python",
+        tr("Python"),
         "Flask",
         "Django",
         "FastAPI",
@@ -178,14 +183,14 @@ function FullStackDevelopment() {
   const process = [
     {
       number: "01",
-      title: "Requirement",
+      title: tr("Requirement"),
       description:
         "Understand the users, application goals and required functionality.",
     },
 
     {
       number: "02",
-      title: "Architecture",
+      title: tr("Architecture"),
       description:
         "Plan the frontend, backend, database and application structure.",
     },
@@ -199,28 +204,28 @@ function FullStackDevelopment() {
 
     {
       number: "04",
-      title: "Backend Development",
+      title: tr("Backend Development"),
       description:
         "Develop APIs, business logic, authentication and data handling.",
     },
 
     {
       number: "05",
-      title: "Integration",
+      title: tr("Integration"),
       description:
         "Connect frontend, backend, databases and external services.",
     },
 
     {
       number: "06",
-      title: "Testing",
+      title: tr("Testing"),
       description:
         "Validate functionality, usability and application behavior.",
     },
 
     {
       number: "07",
-      title: "Deployment",
+      title: tr("Deployment"),
       description:
         "Prepare the application for production and real-world use.",
     },
@@ -443,7 +448,7 @@ function FullStackDevelopment() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  Full Stack Development
+                  {tr("Full Stack Development")}
                 </motion.p>
 
 
@@ -815,7 +820,7 @@ function FullStackDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Service Overview
+                  {tr("Service Overview")}
                 </p>
 
 
@@ -869,7 +874,7 @@ function FullStackDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                What We Offer
+                {tr("What We Offer")}
               </p>
 
 
@@ -950,7 +955,7 @@ function FullStackDevelopment() {
           <div className="mx-auto max-w-[1400px]">
 
             <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-              Use Cases
+              {tr("Use Cases")}
             </p>
 
             <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -977,7 +982,7 @@ function FullStackDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Technology Stack
+                  {tr("Technology Stack")}
                 </p>
 
 
@@ -1082,7 +1087,7 @@ function FullStackDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Development Process
+                {tr("Development Process")}
               </p>
 
 
@@ -1169,7 +1174,7 @@ function FullStackDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Why GenData Tech
+                  {tr("Why GenData Tech")}
                 </p>
 
 
@@ -1263,7 +1268,7 @@ function FullStackDevelopment() {
             <div className="mx-auto max-w-3xl text-center">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
 
