@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react"
@@ -26,7 +27,11 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python"};
+
 function SoftwareDevelopment() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -57,42 +62,42 @@ function SoftwareDevelopment() {
   const offerings = [
     {
       number: "01",
-      title: "Custom Business Software",
+      title: tr("Custom Business Software"),
       description:
         "Software systems designed around specific business processes, users and operational requirements.",
     },
 
     {
       number: "02",
-      title: "Internal Tools",
+      title: tr("Internal Tools"),
       description:
         "Custom internal applications that support teams, workflows, data management and everyday operations.",
     },
 
     {
       number: "03",
-      title: "Management Systems",
+      title: tr("Management Systems"),
       description:
         "Structured software platforms for managing information, users, operations and connected business processes.",
     },
 
     {
       number: "04",
-      title: "Workflow Applications",
+      title: tr("Workflow Applications"),
       description:
         "Digital systems designed to organize and improve manual or fragmented business workflows.",
     },
 
     {
       number: "05",
-      title: "API & System Integration",
+      title: tr("API & System Integration"),
       description:
         "Software integrations that connect applications, databases, services and external platforms.",
     },
 
     {
       number: "06",
-      title: "Software Modernization",
+      title: tr("Software Modernization"),
       description:
         "Improvement and restructuring of existing software where updated architecture or functionality is required.",
     },
@@ -108,7 +113,7 @@ function SoftwareDevelopment() {
       icon: FiCode,
       category: "Programming",
       technologies: [
-        "Python",
+        tr("Python"),
         "JavaScript",
       ],
     },
@@ -135,7 +140,7 @@ function SoftwareDevelopment() {
 
     {
       icon: FiLayers,
-      category: "Integration",
+      category: tr("Integration"),
       technologies: [
         "REST APIs",
         "JSON",
@@ -172,49 +177,49 @@ function SoftwareDevelopment() {
   const process = [
     {
       number: "01",
-      title: "Requirement",
+      title: tr("Requirement"),
       description:
         "Understand the business process, users and expected software outcome.",
     },
 
     {
       number: "02",
-      title: "Planning",
+      title: tr("Planning"),
       description:
         "Define functionality, system structure and technical direction.",
     },
 
     {
       number: "03",
-      title: "Architecture",
+      title: tr("Architecture"),
       description:
         "Plan application modules, data flow, APIs and database structure.",
     },
 
     {
       number: "04",
-      title: "Development",
+      title: tr("Development"),
       description:
         "Build the software features and required backend functionality.",
     },
 
     {
       number: "05",
-      title: "Integration",
+      title: tr("Integration"),
       description:
         "Connect databases, APIs, services and related software components.",
     },
 
     {
       number: "06",
-      title: "Testing",
+      title: tr("Testing"),
       description:
         "Validate functionality, workflows and system behavior.",
     },
 
     {
       number: "07",
-      title: "Delivery",
+      title: tr("Delivery"),
       description:
         "Prepare the software for deployment and operational use.",
     },
@@ -437,7 +442,7 @@ function SoftwareDevelopment() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  Software Development
+                  {tr("Software Development")}
                 </motion.p>
 
 
@@ -559,7 +564,7 @@ function SoftwareDevelopment() {
 
                   {[
                     "Business Software",
-                    "Internal Tools",
+                    tr("Internal Tools"),
                     "Workflows",
                     "Integrations",
                   ].map((item) => (
@@ -775,7 +780,7 @@ function SoftwareDevelopment() {
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Integration
+                    {tr("Integration")}
                   </p>
                 </motion.div>
 
@@ -802,7 +807,7 @@ function SoftwareDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Service Overview
+                  {tr("Service Overview")}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -852,7 +857,7 @@ function SoftwareDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                What We Offer
+                {tr("What We Offer")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -950,7 +955,7 @@ function SoftwareDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Technology Stack
+                  {tr("Technology Stack")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -1052,7 +1057,7 @@ function SoftwareDevelopment() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Development Process
+                {tr("Development Process")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
@@ -1135,7 +1140,7 @@ function SoftwareDevelopment() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Why GenData Tech
+                  {tr("Why GenData Tech")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
@@ -1226,7 +1231,7 @@ function SoftwareDevelopment() {
             <div className="mx-auto max-w-3xl text-center">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
