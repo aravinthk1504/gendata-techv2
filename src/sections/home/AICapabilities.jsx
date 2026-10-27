@@ -254,7 +254,7 @@ function AICapabilities({ content, lang }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="mt-5 max-w-3xl font-heading text-4xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
+              className="mt-5 max-w-3xl font-heading text-4xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl lg:text-5xl"
             >
               {t("aiCapabilities.titleLine1")}
               <span className="block text-slate-300">
@@ -280,7 +280,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-9"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-8"
           >
             <div className="absolute right-0 top-0 h-50 w-50 rounded-full bg-brand-accent/8 blur-[90px] transition duration-500 group-hover:bg-brand-accent/12" />
             <div className="relative">
@@ -303,7 +303,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-9"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-8"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">
               {t("aiCapabilities.agents.label")}
@@ -323,7 +323,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-9"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-8"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">
               {t("aiCapabilities.automation.label")}
@@ -343,7 +343,7 @@ function AICapabilities({ content, lang }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.18 }}
             whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-linear-to-br from-brand-primary/12 to-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-9"
+            className="group relative overflow-hidden rounded-3xl border border-white/8 bg-linear-to-br from-brand-primary/12 to-white/3 p-6 sm:p-7 lg:col-span-7 lg:p-8"
           >
             <div className="grid gap-4 sm:grid-cols-2 sm:items-center lg:gap-5">
               <div>
