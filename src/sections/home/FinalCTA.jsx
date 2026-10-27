@@ -12,6 +12,7 @@ import {
   FaInstagram,
   FaFacebookF,
   FaLinkedinIn,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const socialLinks = [
@@ -19,6 +20,7 @@ const socialLinks = [
   { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/gendata_tech" },
   { name: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/share/19Zj8BtEBo" },
   { name: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/gendata-tech" },
+  { name: "WhatsApp", icon: FaWhatsapp, href: "https://wa.me/918428683895" },
 ];
 
 function FinalCTA({ content, lang }) {
