@@ -29,7 +29,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"IoT Solutions":"IoT-Lösungen","Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Connect devices, data":"Geräte und Daten verbinden","and intelligent automation.":"mit intelligenter Automatisierung.","Discuss Your IoT Requirement":"IoT-Projekt besprechen","Requirement":"Anforderungen","System Design":"Systemdesign","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Questions about IoT development.":"Fragen zur IoT-Entwicklung."};
+const translationsDE = {"IoT Solutions":"IoT-Lösungen","Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Connect devices, data":"Geräte und Daten verbinden","and intelligent automation.":"mit intelligenter Automatisierung.","Discuss Your IoT Requirement":"IoT-Projekt besprechen","Requirement":"Anforderungen","System Design":"Systemdesign","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Questions about IoT development.":"Fragen zur IoT-Entwicklung.","IoT systems designed to collect and monitor data from connected sensors and devices.":"IoT-Systeme zur Erfassung und Überwachung von Daten vernetzter Sensoren und Geräte.","Connected systems that automate actions using sensor inputs, control logic and defined operating conditions.":"Vernetzte Systeme, die Aktionen anhand von Sensordaten, Steuerlogik und definierten Betriebsbedingungen automatisieren.","Monitoring solutions that provide access to device and sensor information through connected dashboards or applications.":"Überwachungslösungen, die Geräte- und Sensordaten über vernetzte Dashboards oder Anwendungen zugänglich machen.","Interfaces for visualizing sensor values, device status, alerts and operational information.":"Oberflächen zur Darstellung von Sensorwerten, Gerätestatus, Warnmeldungen und Betriebsinformationen.","Notification systems designed to respond when sensor values or device conditions meet defined thresholds.":"Benachrichtigungssysteme, die auf festgelegte Grenzwerte oder Gerätezustände reagieren.","IoT systems that can combine connected devices with AI or machine learning for intelligent monitoring and automation.":"IoT-Systeme, die vernetzte Geräte mit KI oder maschinellem Lernen für intelligente Überwachung und Automatisierung verbinden."};
 function IoTSolutions() {
  const { lang } = useParams();
  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
@@ -64,43 +64,37 @@ function IoTSolutions() {
     {
       number: "01",
       title: tr("Sensor Monitoring"),
-      description:
-        "IoT systems designed to collect and monitor data from connected sensors and devices.",
+      description: tr("IoT systems designed to collect and monitor data from connected sensors and devices."),
     },
 
     {
       number: "02",
       title: tr("Device Automation"),
-      description:
-        "Connected systems that automate actions using sensor inputs, control logic and defined operating conditions.",
+      description: tr("Connected systems that automate actions using sensor inputs, control logic and defined operating conditions."),
     },
 
     {
       number: "03",
       title: tr("Remote Monitoring"),
-      description:
-        "Monitoring solutions that provide access to device and sensor information through connected dashboards or applications.",
+      description: tr("Monitoring solutions that provide access to device and sensor information through connected dashboards or applications."),
     },
 
     {
       number: "04",
       title: tr("IoT Dashboards"),
-      description:
-        "Interfaces for visualizing sensor values, device status, alerts and operational information.",
+      description: tr("Interfaces for visualizing sensor values, device status, alerts and operational information."),
     },
 
     {
       number: "05",
       title: tr("Alerts & Notifications"),
-      description:
-        "Notification systems designed to respond when sensor values or device conditions meet defined thresholds.",
+      description: tr("Notification systems designed to respond when sensor values or device conditions meet defined thresholds."),
     },
 
     {
       number: "06",
       title: tr("AI-enabled IoT"),
-      description:
-        "IoT systems that can combine connected devices with AI or machine learning for intelligent monitoring and automation.",
+      description: tr("IoT systems that can combine connected devices with AI or machine learning for intelligent monitoring and automation."),
     },
   ]
 
