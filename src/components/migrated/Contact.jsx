@@ -947,9 +947,9 @@ function Contact() {
 
                           <option value="Products">Products</option>
 
-                          <option value=tr("Training")>{tr("Training")}</option>
+                          <option value={tr("Training")}>{tr("Training")}</option>
 
-                          <option value=tr("Other Enquiry")>{tr("Other Enquiry")}</option>
+                          <option value={tr("Other Enquiry")}>{tr("Other Enquiry")}</option>
                         </select>
 
                         <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
