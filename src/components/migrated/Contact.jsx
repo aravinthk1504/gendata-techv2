@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import {
@@ -22,7 +23,11 @@ import {
   FiTarget,
 } from "react-icons/fi";
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Let&apos;s build something":"Lassen Sie uns gemeinsam","intelligent together.":"intelligente Lösungen entwickeln.","Tell us what you&apos;re looking for.":"Beschreiben Sie uns Ihr Vorhaben.","Questions before you contact us.":"Fragen vor der Kontaktaufnahme.","A few answers that may help before starting your enquiry.":"Antworten auf häufige Fragen vor Ihrer Anfrage.","Find GenData Tech.":"Hier finden Sie GenData Tech.","You don&apos;t need every detail figured out.":"Sie müssen noch nicht alle Details kennen.","A simple process from your first message to the next step.":"Von Ihrer ersten Nachricht bis zum nächsten Schritt.","Please check the required fields and try again.":"Bitte überprüfen Sie die Pflichtfelder und versuchen Sie es erneut.","You send your enquiry":"Sie senden Ihre Anfrage","We review your requirement":"Wir prüfen Ihr Anliegen","We respond with the next step":"Wir melden uns mit dem nächsten Schritt"};
+
 function Contact() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO ANIMATION
   ====================================================== */
@@ -51,28 +56,28 @@ function Contact() {
 
   const offeringOptions = {
     Services: [
-      "AI / ML Development",
-      "Full Stack Development",
-      "Web Development",
-      "Software Development",
-      "App Development",
-      "IoT Solutions",
+      tr("AI / ML Development"),
+      tr("Full Stack Development"),
+      tr("Web Development"),
+      tr("Software Development"),
+      tr("App Development"),
+      tr("IoT Solutions"),
     ],
 
     Products: ["GenData LMS", "GenData CRM", "GenData ERP", "GenData Billing"],
 
     Training: [
       "AI & Machine Learning",
-      "Data Science",
-      "Data Analytics",
-      "IoT Development",
+      tr("Data Science"),
+      tr("Data Analytics"),
+      tr("IoT Development"),
       "MERN Stack",
       "DevOps",
-      "Python",
-      "Mobile App Development",
+      tr("Python"),
+      tr("Mobile App Development"),
     ],
 
-    "Other Enquiry": [
+    tr("Other Enquiry"): [
       "General Enquiry",
       "Partnership",
       "Business Enquiry",
@@ -242,20 +247,20 @@ function Contact() {
   const responseSteps = [
     {
       number: "01",
-      title: "You send your enquiry",
+      title: tr("You send your enquiry"),
       description: "Tell us what you are looking to build, explore or improve.",
     },
 
     {
       number: "02",
-      title: "We review your requirement",
+      title: tr("We review your requirement"),
       description:
         "Our team reviews the requirement and understands the appropriate direction.",
     },
 
     {
       number: "03",
-      title: "We respond with the next step",
+      title: tr("We respond with the next step"),
       description:
         "We get back to you with the next discussion or action required.",
     },
@@ -429,7 +434,7 @@ function Contact() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  Contact GenData Tech
+                  {tr("Contact GenData Tech")}
                 </motion.p>
 
                 <motion.h1
@@ -454,9 +459,9 @@ function Contact() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Let&apos;s build something
+                  {tr("Let&apos;s build something")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    intelligent together.
+                    {tr("intelligent together.")}
                   </span>
                 </motion.h1>
 
@@ -513,7 +518,7 @@ function Contact() {
                 >
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                     <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
-                      Availability
+                      {tr("Availability")}
                     </p>
 
                     <p className="mt-2 font-heading text-sm font-semibold text-white">
@@ -523,11 +528,11 @@ function Contact() {
 
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                     <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
-                      Response
+                      {tr("Response")}
                     </p>
 
                     <p className="mt-2 font-heading text-sm font-semibold text-white">
-                      Within 24 hrs
+                      {tr("Within 24 hrs")}
                     </p>
                   </div>
 
@@ -647,7 +652,7 @@ function Contact() {
                   <FiMessageCircle className="text-xl text-[#057CFA]" />
 
                   <span className="mt-2 font-heading text-sm font-semibold text-white">
-                    Connect
+                    {tr("Connect")}
                   </span>
 
                   <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
@@ -719,7 +724,7 @@ function Contact() {
                   className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Training
+                    {tr("Training")}
                   </p>
                 </motion.div>
               </motion.div>
@@ -743,7 +748,7 @@ function Contact() {
 
                 <div className="rounded-[28px] border border-slate-200 bg-white p-6 sm:p-7">
                   <h2 className="font-body text-xs font-bold uppercase tracking-[0.16em] text-slate-900">
-                    Quick Contact
+                    {tr("Quick Contact")}
                   </h2>
 
                   <p className="mt-3 font-body text-sm leading-7 text-slate-500">
@@ -794,11 +799,11 @@ function Contact() {
 
                 <div className="rounded-[28px] border border-slate-200 bg-white p-6 sm:p-7">
                   <h2 className="font-body text-xs font-bold uppercase tracking-[0.16em] text-slate-900">
-                    Our Response Promise
+                    {tr("Our Response Promise")}
                   </h2>
 
                   <p className="mt-3 font-body text-sm leading-7 text-slate-500">
-                    A simple process from your first message to the next step.
+                    {tr("A simple process from your first message to the next step.")}
                   </p>
 
                   <div className="mt-7 space-y-6">
@@ -830,11 +835,11 @@ function Contact() {
               <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
                 <div>
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-[#002DCC]">
-                    Start Your Enquiry
+                    {tr("Start Your Enquiry")}
                   </p>
 
                   <h2 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                    Tell us what you&apos;re looking for.
+                    {tr("Tell us what you&apos;re looking for.")}
                   </h2>
 
                   <p className="mt-4 max-w-2xl font-body text-sm leading-7 text-slate-500">
@@ -852,7 +857,7 @@ function Contact() {
                         htmlFor="name"
                         className="font-body text-xs font-semibold text-slate-700"
                       >
-                        Full Name *
+                        {tr("Full Name *")}
                       </label>
 
                       <input
@@ -873,7 +878,7 @@ function Contact() {
                         htmlFor="email"
                         className="font-body text-xs font-semibold text-slate-700"
                       >
-                        Email Address *
+                        {tr("Email Address *")}
                       </label>
 
                       <input
@@ -897,7 +902,7 @@ function Contact() {
                       htmlFor="phone"
                       className="font-body text-xs font-semibold text-slate-700"
                     >
-                      Phone Number
+                      {tr("Phone Number")}
                     </label>
 
                     <input
@@ -924,7 +929,7 @@ function Contact() {
                         htmlFor="category"
                         className="font-body text-xs font-semibold text-slate-700"
                       >
-                        What are you interested in? *
+                        {tr("What are you interested in? *")}
                       </label>
 
                       <div className="relative mt-2">
@@ -936,15 +941,15 @@ function Contact() {
                           required
                           className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 pr-11 font-body text-sm text-slate-700 outline-none transition focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
                         >
-                          <option value="">Select a category</option>
+                          <option value="">{tr("Select a category")}</option>
 
                           <option value="Services">Services</option>
 
                           <option value="Products">Products</option>
 
-                          <option value="Training">Training</option>
+                          <option value=tr("Training")>{tr("Training")}</option>
 
-                          <option value="Other Enquiry">Other Enquiry</option>
+                          <option value=tr("Other Enquiry")>{tr("Other Enquiry")}</option>
                         </select>
 
                         <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -958,7 +963,7 @@ function Contact() {
                         htmlFor="offering"
                         className="font-body text-xs font-semibold text-slate-700"
                       >
-                        What are you looking for? *
+                        {tr("What are you looking for? *")}
                       </label>
 
                       <div className="relative mt-2">
@@ -996,7 +1001,7 @@ function Contact() {
                       htmlFor="message"
                       className="font-body text-xs font-semibold text-slate-700"
                     >
-                      Tell us about your requirement *
+                      {tr("Tell us about your requirement *")}
                     </label>
 
                     <textarea
@@ -1053,7 +1058,7 @@ function Contact() {
                         className="rounded-xl border border-red-200 bg-red-50 px-4 py-3"
                       >
                         <p className="font-body text-xs font-medium leading-6 text-red-700">
-                          Please check the required fields and try again.
+                          {tr("Please check the required fields and try again.")}
                         </p>
                       </motion.div>
                     )}
@@ -1087,11 +1092,11 @@ function Contact() {
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
-                  Locations
+                  {tr("Locations")}
                 </p>
 
                 <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Find GenData Tech.
+                  {tr("Find GenData Tech.")}
                 </h2>
               </div>
 
@@ -1191,11 +1196,11 @@ function Contact() {
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#057CFA]">
-                  Before You Get in Touch
+                  {tr("Before You Get in Touch")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                  You don&apos;t need every detail figured out.
+                  {tr("You don&apos;t need every detail figured out.")}
                 </h2>
               </div>
 
@@ -1204,7 +1209,7 @@ function Contact() {
                   <FiTarget className="text-[#057CFA]" />
 
                   <h3 className="mt-4 font-heading text-sm font-semibold text-white">
-                    The Problem
+                    {tr("The Problem")}
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
@@ -1216,7 +1221,7 @@ function Contact() {
                   <FiClock className="text-[#057CFA]" />
 
                   <h3 className="mt-4 font-heading text-sm font-semibold text-white">
-                    Your Requirement
+                    {tr("Your Requirement")}
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
@@ -1229,7 +1234,7 @@ function Contact() {
                   <FiArrowRight className="text-[#057CFA]" />
 
                   <h3 className="mt-4 font-heading text-sm font-semibold text-white">
-                    The Next Step
+                    {tr("The Next Step")}
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
@@ -1250,15 +1255,15 @@ function Contact() {
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions before you contact us.
+                {tr("Questions before you contact us.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
-                A few answers that may help before starting your enquiry.
+                {tr("A few answers that may help before starting your enquiry.")}
               </p>
             </div>
 
