@@ -28,7 +28,7 @@ import {
 import Link from "../layout/LocalizedLink"
 import InfinityVisual from "../../sections/home/InfinityVisual"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","AI-focused services built around":"KI-orientierte Leistungen für","real business problems.":"reale Geschäftsanforderungen.","One technology partner. Multiple engineering capabilities.":"Ein Technologiepartner. Viele Kompetenzen.","Our services combine AI with software, applications and connected systems to turn ideas and business requirements into practical working technology.":"Unsere Leistungen verbinden KI mit Software, Anwendungen und vernetzten Systemen, um Ideen und geschäftliche Anforderungen in praxistaugliche Technologien umzusetzen.","Technology should create a useful outcome.":"Technologie soll echten Mehrwert schaffen.","A clear path from requirement to delivery.":"Von der Anforderung bis zur Umsetzung.","Built around intelligence, engineering and practical thinking.":"KI, Engineering und praxisorientiertes Denken.","Questions about our technology services.":"Antworten zu unseren Technologiedienstleistungen.","Not Sure What You Need?":"Sie sind noch unsicher?","How We Help":"So unterstützen wir Sie","Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.":"Individuelle KI-Modelle, maschinelles Lernen, intelligente Automatisierung und agentenbasierte KI für konkrete Unternehmensanforderungen.","Complete application development covering frontend, backend, databases, APIs and system integration.":"Ganzheitliche Anwendungsentwicklung mit Frontend, Backend, Datenbanken, APIs und Systemintegration.","Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.":"Moderne, responsive und leistungsstarke Websites für Unternehmen, Start-ups, Produkte und digitale Marken.","Custom software systems designed around business processes, internal operations and digital workflows.":"Individuelle Softwaresysteme für Geschäftsprozesse, interne Abläufe und digitale Workflows.","Mobile applications designed around practical functionality, modern user experiences and connected services.":"Mobile Anwendungen mit praxisnahen Funktionen, moderner Nutzererfahrung und vernetzten Diensten.","Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.":"Vernetzte IoT-Systeme mit Sensoren, Geräten, Überwachung, Automatisierung und intelligenter Software.","Automate Repetitive Processes":"Wiederkehrende Prozesse automatisieren","Reduce manual effort through intelligent workflows and connected automation systems.":"Manuellen Aufwand durch intelligente Workflows und vernetzte Automatisierung reduzieren.","Build Intelligent Products":"Intelligente Produkte entwickeln","Add AI capabilities to software products, digital platforms and applications.":"Softwareprodukte, digitale Plattformen und Anwendungen um KI-Funktionen erweitern.","Modernize Workflows":"Arbeitsabläufe modernisieren","Transform fragmented manual processes into connected digital systems.":"Fragmentierte manuelle Abläufe in vernetzte digitale Systeme umwandeln.","Create Scalable Applications":"Skalierbare Anwendungen entwickeln","Build applications designed to evolve as users, requirements and operations grow.":"Anwendungen entwickeln, die mit Nutzern, Anforderungen und Abläufen wachsen.","Connect Devices & Software":"Geräte und Software verbinden","Bring sensors, IoT devices, monitoring platforms and software together.":"Sensoren, IoT-Geräte, Überwachungsplattformen und Software miteinander verbinden.","Turn Ideas Into Solutions":"Ideen in Lösungen verwandeln","Move from an early concept or requirement into a practical working product.":"Aus einer ersten Idee oder Anforderung ein praxistaugliches Produkt entwickeln.","Understand the problem, users and expected outcome.":"Problem, Nutzer und gewünschtes Ergebnis verstehen.","Define the right technical direction and architecture.":"Die passende technische Ausrichtung und Architektur festlegen.","Develop the solution using suitable technologies.":"Die Lösung mit geeigneten Technologien entwickeln.","Connect platforms, APIs, services and required workflows.":"Plattformen, APIs, Dienste und benötigte Arbeitsabläufe verbinden.","Validate functionality, usability and technical behavior.":"Funktionalität, Benutzerfreundlichkeit und technisches Verhalten prüfen.","Prepare the solution for deployment and real-world use.":"Die Lösung für Bereitstellung und Praxiseinsatz vorbereiten.","AI-focused Thinking":"KI-orientiertes Denken","Artificial intelligence remains at the center of our technology direction.":"Künstliche Intelligenz steht im Mittelpunkt unserer technologischen Ausrichtung.","Problem-led Solutions":"Problemorientierte Lösungen","We start with the actual requirement before deciding which technologies to use.":"Wir beginnen mit der tatsächlichen Anforderung, bevor wir Technologien auswählen.","AI + Engineering":"KI und Engineering","We combine intelligent systems with web, software, mobile and IoT engineering.":"Wir verbinden intelligente Systeme mit Web-, Software-, App- und IoT-Entwicklung.","Custom Development":"Individuelle Entwicklung","Solutions are designed around specific workflows, users and technical needs.":"Lösungen richten sich nach konkreten Arbeitsabläufen, Nutzern und technischen Anforderungen.","Scalable Direction":"Skalierbare Ausrichtung","We consider maintainability and future growth while designing technical systems.":"Bei der Entwicklung berücksichtigen wir Wartbarkeit und zukünftiges Wachstum.","Direct Communication":"Direkte Kommunikation","Clear communication keeps requirements, expectations and technical direction aligned.":"Klare Kommunikation stimmt Anforderungen, Erwartungen und technische Ausrichtung aufeinander ab.","Deep Learning":"Deep Learning","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren"};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","AI-focused services built around":"KI-orientierte Leistungen für","real business problems.":"reale Geschäftsanforderungen.","One technology partner. Multiple engineering capabilities.":"Ein Technologiepartner. Viele Kompetenzen.","Our services combine AI with software, applications and connected systems to turn ideas and business requirements into practical working technology.":"Unsere Leistungen verbinden KI mit Software, Anwendungen und vernetzten Systemen, um Ideen und geschäftliche Anforderungen in praxistaugliche Technologien umzusetzen.","Technology should create a useful outcome.":"Technologie soll echten Mehrwert schaffen.","A clear path from requirement to delivery.":"Von der Anforderung bis zur Umsetzung.","Built around intelligence, engineering and practical thinking.":"KI, Engineering und praxisorientiertes Denken.","Questions about our technology services.":"Antworten zu unseren Technologiedienstleistungen.","Not Sure What You Need?":"Sie sind noch unsicher?","How We Help":"So unterstützen wir Sie","Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.":"Individuelle KI-Modelle, maschinelles Lernen, intelligente Automatisierung und agentenbasierte KI für konkrete Unternehmensanforderungen.","Complete application development covering frontend, backend, databases, APIs and system integration.":"Ganzheitliche Anwendungsentwicklung mit Frontend, Backend, Datenbanken, APIs und Systemintegration.","Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.":"Moderne, responsive und leistungsstarke Websites für Unternehmen, Start-ups, Produkte und digitale Marken.","Custom software systems designed around business processes, internal operations and digital workflows.":"Individuelle Softwaresysteme für Geschäftsprozesse, interne Abläufe und digitale Workflows.","Mobile applications designed around practical functionality, modern user experiences and connected services.":"Mobile Anwendungen mit praxisnahen Funktionen, moderner Nutzererfahrung und vernetzten Diensten.","Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.":"Vernetzte IoT-Systeme mit Sensoren, Geräten, Überwachung, Automatisierung und intelligenter Software.","Automate Repetitive Processes":"Wiederkehrende Prozesse automatisieren","Reduce manual effort through intelligent workflows and connected automation systems.":"Manuellen Aufwand durch intelligente Workflows und vernetzte Automatisierung reduzieren.","Build Intelligent Products":"Intelligente Produkte entwickeln","Add AI capabilities to software products, digital platforms and applications.":"Softwareprodukte, digitale Plattformen und Anwendungen um KI-Funktionen erweitern.","Modernize Workflows":"Arbeitsabläufe modernisieren","Transform fragmented manual processes into connected digital systems.":"Fragmentierte manuelle Abläufe in vernetzte digitale Systeme umwandeln.","Create Scalable Applications":"Skalierbare Anwendungen entwickeln","Build applications designed to evolve as users, requirements and operations grow.":"Anwendungen entwickeln, die mit Nutzern, Anforderungen und Abläufen wachsen.","Connect Devices & Software":"Geräte und Software verbinden","Bring sensors, IoT devices, monitoring platforms and software together.":"Sensoren, IoT-Geräte, Überwachungsplattformen und Software miteinander verbinden.","Turn Ideas Into Solutions":"Ideen in Lösungen verwandeln","Move from an early concept or requirement into a practical working product.":"Aus einer ersten Idee oder Anforderung ein praxistaugliches Produkt entwickeln.","Understand the problem, users and expected outcome.":"Problem, Nutzer und gewünschtes Ergebnis verstehen.","Define the right technical direction and architecture.":"Die passende technische Ausrichtung und Architektur festlegen.","Develop the solution using suitable technologies.":"Die Lösung mit geeigneten Technologien entwickeln.","Connect platforms, APIs, services and required workflows.":"Plattformen, APIs, Dienste und benötigte Arbeitsabläufe verbinden.","Validate functionality, usability and technical behavior.":"Funktionalität, Benutzerfreundlichkeit und technisches Verhalten prüfen.","Prepare the solution for deployment and real-world use.":"Die Lösung für Bereitstellung und Praxiseinsatz vorbereiten.","AI-focused Thinking":"KI-orientiertes Denken","Artificial intelligence remains at the center of our technology direction.":"Künstliche Intelligenz steht im Mittelpunkt unserer technologischen Ausrichtung.","Problem-led Solutions":"Problemorientierte Lösungen","We start with the actual requirement before deciding which technologies to use.":"Wir beginnen mit der tatsächlichen Anforderung, bevor wir Technologien auswählen.","AI + Engineering":"KI und Engineering","We combine intelligent systems with web, software, mobile and IoT engineering.":"Wir verbinden intelligente Systeme mit Web-, Software-, App- und IoT-Entwicklung.","Custom Development":"Individuelle Entwicklung","Solutions are designed around specific workflows, users and technical needs.":"Lösungen richten sich nach konkreten Arbeitsabläufen, Nutzern und technischen Anforderungen.","Scalable Direction":"Skalierbare Ausrichtung","We consider maintainability and future growth while designing technical systems.":"Bei der Entwicklung berücksichtigen wir Wartbarkeit und zukünftiges Wachstum.","Direct Communication":"Direkte Kommunikation","Clear communication keeps requirements, expectations and technical direction aligned.":"Klare Kommunikation stimmt Anforderungen, Erwartungen und technische Ausrichtung aufeinander ab.","Deep Learning":"Deep Learning","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Integrate":"Integrieren","Test":"Testen","Deliver":"Bereitstellen","How AI Automation Can Improve Business Workflows":"Wie KI-Automatisierung Geschäftsabläufe verbessern kann","Explore how intelligent automation can reduce repetitive work, improve process efficiency and connect business operations.":"Erfahren Sie, wie intelligente Automatisierung wiederkehrende Aufgaben reduziert, Prozesse effizienter gestaltet und Geschäftsabläufe vernetzt.","When Should a Business Choose a Custom AI Solution?":"Wann lohnt sich eine individuelle KI-Lösung für Unternehmen?","Understand when a custom AI or machine learning solution may be more suitable than a generic software tool.":"Erfahren Sie, wann eine individuelle KI- oder Machine-Learning-Lösung besser geeignet ist als eine Standardsoftware.","Web Application vs Custom Software: What Should You Build?":"Webanwendung oder individuelle Software: Was passt zu Ihrem Vorhaben?","A practical overview of the differences between web applications and custom software systems when planning a digital product.":"Ein praxisnaher Überblick über die Unterschiede zwischen Webanwendungen und individueller Software bei der Planung digitaler Produkte.","What technology services does GenData Tech provide?":"Welche Technologiedienstleistungen bietet GenData Tech an?","GenData Tech provides AI and machine learning development, full stack development, web development, software development, mobile app development and IoT solutions.":"GenData Tech bietet KI- und Machine-Learning-Entwicklung, Full-Stack-Entwicklung, Webentwicklung, Softwareentwicklung, App-Entwicklung und IoT-Lösungen an.","Do you build custom AI and machine learning solutions?":"Entwickeln Sie individuelle KI- und Machine-Learning-Lösungen?","Yes. We build AI and machine learning solutions around specific requirements, including predictive models, classification systems, intelligent automation, Agentic AI and custom AI applications.":"Ja. Wir entwickeln maßgeschneiderte KI- und Machine-Learning-Lösungen, darunter Prognosemodelle, Klassifikationssysteme, intelligente Automatisierung, Agentic AI und individuelle KI-Anwendungen.","Can you develop both websites and full web applications?":"Entwickeln Sie sowohl Websites als auch vollständige Webanwendungen?","Yes. We develop corporate and startup websites as well as full web applications that may include frontend interfaces, backend systems, APIs, authentication and databases.":"Ja. Wir entwickeln Websites für Unternehmen und Start-ups sowie vollständige Webanwendungen mit Frontend, Backend, APIs, Authentifizierung und Datenbanken.","Do you provide Android and iOS app development?":"Bieten Sie App-Entwicklung für Android und iOS an?","Yes. We provide mobile application development for business and product requirements, including applications that connect with backend services and APIs.":"Ja. Wir entwickeln mobile Anwendungen für Unternehmen und Produkte, einschließlich Anbindungen an Backend-Dienste und APIs.","Can AI be integrated into an existing software system?":"Lässt sich KI in bestehende Softwaresysteme integrieren?","Yes. AI capabilities can be integrated into existing applications or workflows when the current architecture and technical requirements support the integration.":"Ja. KI-Funktionen lassen sich in bestehende Anwendungen und Arbeitsabläufe integrieren, sofern Architektur und technische Voraussetzungen dies ermöglichen.","Does GenData Tech provide IoT development?":"Bietet GenData Tech IoT-Entwicklung an?","Yes. Our IoT solutions can combine sensors, connected devices, monitoring systems, automation and software platforms for practical real-world applications.":"Ja. Unsere IoT-Lösungen verbinden Sensoren, Geräte, Überwachung, Automatisierung und Softwareplattformen für praktische Anwendungen.","How do you choose the right technology for a project?":"Wie wählen Sie die passende Technologie für ein Projekt aus?","We begin by understanding the problem, users, expected outcome and technical requirements. The technology stack is selected based on what best fits the project rather than using the same stack for every solution.":"Zunächst analysieren wir Problemstellung, Nutzer, gewünschtes Ergebnis und technische Anforderungen. Anschließend wählen wir die Technologien passend zum jeweiligen Projekt aus.","Can I contact GenData Tech if I am not sure which service I need?":"Kann ich GenData Tech kontaktieren, wenn ich noch nicht weiß, welche Leistung ich benötige?","Yes. You can share the problem or idea without knowing the exact technology. We can review the requirement and help identify an appropriate technical direction.":"Ja. Beschreiben Sie uns Ihre Idee oder Herausforderung. Wir prüfen Ihre Anforderungen und unterstützen Sie bei der Wahl einer geeigneten technischen Lösung.","Capabilities":"Kompetenzen","Explore Service":"Leistung entdecken","Our Service Approach":"Unser Vorgehen","Ideas and perspectives around modern technology.":"Ideen und Perspektiven zu modernen Technologien.","Read Insight":"Beitrag lesen"};
 
 function Services() {
   const { lang } = useParams();
@@ -181,19 +181,19 @@ function Services() {
 
     {
       number: "04",
-      title: "Integrate",
+      title: tr("Integrate"),
       description: tr("Connect platforms, APIs, services and required workflows."),
     },
 
     {
       number: "05",
-      title: "Test",
+      title: tr("Test"),
       description: tr("Validate functionality, usability and technical behavior."),
     },
 
     {
       number: "06",
-      title: "Deliver",
+      title: tr("Deliver"),
       description: tr("Prepare the solution for deployment and real-world use."),
     },
   ];
@@ -253,23 +253,23 @@ function Services() {
   const insights = [
     {
       category: "AI & Automation",
-      title: "How AI Automation Can Improve Business Workflows",
+      title: tr("How AI Automation Can Improve Business Workflows"),
       description:
-        "Explore how intelligent automation can reduce repetitive work, improve process efficiency and connect business operations.",
+        tr("Explore how intelligent automation can reduce repetitive work, improve process efficiency and connect business operations."),
     },
 
     {
       category: "Artificial Intelligence",
-      title: "When Should a Business Choose a Custom AI Solution?",
+      title: tr("When Should a Business Choose a Custom AI Solution?"),
       description:
-        "Understand when a custom AI or machine learning solution may be more suitable than a generic software tool.",
+        tr("Understand when a custom AI or machine learning solution may be more suitable than a generic software tool."),
     },
 
     {
       category: "Software Engineering",
-      title: "Web Application vs Custom Software: What Should You Build?",
+      title: tr("Web Application vs Custom Software: What Should You Build?"),
       description:
-        "A practical overview of the differences between web applications and custom software systems when planning a digital product.",
+        tr("A practical overview of the differences between web applications and custom software systems when planning a digital product."),
     },
   ];
 
@@ -279,52 +279,52 @@ function Services() {
 
   const faqs = [
     {
-      question: "What technology services does GenData Tech provide?",
+      question: tr("What technology services does GenData Tech provide?"),
       answer:
-        "GenData Tech provides AI and machine learning development, full stack development, web development, software development, mobile app development and IoT solutions.",
+        tr("GenData Tech provides AI and machine learning development, full stack development, web development, software development, mobile app development and IoT solutions."),
     },
 
     {
-      question: "Do you build custom AI and machine learning solutions?",
+      question: tr("Do you build custom AI and machine learning solutions?"),
       answer:
-        "Yes. We build AI and machine learning solutions around specific requirements, including predictive models, classification systems, intelligent automation, Agentic AI and custom AI applications.",
+        tr("Yes. We build AI and machine learning solutions around specific requirements, including predictive models, classification systems, intelligent automation, Agentic AI and custom AI applications."),
     },
 
     {
-      question: "Can you develop both websites and full web applications?",
+      question: tr("Can you develop both websites and full web applications?"),
       answer:
-        "Yes. We develop corporate and startup websites as well as full web applications that may include frontend interfaces, backend systems, APIs, authentication and databases.",
+        tr("Yes. We develop corporate and startup websites as well as full web applications that may include frontend interfaces, backend systems, APIs, authentication and databases."),
     },
 
     {
-      question: "Do you provide Android and iOS app development?",
+      question: tr("Do you provide Android and iOS app development?"),
       answer:
-        "Yes. We provide mobile application development for business and product requirements, including applications that connect with backend services and APIs.",
+        tr("Yes. We provide mobile application development for business and product requirements, including applications that connect with backend services and APIs."),
     },
 
     {
-      question: "Can AI be integrated into an existing software system?",
+      question: tr("Can AI be integrated into an existing software system?"),
       answer:
-        "Yes. AI capabilities can be integrated into existing applications or workflows when the current architecture and technical requirements support the integration.",
+        tr("Yes. AI capabilities can be integrated into existing applications or workflows when the current architecture and technical requirements support the integration."),
     },
 
     {
-      question: "Does GenData Tech provide IoT development?",
+      question: tr("Does GenData Tech provide IoT development?"),
       answer:
-        "Yes. Our IoT solutions can combine sensors, connected devices, monitoring systems, automation and software platforms for practical real-world applications.",
+        tr("Yes. Our IoT solutions can combine sensors, connected devices, monitoring systems, automation and software platforms for practical real-world applications."),
     },
 
     {
-      question: "How do you choose the right technology for a project?",
+      question: tr("How do you choose the right technology for a project?"),
       answer:
-        "We begin by understanding the problem, users, expected outcome and technical requirements. The technology stack is selected based on what best fits the project rather than using the same stack for every solution.",
+        tr("We begin by understanding the problem, users, expected outcome and technical requirements. The technology stack is selected based on what best fits the project rather than using the same stack for every solution."),
     },
 
     {
       question:
-        "Can I contact GenData Tech if I am not sure which service I need?",
+        tr("Can I contact GenData Tech if I am not sure which service I need?"),
       answer:
-        "Yes. You can share the problem or idea without knowing the exact technology. We can review the requirement and help identify an appropriate technical direction.",
+        tr("Yes. You can share the problem or idea without knowing the exact technology. We can review the requirement and help identify an appropriate technical direction."),
     },
   ];
 
@@ -619,7 +619,7 @@ function Services() {
 
                       <div className="mt-5 border-t border-slate-100 pt-4">
                         <p className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                          Capabilities
+                          {tr("Capabilities")}
                         </p>
 
                         <div className="mt-3 flex flex-wrap gap-2">
@@ -639,7 +639,7 @@ function Services() {
                         to={service.path}
                         className="mt-6 inline-flex items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
                       >
-                        Explore Service
+                        {tr("Explore Service")}
                         <FiArrowRight className="transition group-hover:translate-x-1" />
                       </Link>
                     </div>
@@ -725,7 +725,7 @@ function Services() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Our Service Approach
+                {tr("Our Service Approach")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -853,7 +853,7 @@ function Services() {
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Ideas and perspectives around modern technology.
+                  {tr("Ideas and perspectives around modern technology.")}
                 </h2>
               </div>
 
@@ -903,7 +903,7 @@ function Services() {
 
                   <div className="mt-6 border-t border-slate-100 pt-5">
                     <span className="inline-flex items-center gap-2 font-body text-xs font-semibold text-[#002DCC]">
-                      Read Insight
+                      {tr("Read Insight")}
                       <FiArrowRight className="transition group-hover:translate-x-1" />
                     </span>
                   </div>
