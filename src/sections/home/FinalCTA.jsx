@@ -140,7 +140,7 @@ function FinalCTA({ content, lang }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="mt-7 max-w-4xl font-heading text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl"
+              className="mt-7 max-w-4xl font-heading text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-5xl"
             >
               {t("finalCta.titleLine1")}
               <span className="block text-slate-300">{t("finalCta.titleLine2")}</span>
