@@ -29,7 +29,7 @@ import {
 import Link from "../layout/LocalizedLink"
 
 import CommonCTA from "../layout/CommonCTA"
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Digital products built":"Digitale Produkte für","around practical workflows.":"praxisnahe Arbeitsabläufe.","Software products for learning and business operations.":"Softwareprodukte für Bildung und Unternehmensprozesse.","A growing product ecosystem from GenData Tech.":"Ein wachsendes Produktportfolio von GenData Tech.","Products shaped around useful everyday workflows.":"Produkte für praktische Arbeitsabläufe.","From user need to structured digital product.":"Vom Nutzerbedarf zum digitalen Produkt.","Questions about GenData Tech products.":"Fragen zu den Produkten von GenData Tech."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Digital products built":"Digitale Produkte für","around practical workflows.":"praxisnahe Arbeitsabläufe.","Software products for learning and business operations.":"Softwareprodukte für Bildung und Unternehmensprozesse.","A growing product ecosystem from GenData Tech.":"Ein wachsendes Produktportfolio von GenData Tech.","Products shaped around useful everyday workflows.":"Produkte für praktische Arbeitsabläufe.","From user need to structured digital product.":"Vom Nutzerbedarf zum digitalen Produkt.","Questions about GenData Tech products.":"Fragen zu den Produkten von GenData Tech.","A learning management platform designed to organize courses, learners, training content and learning activities in one connected system.":"Eine Lernplattform, die Kurse, Teilnehmende, Schulungsinhalte und Lernaktivitäten in einem vernetzten System organisiert.","A customer relationship platform designed to organize customer information, interactions, follow-ups and business relationships.":"Eine CRM-Plattform zur Verwaltung von Kundeninformationen, Interaktionen, Nachfassaktionen und Geschäftsbeziehungen.","A centralized business platform designed to connect operational information, workflows and management activities.":"Eine zentrale Unternehmensplattform, die Betriebsdaten, Arbeitsabläufe und Managementprozesse verbindet.","A billing and business transaction platform designed to simplify invoice creation, records and billing-related workflows.":"Eine Plattform für Abrechnungen und Geschäftsvorgänge, die Rechnungsstellung, Aufzeichnungen und Abrechnungsprozesse vereinfacht.","Built Around the Workflow":"An Arbeitsabläufen orientiert","Products should support the process users actually need rather than adding unnecessary complexity.":"Produkte sollen die tatsächlich benötigten Prozesse unterstützen, statt unnötige Komplexität zu schaffen.","Connected Information":"Vernetzte Informationen","Data, users and workflows are structured so important information can work together within one platform.":"Daten, Nutzer und Abläufe werden so strukturiert, dass wichtige Informationen auf einer Plattform zusammenwirken.","Practical Experience":"Praxisnahe Nutzung","Interfaces and functionality are designed around useful everyday actions and clear user journeys.":"Oberflächen und Funktionen orientieren sich an alltäglichen Aufgaben und klaren Nutzerwegen.","Designed to Evolve":"Für Weiterentwicklung ausgelegt","Product architecture considers future features, integrations and changing operational requirements.":"Die Produktarchitektur berücksichtigt künftige Funktionen, Integrationen und sich verändernde Anforderungen.","Understand the user, workflow and problem the product needs to support.":"Nutzer, Arbeitsabläufe und die zu lösende Aufgabe verstehen.","Define the modules, information flow and product architecture.":"Module, Informationsflüsse und Produktarchitektur festlegen.","Plan interfaces and user journeys around important actions.":"Oberflächen und Nutzerwege für wichtige Aufgaben gestalten.","Develop the required product functionality and supporting systems.":"Benötigte Produktfunktionen und unterstützende Systeme entwickeln.","Integrate data, APIs and other services where required.":"Daten, APIs und weitere Dienste bei Bedarf integrieren.","Continue refining functionality as product requirements evolve.":"Funktionen mit neuen Produktanforderungen kontinuierlich verbessern."};
 
 function Products() {
   const { lang } = useParams();
@@ -66,7 +66,7 @@ function Products() {
       name: "GenData LMS",
       shortName: "LMS",
       description:
-        "A learning management platform designed to organize courses, learners, training content and learning activities in one connected system.",
+        tr("A learning management platform designed to organize courses, learners, training content and learning activities in one connected system."),
       capabilities: [
         "Course Management",
         "Learner Management",
@@ -81,7 +81,7 @@ function Products() {
       name: "GenData CRM",
       shortName: "CRM",
       description:
-        "A customer relationship platform designed to organize customer information, interactions, follow-ups and business relationships.",
+        tr("A customer relationship platform designed to organize customer information, interactions, follow-ups and business relationships."),
       capabilities: [
         "Customer Records",
         "Lead Management",
@@ -96,7 +96,7 @@ function Products() {
       name: "GenData ERP",
       shortName: "ERP",
       description:
-        "A centralized business platform designed to connect operational information, workflows and management activities.",
+        tr("A centralized business platform designed to connect operational information, workflows and management activities."),
       capabilities: [
         "Operations",
         "Business Records",
@@ -111,7 +111,7 @@ function Products() {
       name: "GenData Billing",
       shortName: "Billing",
       description:
-        "A billing and business transaction platform designed to simplify invoice creation, records and billing-related workflows.",
+        tr("A billing and business transaction platform designed to simplify invoice creation, records and billing-related workflows."),
       capabilities: [
         "Invoices",
         "Billing Records",
@@ -129,30 +129,30 @@ function Products() {
   const principles = [
     {
       icon: FiTarget,
-      title: "Built Around the Workflow",
+      title: tr("Built Around the Workflow"),
       description:
-        "Products should support the process users actually need rather than adding unnecessary complexity.",
+        tr("Products should support the process users actually need rather than adding unnecessary complexity."),
     },
 
     {
       icon: FiLayers,
-      title: "Connected Information",
+      title: tr("Connected Information"),
       description:
-        "Data, users and workflows are structured so important information can work together within one platform.",
+        tr("Data, users and workflows are structured so important information can work together within one platform."),
     },
 
     {
       icon: FiZap,
-      title: "Practical Experience",
+      title: tr("Practical Experience"),
       description:
-        "Interfaces and functionality are designed around useful everyday actions and clear user journeys.",
+        tr("Interfaces and functionality are designed around useful everyday actions and clear user journeys."),
     },
 
     {
       icon: FiRepeat,
-      title: "Designed to Evolve",
+      title: tr("Designed to Evolve"),
       description:
-        "Product architecture considers future features, integrations and changing operational requirements.",
+        tr("Product architecture considers future features, integrations and changing operational requirements."),
     },
   ];
 
@@ -165,41 +165,41 @@ function Products() {
       number: "01",
       title: tr("Understand"),
       description:
-        "Understand the user, workflow and problem the product needs to support.",
+        tr("Understand the user, workflow and problem the product needs to support."),
     },
 
     {
       number: "02",
       title: tr("Structure"),
       description:
-        "Define the modules, information flow and product architecture.",
+        tr("Define the modules, information flow and product architecture."),
     },
 
     {
       number: "03",
       title: tr("Design"),
       description:
-        "Plan interfaces and user journeys around important actions.",
+        tr("Plan interfaces and user journeys around important actions."),
     },
 
     {
       number: "04",
       title: tr("Build"),
       description:
-        "Develop the required product functionality and supporting systems.",
+        tr("Develop the required product functionality and supporting systems."),
     },
 
     {
       number: "05",
       title: tr("Connect"),
-      description: "Integrate data, APIs and other services where required.",
+      description: tr("Integrate data, APIs and other services where required."),
     },
 
     {
       number: "06",
       title: tr("Improve"),
       description:
-        "Continue refining functionality as product requirements evolve.",
+        tr("Continue refining functionality as product requirements evolve."),
     },
   ];
 
