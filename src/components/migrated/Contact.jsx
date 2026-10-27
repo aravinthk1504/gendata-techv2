@@ -77,7 +77,7 @@ function Contact() {
       tr("Mobile App Development"),
     ],
 
-    tr("Other Enquiry"): [
+    "Other Enquiry": [
       tr("General Enquiry"),
       tr("Partnership"),
       tr("Business Enquiry"),
