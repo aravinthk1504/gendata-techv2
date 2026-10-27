@@ -110,7 +110,7 @@ function IntelligenceProcess({ content }) {
               initial={{ opacity: 1, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-brand-accent"
             >
               {t("process.eyebrow")}
             </motion.p>
@@ -120,7 +120,7 @@ function IntelligenceProcess({ content }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-5xl"
+              className="mt-5 max-w-4xl font-heading text-3xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl"
             >
               {t("process.titleLine1")}
               <span className="block text-slate-300">
