@@ -42,7 +42,7 @@ function FinalCTA({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-[30px] bg-[#06152c] px-6 py-14 sm:rounded-[36px] sm:px-10 sm:py-16 lg:px-16 lg:py-20"
+          className="relative overflow-hidden rounded-[30px] bg-[#06152c] px-6 py-12 sm:rounded-[36px] sm:px-10 sm:py-14 lg:px-16 lg:py-14"
         >
           <motion.div
             animate={
@@ -225,7 +225,7 @@ function FinalCTA({ content, lang }) {
 
           <motion.div
             initial={false}
-            className="relative z-10 mt-8 border-t border-white/[0.08] pt-6 sm:mt-14 sm:pt-7"
+            className="relative z-10 mt-8 border-t border-white/[0.08] pt-6 sm:mt-10 sm:pt-6"
           >
             <div className="flex flex-wrap gap-x-8 gap-y-3">
               {t("finalCta.tags", { returnObjects: true }).map((item) => (
