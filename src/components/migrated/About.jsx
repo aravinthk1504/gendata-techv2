@@ -16,8 +16,61 @@ import {
 } from "react-icons/fi";
 
 import Link from "../layout/LocalizedLink"
+import { useParams } from "next/navigation"
+
+const aboutDE = {
+  "Clients": "Kunden",
+  "Client relationship": "Kundenbeziehung",
+  "Project": "Projekt",
+  "Project delivered": "Abgeschlossenes Projekt",
+  "Years": "Jahre",
+  "Building GenData Tech": "Aufbau von GenData Tech",
+  "Practical Intelligence": "Praxisorientierte Intelligenz",
+  "Engineering First": "Engineering an erster Stelle",
+  "Built Around the Problem": "Am Problem orientiert",
+  "Scalable by Design": "Von Grund auf skalierbar",
+  "We focus on AI that solves useful problems and creates meaningful outcomes rather than using technology simply for the sake of it.": "Wir konzentrieren uns auf KI, die konkrete Probleme löst und echten Mehrwert schafft – statt Technologie um ihrer selbst willen einzusetzen.",
+  "Strong architecture, maintainability and thoughtful engineering remain at the foundation of everything we build.": "Solide Architektur, Wartbarkeit und durchdachte Entwicklung bilden die Grundlage unserer Arbeit.",
+  "We begin by understanding the real challenge before selecting technologies, models or platforms.": "Wir verstehen zunächst die tatsächliche Herausforderung, bevor wir Technologien, Modelle oder Plattformen auswählen.",
+  "We aim to create systems that can evolve as requirements, users and technologies continue to grow.": "Wir entwickeln Systeme, die mit Anforderungen, Nutzern und Technologien wachsen können.",
+  "AI Systems": "KI-Systeme",
+  "AI Automation": "KI-Automatisierung",
+  "Digital Products": "Digitale Produkte",
+  "Software Platforms": "Softwareplattformen",
+  "Mobile & IoT": "Mobile Anwendungen & IoT",
+  "Technology Training": "Technologieschulungen",
+  "Custom AI models, intelligent applications and machine-learning driven solutions.": "Individuelle KI-Modelle, intelligente Anwendungen und Lösungen auf Basis maschinellen Lernens.",
+  "Automation systems designed to reduce repetitive work and improve operational efficiency.": "Automatisierungssysteme zur Reduzierung wiederkehrender Aufgaben und Steigerung der betrieblichen Effizienz.",
+  "Technology products including platforms such as LMS, CRM, ERP and billing systems.": "Technologieprodukte wie LMS-, CRM-, ERP- und Abrechnungssysteme.",
+  "Full-stack web applications and software systems engineered around business requirements.": "Full-Stack-Webanwendungen und Softwaresysteme, die auf geschäftliche Anforderungen abgestimmt sind.",
+  "Mobile applications and connected IoT solutions that bridge software with the physical world.": "Mobile Anwendungen und vernetzte IoT-Lösungen, die Software mit der physischen Welt verbinden.",
+  "Practical learning programs focused on AI, data, development and emerging technologies.": "Praxisnahe Schulungsprogramme rund um KI, Daten, Entwicklung und neue Technologien.",
+  "Understand": "Verstehen",
+  "Design": "Konzipieren",
+  "Build": "Entwickeln",
+  "Validate": "Prüfen",
+  "Deploy": "Bereitstellen",
+  "Improve": "Verbessern",
+  "Define the problem, goals and actual requirements.": "Problem, Ziele und tatsächliche Anforderungen definieren.",
+  "Plan the right architecture, experience and technical direction.": "Die passende Architektur, Nutzererfahrung und technische Ausrichtung planen.",
+  "Develop the system using practical engineering and suitable technologies.": "Das System mit bewährten Entwicklungsmethoden und geeigneten Technologien realisieren.",
+  "Test the solution against its intended use and requirements.": "Die Lösung anhand des vorgesehenen Einsatzes und der Anforderungen testen.",
+  "Prepare and deliver the solution for real-world use.": "Die Lösung für den praktischen Einsatz vorbereiten und bereitstellen.",
+  "Learn from usage and continue refining the system.": "Aus der Nutzung lernen und das System kontinuierlich verbessern.",
+  "Started": "Beginn",
+  "Built": "Aufbau",
+  "Now": "Heute",
+  "The beginning of GenData Tech": "Der Anfang von GenData Tech",
+  "Our first client and project": "Unser erster Kunde und unser erstes Projekt",
+  "Expanding our AI-focused direction": "Ausbau unseres KI-Schwerpunkts",
+  "GenData Tech began with a focus on building technology around AI, data and practical digital solutions.": "GenData Tech startete mit dem Ziel, Technologien rund um KI, Daten und praxisnahe digitale Lösungen zu entwickeln.",
+  "The journey moved from ideas into real delivery through our first client relationship and completed project.": "Aus Ideen wurden konkrete Ergebnisse – mit unserer ersten Kundenbeziehung und einem abgeschlossenen Projekt.",
+  "Today we are strengthening our focus on AI systems, automation, digital products, engineering and technology training.": "Heute verstärken wir unseren Fokus auf KI-Systeme, Automatisierung, digitale Produkte, Softwareentwicklung und Technologieschulungen."
+};
 
 function About() {
+  const { lang } = useParams();
+  const tr = (value) => lang === "de" ? (aboutDE[value] ?? value) : value;
   /* ======================================================
       HERO ANIMATION CONTROL
   ====================================================== */
@@ -40,18 +93,18 @@ function About() {
   const companyStats = [
     {
       value: "2",
-      label: "Clients",
-      description: "Client relationship",
+      label: tr("Clients"),
+      description: tr("Client relationship"),
     },
     {
       value: "1",
-      label: "Project",
-      description: "Project delivered",
+      label: tr("Project"),
+      description: tr("Project delivered"),
     },
     {
       value: "2",
-      label: "Years",
-      description: "Building GenData Tech",
+      label: tr("Years"),
+      description: tr("Building GenData Tech"),
     },
   ];
 
@@ -62,30 +115,30 @@ function About() {
   const principles = [
     {
       number: "01",
-      title: "Practical Intelligence",
+      title: tr("Practical Intelligence"),
       description:
-        "We focus on AI that solves useful problems and creates meaningful outcomes rather than using technology simply for the sake of it.",
+        tr("We focus on AI that solves useful problems and creates meaningful outcomes rather than using technology simply for the sake of it."),
     },
 
     {
       number: "02",
-      title: "Engineering First",
+      title: tr("Engineering First"),
       description:
-        "Strong architecture, maintainability and thoughtful engineering remain at the foundation of everything we build.",
+        tr("Strong architecture, maintainability and thoughtful engineering remain at the foundation of everything we build."),
     },
 
     {
       number: "03",
-      title: "Built Around the Problem",
+      title: tr("Built Around the Problem"),
       description:
-        "We begin by understanding the real challenge before selecting technologies, models or platforms.",
+        tr("We begin by understanding the real challenge before selecting technologies, models or platforms."),
     },
 
     {
       number: "04",
-      title: "Scalable by Design",
+      title: tr("Scalable by Design"),
       description:
-        "We aim to create systems that can evolve as requirements, users and technologies continue to grow.",
+        tr("We aim to create systems that can evolve as requirements, users and technologies continue to grow."),
     },
   ];
 
@@ -96,44 +149,44 @@ function About() {
   const capabilities = [
     {
       icon: FiCpu,
-      title: "AI Systems",
+      title: tr("AI Systems"),
       description:
-        "Custom AI models, intelligent applications and machine-learning driven solutions.",
+        tr("Custom AI models, intelligent applications and machine-learning driven solutions."),
     },
 
     {
       icon: FiZap,
-      title: "AI Automation",
+      title: tr("AI Automation"),
       description:
-        "Automation systems designed to reduce repetitive work and improve operational efficiency.",
+        tr("Automation systems designed to reduce repetitive work and improve operational efficiency."),
     },
 
     {
       icon: FiBox,
-      title: "Digital Products",
+      title: tr("Digital Products"),
       description:
-        "Technology products including platforms such as LMS, CRM, ERP and billing systems.",
+        tr("Technology products including platforms such as LMS, CRM, ERP and billing systems."),
     },
 
     {
       icon: FiCode,
-      title: "Software Platforms",
+      title: tr("Software Platforms"),
       description:
-        "Full-stack web applications and software systems engineered around business requirements.",
+        tr("Full-stack web applications and software systems engineered around business requirements."),
     },
 
     {
       icon: FiSmartphone,
-      title: "Mobile & IoT",
+      title: tr("Mobile & IoT"),
       description:
-        "Mobile applications and connected IoT solutions that bridge software with the physical world.",
+        tr("Mobile applications and connected IoT solutions that bridge software with the physical world."),
     },
 
     {
       icon: FiLayers,
-      title: "Technology Training",
+      title: tr("Technology Training"),
       description:
-        "Practical learning programs focused on AI, data, development and emerging technologies.",
+        tr("Practical learning programs focused on AI, data, development and emerging technologies."),
     },
   ];
 
@@ -144,41 +197,41 @@ function About() {
   const approach = [
     {
       number: "01",
-      title: "Understand",
-      description: "Define the problem, goals and actual requirements.",
+      title: tr("Understand"),
+      description: tr("Define the problem, goals and actual requirements."),
     },
 
     {
       number: "02",
-      title: "Design",
+      title: tr("Design"),
       description:
-        "Plan the right architecture, experience and technical direction.",
+        tr("Plan the right architecture, experience and technical direction."),
     },
 
     {
       number: "03",
-      title: "Build",
+      title: tr("Build"),
       description:
-        "Develop the system using practical engineering and suitable technologies.",
+        tr("Develop the system using practical engineering and suitable technologies."),
     },
 
     {
       number: "04",
-      title: "Validate",
+      title: tr("Validate"),
       description:
-        "Test the solution against its intended use and requirements.",
+        tr("Test the solution against its intended use and requirements."),
     },
 
     {
       number: "05",
-      title: "Deploy",
-      description: "Prepare and deliver the solution for real-world use.",
+      title: tr("Deploy"),
+      description: tr("Prepare and deliver the solution for real-world use."),
     },
 
     {
       number: "06",
-      title: "Improve",
-      description: "Learn from usage and continue refining the system.",
+      title: tr("Improve"),
+      description: tr("Learn from usage and continue refining the system."),
     },
   ];
 
@@ -190,28 +243,28 @@ function About() {
     {
       number: "01",
       year: "2024",
-      label: "Started",
-      title: "The beginning of GenData Tech",
+      label: tr("Started"),
+      title: tr("The beginning of GenData Tech"),
       description:
-        "GenData Tech began with a focus on building technology around AI, data and practical digital solutions.",
+        tr("GenData Tech began with a focus on building technology around AI, data and practical digital solutions."),
     },
 
     {
       number: "02",
       year: "2025",
-      label: "Built",
-      title: "Our first client and project",
+      label: tr("Built"),
+      title: tr("Our first client and project"),
       description:
-        "The journey moved from ideas into real delivery through our first client relationship and completed project.",
+        tr("The journey moved from ideas into real delivery through our first client relationship and completed project."),
     },
 
     {
       number: "03",
       year: "2026",
-      label: "Now",
-      title: "Expanding our AI-focused direction",
+      label: tr("Now"),
+      title: tr("Expanding our AI-focused direction"),
       description:
-        "Today we are strengthening our focus on AI systems, automation, digital products, engineering and technology training.",
+        tr("Today we are strengthening our focus on AI systems, automation, digital products, engineering and technology training."),
     },
   ];
 
@@ -490,7 +543,7 @@ function About() {
                       },
                       {
                         number: "02",
-                        label: "Digital Products",
+                        label: tr("Digital Products"),
                         sub: "Platforms & applications",
                       },
                       {
