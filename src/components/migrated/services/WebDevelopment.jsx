@@ -28,7 +28,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Professional websites designed to clearly communicate a company's services, identity and digital presence.":"Professionelle Websites, die Leistungen, Identität und digitale Präsenz eines Unternehmens verständlich präsentieren.","Modern websites designed for startups that need to explain their product, technology and value proposition clearly.":"Moderne Websites für Start-ups, die Produkte, Technologie und Nutzen verständlich vermitteln.","Focused digital experiences for presenting software products, platforms, applications and technology solutions.":"Gezielte digitale Präsentationen für Softwareprodukte, Plattformen, Anwendungen und Technologielösungen.","Interfaces designed to work smoothly across desktop, tablet and mobile screen sizes.":"Oberflächen, die auf Desktop, Tablet und Smartphone zuverlässig funktionieren.","Websites structured with attention to loading performance, responsive behavior and efficient frontend delivery.":"Websites mit Fokus auf Ladegeschwindigkeit, responsives Verhalten und effiziente Frontend-Auslieferung.","Websites developed with semantic structure, accessible content and technical foundations that support search visibility.":"Websites mit semantischer Struktur, barrierearmen Inhalten und technischen Grundlagen für bessere Suchmaschinen-Sichtbarkeit."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Professional websites designed to clearly communicate a company's services, identity and digital presence.":"Professionelle Websites, die Leistungen, Identität und digitale Präsenz eines Unternehmens verständlich präsentieren.","Modern websites designed for startups that need to explain their product, technology and value proposition clearly.":"Moderne Websites für Start-ups, die Produkte, Technologie und Nutzen verständlich vermitteln.","Focused digital experiences for presenting software products, platforms, applications and technology solutions.":"Gezielte digitale Präsentationen für Softwareprodukte, Plattformen, Anwendungen und Technologielösungen.","Interfaces designed to work smoothly across desktop, tablet and mobile screen sizes.":"Oberflächen, die auf Desktop, Tablet und Smartphone zuverlässig funktionieren.","Websites structured with attention to loading performance, responsive behavior and efficient frontend delivery.":"Websites mit Fokus auf Ladegeschwindigkeit, responsives Verhalten und effiziente Frontend-Auslieferung.","Websites developed with semantic structure, accessible content and technical foundations that support search visibility.":"Websites mit semantischer Struktur, barrierearmen Inhalten und technischen Grundlagen für bessere Suchmaschinen-Sichtbarkeit.","Understand the company, audience, website goal and required pages.":"Unternehmen, Zielgruppe, Website-Ziele und benötigte Seiten verstehen.","Plan page hierarchy, navigation and content organization.":"Seitenstruktur, Navigation und Inhaltsaufbau planen.","Create a modern responsive interface aligned with the brand.":"Eine moderne, responsive Benutzeroberfläche passend zur Marke gestalten.","Build the website using suitable frontend technologies.":"Die Website mit geeigneten Frontend-Technologien entwickeln.","Review responsiveness, performance and technical SEO foundations.":"Responsivität, Leistung und technische SEO-Grundlagen überprüfen.","Test pages, navigation, forms and behavior across screen sizes.":"Seiten, Navigation, Formulare und Funktionen auf verschiedenen Bildschirmgrößen testen.","Prepare the completed website for production publishing.":"Die fertige Website für die Veröffentlichung vorbereiten.","Purpose-led Structure":"Zielgerichtete Struktur","We design the website around what visitors need to understand and what the business needs the website to achieve.":"Wir gestalten Websites so, dass Besucher die wichtigsten Informationen finden und Unternehmensziele unterstützt werden.","Responsive by Design":"Von Anfang an responsiv","Layouts are developed for desktop, tablet and mobile rather than treating mobile responsiveness as an afterthought.":"Wir entwickeln Layouts von Anfang an für Desktop, Tablet und Smartphone.","Performance Awareness":"Performance im Blick","We consider loading performance, layout stability and efficient frontend behavior during development.":"Wir berücksichtigen Ladezeiten, Layoutstabilität und effizientes Frontend-Verhalten bereits während der Entwicklung.","Built to Evolve":"Für Wachstum entwickelt","Website architecture is planned so pages and content can be expanded as the business grows.":"Die Website-Architektur ermöglicht die Erweiterung von Seiten und Inhalten mit dem Wachstum des Unternehmens.","What types of websites does GenData Tech develop?":"Welche Arten von Websites entwickelt GenData Tech?","We develop websites for companies, startups, products and digital brands based on their content, business requirements and target audience.":"Wir entwickeln Websites für Unternehmen, Start-ups, Produkte und digitale Marken, abgestimmt auf Inhalte, Geschäftsanforderungen und Zielgruppen.","Do you create responsive websites?":"Entwickeln Sie responsive Websites?","Yes. Responsive development is part of our web development approach so the website can adapt to desktop, tablet and mobile screen sizes.":"Ja. Unsere Websites passen sich an Desktop-, Tablet- und Smartphone-Bildschirme an.","Do you build websites using React?":"Entwickeln Sie Websites mit React?","Yes. React can be used for websites and frontend experiences where component-based development and interactive functionality are suitable.":"Ja. Wir setzen React ein, wenn komponentenbasierte Entwicklung und interaktive Funktionen sinnvoll sind.","Can you redesign an existing website?":"Können Sie eine bestehende Website neu gestalten?","Yes. An existing website can be reviewed and redesigned depending on its current technology, content and the required changes.":"Ja. Wir prüfen die bestehende Technologie, die Inhalte und die gewünschten Änderungen und planen darauf aufbauend ein Redesign.","Will the website be SEO friendly?":"Wird die Website suchmaschinenfreundlich sein?","We can build the website with technical SEO foundations such as semantic structure, page metadata, responsive design and performance-conscious development. Search rankings also depend on content, authority, competition and ongoing SEO work.":"Wir berücksichtigen technische SEO-Grundlagen wie semantische Struktur, Metadaten, responsives Design und Performance. Suchmaschinenrankings hängen zusätzlich von Inhalten, Wettbewerb und laufender SEO-Arbeit ab.","Can you add contact forms and enquiry functionality?":"Können Sie Kontaktformulare und Anfragefunktionen integrieren?","Yes. Contact forms and enquiry workflows can be integrated depending on the website requirements and selected backend or form-processing method.":"Ja. Kontaktformulare und Anfrageprozesse können entsprechend den Anforderungen und der gewählten Backend-Lösung integriert werden.","Can the website be expanded with additional pages later?":"Kann die Website später um weitere Seiten erweitert werden?","Yes. We can structure the website so additional service pages, products, blogs or other content can be added as the business grows.":"Ja. Wir strukturieren die Website so, dass weitere Leistungsseiten, Produkte, Blogbeiträge und andere Inhalte ergänzt werden können.","Can I contact GenData Tech if I only have a basic website idea?":"Kann ich GenData Tech auch mit einer ersten Website-Idee kontaktieren?","Yes. You can share the purpose of the website, your company information and the result you want to achieve. The structure can then be planned from those requirements.":"Ja. Teilen Sie uns den Zweck der Website, Informationen zu Ihrem Unternehmen und Ihre Ziele mit. Daraus entwickeln wir die passende Struktur.","Build a digital presence":"Eine digitale Präsenz schaffen","designed to perform.":"die überzeugt und funktioniert.","Discuss Your Website":"Website-Projekt besprechen","Digital Layer":"Digitale Ebene","Responsive":"Responsiv","Performance":"Leistung","Your website should communicate clearly and work reliably.":"Ihre Website soll klar kommunizieren und zuverlässig funktionieren.","Website development for modern digital businesses.":"Webentwicklung für moderne digitale Unternehmen.","Future real website/project showcase section.":"Bereich für zukünftige reale Website- und Projektreferenzen.","Technologies behind modern web experiences.":"Technologien hinter modernen Web-Erlebnissen.","From website requirement to production.":"Von der Website-Anforderung bis zur Veröffentlichung.","Web development with design and engineering aligned.":"Webentwicklung, die Design und Technik verbindet.","Questions about web development.":"Fragen zur Webentwicklung.","Build Your Website":"Ihre Website entwickeln","Need a modern website for your company or product?":"Sie benötigen eine moderne Website für Ihr Unternehmen oder Produkt?"};
 
 function WebDevelopment() {
   const { lang } = useParams();
@@ -148,7 +148,7 @@ function WebDevelopment() {
       category: "Web Experience",
       technologies: [
         "Responsive UI",
-        "Performance",
+        tr("Performance"),
         "Accessibility",
       ],
     },
@@ -173,49 +173,49 @@ function WebDevelopment() {
       number: "01",
       title: tr("Requirement"),
       description:
-        "Understand the company, audience, website goal and required pages.",
+        tr("Understand the company, audience, website goal and required pages."),
     },
 
     {
       number: "02",
       title: tr("Structure"),
       description:
-        "Plan page hierarchy, navigation and content organization.",
+        tr("Plan page hierarchy, navigation and content organization."),
     },
 
     {
       number: "03",
       title: tr("Interface"),
       description:
-        "Create a modern responsive interface aligned with the brand.",
+        tr("Create a modern responsive interface aligned with the brand."),
     },
 
     {
       number: "04",
       title: tr("Development"),
       description:
-        "Build the website using suitable frontend technologies.",
+        tr("Build the website using suitable frontend technologies."),
     },
 
     {
       number: "05",
       title: tr("Optimization"),
       description:
-        "Review responsiveness, performance and technical SEO foundations.",
+        tr("Review responsiveness, performance and technical SEO foundations."),
     },
 
     {
       number: "06",
       title: tr("Testing"),
       description:
-        "Test pages, navigation, forms and behavior across screen sizes.",
+        tr("Test pages, navigation, forms and behavior across screen sizes."),
     },
 
     {
       number: "07",
       title: tr("Deployment"),
       description:
-        "Prepare the completed website for production publishing.",
+        tr("Prepare the completed website for production publishing."),
     },
   ]
 
@@ -227,30 +227,30 @@ function WebDevelopment() {
   const reasons = [
     {
       icon: FiTarget,
-      title: "Purpose-led Structure",
+      title: tr("Purpose-led Structure"),
       description:
-        "We design the website around what visitors need to understand and what the business needs the website to achieve.",
+        tr("We design the website around what visitors need to understand and what the business needs the website to achieve."),
     },
 
     {
       icon: FiSmartphone,
-      title: "Responsive by Design",
+      title: tr("Responsive by Design"),
       description:
-        "Layouts are developed for desktop, tablet and mobile rather than treating mobile responsiveness as an afterthought.",
+        tr("Layouts are developed for desktop, tablet and mobile rather than treating mobile responsiveness as an afterthought."),
     },
 
     {
       icon: FiZap,
-      title: "Performance Awareness",
+      title: tr("Performance Awareness"),
       description:
-        "We consider loading performance, layout stability and efficient frontend behavior during development.",
+        tr("We consider loading performance, layout stability and efficient frontend behavior during development."),
     },
 
     {
       icon: FiRepeat,
-      title: "Built to Evolve",
+      title: tr("Built to Evolve"),
       description:
-        "Website architecture is planned so pages and content can be expanded as the business grows.",
+        tr("Website architecture is planned so pages and content can be expanded as the business grows."),
     },
   ]
 
@@ -262,58 +262,58 @@ function WebDevelopment() {
   const faqs = [
     {
       question:
-        "What types of websites does GenData Tech develop?",
+        tr("What types of websites does GenData Tech develop?"),
       answer:
-        "We develop websites for companies, startups, products and digital brands based on their content, business requirements and target audience.",
+        tr("We develop websites for companies, startups, products and digital brands based on their content, business requirements and target audience."),
     },
 
     {
       question:
-        "Do you create responsive websites?",
+        tr("Do you create responsive websites?"),
       answer:
-        "Yes. Responsive development is part of our web development approach so the website can adapt to desktop, tablet and mobile screen sizes.",
+        tr("Yes. Responsive development is part of our web development approach so the website can adapt to desktop, tablet and mobile screen sizes."),
     },
 
     {
       question:
-        "Do you build websites using React?",
+        tr("Do you build websites using React?"),
       answer:
-        "Yes. React can be used for websites and frontend experiences where component-based development and interactive functionality are suitable.",
+        tr("Yes. React can be used for websites and frontend experiences where component-based development and interactive functionality are suitable."),
     },
 
     {
       question:
-        "Can you redesign an existing website?",
+        tr("Can you redesign an existing website?"),
       answer:
-        "Yes. An existing website can be reviewed and redesigned depending on its current technology, content and the required changes.",
+        tr("Yes. An existing website can be reviewed and redesigned depending on its current technology, content and the required changes."),
     },
 
     {
       question:
-        "Will the website be SEO friendly?",
+        tr("Will the website be SEO friendly?"),
       answer:
-        "We can build the website with technical SEO foundations such as semantic structure, page metadata, responsive design and performance-conscious development. Search rankings also depend on content, authority, competition and ongoing SEO work.",
+        tr("We can build the website with technical SEO foundations such as semantic structure, page metadata, responsive design and performance-conscious development. Search rankings also depend on content, authority, competition and ongoing SEO work."),
     },
 
     {
       question:
-        "Can you add contact forms and enquiry functionality?",
+        tr("Can you add contact forms and enquiry functionality?"),
       answer:
-        "Yes. Contact forms and enquiry workflows can be integrated depending on the website requirements and selected backend or form-processing method.",
+        tr("Yes. Contact forms and enquiry workflows can be integrated depending on the website requirements and selected backend or form-processing method."),
     },
 
     {
       question:
-        "Can the website be expanded with additional pages later?",
+        tr("Can the website be expanded with additional pages later?"),
       answer:
-        "Yes. We can structure the website so additional service pages, products, blogs or other content can be added as the business grows.",
+        tr("Yes. We can structure the website so additional service pages, products, blogs or other content can be added as the business grows."),
     },
 
     {
       question:
-        "Can I contact GenData Tech if I only have a basic website idea?",
+        tr("Can I contact GenData Tech if I only have a basic website idea?"),
       answer:
-        "Yes. You can share the purpose of the website, your company information and the result you want to achieve. The structure can then be planned from those requirements.",
+        tr("Yes. You can share the purpose of the website, your company information and the result you want to achieve. The structure can then be planned from those requirements."),
     },
   ]
 
@@ -462,10 +462,10 @@ function WebDevelopment() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Build a digital presence
+                  {tr("Build a digital presence")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    designed to perform.
+                    {tr("designed to perform.")}
                   </span>
                 </motion.h1>
 
@@ -525,7 +525,7 @@ function WebDevelopment() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your Website
+                    {tr("Discuss Your Website")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -557,9 +557,9 @@ function WebDevelopment() {
                 >
 
                   {[
-                    "Responsive",
+                    tr("Responsive"),
                     "Modern UI",
-                    "Performance",
+                    tr("Performance"),
                     "SEO-ready",
                   ].map((item) => (
 
@@ -687,7 +687,7 @@ function WebDevelopment() {
                   </span>
 
                   <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    Digital Layer
+                    {tr("Digital Layer")}
                   </span>
 
                 </motion.div>
@@ -714,7 +714,7 @@ function WebDevelopment() {
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Responsive
+                    {tr("Responsive")}
                   </p>
                 </motion.div>
 
@@ -740,7 +740,7 @@ function WebDevelopment() {
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Performance
+                    {tr("Performance")}
                   </p>
                 </motion.div>
 
@@ -797,7 +797,7 @@ function WebDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Your website should communicate clearly and work reliably.
+                  {tr("Your website should communicate clearly and work reliably.")}
                 </h2>
 
               </div>
@@ -847,7 +847,7 @@ function WebDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Website development for modern digital businesses.
+                {tr("Website development for modern digital businesses.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -918,7 +918,7 @@ function WebDevelopment() {
         <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1400px]">
 
-            Future real website/project showcase section.
+            {tr("Future real website/project showcase section.")}
 
           </div>
         </section>
@@ -943,7 +943,7 @@ function WebDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Technologies behind modern web experiences.
+                  {tr("Technologies behind modern web experiences.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1045,7 +1045,7 @@ function WebDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From website requirement to production.
+                {tr("From website requirement to production.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1128,7 +1128,7 @@ function WebDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Web development with design and engineering aligned.
+                  {tr("Web development with design and engineering aligned.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1219,7 +1219,7 @@ function WebDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about web development.
+                {tr("Questions about web development.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -1352,11 +1352,11 @@ function WebDevelopment() {
                 <div>
 
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Build Your Website
+                    {tr("Build Your Website")}
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Need a modern website for your company or product?
+                    {tr("Need a modern website for your company or product?")}
                   </h2>
 
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1372,7 +1372,7 @@ function WebDevelopment() {
                   to="/contact"
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Discuss Your Website
+                  {tr("Discuss Your Website")}
 
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </Link>
