@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react";
@@ -28,7 +29,11 @@ import {
 import Link from "../layout/LocalizedLink"
 
 import CommonCTA from "../layout/CommonCTA"
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Digital products built":"Digitale Produkte für","around practical workflows.":"praxisnahe Arbeitsabläufe.","Software products for learning and business operations.":"Softwareprodukte für Bildung und Unternehmensprozesse.","A growing product ecosystem from GenData Tech.":"Ein wachsendes Produktportfolio von GenData Tech.","Products shaped around useful everyday workflows.":"Produkte für praktische Arbeitsabläufe.","From user need to structured digital product.":"Vom Nutzerbedarf zum digitalen Produkt.","Questions about GenData Tech products.":"Fragen zu den Produkten von GenData Tech."};
+
 function Products() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -158,41 +163,41 @@ function Products() {
   const approach = [
     {
       number: "01",
-      title: "Understand",
+      title: tr("Understand"),
       description:
         "Understand the user, workflow and problem the product needs to support.",
     },
 
     {
       number: "02",
-      title: "Structure",
+      title: tr("Structure"),
       description:
         "Define the modules, information flow and product architecture.",
     },
 
     {
       number: "03",
-      title: "Design",
+      title: tr("Design"),
       description:
         "Plan interfaces and user journeys around important actions.",
     },
 
     {
       number: "04",
-      title: "Build",
+      title: tr("Build"),
       description:
         "Develop the required product functionality and supporting systems.",
     },
 
     {
       number: "05",
-      title: "Connect",
+      title: tr("Connect"),
       description: "Integrate data, APIs and other services where required.",
     },
 
     {
       number: "06",
-      title: "Improve",
+      title: tr("Improve"),
       description:
         "Continue refining functionality as product requirements evolve.",
     },
@@ -362,7 +367,7 @@ function Products() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  GenData Tech Products
+                  {tr("GenData Tech Products")}
                 </motion.p>
 
                 <motion.h1
@@ -387,9 +392,9 @@ function Products() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Digital products built
+                  {tr("Digital products built")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    around practical workflows.
+                    {tr("around practical workflows.")}
                   </span>
                 </motion.h1>
 
@@ -712,11 +717,11 @@ function Products() {
             <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Product Portfolio
+                  {tr("Product Portfolio")}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Software products for learning and business operations.
+                  {tr("Software products for learning and business operations.")}
                 </h2>
               </div>
 
@@ -750,11 +755,11 @@ function Products() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Our Products
+                {tr("Our Products")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                A growing product ecosystem from GenData Tech.
+                {tr("A growing product ecosystem from GenData Tech.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -857,7 +862,7 @@ function Products() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Products shaped around useful everyday workflows.
+                  {tr("Products shaped around useful everyday workflows.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -928,7 +933,7 @@ function Products() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From user need to structured digital product.
+                {tr("From user need to structured digital product.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1067,11 +1072,11 @@ function Products() {
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about GenData Tech products.
+                {tr("Questions about GenData Tech products.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
