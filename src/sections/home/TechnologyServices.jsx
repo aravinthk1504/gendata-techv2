@@ -128,7 +128,7 @@ function SoftwareVisual() {
   const modules = ["Module A", "Module B", "Module C"];
 
   return (
-    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-4 lg:h-36 lg:pt-0">
+    <div ref={ref} className="relative mx-auto mt-auto flex h-44 w-full max-w-[440px] min-w-0 shrink-0 items-center justify-between gap-0 pt-5 sm:h-44 lg:mt-3 lg:h-32 lg:pt-0">
       <div className="relative z-10 flex w-16 shrink-0 flex-col gap-3 sm:w-20">
         {modules.map((module, index) => (
           <motion.div
@@ -173,7 +173,7 @@ function SoftwareVisual() {
 function AppVisual() {
   const { ref, active } = useCardMotion();
   return (
-    <div ref={ref} className="relative mt-auto flex h-52 w-full min-w-0 shrink-0 items-center justify-between gap-0 pt-6 sm:h-48 lg:mt-4 lg:h-36 lg:pt-0">
+    <div ref={ref} className="relative mx-auto mt-auto flex h-44 w-full max-w-[440px] min-w-0 shrink-0 items-center justify-between gap-0 pt-5 sm:h-44 lg:mt-3 lg:h-32 lg:pt-0">
       <motion.div
         animate={active ? { y: [0, 5, 0] } : { y: 0 }}
         transition={{ duration: 4, repeat: active ? Infinity : 0, ease: "easeInOut" }}
@@ -411,12 +411,12 @@ function TechnologyServices({ content, lang }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.08 }}
-            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-8"
+            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-6 lg:p-7"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
               {t("technology.software.label")}
             </span>
-            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
+            <h3 className="mt-4 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
               {t("technology.software.title")}
             </h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
@@ -439,12 +439,12 @@ function TechnologyServices({ content, lang }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.14 }}
-            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-8"
+            className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-6 lg:p-7"
           >
             <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
               {t("technology.app.label")}
             </span>
-            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
+            <h3 className="mt-4 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
               {t("technology.app.title")}
             </h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">
