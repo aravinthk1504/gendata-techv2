@@ -155,7 +155,8 @@
         "courses": "Courses",
         "students": "Students",
         "progress": "Progress",
-        "activity": "Learning activity"
+        "activity": "Learning activity",
+        "paid": "Paid"
       }
     },
     "cards": [
