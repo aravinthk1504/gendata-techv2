@@ -1,30 +1,30 @@
 {
   "hero": {
-    "eyebrow": "AI-gestützte Technologie",
-    "titleLine1": "AI entwickelt für",
-    "titleLine2": "reale Wirkung.",
-    "description": "GenData Tech entwickelt intelligente AI-Modelle, agentische Systeme und Automatisierungslösungen für reale Herausforderungen.",
-    "primaryCta": "AI-Kompetenzen entdecken",
+    "eyebrow": "KI-gestützte Technologie",
+    "titleLine1": "KI für",
+    "titleLine2": "die Praxis entwickelt.",
+    "description": "GenData Tech entwickelt intelligente KI-Modelle, agentenbasierte Systeme und Automatisierungslösungen für konkrete Herausforderungen.",
+    "primaryCta": "KI-Kompetenzen entdecken",
     "secondaryCta": "Kontakt aufnehmen",
     "tags": [
-      "AI Models",
-      "Custom AI",
+      "KI-Modelle",
+      "Individuelle KI",
       "Software",
       "Apps",
-      "IoT Solutions",
-      "IT Training"
+      "IoT-Lösungen",
+      "IT-Schulungen"
     ],
     "scroll": "Scrollen"
   },
   "aiCapabilities": {
-    "eyebrow": "Unsere AI-Kompetenzen",
+    "eyebrow": "Unsere KI-Kompetenzen",
     "titleLine1": "Intelligenz entwickelt",
     "titleLine2": "für reale Wirkung.",
-    "description": "Von maßgeschneiderten AI-Modellen bis zu autonomen Agenten und intelligenter Automatisierung entwickeln wir AI-Systeme für konkrete Herausforderungen, Arbeitsabläufe und Ziele.",
+    "description": "Von maßgeschneiderten KI-Modellen bis zu autonomen Agenten und intelligenter Automatisierung entwickeln wir KI-Systeme für konkrete Herausforderungen, Arbeitsabläufe und Ziele.",
     "models": {
       "label": "01 / Modelle",
-      "title": "AI Model Development",
-      "description": "Maßgeschneiderte Machine-Learning- und AI-Modelle, entwickelt für spezifische Daten, Probleme und betriebliche Anforderungen."
+      "title": "KI-Modellentwicklung",
+      "description": "Maßgeschneiderte Machine-Learning- und KI-Modelle, entwickelt für spezifische Daten, Probleme und betriebliche Anforderungen."
     },
     "agents": {
       "label": "02 / Agenten",
@@ -33,18 +33,18 @@
     },
     "automation": {
       "label": "03 / Automatisierung",
-      "title": "AI Automation",
-      "description": "AI-gestützte Arbeitsabläufe, die Informationen, Entscheidungen und Aktionen verbinden und wiederkehrende Arbeit reduzieren.",
+      "title": "KI-Automatisierung",
+      "description": "KI-gestützte Arbeitsabläufe, die Informationen, Entscheidungen und Aktionen verbinden und wiederkehrende Arbeit reduzieren.",
       "steps": [
         "Eingabe",
-        "AI",
+        "KI",
         "Aktion"
       ]
     },
     "custom": {
       "label": "04 / Individuelle Intelligenz",
-      "title": "Custom AI Solutions",
-      "description": "AI-Systeme, die auf Ihre konkreten Geschäftsanforderungen zugeschnitten sind, statt Ihr Problem in ein Standardmodell zu zwingen."
+      "title": "Individuelle KI-Lösungen",
+      "description": "KI-Systeme, die auf Ihre konkreten Geschäftsanforderungen zugeschnitten sind, statt Ihr Problem in ein Standardmodell zu zwingen."
     }
   },
   "technology": {
@@ -83,7 +83,7 @@
         "Edge",
         "Cloud",
         "Automatisierung",
-        "AI"
+        "KI"
       ]
     }
   },
@@ -91,7 +91,7 @@
     "eyebrow": "So entwickeln wir Intelligenz",
     "titleLine1": "Von der Herausforderung",
     "titleLine2": "zum intelligenten System.",
-    "description": "Unser AI-Entwicklungsansatz verbindet Geschäftsverständnis, Daten, Modelle, Schlussfolgerung und Automatisierung zu einem praxisnahen Engineering-Prozess.",
+    "description": "Unser KI-Entwicklungsansatz verbindet Geschäftsverständnis, Daten, Modelle, Schlussfolgerung und Automatisierung zu einem praxisnahen Engineering-Prozess.",
     "stages": [
       {
         "number": "01",
@@ -103,7 +103,7 @@
         "number": "02",
         "title": "Daten",
         "label": "Vorbereiten",
-        "description": "Relevante Daten, Wissen und Systemeingaben werden identifiziert, strukturiert und für die AI-Lösung vorbereitet."
+        "description": "Relevante Daten, Wissen und Systemeingaben werden identifiziert, strukturiert und für die KI-Lösung vorbereitet."
       },
       {
         "number": "03",
@@ -127,11 +127,11 @@
         "number": "06",
         "title": "Bereitstellung",
         "label": "Skalieren",
-        "description": "Das fertige AI-System wird zuverlässig und skalierbar in das benötigte Produkt oder den Arbeitsablauf integriert."
+        "description": "Das fertige KI-System wird zuverlässig und skalierbar in das benötigte Produkt oder den Arbeitsablauf integriert."
       }
     ],
     "outcomeLabel": "Das Ergebnis",
-    "outcomeTitle": "AI, die für das Problem entwickelt wird – nicht Technologie um der Technologie willen.",
+    "outcomeTitle": "KI, die für das Problem entwickelt wird – nicht Technologie um der Technologie willen.",
     "systemTitle": "Intelligentes System",
     "systemSubtitle": "Bereit für den realen Einsatz"
   },
@@ -205,24 +205,24 @@
     "programs": [
       {
         "number": "01",
-        "title": "AI & Machine Learning",
+        "title": "KI & maschinelles Lernen",
         "category": "Künstliche Intelligenz",
-        "description": "Erwerben Sie praktische Fähigkeiten in Machine Learning, AI-Modellentwicklung und intelligenten Systemen durch praxisnahes Lernen.",
+        "description": "Erwerben Sie praktische Fähigkeiten in maschinelles Lernen, KI-Modellentwicklung und intelligenten Systemen durch praxisnahes Lernen.",
         "topics": [
           "Python",
-          "Machine Learning",
-          "AI-Modelle"
+          "maschinelles Lernen",
+          "KI-Modelle"
         ]
       },
       {
         "number": "02",
         "title": "Data Science",
-        "category": "Daten & AI",
+        "category": "Daten & KI",
         "description": "Lernen Sie, Daten zu analysieren, Muster zu erkennen und mit modernen Data-Science-Methoden prädiktive Lösungen zu entwickeln.",
         "topics": [
           "Python",
           "Statistik",
-          "Machine Learning"
+          "maschinelles Lernen"
         ]
       },
       {
@@ -265,14 +265,14 @@
     "eyebrow": "Etwas Intelligentes starten",
     "titleLine1": "Haben Sie eine Idee, die",
     "titleLine2": "intelligent werden könnte?",
-    "description": "Von AI-Modellen und intelligenter Automatisierung bis zu Software, mobilen Anwendungen und vernetzten Systemen – gemeinsam erkunden wir, wie Technologie Ihre Idee in eine praktische Lösung verwandeln kann.",
+    "description": "Von KI-Modellen und intelligenter Automatisierung bis zu Software, mobilen Anwendungen und vernetzten Systemen – gemeinsam erkunden wir, wie Technologie Ihre Idee in eine praktische Lösung verwandeln kann.",
     "primary": "Gespräch starten",
     "secondary": "Schulungen entdecken",
     "connect": "Mit uns verbinden",
     "tags": [
-      "AI Models",
+      "KI-Modelle",
       "Agentic AI",
-      "AI Automation",
+      "KI-Automatisierung",
       "Software",
       "Apps",
       "IoT"
