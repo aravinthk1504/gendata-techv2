@@ -28,7 +28,7 @@ import {
 import Link from "../layout/LocalizedLink"
 import InfinityVisual from "../../sections/home/InfinityVisual"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","AI-focused services built around":"KI-orientierte Leistungen für","real business problems.":"reale Geschäftsanforderungen.","One technology partner. Multiple engineering capabilities.":"Ein Technologiepartner. Vielfältige Entwicklungskompetenzen.","Technology should create a useful outcome.":"Technologie soll echten Mehrwert schaffen.","A clear path from requirement to delivery.":"Von der Anforderung bis zur Umsetzung.","Built around intelligence, engineering and practical thinking.":"KI, Engineering und praxisorientiertes Denken.","Questions about our technology services.":"Antworten zu unseren Technologiedienstleistungen.","Not Sure What You Need?":"Sie sind noch unsicher?","How We Help":"So unterstützen wir Sie"};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","AI-focused services built around":"KI-orientierte Leistungen für","real business problems.":"reale Geschäftsanforderungen.","One technology partner. Multiple engineering capabilities.":"Ein Technologiepartner. Vielfältige Entwicklungskompetenzen.","Technology should create a useful outcome.":"Technologie soll echten Mehrwert schaffen.","A clear path from requirement to delivery.":"Von der Anforderung bis zur Umsetzung.","Built around intelligence, engineering and practical thinking.":"KI, Engineering und praxisorientiertes Denken.","Questions about our technology services.":"Antworten zu unseren Technologiedienstleistungen.","Not Sure What You Need?":"Sie sind noch unsicher?","How We Help":"So unterstützen wir Sie","Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.":"Individuelle KI-Modelle, maschinelles Lernen, intelligente Automatisierung und agentenbasierte KI für konkrete Unternehmensanforderungen.","Complete application development covering frontend, backend, databases, APIs and system integration.":"Ganzheitliche Anwendungsentwicklung mit Frontend, Backend, Datenbanken, APIs und Systemintegration.","Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.":"Moderne, responsive und leistungsstarke Websites für Unternehmen, Start-ups, Produkte und digitale Marken.","Custom software systems designed around business processes, internal operations and digital workflows.":"Individuelle Softwaresysteme für Geschäftsprozesse, interne Abläufe und digitale Workflows.","Mobile applications designed around practical functionality, modern user experiences and connected services.":"Mobile Anwendungen mit praxisnahen Funktionen, moderner Nutzererfahrung und vernetzten Diensten.","Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.":"Vernetzte IoT-Systeme mit Sensoren, Geräten, Überwachung, Automatisierung und intelligenter Software.","Automate Repetitive Processes":"Wiederkehrende Prozesse automatisieren","Reduce manual effort through intelligent workflows and connected automation systems.":"Manuellen Aufwand durch intelligente Workflows und vernetzte Automatisierung reduzieren.","Build Intelligent Products":"Intelligente Produkte entwickeln","Add AI capabilities to software products, digital platforms and applications.":"Softwareprodukte, digitale Plattformen und Anwendungen um KI-Funktionen erweitern.","Modernize Workflows":"Arbeitsabläufe modernisieren","Transform fragmented manual processes into connected digital systems.":"Fragmentierte manuelle Abläufe in vernetzte digitale Systeme umwandeln.","Create Scalable Applications":"Skalierbare Anwendungen entwickeln","Build applications designed to evolve as users, requirements and operations grow.":"Anwendungen entwickeln, die mit Nutzern, Anforderungen und Abläufen wachsen.","Connect Devices & Software":"Geräte und Software verbinden","Bring sensors, IoT devices, monitoring platforms and software together.":"Sensoren, IoT-Geräte, Überwachungsplattformen und Software miteinander verbinden.","Turn Ideas Into Solutions":"Ideen in Lösungen verwandeln","Move from an early concept or requirement into a practical working product.":"Aus einer ersten Idee oder Anforderung ein praxistaugliches Produkt entwickeln.","Understand the problem, users and expected outcome.":"Problem, Nutzer und gewünschtes Ergebnis verstehen.","Define the right technical direction and architecture.":"Die passende technische Ausrichtung und Architektur festlegen.","Develop the solution using suitable technologies.":"Die Lösung mit geeigneten Technologien entwickeln.","Connect platforms, APIs, services and required workflows.":"Plattformen, APIs, Dienste und benötigte Arbeitsabläufe verbinden.","Validate functionality, usability and technical behavior.":"Funktionalität, Benutzerfreundlichkeit und technisches Verhalten prüfen.","Prepare the solution for deployment and real-world use.":"Die Lösung für Bereitstellung und Praxiseinsatz vorbereiten.","AI-focused Thinking":"KI-orientiertes Denken","Artificial intelligence remains at the center of our technology direction.":"Künstliche Intelligenz steht im Mittelpunkt unserer technologischen Ausrichtung.","Problem-led Solutions":"Problemorientierte Lösungen","We start with the actual requirement before deciding which technologies to use.":"Wir beginnen mit der tatsächlichen Anforderung, bevor wir Technologien auswählen.","AI + Engineering":"KI und Engineering","We combine intelligent systems with web, software, mobile and IoT engineering.":"Wir verbinden intelligente Systeme mit Web-, Software-, App- und IoT-Entwicklung.","Custom Development":"Individuelle Entwicklung","Solutions are designed around specific workflows, users and technical needs.":"Lösungen richten sich nach konkreten Arbeitsabläufen, Nutzern und technischen Anforderungen.","Scalable Direction":"Skalierbare Ausrichtung","We consider maintainability and future growth while designing technical systems.":"Bei der Entwicklung berücksichtigen wir Wartbarkeit und zukünftiges Wachstum.","Direct Communication":"Direkte Kommunikation","Clear communication keeps requirements, expectations and technical direction aligned.":"Klare Kommunikation stimmt Anforderungen, Erwartungen und technische Ausrichtung aufeinander ab."};
 
 function Services() {
   const { lang } = useParams();
@@ -58,7 +58,7 @@ function Services() {
       icon: FiCpu,
       title: tr("AI / ML Development"),
       description:
-        "Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.",
+        tr("Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements."),
       useCases: [
         "AI Models",
         "Machine Learning",
@@ -72,7 +72,7 @@ function Services() {
       icon: FiLayers,
       title: tr("Full Stack Development"),
       description:
-        "Complete application development covering frontend, backend, databases, APIs and system integration.",
+        tr("Complete application development covering frontend, backend, databases, APIs and system integration."),
       useCases: ["Web Applications", "Dashboards", "Business Platforms"],
       path: "/services/full-stack-development",
     },
@@ -81,7 +81,7 @@ function Services() {
       icon: FiMonitor,
       title: tr("Web Development"),
       description:
-        "Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.",
+        tr("Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands."),
       useCases: [tr("Corporate Websites"), tr("Startup Websites"), tr("Product Websites")],
       path: "/services/web-development",
     },
@@ -90,7 +90,7 @@ function Services() {
       icon: FiCode,
       title: tr("Software Development"),
       description:
-        "Custom software systems designed around business processes, internal operations and digital workflows.",
+        tr("Custom software systems designed around business processes, internal operations and digital workflows."),
       useCases: ["Business Software", tr("Internal Tools"), tr("Management Systems")],
       path: "/services/software-development",
     },
@@ -99,7 +99,7 @@ function Services() {
       icon: FiSmartphone,
       title: tr("App Development"),
       description:
-        "Mobile applications designed around practical functionality, modern user experiences and connected services.",
+        tr("Mobile applications designed around practical functionality, modern user experiences and connected services."),
       useCases: ["Android Apps", "iOS Apps", "Business Apps"],
       path: "/services/app-development",
     },
@@ -108,7 +108,7 @@ function Services() {
       icon: FiCpu,
       title: tr("IoT Solutions"),
       description:
-        "Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.",
+        tr("Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software."),
       useCases: [tr("Sensor Monitoring"), "Automation", "Connected Systems"],
       path: "/services/iot-solutions",
     },
@@ -120,39 +120,39 @@ function Services() {
 
   const outcomes = [
     {
-      title: "Automate Repetitive Processes",
+      title: tr("Automate Repetitive Processes"),
       description:
-        "Reduce manual effort through intelligent workflows and connected automation systems.",
+        tr("Reduce manual effort through intelligent workflows and connected automation systems."),
     },
 
     {
-      title: "Build Intelligent Products",
+      title: tr("Build Intelligent Products"),
       description:
-        "Add AI capabilities to software products, digital platforms and applications.",
+        tr("Add AI capabilities to software products, digital platforms and applications."),
     },
 
     {
-      title: "Modernize Workflows",
+      title: tr("Modernize Workflows"),
       description:
-        "Transform fragmented manual processes into connected digital systems.",
+        tr("Transform fragmented manual processes into connected digital systems."),
     },
 
     {
-      title: "Create Scalable Applications",
+      title: tr("Create Scalable Applications"),
       description:
-        "Build applications designed to evolve as users, requirements and operations grow.",
+        tr("Build applications designed to evolve as users, requirements and operations grow."),
     },
 
     {
-      title: "Connect Devices & Software",
+      title: tr("Connect Devices & Software"),
       description:
-        "Bring sensors, IoT devices, monitoring platforms and software together.",
+        tr("Bring sensors, IoT devices, monitoring platforms and software together."),
     },
 
     {
-      title: "Turn Ideas Into Solutions",
+      title: tr("Turn Ideas Into Solutions"),
       description:
-        "Move from an early concept or requirement into a practical working product.",
+        tr("Move from an early concept or requirement into a practical working product."),
     },
   ];
 
@@ -164,37 +164,37 @@ function Services() {
     {
       number: "01",
       title: tr("Understand"),
-      description: "Understand the problem, users and expected outcome.",
+      description: tr("Understand the problem, users and expected outcome."),
     },
 
     {
       number: "02",
       title: "Plan",
-      description: "Define the right technical direction and architecture.",
+      description: tr("Define the right technical direction and architecture."),
     },
 
     {
       number: "03",
       title: tr("Build"),
-      description: "Develop the solution using suitable technologies.",
+      description: tr("Develop the solution using suitable technologies."),
     },
 
     {
       number: "04",
       title: "Integrate",
-      description: "Connect platforms, APIs, services and required workflows.",
+      description: tr("Connect platforms, APIs, services and required workflows."),
     },
 
     {
       number: "05",
       title: "Test",
-      description: "Validate functionality, usability and technical behavior.",
+      description: tr("Validate functionality, usability and technical behavior."),
     },
 
     {
       number: "06",
       title: "Deliver",
-      description: "Prepare the solution for deployment and real-world use.",
+      description: tr("Prepare the solution for deployment and real-world use."),
     },
   ];
 
@@ -205,44 +205,44 @@ function Services() {
   const reasons = [
     {
       icon: FiCpu,
-      title: "AI-focused Thinking",
+      title: tr("AI-focused Thinking"),
       description:
-        "Artificial intelligence remains at the center of our technology direction.",
+        tr("Artificial intelligence remains at the center of our technology direction."),
     },
 
     {
       icon: FiTarget,
-      title: "Problem-led Solutions",
+      title: tr("Problem-led Solutions"),
       description:
-        "We start with the actual requirement before deciding which technologies to use.",
+        tr("We start with the actual requirement before deciding which technologies to use."),
     },
 
     {
       icon: FiLayers,
-      title: "AI + Engineering",
+      title: tr("AI + Engineering"),
       description:
-        "We combine intelligent systems with web, software, mobile and IoT engineering.",
+        tr("We combine intelligent systems with web, software, mobile and IoT engineering."),
     },
 
     {
       icon: FiCode,
-      title: "Custom Development",
+      title: tr("Custom Development"),
       description:
-        "Solutions are designed around specific workflows, users and technical needs.",
+        tr("Solutions are designed around specific workflows, users and technical needs."),
     },
 
     {
       icon: FiRepeat,
-      title: "Scalable Direction",
+      title: tr("Scalable Direction"),
       description:
-        "We consider maintainability and future growth while designing technical systems.",
+        tr("We consider maintainability and future growth while designing technical systems."),
     },
 
     {
       icon: FiZap,
-      title: "Direct Communication",
+      title: tr("Direct Communication"),
       description:
-        "Clear communication keeps requirements, expectations and technical direction aligned.",
+        tr("Clear communication keeps requirements, expectations and technical direction aligned."),
     },
   ];
 
