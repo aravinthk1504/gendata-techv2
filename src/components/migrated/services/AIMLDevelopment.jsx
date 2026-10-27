@@ -26,7 +26,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Custom artificial intelligence models designed around specific data, business requirements and application needs.":"Individuelle KI-Modelle für konkrete Daten, Geschäftsanforderungen und Anwendungsfälle.","Machine learning systems for prediction, classification, pattern recognition and intelligent decision support.":"Systeme des maschinellen Lernens für Prognosen, Klassifikation, Mustererkennung und intelligente Entscheidungsunterstützung.","Deep learning solutions using neural networks for more complex AI problems and data-driven applications.":"Deep-Learning-Lösungen mit neuronalen Netzen für komplexe KI-Aufgaben und datengetriebene Anwendungen.","Intelligent automation designed to reduce repetitive work and connect AI with operational workflows.":"Intelligente Automatisierung zur Reduzierung wiederkehrender Aufgaben und zur Integration von KI in betriebliche Abläufe.","AI agent systems capable of reasoning, using tools, completing tasks and supporting multi-step workflows.":"KI-Agentensysteme, die schlussfolgern, Werkzeuge nutzen, Aufgaben erledigen und mehrstufige Prozesse unterstützen.","Purpose-built AI applications combining models, automation, APIs and business logic into a tailored system.":"Maßgeschneiderte KI-Anwendungen, die Modelle, Automatisierung, APIs und Geschäftslogik in einem System vereinen."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Custom artificial intelligence models designed around specific data, business requirements and application needs.":"Individuelle KI-Modelle für konkrete Daten, Geschäftsanforderungen und Anwendungsfälle.","Machine learning systems for prediction, classification, pattern recognition and intelligent decision support.":"Systeme des maschinellen Lernens für Prognosen, Klassifikation, Mustererkennung und intelligente Entscheidungsunterstützung.","Deep learning solutions using neural networks for more complex AI problems and data-driven applications.":"Deep-Learning-Lösungen mit neuronalen Netzen für komplexe KI-Aufgaben und datengetriebene Anwendungen.","Intelligent automation designed to reduce repetitive work and connect AI with operational workflows.":"Intelligente Automatisierung zur Reduzierung wiederkehrender Aufgaben und zur Integration von KI in betriebliche Abläufe.","AI agent systems capable of reasoning, using tools, completing tasks and supporting multi-step workflows.":"KI-Agentensysteme, die schlussfolgern, Werkzeuge nutzen, Aufgaben erledigen und mehrstufige Prozesse unterstützen.","Purpose-built AI applications combining models, automation, APIs and business logic into a tailored system.":"Maßgeschneiderte KI-Anwendungen, die Modelle, Automatisierung, APIs und Geschäftslogik in einem System vereinen.","Understand the problem, goal and expected AI outcome.":"Problem, Ziel und gewünschtes KI-Ergebnis verstehen.","Review available data, structure, quality and model requirements.":"Verfügbare Daten, Struktur, Qualität und Modellanforderungen prüfen.","Select suitable algorithms, architecture and development strategy.":"Geeignete Algorithmen, Architektur und Entwicklungsstrategie auswählen.","Train and refine the model using prepared data and suitable methods.":"Das Modell mit aufbereiteten Daten und geeigneten Verfahren trainieren und optimieren.","Evaluate model performance using relevant metrics and validation.":"Modellleistung anhand relevanter Kennzahlen und Validierung bewerten.","Connect the model with the application, API or required workflow.":"Das Modell mit der Anwendung, API oder dem benötigten Prozess verbinden.","Prepare the AI system for practical use and future improvement.":"Das KI-System für den Praxiseinsatz und spätere Verbesserungen vorbereiten.","Problem-first Development":"Problemorientierte Entwicklung","We begin by understanding the actual requirement before selecting the model or technology.":"Wir verstehen zuerst die konkrete Anforderung, bevor wir Modell oder Technologie auswählen.","AI-focused Direction":"KI-orientierte Ausrichtung","AI and machine learning remain central to our technology and product development direction.":"KI und maschinelles Lernen stehen im Mittelpunkt unserer Technologie- und Produktentwicklung.","AI + Software Integration":"KI- und Softwareintegration","We connect models with web applications, APIs, software platforms and business workflows.":"Wir verbinden Modelle mit Webanwendungen, APIs, Softwareplattformen und Geschäftsprozessen.","Iterative Improvement":"Kontinuierliche Verbesserung","AI systems are evaluated and refined based on performance, requirements and future expansion.":"KI-Systeme werden anhand ihrer Leistung, Anforderungen und künftigen Erweiterungen bewertet und verbessert.","What AI and machine learning services does GenData Tech provide?":"Welche KI- und Machine-Learning-Leistungen bietet GenData Tech an?","GenData Tech provides AI model development, machine learning solutions, deep learning, AI automation, Agentic AI and customized AI applications.":"GenData Tech bietet KI-Modellentwicklung, maschinelles Lernen, Deep Learning, KI-Automatisierung, Agentic AI und individuelle KI-Anwendungen.","Can you build a custom AI model for a specific business requirement?":"Können Sie ein individuelles KI-Modell für eine bestimmte Geschäftsanforderung entwickeln?","Yes. AI models can be designed around a specific requirement when suitable data, objectives and technical conditions are available.":"Ja. Bei geeigneten Daten, klaren Zielen und passenden technischen Voraussetzungen können wir KI-Modelle für konkrete Anforderungen entwickeln.","What programming language do you use for AI development?":"Welche Programmiersprache verwenden Sie für die KI-Entwicklung?","Python is our primary programming language for AI and machine learning development, supported by relevant AI, data and backend libraries.":"Python ist unsere wichtigste Programmiersprache für KI und maschinelles Lernen, ergänzt durch geeignete Daten-, KI- und Backend-Bibliotheken.","Which machine learning frameworks do you use?":"Welche Machine-Learning-Frameworks verwenden Sie?","Depending on the requirement, we can work with technologies such as Scikit-learn, TensorFlow and PyTorch.":"Je nach Anforderung arbeiten wir mit Technologien wie Scikit-learn, TensorFlow und PyTorch.","Can AI models be integrated into an existing application?":"Können KI-Modelle in bestehende Anwendungen integriert werden?","Yes. AI models can be connected with applications through APIs, backend services or other suitable integration methods depending on the existing system architecture.":"Ja. Abhängig von der vorhandenen Architektur lassen sich KI-Modelle über APIs, Backend-Dienste oder andere geeignete Schnittstellen integrieren.","Do you provide AI automation and Agentic AI development?":"Bieten Sie KI-Automatisierung und Agentic-AI-Entwicklung an?","Yes. AI automation and Agentic AI are part of our AI development direction, including intelligent workflows and AI agents that can interact with tools and systems.":"Ja. Dazu gehören intelligente Workflows und KI-Agenten, die mit Werkzeugen und Systemen interagieren können.","Do I need to know which AI technology my project requires?":"Muss ich bereits wissen, welche KI-Technologie mein Projekt benötigt?","No. You can share the problem, available data and expected outcome. We can then help identify an appropriate technical direction.":"Nein. Beschreiben Sie Ihr Problem, verfügbare Daten und das gewünschte Ergebnis. Wir helfen Ihnen, die passende technische Richtung zu finden.","Can I contact GenData Tech to discuss an early-stage AI idea?":"Kann ich eine KI-Idee in einer frühen Phase mit GenData Tech besprechen?","Yes. You do not need to have a complete specification before contacting us. Early-stage requirements can be discussed to understand the most suitable next step.":"Ja. Sie benötigen noch keine vollständige Spezifikation. Wir können Ihre Idee gemeinsam prüfen und die nächsten Schritte besprechen.","DATA":"DATEN","MODELS":"MODELLE","AUTOMATION":"AUTOMATISIERUNG","AGENTS":"AGENTEN","Build intelligent systems":"Intelligente Systeme entwickeln","around real requirements.":"für konkrete Anforderungen.","Discuss Your AI Requirement":"KI-Anforderung besprechen","INTELLIGENCE":"INTELLIGENZ","AI development built around the problem first.":"KI-Entwicklung beginnt mit der Problemstellung.","AI capabilities designed for different requirements.":"KI-Kompetenzen für unterschiedliche Anforderungen.","Practical applications of AI and machine learning.":"Praktische Anwendungen von KI und maschinellem Lernen.","Technologies we use to build AI solutions.":"Technologien für die Entwicklung von KI-Lösungen.","From requirement to deployed intelligence.":"Von der Anforderung bis zum einsatzbereiten KI-System.","AI development connected with practical engineering.":"KI-Entwicklung mit praxisorientiertem Engineering.","Questions about AI & ML development.":"Fragen zur KI- und ML-Entwicklung.","Start an AI Project":"KI-Projekt starten","Have an AI idea or machine learning requirement?":"Sie haben eine KI-Idee oder benötigen eine Machine-Learning-Lösung?","AI / ML":"KI / ML"};
 
 function AIMLDevelopment() {
   const { lang } = useParams();
@@ -168,49 +168,49 @@ function AIMLDevelopment() {
       number: "01",
       title: tr("Requirement"),
       description:
-        "Understand the problem, goal and expected AI outcome.",
+        tr("Understand the problem, goal and expected AI outcome."),
     },
 
     {
       number: "02",
       title: tr("Data Understanding"),
       description:
-        "Review available data, structure, quality and model requirements.",
+        tr("Review available data, structure, quality and model requirements."),
     },
 
     {
       number: "03",
       title: tr("Model Design"),
       description:
-        "Select suitable algorithms, architecture and development strategy.",
+        tr("Select suitable algorithms, architecture and development strategy."),
     },
 
     {
       number: "04",
       title: tr("Training"),
       description:
-        "Train and refine the model using prepared data and suitable methods.",
+        tr("Train and refine the model using prepared data and suitable methods."),
     },
 
     {
       number: "05",
       title: tr("Evaluation"),
       description:
-        "Evaluate model performance using relevant metrics and validation.",
+        tr("Evaluate model performance using relevant metrics and validation."),
     },
 
     {
       number: "06",
       title: tr("Integration"),
       description:
-        "Connect the model with the application, API or required workflow.",
+        tr("Connect the model with the application, API or required workflow."),
     },
 
     {
       number: "07",
       title: tr("Deployment"),
       description:
-        "Prepare the AI system for practical use and future improvement.",
+        tr("Prepare the AI system for practical use and future improvement."),
     },
   ]
 
@@ -222,30 +222,30 @@ function AIMLDevelopment() {
   const reasons = [
     {
       icon: FiTarget,
-      title: "Problem-first Development",
+      title: tr("Problem-first Development"),
       description:
-        "We begin by understanding the actual requirement before selecting the model or technology.",
+        tr("We begin by understanding the actual requirement before selecting the model or technology."),
     },
 
     {
       icon: FiCpu,
-      title: "AI-focused Direction",
+      title: tr("AI-focused Direction"),
       description:
-        "AI and machine learning remain central to our technology and product development direction.",
+        tr("AI and machine learning remain central to our technology and product development direction."),
     },
 
     {
       icon: FiLayers,
-      title: "AI + Software Integration",
+      title: tr("AI + Software Integration"),
       description:
-        "We connect models with web applications, APIs, software platforms and business workflows.",
+        tr("We connect models with web applications, APIs, software platforms and business workflows."),
     },
 
     {
       icon: FiRepeat,
-      title: "Iterative Improvement",
+      title: tr("Iterative Improvement"),
       description:
-        "AI systems are evaluated and refined based on performance, requirements and future expansion.",
+        tr("AI systems are evaluated and refined based on performance, requirements and future expansion."),
     },
   ]
 
@@ -257,58 +257,58 @@ function AIMLDevelopment() {
   const faqs = [
     {
       question:
-        "What AI and machine learning services does GenData Tech provide?",
+        tr("What AI and machine learning services does GenData Tech provide?"),
       answer:
-        "GenData Tech provides AI model development, machine learning solutions, deep learning, AI automation, Agentic AI and customized AI applications.",
+        tr("GenData Tech provides AI model development, machine learning solutions, deep learning, AI automation, Agentic AI and customized AI applications."),
     },
 
     {
       question:
-        "Can you build a custom AI model for a specific business requirement?",
+        tr("Can you build a custom AI model for a specific business requirement?"),
       answer:
-        "Yes. AI models can be designed around a specific requirement when suitable data, objectives and technical conditions are available.",
+        tr("Yes. AI models can be designed around a specific requirement when suitable data, objectives and technical conditions are available."),
     },
 
     {
       question:
-        "What programming language do you use for AI development?",
+        tr("What programming language do you use for AI development?"),
       answer:
-        "Python is our primary programming language for AI and machine learning development, supported by relevant AI, data and backend libraries.",
+        tr("Python is our primary programming language for AI and machine learning development, supported by relevant AI, data and backend libraries."),
     },
 
     {
       question:
-        "Which machine learning frameworks do you use?",
+        tr("Which machine learning frameworks do you use?"),
       answer:
-        "Depending on the requirement, we can work with technologies such as Scikit-learn, TensorFlow and PyTorch.",
+        tr("Depending on the requirement, we can work with technologies such as Scikit-learn, TensorFlow and PyTorch."),
     },
 
     {
       question:
-        "Can AI models be integrated into an existing application?",
+        tr("Can AI models be integrated into an existing application?"),
       answer:
-        "Yes. AI models can be connected with applications through APIs, backend services or other suitable integration methods depending on the existing system architecture.",
+        tr("Yes. AI models can be connected with applications through APIs, backend services or other suitable integration methods depending on the existing system architecture."),
     },
 
     {
       question:
-        "Do you provide AI automation and Agentic AI development?",
+        tr("Do you provide AI automation and Agentic AI development?"),
       answer:
-        "Yes. AI automation and Agentic AI are part of our AI development direction, including intelligent workflows and AI agents that can interact with tools and systems.",
+        tr("Yes. AI automation and Agentic AI are part of our AI development direction, including intelligent workflows and AI agents that can interact with tools and systems."),
     },
 
     {
       question:
-        "Do I need to know which AI technology my project requires?",
+        tr("Do I need to know which AI technology my project requires?"),
       answer:
-        "No. You can share the problem, available data and expected outcome. We can then help identify an appropriate technical direction.",
+        tr("No. You can share the problem, available data and expected outcome. We can then help identify an appropriate technical direction."),
     },
 
     {
       question:
-        "Can I contact GenData Tech to discuss an early-stage AI idea?",
+        tr("Can I contact GenData Tech to discuss an early-stage AI idea?"),
       answer:
-        "Yes. You do not need to have a complete specification before contacting us. Early-stage requirements can be discussed to understand the most suitable next step.",
+        tr("Yes. You do not need to have a complete specification before contacting us. Early-stage requirements can be discussed to understand the most suitable next step."),
     },
   ]
 
@@ -456,10 +456,10 @@ function AIMLDevelopment() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Build intelligent systems
+                  {tr("Build intelligent systems")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    around real requirements.
+                    {tr("around real requirements.")}
                   </span>
                 </motion.h1>
 
@@ -519,7 +519,7 @@ function AIMLDevelopment() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your AI Requirement
+                    {tr("Discuss Your AI Requirement")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -684,14 +684,14 @@ function AIMLDevelopment() {
                   ))}
                   <rect x="223" y="174" width="34" height="34" rx="9" fill="#057CFA" fillOpacity="0.17" stroke="#60D9FF" strokeOpacity="0.5" />
                   <path d="M230 191 l6 -7 l-2 8 h11 l-6 8 l2 -8 h-11" fill="none" stroke="#60D9FF" strokeWidth="1.8" strokeLinejoin="round" />
-                  <text x="240" y="237" textAnchor="middle" fill="#FFFFFF" fontFamily="Arial, sans-serif" fontSize="21" fontWeight="700" letterSpacing="1">AI / ML</text>
-                  <text x="240" y="258" textAnchor="middle" fill="#B6D9FA" fontFamily="Arial, sans-serif" fontSize="9" letterSpacing="1.7">INTELLIGENCE</text>
+                  <text x="240" y="237" textAnchor="middle" fill="#FFFFFF" fontFamily="Arial, sans-serif" fontSize="21" fontWeight="700" letterSpacing="1">{tr("AI / ML")}</text>
+                  <text x="240" y="258" textAnchor="middle" fill="#B6D9FA" fontFamily="Arial, sans-serif" fontSize="9" letterSpacing="1.7">{tr("INTELLIGENCE")}</text>
 
                   {[
-                    { x: 10, y: 72, label: "DATA", sub: "Inputs" },
-                    { x: 352, y: 72, label: "MODELS", sub: "Prediction" },
-                    { x: 10, y: 286, label: "AUTOMATION", sub: "Workflows" },
-                    { x: 352, y: 286, label: "AGENTS", sub: "Decisions" },
+                    { x: 10, y: 72, label: tr("DATA"), sub: "Inputs" },
+                    { x: 352, y: 72, label: tr("MODELS"), sub: "Prediction" },
+                    { x: 10, y: 286, label: tr("AUTOMATION"), sub: "Workflows" },
+                    { x: 352, y: 286, label: tr("AGENTS"), sub: "Decisions" },
                   ].map((node, index) => (
                     <g key={node.label}>
                       <rect
@@ -742,7 +742,7 @@ function AIMLDevelopment() {
 
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  AI development built around the problem first.
+                  {tr("AI development built around the problem first.")}
                 </h2>
 
               </div>
@@ -796,7 +796,7 @@ function AIMLDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                AI capabilities designed for different requirements.
+                {tr("AI capabilities designed for different requirements.")}
               </h2>
 
 
@@ -875,7 +875,7 @@ function AIMLDevelopment() {
             </p>
 
             <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-              Practical applications of AI and machine learning.
+              {tr("Practical applications of AI and machine learning.")}
             </h2>
 
           </div>
@@ -903,7 +903,7 @@ function AIMLDevelopment() {
 
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Technologies we use to build AI solutions.
+                  {tr("Technologies we use to build AI solutions.")}
                 </h2>
 
 
@@ -1008,7 +1008,7 @@ function AIMLDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From requirement to deployed intelligence.
+                {tr("From requirement to deployed intelligence.")}
               </h2>
 
 
@@ -1095,7 +1095,7 @@ function AIMLDevelopment() {
 
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  AI development connected with practical engineering.
+                  {tr("AI development connected with practical engineering.")}
                 </h2>
 
 
@@ -1190,7 +1190,7 @@ function AIMLDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about AI & ML development.
+                {tr("Questions about AI & ML development.")}
               </h2>
 
 
@@ -1325,12 +1325,12 @@ function AIMLDevelopment() {
                 <div>
 
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Start an AI Project
+                    {tr("Start an AI Project")}
                   </p>
 
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Have an AI idea or machine learning requirement?
+                    {tr("Have an AI idea or machine learning requirement?")}
                   </h2>
 
 
