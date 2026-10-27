@@ -52,7 +52,7 @@ import {
 } from "react-icons/si";
 
 import CommonCTA from "../layout/CommonCTA"
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Learn the technology.":"Technologie verstehen.","Build with it.":"Mit Technologie gestalten.","Choose a learning track.":"Wählen Sie Ihren Lernpfad.","Learning designed around understanding and practice.":"Praxisnahes Lernen mit fundiertem Verständnis.","Understand. Practice. Build. Apply.":"Verstehen. Üben. Entwickeln. Anwenden.","Questions about training.":"Fragen zu unseren Schulungen.","Explore Training":"Schulungen entdecken","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","Training Tracks":"Lernbereiche","Students Trained":"Geschulte Teilnehmende"};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Learn the technology.":"Technologie verstehen.","Build with it.":"Mit Technologie gestalten.","Choose a learning track.":"Wählen Sie Ihren Lernpfad.","Learning designed around understanding and practice.":"Praxisnahes Lernen mit fundiertem Verständnis.","Understand. Practice. Build. Apply.":"Verstehen. Üben. Entwickeln. Anwenden.","Questions about training.":"Fragen zu unseren Schulungen.","Explore Training":"Schulungen entdecken","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","Training Tracks":"Lernbereiche","Students Trained":"Geschulte Teilnehmende","Build a practical foundation in artificial intelligence and machine learning while learning how data is prepared, models are trained and solutions are evaluated.":"Lernen Sie die Grundlagen der künstlichen Intelligenz und des maschinellen Lernens sowie Datenaufbereitung, Modelltraining und Bewertung von Lösungen.","Learn how data is collected, explored, prepared and transformed into useful insights through programming, statistics and machine learning.":"Lernen Sie, Daten zu sammeln, zu untersuchen, aufzubereiten und mithilfe von Programmierung, Statistik und maschinellem Lernen auszuwerten.","Learn how raw data can be cleaned, analyzed and transformed into understandable information that supports better decisions.":"Lernen Sie, Rohdaten zu bereinigen, zu analysieren und in verständliche Informationen für bessere Entscheidungen umzuwandeln.","Learn how sensors, microcontrollers, connectivity and software work together to create connected Internet of Things systems.":"Lernen Sie, wie Sensoren, Mikrocontroller, Konnektivität und Software zu vernetzten IoT-Systemen zusammenwirken.","Learn full-stack JavaScript development by building modern web applications using MongoDB, Express, React and Node.js.":"Erlernen Sie die Full-Stack-JavaScript-Entwicklung mit modernen Webanwendungen auf Basis von MongoDB, Express, React und Node.js.","Learn the foundations of development operations, version control, automation, deployment workflows and modern software delivery practices.":"Lernen Sie die Grundlagen von DevOps, Versionsverwaltung, Automatisierung, Bereitstellungsprozessen und moderner Softwareauslieferung.","Build a strong programming foundation with Python through concepts, problem solving and practical application development.":"Erwerben Sie solide Python-Kenntnisse durch Grundlagen, Problemlösung und praktische Anwendungsentwicklung.","Learn the fundamentals of building mobile applications with a focus on interfaces, application logic, APIs and practical development workflows.":"Lernen Sie die Grundlagen mobiler Anwendungen mit Fokus auf Oberflächen, Anwendungslogik, APIs und praktische Entwicklung.","Structured Learning":"Strukturiertes Lernen","Concepts are organized progressively so learners can build knowledge step by step.":"Die Inhalte bauen schrittweise aufeinander auf und fördern systematisches Lernen.","Hands-On Practice":"Praxisübungen","Learning includes practical implementation rather than focusing only on theory.":"Praktische Umsetzung ergänzt die theoretischen Grundlagen.","Project Thinking":"Projektorientiertes Denken","Learners understand how individual concepts connect to practical project development.":"Die Teilnehmenden lernen, wie einzelne Konzepte in Projekten zusammenwirken.","Technology Exposure":"Einblick in Technologien","Training introduces tools and technologies relevant to each learning track.":"Die Schulungen stellen passende Werkzeuge und Technologien für jeden Lernpfad vor."};
 
 function Training() {
   const { lang } = useParams();
@@ -107,7 +107,7 @@ function Training() {
       icon: FiZap,
 
       description:
-        "Build a practical foundation in artificial intelligence and machine learning while learning how data is prepared, models are trained and solutions are evaluated.",
+        tr("Build a practical foundation in artificial intelligence and machine learning while learning how data is prepared, models are trained and solutions are evaluated."),
 
       learn: [
         "Python for Machine Learning",
@@ -171,7 +171,7 @@ function Training() {
       icon: FiDatabase,
 
       description:
-        "Learn how data is collected, explored, prepared and transformed into useful insights through programming, statistics and machine learning.",
+        tr("Learn how data is collected, explored, prepared and transformed into useful insights through programming, statistics and machine learning."),
 
       learn: [
         "Python for Data Science",
@@ -231,7 +231,7 @@ function Training() {
       icon: FiTarget,
 
       description:
-        "Learn how raw data can be cleaned, analyzed and transformed into understandable information that supports better decisions.",
+        tr("Learn how raw data can be cleaned, analyzed and transformed into understandable information that supports better decisions."),
 
       learn: [
         "Understanding Data",
@@ -283,7 +283,7 @@ function Training() {
       icon: FiCpu,
 
       description:
-        "Learn how sensors, microcontrollers, connectivity and software work together to create connected Internet of Things systems.",
+        tr("Learn how sensors, microcontrollers, connectivity and software work together to create connected Internet of Things systems."),
 
       learn: [
         "IoT Fundamentals",
@@ -335,7 +335,7 @@ function Training() {
       icon: FiCode,
 
       description:
-        "Learn full-stack JavaScript development by building modern web applications using MongoDB, Express, React and Node.js.",
+        tr("Learn full-stack JavaScript development by building modern web applications using MongoDB, Express, React and Node.js."),
 
       learn: [
         "HTML, CSS and JavaScript Foundations",
@@ -399,7 +399,7 @@ function Training() {
       icon: FiLayers,
 
       description:
-        "Learn the foundations of development operations, version control, automation, deployment workflows and modern software delivery practices.",
+        tr("Learn the foundations of development operations, version control, automation, deployment workflows and modern software delivery practices."),
 
       learn: [
         "DevOps Fundamentals",
@@ -451,7 +451,7 @@ function Training() {
       icon: FiCode,
 
       description:
-        "Build a strong programming foundation with Python through concepts, problem solving and practical application development.",
+        tr("Build a strong programming foundation with Python through concepts, problem solving and practical application development."),
 
       learn: [
         "Python Fundamentals",
@@ -499,7 +499,7 @@ function Training() {
       icon: FiMonitor,
 
       description:
-        "Learn the fundamentals of building mobile applications with a focus on interfaces, application logic, APIs and practical development workflows.",
+        tr("Learn the fundamentals of building mobile applications with a focus on interfaces, application logic, APIs and practical development workflows."),
 
       learn: [
         "Mobile Application Fundamentals",
@@ -579,30 +579,30 @@ function Training() {
   const learnerBenefits = [
     {
       icon: FiBookOpen,
-      title: "Structured Learning",
+      title: tr("Structured Learning"),
       description:
-        "Concepts are organized progressively so learners can build knowledge step by step.",
+        tr("Concepts are organized progressively so learners can build knowledge step by step."),
     },
 
     {
       icon: FiCode,
-      title: "Hands-On Practice",
+      title: tr("Hands-On Practice"),
       description:
-        "Learning includes practical implementation rather than focusing only on theory.",
+        tr("Learning includes practical implementation rather than focusing only on theory."),
     },
 
     {
       icon: FiTarget,
-      title: "Project Thinking",
+      title: tr("Project Thinking"),
       description:
-        "Learners understand how individual concepts connect to practical project development.",
+        tr("Learners understand how individual concepts connect to practical project development."),
     },
 
     {
       icon: FiZap,
-      title: "Technology Exposure",
+      title: tr("Technology Exposure"),
       description:
-        "Training introduces tools and technologies relevant to each learning track.",
+        tr("Training introduces tools and technologies relevant to each learning track."),
     },
   ];
 
