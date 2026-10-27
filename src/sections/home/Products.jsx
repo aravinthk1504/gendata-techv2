@@ -116,7 +116,8 @@ function LMSDashboard({ content }) {
   );
 }
 
-function ProductVisual({ type }) {
+function ProductVisual({ type, content }) {
+  const t = (key, variables) => homeText(content, key, variables);
   const chartRef = useRef(null);
   const chartVisible = useInView(chartRef, { once: true, amount: 0.15 });
   const reduceMotion = useReducedMotion();
@@ -358,7 +359,7 @@ function Products({ content, lang }) {
                 {product.description}
               </p>
 
-              <ProductVisual type={product.id} />
+              <ProductVisual type={product.id} content={content} />
 
               <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                 {product.features.map((feature) => (
