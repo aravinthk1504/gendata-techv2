@@ -27,7 +27,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Software systems designed around specific business processes, users and operational requirements.":"Softwaresysteme, die auf konkrete Geschäftsprozesse, Nutzer und betriebliche Anforderungen abgestimmt sind.","Custom internal applications that support teams, workflows, data management and everyday operations.":"Individuelle interne Anwendungen zur Unterstützung von Teams, Arbeitsabläufen, Datenverwaltung und Tagesgeschäft.","Structured software platforms for managing information, users, operations and connected business processes.":"Strukturierte Softwareplattformen zur Verwaltung von Informationen, Nutzern, Betriebsabläufen und verbundenen Geschäftsprozessen.","Digital systems designed to organize and improve manual or fragmented business workflows.":"Digitale Systeme zur Organisation und Verbesserung manueller oder fragmentierter Geschäftsabläufe.","Software integrations that connect applications, databases, services and external platforms.":"Softwareintegrationen, die Anwendungen, Datenbanken, Dienste und externe Plattformen verbinden.","Improvement and restructuring of existing software where updated architecture or functionality is required.":"Weiterentwicklung und Modernisierung bestehender Software bei veränderten Anforderungen an Architektur und Funktionen."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Software systems designed around specific business processes, users and operational requirements.":"Softwaresysteme, die auf konkrete Geschäftsprozesse, Nutzer und betriebliche Anforderungen abgestimmt sind.","Custom internal applications that support teams, workflows, data management and everyday operations.":"Individuelle interne Anwendungen zur Unterstützung von Teams, Arbeitsabläufen, Datenverwaltung und Tagesgeschäft.","Structured software platforms for managing information, users, operations and connected business processes.":"Strukturierte Softwareplattformen zur Verwaltung von Informationen, Nutzern, Betriebsabläufen und verbundenen Geschäftsprozessen.","Digital systems designed to organize and improve manual or fragmented business workflows.":"Digitale Systeme zur Organisation und Verbesserung manueller oder fragmentierter Geschäftsabläufe.","Software integrations that connect applications, databases, services and external platforms.":"Softwareintegrationen, die Anwendungen, Datenbanken, Dienste und externe Plattformen verbinden.","Improvement and restructuring of existing software where updated architecture or functionality is required.":"Weiterentwicklung und Modernisierung bestehender Software bei veränderten Anforderungen an Architektur und Funktionen.","Understand the business process, users and expected software outcome.":"Geschäftsprozess, Nutzer und gewünschtes Softwareergebnis verstehen.","Define functionality, system structure and technical direction.":"Funktionen, Systemstruktur und technische Ausrichtung festlegen.","Plan application modules, data flow, APIs and database structure.":"Anwendungsmodule, Datenflüsse, APIs und Datenbankstruktur planen.","Build the software features and required backend functionality.":"Softwarefunktionen und benötigte Backend-Funktionalitäten entwickeln.","Connect databases, APIs, services and related software components.":"Datenbanken, APIs, Dienste und zugehörige Softwarekomponenten verbinden.","Validate functionality, workflows and system behavior.":"Funktionen, Arbeitsabläufe und Systemverhalten prüfen.","Prepare the software for deployment and operational use.":"Die Software für die Bereitstellung und den produktiven Einsatz vorbereiten.","Business-first Thinking":"Geschäftsprozesse im Mittelpunkt","We begin with the business process and expected outcome before choosing the technical solution.":"Wir betrachten zuerst den Geschäftsprozess und das gewünschte Ergebnis, bevor wir eine technische Lösung auswählen.","Custom Architecture":"Individuelle Architektur","Software structure is planned around the application's actual workflows, users and operational requirements.":"Die Softwarearchitektur orientiert sich an den tatsächlichen Arbeitsabläufen, Nutzern und betrieblichen Anforderungen.","Connected Systems":"Vernetzte Systeme","Applications can be designed to work with databases, APIs, external services and other software systems.":"Anwendungen können mit Datenbanken, APIs, externen Diensten und anderen Softwaresystemen zusammenarbeiten.","Designed to Evolve":"Für Weiterentwicklung konzipiert","We consider maintainability and future expansion when planning software architecture.":"Bei der Planung berücksichtigen wir Wartbarkeit und spätere Erweiterungen.","What types of software does GenData Tech develop?":"Welche Arten von Software entwickelt GenData Tech?","We develop custom business software, internal tools, management systems, workflow applications and software platforms based on specific operational requirements.":"Wir entwickeln individuelle Unternehmenssoftware, interne Tools, Verwaltungssysteme, Workflow-Anwendungen und Softwareplattformen für konkrete betriebliche Anforderungen.","Can you develop software around an existing business process?":"Können Sie Software für bestehende Geschäftsprozesse entwickeln?","Yes. We can first understand the current process and then plan software functionality around the users, data and workflow requirements.":"Ja. Wir analysieren den bestehenden Prozess und planen Funktionen passend zu Nutzern, Daten und Arbeitsabläufen.","What technologies do you use for software development?":"Welche Technologien verwenden Sie für die Softwareentwicklung?","Depending on the requirement, we can work with Python, Flask, Django, FastAPI, JavaScript, relational databases and REST APIs.":"Je nach Anforderung arbeiten wir mit Python, Flask, Django, FastAPI, JavaScript, relationalen Datenbanken und REST-APIs.","Can you connect software with an existing database?":"Können Sie Software mit einer bestehenden Datenbank verbinden?","Yes. Existing databases can be integrated when the current structure, access permissions and technical architecture support the required integration.":"Ja. Bestehende Datenbanken lassen sich integrieren, sofern Struktur, Zugriffsrechte und technische Architektur dies ermöglichen.","Can you integrate third-party APIs into custom software?":"Können Sie APIs von Drittanbietern integrieren?","Yes. External APIs and services can be integrated depending on their documentation, availability and the requirements of the software system.":"Ja. Externe APIs und Dienste können abhängig von Dokumentation, Verfügbarkeit und Systemanforderungen integriert werden.","Can AI features be added to business software?":"Können KI-Funktionen in Unternehmenssoftware integriert werden?","Yes. AI models, automation or intelligent functionality can be integrated into software when they provide a useful outcome for the application.":"Ja. KI-Modelle, Automatisierung und intelligente Funktionen können eingebunden werden, wenn sie der Anwendung einen konkreten Mehrwert bieten.","Can existing software be improved instead of completely rebuilt?":"Kann bestehende Software verbessert werden, statt sie neu zu entwickeln?","Potentially, yes. The current software architecture needs to be reviewed first to determine whether improvement, partial modernization or rebuilding is the more suitable direction.":"Ja, möglicherweise. Wir prüfen zunächst die bestehende Architektur, um zwischen Optimierung, teilweiser Modernisierung und Neuentwicklung zu entscheiden.","Can I discuss a software idea before preparing a complete specification?":"Kann ich eine Softwareidee ohne vollständige Spezifikation besprechen?","Yes. You can explain the current problem, users and expected outcome. The technical structure and requirements can then be discussed further.":"Ja. Beschreiben Sie das Problem, die Nutzer und das gewünschte Ergebnis. Die technischen Anforderungen klären wir anschließend gemeinsam.","Build software around":"Software entwickeln, die sich","how your business works.":"an Ihren Geschäftsabläufen orientiert.","Discuss Your Software":"Softwareprojekt besprechen","System Layer":"Systemebene","Logic":"Logik","Database":"Datenbank","Software designed around real operational requirements.":"Software für konkrete betriebliche Anforderungen.","Custom software capabilities for different operations.":"Individuelle Softwarelösungen für unterschiedliche Abläufe.","Future real software project showcase goes here.":"Hier werden künftig echte Softwareprojekte vorgestellt.","Technologies for building connected software systems.":"Technologien für die Entwicklung vernetzter Softwaresysteme.","From business requirement to working software.":"Von der Geschäftsanforderung zur funktionsfähigen Software.","Software development shaped around the actual process.":"Softwareentwicklung, die sich an tatsächlichen Abläufen orientiert.","Questions about software development.":"Fragen zur Softwareentwicklung.","Build Custom Software":"Individuelle Software entwickeln","Need software around a specific business process?":"Benötigen Sie Software für einen bestimmten Geschäftsprozess?"};
 
 function SoftwareDevelopment() {
   const { lang } = useParams();
@@ -173,49 +173,49 @@ function SoftwareDevelopment() {
       number: "01",
       title: tr("Requirement"),
       description:
-        "Understand the business process, users and expected software outcome.",
+        tr("Understand the business process, users and expected software outcome."),
     },
 
     {
       number: "02",
       title: tr("Planning"),
       description:
-        "Define functionality, system structure and technical direction.",
+        tr("Define functionality, system structure and technical direction."),
     },
 
     {
       number: "03",
       title: tr("Architecture"),
       description:
-        "Plan application modules, data flow, APIs and database structure.",
+        tr("Plan application modules, data flow, APIs and database structure."),
     },
 
     {
       number: "04",
       title: tr("Development"),
       description:
-        "Build the software features and required backend functionality.",
+        tr("Build the software features and required backend functionality."),
     },
 
     {
       number: "05",
       title: tr("Integration"),
       description:
-        "Connect databases, APIs, services and related software components.",
+        tr("Connect databases, APIs, services and related software components."),
     },
 
     {
       number: "06",
       title: tr("Testing"),
       description:
-        "Validate functionality, workflows and system behavior.",
+        tr("Validate functionality, workflows and system behavior."),
     },
 
     {
       number: "07",
       title: tr("Delivery"),
       description:
-        "Prepare the software for deployment and operational use.",
+        tr("Prepare the software for deployment and operational use."),
     },
   ]
 
@@ -227,30 +227,30 @@ function SoftwareDevelopment() {
   const reasons = [
     {
       icon: FiTarget,
-      title: "Business-first Thinking",
+      title: tr("Business-first Thinking"),
       description:
-        "We begin with the business process and expected outcome before choosing the technical solution.",
+        tr("We begin with the business process and expected outcome before choosing the technical solution."),
     },
 
     {
       icon: FiSettings,
-      title: "Custom Architecture",
+      title: tr("Custom Architecture"),
       description:
-        "Software structure is planned around the application's actual workflows, users and operational requirements.",
+        tr("Software structure is planned around the application's actual workflows, users and operational requirements."),
     },
 
     {
       icon: FiLayers,
-      title: "Connected Systems",
+      title: tr("Connected Systems"),
       description:
-        "Applications can be designed to work with databases, APIs, external services and other software systems.",
+        tr("Applications can be designed to work with databases, APIs, external services and other software systems."),
     },
 
     {
       icon: FiRepeat,
-      title: "Designed to Evolve",
+      title: tr("Designed to Evolve"),
       description:
-        "We consider maintainability and future expansion when planning software architecture.",
+        tr("We consider maintainability and future expansion when planning software architecture."),
     },
   ]
 
@@ -262,58 +262,58 @@ function SoftwareDevelopment() {
   const faqs = [
     {
       question:
-        "What types of software does GenData Tech develop?",
+        tr("What types of software does GenData Tech develop?"),
       answer:
-        "We develop custom business software, internal tools, management systems, workflow applications and software platforms based on specific operational requirements.",
+        tr("We develop custom business software, internal tools, management systems, workflow applications and software platforms based on specific operational requirements."),
     },
 
     {
       question:
-        "Can you develop software around an existing business process?",
+        tr("Can you develop software around an existing business process?"),
       answer:
-        "Yes. We can first understand the current process and then plan software functionality around the users, data and workflow requirements.",
+        tr("Yes. We can first understand the current process and then plan software functionality around the users, data and workflow requirements."),
     },
 
     {
       question:
-        "What technologies do you use for software development?",
+        tr("What technologies do you use for software development?"),
       answer:
-        "Depending on the requirement, we can work with Python, Flask, Django, FastAPI, JavaScript, relational databases and REST APIs.",
+        tr("Depending on the requirement, we can work with Python, Flask, Django, FastAPI, JavaScript, relational databases and REST APIs."),
     },
 
     {
       question:
-        "Can you connect software with an existing database?",
+        tr("Can you connect software with an existing database?"),
       answer:
-        "Yes. Existing databases can be integrated when the current structure, access permissions and technical architecture support the required integration.",
+        tr("Yes. Existing databases can be integrated when the current structure, access permissions and technical architecture support the required integration."),
     },
 
     {
       question:
-        "Can you integrate third-party APIs into custom software?",
+        tr("Can you integrate third-party APIs into custom software?"),
       answer:
-        "Yes. External APIs and services can be integrated depending on their documentation, availability and the requirements of the software system.",
+        tr("Yes. External APIs and services can be integrated depending on their documentation, availability and the requirements of the software system."),
     },
 
     {
       question:
-        "Can AI features be added to business software?",
+        tr("Can AI features be added to business software?"),
       answer:
-        "Yes. AI models, automation or intelligent functionality can be integrated into software when they provide a useful outcome for the application.",
+        tr("Yes. AI models, automation or intelligent functionality can be integrated into software when they provide a useful outcome for the application."),
     },
 
     {
       question:
-        "Can existing software be improved instead of completely rebuilt?",
+        tr("Can existing software be improved instead of completely rebuilt?"),
       answer:
-        "Potentially, yes. The current software architecture needs to be reviewed first to determine whether improvement, partial modernization or rebuilding is the more suitable direction.",
+        tr("Potentially, yes. The current software architecture needs to be reviewed first to determine whether improvement, partial modernization or rebuilding is the more suitable direction."),
     },
 
     {
       question:
-        "Can I discuss a software idea before preparing a complete specification?",
+        tr("Can I discuss a software idea before preparing a complete specification?"),
       answer:
-        "Yes. You can explain the current problem, users and expected outcome. The technical structure and requirements can then be discussed further.",
+        tr("Yes. You can explain the current problem, users and expected outcome. The technical structure and requirements can then be discussed further."),
     },
   ]
 
@@ -462,10 +462,10 @@ function SoftwareDevelopment() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Build software around
+                  {tr("Build software around")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    how your business works.
+                    {tr("how your business works.")}
                   </span>
                 </motion.h1>
 
@@ -525,7 +525,7 @@ function SoftwareDevelopment() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your Software
+                    {tr("Discuss Your Software")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -693,7 +693,7 @@ function SoftwareDevelopment() {
                   </span>
 
                   <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    System Layer
+                    {tr("System Layer")}
                   </span>
 
                 </motion.div>
@@ -722,7 +722,7 @@ function SoftwareDevelopment() {
                   className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Logic
+                    {tr("Logic")}
                   </p>
                 </motion.div>
 
@@ -748,7 +748,7 @@ function SoftwareDevelopment() {
                   className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Database
+                    {tr("Database")}
                   </p>
                 </motion.div>
 
@@ -805,7 +805,7 @@ function SoftwareDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Software designed around real operational requirements.
+                  {tr("Software designed around real operational requirements.")}
                 </h2>
 
               </div>
@@ -855,7 +855,7 @@ function SoftwareDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Custom software capabilities for different operations.
+                {tr("Custom software capabilities for different operations.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -927,7 +927,7 @@ function SoftwareDevelopment() {
 
           <div className="mx-auto max-w-[1400px]">
 
-            Future real software project showcase goes here.
+            {tr("Future real software project showcase goes here.")}
 
           </div>
 
@@ -953,7 +953,7 @@ function SoftwareDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Technologies for building connected software systems.
+                  {tr("Technologies for building connected software systems.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1055,7 +1055,7 @@ function SoftwareDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From business requirement to working software.
+                {tr("From business requirement to working software.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1138,7 +1138,7 @@ function SoftwareDevelopment() {
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Software development shaped around the actual process.
+                  {tr("Software development shaped around the actual process.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1229,7 +1229,7 @@ function SoftwareDevelopment() {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about software development.
+                {tr("Questions about software development.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -1362,11 +1362,11 @@ function SoftwareDevelopment() {
                 <div>
 
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Build Custom Software
+                    {tr("Build Custom Software")}
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Need software around a specific business process?
+                    {tr("Need software around a specific business process?")}
                   </h2>
 
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1382,7 +1382,7 @@ function SoftwareDevelopment() {
                   to="/contact"
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Discuss Your Software
+                  {tr("Discuss Your Software")}
 
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </Link>
