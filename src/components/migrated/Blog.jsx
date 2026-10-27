@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import { useMemo, useRef, useState } from "react"
 import Link from "../layout/LocalizedLink"
 import { motion, useInView, useReducedMotion } from "motion/react"
@@ -15,7 +16,11 @@ import CommonCTA from "../layout/CommonCTA"
 import { blogPosts } from "../../data/blogData"
 
 
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","GenData Tech / Insights & Events":"GenData Tech / Einblicke & Veranstaltungen","Insights that inform.":"Einblicke, die informieren.","Events that connect.":"Veranstaltungen, die verbinden.","Explore Insights":"Einblicke entdecken","Featured insight.":"Ausgewählter Beitrag.","Insights & Events.":"Einblicke & Veranstaltungen.","No events published yet.":"Noch keine Veranstaltungen veröffentlicht.","Articles":"Artikel","Featured Insight":"Ausgewählter Beitrag"};
+
 function Blog() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   const heroRef = useRef(null)
 
   const heroInView = useInView(heroRef, {
@@ -153,7 +158,7 @@ function Blog() {
                   transition={{ duration: 0.5 }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  GenData Tech / Insights & Events
+                  {tr("GenData Tech / Insights & Events")}
                 </motion.p>
 
 
@@ -170,10 +175,10 @@ function Blog() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Insights that inform.
+                  {tr("Insights that inform.")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    Events that connect.
+                    {tr("Events that connect.")}
                   </span>
                 </motion.h1>
 
@@ -211,7 +216,7 @@ function Blog() {
                   }}
                   className="group mt-7 inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Explore Insights
+                  {tr("Explore Insights")}
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </motion.a>
               </div>
@@ -328,7 +333,7 @@ function Blog() {
                 </p>
 
                 <h2 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Featured insight.
+                  {tr("Featured insight.")}
                 </h2>
               </div>
 
@@ -371,7 +376,7 @@ function Blog() {
                       <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
                         <div>
                           <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
-                            Featured Insight
+                            {tr("Featured Insight")}
                           </p>
 
                           <p className="mt-4 max-w-md font-heading text-2xl font-semibold leading-9 text-white">
@@ -443,11 +448,11 @@ function Blog() {
 
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Explore
+                {tr("Explore")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Insights & Events.
+                {tr("Insights & Events.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -460,7 +465,7 @@ function Blog() {
             <div className="mt-10 flex flex-wrap gap-2">
               {[
                 { id: "all", label: "All" },
-                { id: "article", label: "Articles" },
+                { id: "article", label: tr("Articles") },
                 { id: "event", label: "Events" },
               ].map((item) => (
                 <button
@@ -529,7 +534,7 @@ function Blog() {
             ) : (
               <div className="mt-10 rounded-[24px] border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
                 <p className="font-heading text-lg font-semibold text-slate-900">
-                  No events published yet.
+                  {tr("No events published yet.")}
                 </p>
 
                 <p className="mx-auto mt-3 max-w-lg font-body text-sm leading-7 text-slate-500">
