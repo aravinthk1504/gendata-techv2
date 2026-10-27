@@ -60,11 +60,7 @@ function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
       </div>
 
       <div>
-        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
-          {stage.label}
-        </p>
-
-        <h3 className="mt-3 font-heading text-xl font-semibold text-white">
+        <h3 className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
           {stage.title}
         </h3>
 
