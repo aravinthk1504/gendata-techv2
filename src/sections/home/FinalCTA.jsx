@@ -16,11 +16,10 @@ import {
 } from "react-icons/fa";
 
 const socialLinks = [
-  { name: "GitHub", icon: FaGithub, href: "#" },
-  { name: "Instagram", icon: FaInstagram, href: "#" },
-  { name: "Facebook", icon: FaFacebookF, href: "#" },
-  { name: "WhatsApp", icon: FaWhatsapp, href: "#" },
-  { name: "LinkedIn", icon: FaLinkedinIn, href: "#" },
+  { name: "GitHub", icon: FaGithub, href: "https://github.com/gendatatech?tab=repositories" },
+  { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/gendata_tech" },
+  { name: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/share/19Zj8BtEBo" },
+  { name: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/gendata-tech" },
 ];
 
 function FinalCTA({ content, lang }) {
