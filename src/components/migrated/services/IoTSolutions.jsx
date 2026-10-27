@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react"
@@ -28,7 +29,10 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
+const translationsDE = {"IoT Solutions":"IoT-Lösungen","Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Connect devices, data":"Geräte und Daten verbinden","and intelligent automation.":"mit intelligenter Automatisierung.","Discuss Your IoT Requirement":"IoT-Projekt besprechen","Requirement":"Anforderungen","System Design":"Systemdesign","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Questions about IoT development.":"Fragen zur IoT-Entwicklung."};
 function IoTSolutions() {
+ const { lang } = useParams();
+ const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -59,42 +63,42 @@ function IoTSolutions() {
   const offerings = [
     {
       number: "01",
-      title: "Sensor Monitoring",
+      title: tr("Sensor Monitoring"),
       description:
         "IoT systems designed to collect and monitor data from connected sensors and devices.",
     },
 
     {
       number: "02",
-      title: "Device Automation",
+      title: tr("Device Automation"),
       description:
         "Connected systems that automate actions using sensor inputs, control logic and defined operating conditions.",
     },
 
     {
       number: "03",
-      title: "Remote Monitoring",
+      title: tr("Remote Monitoring"),
       description:
         "Monitoring solutions that provide access to device and sensor information through connected dashboards or applications.",
     },
 
     {
       number: "04",
-      title: "IoT Dashboards",
+      title: tr("IoT Dashboards"),
       description:
         "Interfaces for visualizing sensor values, device status, alerts and operational information.",
     },
 
     {
       number: "05",
-      title: "Alerts & Notifications",
+      title: tr("Alerts & Notifications"),
       description:
         "Notification systems designed to respond when sensor values or device conditions meet defined thresholds.",
     },
 
     {
       number: "06",
-      title: "AI-enabled IoT",
+      title: tr("AI-enabled IoT"),
       description:
         "IoT systems that can combine connected devices with AI or machine learning for intelligent monitoring and automation.",
     },
@@ -174,49 +178,49 @@ function IoTSolutions() {
   const process = [
     {
       number: "01",
-      title: "Requirement",
+      title: tr("Requirement"),
       description:
         "Understand the environment, devices, sensors and expected system outcome.",
     },
 
     {
       number: "02",
-      title: "System Design",
+      title: tr("System Design"),
       description:
         "Plan hardware, connectivity, monitoring and control architecture.",
     },
 
     {
       number: "03",
-      title: "Device Setup",
+      title: tr("Device Setup"),
       description:
         "Configure controllers, sensors and required electronic components.",
     },
 
     {
       number: "04",
-      title: "Programming",
+      title: tr("Programming"),
       description:
         "Develop the logic required for monitoring, control and automation.",
     },
 
     {
       number: "05",
-      title: "Integration",
+      title: tr("Integration"),
       description:
         "Connect devices with dashboards, APIs, applications or cloud services.",
     },
 
     {
       number: "06",
-      title: "Testing",
+      title: tr("Testing"),
       description:
         "Validate sensor readings, connectivity, automation and system behavior.",
     },
 
     {
       number: "07",
-      title: "Deployment",
+      title: tr("Deployment"),
       description:
         "Prepare the connected system for practical operation and future refinement.",
     },
@@ -439,7 +443,7 @@ function IoTSolutions() {
                   }}
                   className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
-                  IoT Solutions
+                  {tr("IoT Solutions")}
                 </motion.p>
 
 
@@ -465,10 +469,10 @@ function IoTSolutions() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Connect devices, data
+                  {tr("Connect devices, data")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    and intelligent automation.
+                    {tr("and intelligent automation.")}
                   </span>
                 </motion.h1>
 
@@ -528,7 +532,7 @@ function IoTSolutions() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your IoT Requirement
+                    {tr("Discuss Your IoT Requirement")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -804,7 +808,7 @@ function IoTSolutions() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Service Overview
+                  {tr("Service Overview")}
                 </p>
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -855,7 +859,7 @@ function IoTSolutions() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                What We Offer
+                {tr("What We Offer")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -952,7 +956,7 @@ function IoTSolutions() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Technology Stack
+                  {tr("Technology Stack")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
@@ -1054,7 +1058,7 @@ function IoTSolutions() {
             <div className="max-w-3xl">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Development Process
+                {tr("Development Process")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
@@ -1137,7 +1141,7 @@ function IoTSolutions() {
               <div>
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Why GenData Tech
+                  {tr("Why GenData Tech")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
@@ -1228,11 +1232,11 @@ function IoTSolutions() {
             <div className="mx-auto max-w-3xl text-center">
 
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about IoT development.
+                {tr("Questions about IoT development.")}
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
