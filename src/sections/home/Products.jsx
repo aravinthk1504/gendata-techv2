@@ -276,12 +276,12 @@ function Products({ content, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.12 }}
           transition={{ duration: 0.7 }}
-          className="group relative mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:mt-16 sm:p-8 lg:mt-20 lg:rounded-[32px] lg:p-10"
+          className="group relative mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:mt-14 sm:p-8 lg:mt-14 lg:rounded-[32px] lg:p-8"
         >
           <div className="absolute -left-30 bottom-0 h-100 w-100 rounded-full bg-brand-primary/5 blur-[120px]" />
           <div className="absolute -right-20 top-0 h-100 w-100 rounded-full bg-brand-accent/6 blur-[130px]" />
 
-          <div className="relative grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
+          <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-8">
             <div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:tracking-[0.2em]">
