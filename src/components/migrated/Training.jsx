@@ -1,5 +1,6 @@
 "use client"
 
+import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
 
 import { useRef, useState } from "react";
@@ -51,7 +52,11 @@ import {
 } from "react-icons/si";
 
 import CommonCTA from "../layout/CommonCTA"
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Learn the technology.":"Technologie verstehen.","Build with it.":"Mit Technologie gestalten.","Choose a learning track.":"Wählen Sie Ihren Lernpfad.","Learning designed around understanding and practice.":"Praxisnahes Lernen mit fundiertem Verständnis.","Understand. Practice. Build. Apply.":"Verstehen. Üben. Entwickeln. Anwenden.","Questions about training.":"Fragen zu unseren Schulungen.","Explore Training":"Schulungen entdecken","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","Training Tracks":"Lernbereiche","Students Trained":"Geschulte Teilnehmende"};
+
 function Training() {
+  const { lang } = useParams();
+  const tr = (key) => lang === "de" ? (translationsDE[key] ?? key) : key;
   /* ======================================================
       HERO
   ====================================================== */
@@ -117,7 +122,7 @@ function Training() {
 
       tools: [
         {
-          name: "Python",
+          name: tr("Python"),
           icon: SiPython,
         },
         {
@@ -159,9 +164,9 @@ function Training() {
 
       number: "02",
 
-      title: "Data Science",
+      title: tr("Data Science"),
 
-      shortTitle: "Data Science",
+      shortTitle: tr("Data Science"),
 
       icon: FiDatabase,
 
@@ -181,7 +186,7 @@ function Training() {
 
       tools: [
         {
-          name: "Python",
+          name: tr("Python"),
           icon: SiPython,
         },
         {
@@ -219,9 +224,9 @@ function Training() {
 
       number: "03",
 
-      title: "Data Analytics",
+      title: tr("Data Analytics"),
 
-      shortTitle: "Data Analytics",
+      shortTitle: tr("Data Analytics"),
 
       icon: FiTarget,
 
@@ -241,7 +246,7 @@ function Training() {
 
       tools: [
         {
-          name: "Python",
+          name: tr("Python"),
           icon: SiPython,
         },
         {
@@ -271,7 +276,7 @@ function Training() {
 
       number: "04",
 
-      title: "IoT Development",
+      title: tr("IoT Development"),
 
       shortTitle: "IoT",
 
@@ -301,7 +306,7 @@ function Training() {
           icon: SiCplusplus,
         },
         {
-          name: "Python",
+          name: tr("Python"),
           icon: SiPython,
         },
         {
@@ -439,9 +444,9 @@ function Training() {
 
       number: "07",
 
-      title: "Python",
+      title: tr("Python"),
 
-      shortTitle: "Python",
+      shortTitle: tr("Python"),
 
       icon: FiCode,
 
@@ -461,7 +466,7 @@ function Training() {
 
       tools: [
         {
-          name: "Python",
+          name: tr("Python"),
           icon: SiPython,
         },
         {
@@ -487,7 +492,7 @@ function Training() {
 
       number: "08",
 
-      title: "Mobile App Development",
+      title: tr("Mobile App Development"),
 
       shortTitle: "Mobile App",
 
@@ -550,19 +555,19 @@ function Training() {
   const detailTabs = [
     {
       id: "learn",
-      label: "What You'll Learn",
+      label: tr("What You'll Learn"),
       icon: FiBookOpen,
     },
 
     {
       id: "tools",
-      label: "Tools & Technologies",
+      label: tr("Tools & Technologies"),
       icon: FiCpu,
     },
 
     {
       id: "outcome",
-      label: "Learning Outcome",
+      label: tr("Learning Outcome"),
       icon: FiTarget,
     },
   ];
@@ -608,7 +613,7 @@ function Training() {
   const trainingProcess = [
     {
       number: "01",
-      title: "Understand",
+      title: tr("Understand"),
       description:
         "Start with the fundamentals and understand the purpose behind each concept.",
     },
@@ -622,7 +627,7 @@ function Training() {
 
     {
       number: "03",
-      title: "Build",
+      title: tr("Build"),
       description:
         "Connect individual skills by working on project-oriented activities.",
     },
@@ -809,9 +814,9 @@ function Training() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Learn the technology.
+                  {tr("Learn the technology.")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    Build with it.
+                    {tr("Build with it.")}
                   </span>
                 </motion.h1>
 
@@ -866,7 +871,7 @@ function Training() {
                   }}
                   className="gd-hero-button gd-hero-button--primary group mt-7"
                 >
-                  Explore Training
+                  {tr("Explore Training")}
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </motion.button>
               </div>
@@ -932,7 +937,7 @@ function Training() {
                   <FiBookOpen className="text-2xl text-[#057CFA]" />
 
                   <span className="mt-2 font-heading text-sm font-semibold text-white">
-                    Learn
+                    {tr("Learn")}
                   </span>
 
                   <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
@@ -950,7 +955,7 @@ function Training() {
                     className: "bottom-12 left-1",
                   },
                   {
-                    label: "Development",
+                    label: tr("Development"),
                     className: "bottom-3 right-4",
                   },
                   {
@@ -984,7 +989,7 @@ function Training() {
               </p>
 
               <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Training Tracks
+                {tr("Training Tracks")}
               </p>
             </div>
 
@@ -994,7 +999,7 @@ function Training() {
               </p>
 
               <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Students Trained
+                {tr("Students Trained")}
               </p>
             </div>
 
@@ -1004,7 +1009,7 @@ function Training() {
               </p>
 
               <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Learning Approach
+                {tr("Learning Approach")}
               </p>
             </div>
           </div>
@@ -1022,11 +1027,11 @@ function Training() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Training Programs
+                {tr("Training Programs")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Choose a learning track.
+                {tr("Choose a learning track.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
@@ -1235,7 +1240,7 @@ function Training() {
                         }}
                       >
                         <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
-                          Tools & Technologies
+                          {tr("Tools & Technologies")}
                         </p>
 
                         <h4 className="mt-3 font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950">
@@ -1302,7 +1307,7 @@ function Training() {
                         }}
                       >
                         <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
-                          Learning Outcome
+                          {tr("Learning Outcome")}
                         </p>
 
                         <h4 className="mt-3 font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950">
@@ -1340,11 +1345,11 @@ function Training() {
             <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  Learning Experience
+                  {tr("Learning Experience")}
                 </p>
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Learning designed around understanding and practice.
+                  {tr("Learning designed around understanding and practice.")}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
@@ -1421,21 +1426,21 @@ function Training() {
               {[
                 {
                   icon: FiUsers,
-                  title: "Students",
+                  title: tr("Students"),
                   description:
                     "Learners looking to strengthen technical knowledge alongside academic learning.",
                 },
 
                 {
                   icon: FiBookOpen,
-                  title: "Beginners",
+                  title: tr("Beginners"),
                   description:
                     "People beginning their journey in programming, data, AI or modern development technologies.",
                 },
 
                 {
                   icon: FiZap,
-                  title: "Skill Builders",
+                  title: tr("Skill Builders"),
                   description:
                     "Learners looking to expand their practical exposure to a new technology or development area.",
                 },
@@ -1490,11 +1495,11 @@ function Training() {
           <div className="relative mx-auto max-w-[1400px]">
             <div className="max-w-3xl">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
-                Learning Process
+                {tr("Learning Process")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                Understand. Practice. Build. Apply.
+                {tr("Understand. Practice. Build. Apply.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
@@ -1552,11 +1557,11 @@ function Training() {
           <div className="mx-auto max-w-[1400px]">
             <div className="mx-auto max-w-3xl text-center">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Frequently Asked Questions
+                {tr("Frequently Asked Questions")}
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about training.
+                {tr("Questions about training.")}
               </h2>
             </div>
 
