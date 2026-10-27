@@ -28,7 +28,7 @@ import {
 
 import Link from "../../layout/LocalizedLink"
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Modern, responsive and interactive user interfaces designed for web applications, dashboards and digital platforms.":"Moderne, responsive und interaktive Benutzeroberflächen für Webanwendungen, Dashboards und digitale Plattformen.","Backend systems responsible for application logic, data processing, APIs, authentication and business workflows.":"Backend-Systeme für Anwendungslogik, Datenverarbeitung, APIs, Authentifizierung und Geschäftsprozesse.","REST APIs and backend integrations that connect frontend applications, databases and external services.":"REST-APIs und Backend-Integrationen zur Verbindung von Frontends, Datenbanken und externen Diensten.","Structured database integration for storing, managing and retrieving application data efficiently.":"Strukturierte Datenbankintegration zur effizienten Speicherung, Verwaltung und Abfrage von Anwendungsdaten.","User authentication, authorization and access-control systems designed around application requirements.":"Authentifizierung, Autorisierung und Zugriffskontrolle entsprechend den Anforderungen der Anwendung."};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Modern, responsive and interactive user interfaces designed for web applications, dashboards and digital platforms.":"Moderne, responsive und interaktive Benutzeroberflächen für Webanwendungen, Dashboards und digitale Plattformen.","Backend systems responsible for application logic, data processing, APIs, authentication and business workflows.":"Backend-Systeme für Anwendungslogik, Datenverarbeitung, APIs, Authentifizierung und Geschäftsprozesse.","REST APIs and backend integrations that connect frontend applications, databases and external services.":"REST-APIs und Backend-Integrationen zur Verbindung von Frontends, Datenbanken und externen Diensten.","Structured database integration for storing, managing and retrieving application data efficiently.":"Strukturierte Datenbankintegration zur effizienten Speicherung, Verwaltung und Abfrage von Anwendungsdaten.","User authentication, authorization and access-control systems designed around application requirements.":"Authentifizierung, Autorisierung und Zugriffskontrolle entsprechend den Anforderungen der Anwendung.","Business Platforms":"Unternehmensplattformen","Full-stack platforms including dashboards, management systems and custom business applications.":"Full-Stack-Plattformen mit Dashboards, Verwaltungssystemen und individuellen Geschäftsanwendungen.","Understand the users, application goals and required functionality.":"Nutzer, Anwendungsziele und benötigte Funktionen verstehen.","Plan the frontend, backend, database and application structure.":"Frontend, Backend, Datenbank und Anwendungsstruktur planen.","UI Development":"Oberflächenentwicklung","Build responsive interfaces and application interactions.":"Responsive Benutzeroberflächen und interaktive Funktionen entwickeln.","Develop APIs, business logic, authentication and data handling.":"APIs, Geschäftslogik, Authentifizierung und Datenverarbeitung entwickeln.","Connect frontend, backend, databases and external services.":"Frontend, Backend, Datenbanken und externe Dienste verbinden.","Validate functionality, usability and application behavior.":"Funktionalität, Benutzerfreundlichkeit und Anwendungsverhalten prüfen.","Prepare the application for production and real-world use.":"Die Anwendung für den Produktivbetrieb und den praktischen Einsatz vorbereiten.","Requirement-first Development":"Anforderungsorientierte Entwicklung","We start by understanding the application requirement before choosing the technical architecture.":"Wir analysieren zunächst die Anforderungen, bevor wir die technische Architektur festlegen.","Frontend + Backend":"Frontend und Backend","We approach the application as one connected system rather than separate frontend and backend components.":"Wir betrachten die Anwendung als zusammenhängendes System statt als getrennte Frontend- und Backend-Komponenten.","Custom Development":"Individuelle Entwicklung","Application functionality is designed around specific workflows, users and business requirements.":"Die Funktionen orientieren sich an konkreten Arbeitsabläufen, Nutzern und Geschäftsanforderungen.","Scalable Structure":"Skalierbare Architektur","We plan applications with maintainability, integration and future growth in mind.":"Wir planen Anwendungen mit Blick auf Wartbarkeit, Integrationen und zukünftiges Wachstum.","What is full stack development?":"Was bedeutet Full-Stack-Entwicklung?","Full stack development covers both the user-facing frontend and the backend systems that manage application logic, APIs, authentication, databases and integrations.":"Full-Stack-Entwicklung umfasst sowohl das sichtbare Frontend als auch Backend-Systeme für Anwendungslogik, APIs, Authentifizierung, Datenbanken und Integrationen.","What types of full stack applications can GenData Tech develop?":"Welche Full-Stack-Anwendungen entwickelt GenData Tech?","We can develop web applications, dashboards, business platforms, internal tools, management systems and custom applications based on project requirements.":"Wir entwickeln Webanwendungen, Dashboards, Unternehmensplattformen, interne Tools, Verwaltungssysteme und individuelle Anwendungen entsprechend den Projektanforderungen.","Which frontend technologies do you use?":"Welche Frontend-Technologien verwenden Sie?","For modern frontend development, we work with technologies such as React, JavaScript, HTML, CSS and Tailwind CSS depending on the application requirement.":"Je nach Anforderungen verwenden wir Technologien wie React, JavaScript, HTML, CSS und Tailwind CSS.","Which backend technologies do you use?":"Welche Backend-Technologien verwenden Sie?","Our backend development can use Python-based frameworks such as Flask, Django and FastAPI depending on the architecture and application requirements.":"Je nach Architektur und Anforderungen nutzen wir Python-basierte Frameworks wie Flask, Django und FastAPI.","Can you develop APIs for an application?":"Können Sie APIs für eine Anwendung entwickeln?","Yes. We can develop and integrate APIs that connect frontend applications, databases, external platforms and other backend services.":"Ja. Wir entwickeln und integrieren APIs zur Verbindung von Frontend-Anwendungen, Datenbanken, externen Plattformen und Backend-Diensten.","Can you add authentication and user roles?":"Können Sie Authentifizierung und Benutzerrollen integrieren?","Yes. Authentication, authorization and role-based access can be included depending on the application's user structure and security requirements.":"Ja. Abhängig von Nutzerstruktur und Sicherheitsanforderungen können wir Authentifizierung, Autorisierung und rollenbasierte Zugriffsrechte integrieren.","Can AI features be integrated into a full stack application?":"Können KI-Funktionen in Full-Stack-Anwendungen integriert werden?","Yes. AI models, automation or intelligent features can be integrated with a full stack application through APIs or backend services when required.":"Ja. KI-Modelle, Automatisierung und intelligente Funktionen können bei Bedarf über APIs oder Backend-Dienste integriert werden.","Can I discuss an application idea before the full requirement is finalized?":"Kann ich eine Anwendungsidee besprechen, bevor alle Anforderungen feststehen?","Yes. You can share the application idea, target users and expected outcome even if the complete specification has not yet been finalized.":"Ja. Sie können Ihre Idee, Zielgruppe und das gewünschte Ergebnis vorstellen, auch wenn noch keine vollständige Spezifikation vorliegt.","Build complete applications":"Vollständige Anwendungen entwickeln","from interface to backend.":"von der Oberfläche bis zum Backend.","Discuss Your Application":"Anwendung besprechen","Application Layer":"Anwendungsebene","Database":"Datenbank","One connected application from frontend to database.":"Eine durchgängige Anwendung vom Frontend bis zur Datenbank.","Complete application development capabilities.":"Umfassende Kompetenzen für die Anwendungsentwicklung.","Full stack solutions for real application requirements.":"Full-Stack-Lösungen für konkrete Anwendungsanforderungen.","Technologies for building complete applications.":"Technologien für die Entwicklung vollständiger Anwendungen.","From requirement to complete application.":"Von der Anforderung zur fertigen Anwendung.","Full stack development with connected engineering.":"Full-Stack-Entwicklung mit integrierten Technologien.","Questions about full stack development.":"Fragen zur Full-Stack-Entwicklung.","Build a Full Stack Application":"Full-Stack-Anwendung entwickeln","Have an application idea or platform requirement?":"Sie haben eine Anwendungsidee oder benötigen eine Plattform?"};
 
 function FullStackDevelopment() {
   const { lang } = useParams();
@@ -93,9 +93,9 @@ function FullStackDevelopment() {
 
     {
       number: "06",
-      title: "Business Platforms",
+      title: tr("Business Platforms"),
       description:
-        "Full-stack platforms including dashboards, management systems and custom business applications.",
+        tr("Full-stack platforms including dashboards, management systems and custom business applications."),
     },
   ]
 
@@ -180,49 +180,49 @@ function FullStackDevelopment() {
       number: "01",
       title: tr("Requirement"),
       description:
-        "Understand the users, application goals and required functionality.",
+        tr("Understand the users, application goals and required functionality."),
     },
 
     {
       number: "02",
       title: tr("Architecture"),
       description:
-        "Plan the frontend, backend, database and application structure.",
+        tr("Plan the frontend, backend, database and application structure."),
     },
 
     {
       number: "03",
-      title: "UI Development",
+      title: tr("UI Development"),
       description:
-        "Build responsive interfaces and application interactions.",
+        tr("Build responsive interfaces and application interactions."),
     },
 
     {
       number: "04",
       title: tr("Backend Development"),
       description:
-        "Develop APIs, business logic, authentication and data handling.",
+        tr("Develop APIs, business logic, authentication and data handling."),
     },
 
     {
       number: "05",
       title: tr("Integration"),
       description:
-        "Connect frontend, backend, databases and external services.",
+        tr("Connect frontend, backend, databases and external services."),
     },
 
     {
       number: "06",
       title: tr("Testing"),
       description:
-        "Validate functionality, usability and application behavior.",
+        tr("Validate functionality, usability and application behavior."),
     },
 
     {
       number: "07",
       title: tr("Deployment"),
       description:
-        "Prepare the application for production and real-world use.",
+        tr("Prepare the application for production and real-world use."),
     },
   ]
 
@@ -234,30 +234,30 @@ function FullStackDevelopment() {
   const reasons = [
     {
       icon: FiTarget,
-      title: "Requirement-first Development",
+      title: tr("Requirement-first Development"),
       description:
-        "We start by understanding the application requirement before choosing the technical architecture.",
+        tr("We start by understanding the application requirement before choosing the technical architecture."),
     },
 
     {
       icon: FiLayers,
-      title: "Frontend + Backend",
+      title: tr("Frontend + Backend"),
       description:
-        "We approach the application as one connected system rather than separate frontend and backend components.",
+        tr("We approach the application as one connected system rather than separate frontend and backend components."),
     },
 
     {
       icon: FiCode,
-      title: "Custom Development",
+      title: tr("Custom Development"),
       description:
-        "Application functionality is designed around specific workflows, users and business requirements.",
+        tr("Application functionality is designed around specific workflows, users and business requirements."),
     },
 
     {
       icon: FiRepeat,
-      title: "Scalable Structure",
+      title: tr("Scalable Structure"),
       description:
-        "We plan applications with maintainability, integration and future growth in mind.",
+        tr("We plan applications with maintainability, integration and future growth in mind."),
     },
   ]
 
@@ -269,58 +269,58 @@ function FullStackDevelopment() {
   const faqs = [
     {
       question:
-        "What is full stack development?",
+        tr("What is full stack development?"),
       answer:
-        "Full stack development covers both the user-facing frontend and the backend systems that manage application logic, APIs, authentication, databases and integrations.",
+        tr("Full stack development covers both the user-facing frontend and the backend systems that manage application logic, APIs, authentication, databases and integrations."),
     },
 
     {
       question:
-        "What types of full stack applications can GenData Tech develop?",
+        tr("What types of full stack applications can GenData Tech develop?"),
       answer:
-        "We can develop web applications, dashboards, business platforms, internal tools, management systems and custom applications based on project requirements.",
+        tr("We can develop web applications, dashboards, business platforms, internal tools, management systems and custom applications based on project requirements."),
     },
 
     {
       question:
-        "Which frontend technologies do you use?",
+        tr("Which frontend technologies do you use?"),
       answer:
-        "For modern frontend development, we work with technologies such as React, JavaScript, HTML, CSS and Tailwind CSS depending on the application requirement.",
+        tr("For modern frontend development, we work with technologies such as React, JavaScript, HTML, CSS and Tailwind CSS depending on the application requirement."),
     },
 
     {
       question:
-        "Which backend technologies do you use?",
+        tr("Which backend technologies do you use?"),
       answer:
-        "Our backend development can use Python-based frameworks such as Flask, Django and FastAPI depending on the architecture and application requirements.",
+        tr("Our backend development can use Python-based frameworks such as Flask, Django and FastAPI depending on the architecture and application requirements."),
     },
 
     {
       question:
-        "Can you develop APIs for an application?",
+        tr("Can you develop APIs for an application?"),
       answer:
-        "Yes. We can develop and integrate APIs that connect frontend applications, databases, external platforms and other backend services.",
+        tr("Yes. We can develop and integrate APIs that connect frontend applications, databases, external platforms and other backend services."),
     },
 
     {
       question:
-        "Can you add authentication and user roles?",
+        tr("Can you add authentication and user roles?"),
       answer:
-        "Yes. Authentication, authorization and role-based access can be included depending on the application's user structure and security requirements.",
+        tr("Yes. Authentication, authorization and role-based access can be included depending on the application's user structure and security requirements."),
     },
 
     {
       question:
-        "Can AI features be integrated into a full stack application?",
+        tr("Can AI features be integrated into a full stack application?"),
       answer:
-        "Yes. AI models, automation or intelligent features can be integrated with a full stack application through APIs or backend services when required.",
+        tr("Yes. AI models, automation or intelligent features can be integrated with a full stack application through APIs or backend services when required."),
     },
 
     {
       question:
-        "Can I discuss an application idea before the full requirement is finalized?",
+        tr("Can I discuss an application idea before the full requirement is finalized?"),
       answer:
-        "Yes. You can share the application idea, target users and expected outcome even if the complete specification has not yet been finalized.",
+        tr("Yes. You can share the application idea, target users and expected outcome even if the complete specification has not yet been finalized."),
     },
   ]
 
@@ -469,10 +469,10 @@ function FullStackDevelopment() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  Build complete applications
+                  {tr("Build complete applications")}
 
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    from interface to backend.
+                    {tr("from interface to backend.")}
                   </span>
                 </motion.h1>
 
@@ -532,7 +532,7 @@ function FullStackDevelopment() {
                     to="/contact"
                     className="gd-hero-button gd-hero-button--primary group "
                   >
-                    Discuss Your Application
+                    {tr("Discuss Your Application")}
 
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
@@ -703,7 +703,7 @@ function FullStackDevelopment() {
                   </span>
 
                   <span className="mt-1 font-body text-[8px] uppercase tracking-[0.2em] text-slate-300">
-                    Application Layer
+                    {tr("Application Layer")}
                   </span>
 
                 </motion.div>
@@ -788,7 +788,7 @@ function FullStackDevelopment() {
                   className="absolute bottom-6 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
                   <p className="font-body text-[10px] font-semibold text-slate-200">
-                    Database
+                    {tr("Database")}
                   </p>
                 </motion.div>
 
@@ -820,7 +820,7 @@ function FullStackDevelopment() {
 
 
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  One connected application from frontend to database.
+                  {tr("One connected application from frontend to database.")}
                 </h2>
 
               </div>
@@ -874,7 +874,7 @@ function FullStackDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Complete application development capabilities.
+                {tr("Complete application development capabilities.")}
               </h2>
 
 
@@ -954,7 +954,7 @@ function FullStackDevelopment() {
             </p>
 
             <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-              Full stack solutions for real application requirements.
+              {tr("Full stack solutions for real application requirements.")}
             </h2>
 
           </div>
@@ -982,7 +982,7 @@ function FullStackDevelopment() {
 
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                  Technologies for building complete applications.
+                  {tr("Technologies for building complete applications.")}
                 </h2>
 
 
@@ -1087,7 +1087,7 @@ function FullStackDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                From requirement to complete application.
+                {tr("From requirement to complete application.")}
               </h2>
 
 
@@ -1174,7 +1174,7 @@ function FullStackDevelopment() {
 
 
                 <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  Full stack development with connected engineering.
+                  {tr("Full stack development with connected engineering.")}
                 </h2>
 
 
@@ -1268,7 +1268,7 @@ function FullStackDevelopment() {
 
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                Questions about full stack development.
+                {tr("Questions about full stack development.")}
               </h2>
 
 
@@ -1403,12 +1403,12 @@ function FullStackDevelopment() {
                 <div>
 
                   <p className="font-body text-[12px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
-                    Build a Full Stack Application
+                    {tr("Build a Full Stack Application")}
                   </p>
 
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Have an application idea or platform requirement?
+                    {tr("Have an application idea or platform requirement?")}
                   </h2>
 
 
@@ -1425,7 +1425,7 @@ function FullStackDevelopment() {
                   to="/contact"
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                 >
-                  Discuss Your Application
+                  {tr("Discuss Your Application")}
 
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </Link>
