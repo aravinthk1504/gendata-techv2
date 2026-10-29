@@ -7,6 +7,7 @@ import IntelligenceProcess from "../../sections/home/IntelligenceProcess"
 import Products from "../../sections/home/Products"
 import Training from "../../sections/home/Training"
 import Insights from "../../sections/home/Insights"
+import {getPublishedBlogs} from "../../lib/public-blogs"
 import FinalCTA from "../../sections/home/FinalCTA"
 
 const homeDictionaries = {
@@ -19,6 +20,7 @@ export default async function HomePage({ params }) {
   if (!isValidLanguage(lang)) notFound()
 
   const content = await homeDictionaries[lang]()
+  const posts = await getPublishedBlogs(lang,6)
 
   return (
     <main>
@@ -28,7 +30,7 @@ export default async function HomePage({ params }) {
       <IntelligenceProcess lang={lang} content={content} />
       <Products lang={lang} content={content} />
       <Training lang={lang} content={content} />
-      <Insights lang={lang} content={content} />
+      <Insights lang={lang} content={content} posts={posts} />
       <FinalCTA lang={lang} content={content} />
     </main>
   )
