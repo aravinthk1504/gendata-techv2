@@ -7,13 +7,9 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import { homeText, localizedHref } from "../../lib/homeText";
 import BlogCard from "../../components/blog/BlogCard";
-import { blogPosts } from "../../data/blogData";
-
-// Six newest blog posts, maintained newest-first in blogData.js.
-const latestPosts = blogPosts.slice(0, 6);
-const count = latestPosts.length;
-
-function Insights({ content, lang }) {
+function Insights({ content, lang, posts = [] }) {
+  const latestPosts = posts.slice(0, 6);
+  const count = latestPosts.length;
   const t = (key, variables) => homeText(content, key, variables);
   const localizedPath = (path) => localizedHref(lang, path);
   const viewportRef = useRef(null);
@@ -26,6 +22,7 @@ function Insights({ content, lang }) {
 
   const moveTo = useCallback((index, smooth = true) => {
     const viewport = viewportRef.current;
+    if (!count) return;
     const bounded = (index + count) % count;
     const slide = viewport?.querySelectorAll("[data-insight-slide]")[bounded];
     if (!slide || !viewport) return;
