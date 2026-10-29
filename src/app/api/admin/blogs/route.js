@@ -13,6 +13,8 @@ const schema=z.object({
  content:z.string().trim().min(30).max(50000),
  seoTitle:z.string().trim().max(180).default(""),
  seoDescription:z.string().trim().max(320).default(""),
+ image:z.union([z.literal(""),z.url().refine(v=>v.startsWith("https://"),"Use an HTTPS image URL")]).default(""),
+ imageAlt:z.string().trim().max(180).default(""),
  language:z.enum(["en","de"]).default("en"),
  status:z.enum(["draft","published"]).default("draft")
 }).strict();
