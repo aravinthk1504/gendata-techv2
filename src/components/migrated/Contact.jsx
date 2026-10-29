@@ -23,7 +23,7 @@ import {
   FiTarget,
 } from "react-icons/fi";
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Let&apos;s build something":"Lassen Sie uns gemeinsam","intelligent together.":"intelligente Lösungen entwickeln.","Tell us what you&apos;re looking for.":"Beschreiben Sie uns Ihr Vorhaben.","Questions before you contact us.":"Fragen vor der Kontaktaufnahme.","A few answers that may help before starting your enquiry.":"Antworten auf häufige Fragen vor Ihrer Anfrage.","Find GenData Tech.":"Hier finden Sie GenData Tech.","You don&apos;t need every detail figured out.":"Sie müssen noch nicht alle Details kennen.","A simple process from your first message to the next step.":"Von Ihrer ersten Nachricht bis zum nächsten Schritt.","Please check the required fields and try again.":"Bitte überprüfen Sie die Pflichtfelder und versuchen Sie es erneut.","You send your enquiry":"Sie senden Ihre Anfrage","We review your requirement":"Wir prüfen Ihr Anliegen","We respond with the next step":"Wir melden uns mit dem nächsten Schritt","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Tell us what you are looking to build, explore or improve.":"Beschreiben Sie, was Sie entwickeln, erkunden oder verbessern möchten.","Our team reviews the requirement and understands the appropriate direction.":"Unser Team prüft Ihre Anforderungen und ermittelt die passende Vorgehensweise.","We get back to you with the next discussion or action required.":"Wir melden uns bei Ihnen, um die nächsten Schritte zu besprechen.","How quickly will GenData Tech respond to my enquiry?":"Wie schnell beantwortet GenData Tech meine Anfrage?","We aim to review enquiries and respond within 24 hours during our normal working days.":"Wir bemühen uns, Anfragen an regulären Arbeitstagen innerhalb von 24 Stunden zu beantworten.","Can I contact GenData Tech if I am not sure which service I need?":"Kann ich GenData Tech kontaktieren, wenn ich noch nicht weiß, welche Leistung ich brauche?","Yes. You can choose Other Enquiry or select the category that appears closest to your requirement. You can also explain the problem in the message field and we can help identify the appropriate direction.":"Ja. Wählen Sie „Sonstige Anfrage“ oder die passendste Kategorie und beschreiben Sie Ihr Anliegen im Nachrichtenfeld. Wir unterstützen Sie bei der Auswahl.","Can I discuss an early-stage idea?":"Kann ich eine Idee in einer frühen Phase besprechen?","Yes. You do not need to have a complete technical specification before contacting us. You can share the idea, problem, users and expected outcome.":"Ja. Eine vollständige technische Spezifikation ist nicht erforderlich. Beschreiben Sie einfach Ihre Idee, das Problem, die Zielgruppe und das gewünschte Ergebnis.","Do I need a complete project specification before contacting you?":"Benötige ich vor der Kontaktaufnahme eine vollständige Projektspezifikation?","No. A basic explanation of the requirement is enough to begin the conversation. More detailed technical requirements can be discussed later.":"Nein. Eine kurze Beschreibung Ihrer Anforderungen reicht für ein erstes Gespräch. Technische Details können wir anschließend klären.","Can I contact GenData Tech about products?":"Kann ich GenData Tech zu seinen Produkten kontaktieren?","Yes. Select Products in the enquiry category and then choose the product you are interested in.":"Ja. Wählen Sie die Kategorie „Produkte“ und anschließend das gewünschte Produkt.","Can I contact GenData Tech about training programs?":"Kann ich mich zu Schulungsprogrammen erkundigen?","Yes. Select Training and choose the program you are interested in. You can include any additional questions in the message field.":"Ja. Wählen Sie die Kategorie „Schulungen“ und Ihr gewünschtes Programm. Weitere Fragen können Sie im Nachrichtenfeld angeben.","Can businesses contact GenData Tech for partnerships?":"Können Unternehmen GenData Tech für Partnerschaften kontaktieren?","Yes. Select Other Enquiry and then Partnership or Business Enquiry to send the relevant details.":"Ja. Wählen Sie „Sonstige Anfrage“ und anschließend „Partnerschaft“ oder „Geschäftsanfrage“.","How can I contact GenData Tech directly?":"Wie kann ich GenData Tech direkt erreichen?","You can contact us through WhatsApp, phone or email using the quick contact options on this page.":"Nutzen Sie die Kontaktmöglichkeiten per WhatsApp, Telefon oder E-Mail auf dieser Seite.","Full Name":"Vollständiger Name","Tell us what you are trying to solve, improve or create.":"Beschreiben Sie, was Sie lösen, verbessern oder entwickeln möchten.","Your name":"Ihr Name","Select an option":"Option auswählen","Select a category first":"Bitte zuerst eine Kategorie auswählen","Describe what you would like to build, improve, learn or discuss...":"Beschreiben Sie, was Sie entwickeln, verbessern, lernen oder besprechen möchten ...","Your enquiry was sent, but receipt cannot be verified. Please contact us by email or WhatsApp if you do not receive a reply.":"Ihre Anfrage wurde gesendet, der Eingang konnte jedoch nicht bestätigt werden. Falls Sie keine Antwort erhalten, kontaktieren Sie uns bitte per E-Mail oder WhatsApp.","Sending...":"Wird gesendet ...","Send Enquiry":"Anfrage senden","Mon – Sat":"Mo. – Sa.","Presence":"Standorte","Services":"Dienstleistungen","Products":"Produkte","AI & Machine Learning":"KI und maschinelles Lernen"};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Testen","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwickeln","Evaluate":"Evaluierung","Evaluation":"Evaluierung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","Phone Number *":"Telefonnummer *","Your enquiry has been received successfully. We will contact you soon.":"Ihre Anfrage wurde erfolgreich empfangen. Wir melden uns in Kürze bei Ihnen.","Too many submissions. Please try again later.":"Zu viele Anfragen. Bitte versuchen Sie es später erneut.","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Let&apos;s build something":"Lassen Sie uns gemeinsam","intelligent together.":"intelligente Lösungen entwickeln.","Tell us what you&apos;re looking for.":"Beschreiben Sie uns Ihr Vorhaben.","Questions before you contact us.":"Fragen vor der Kontaktaufnahme.","A few answers that may help before starting your enquiry.":"Antworten auf häufige Fragen vor Ihrer Anfrage.","Find GenData Tech.":"Hier finden Sie GenData Tech.","You don&apos;t need every detail figured out.":"Sie müssen noch nicht alle Details kennen.","A simple process from your first message to the next step.":"Von Ihrer ersten Nachricht bis zum nächsten Schritt.","Please check the required fields and try again.":"Bitte überprüfen Sie die Pflichtfelder und versuchen Sie es erneut.","You send your enquiry":"Sie senden Ihre Anfrage","We review your requirement":"Wir prüfen Ihr Anliegen","We respond with the next step":"Wir melden uns mit dem nächsten Schritt","Deep Learning":"Deep Learning","Build Intelligent Products":"Intelligente Produkte entwickeln","Interface":"Benutzeroberfläche","Optimization":"Optimierung","System Design":"Systemplanung","Device Setup":"Geräteeinrichtung","Programming":"Programmierung","Practice":"Üben","Review":"Überprüfen","Apply":"Anwenden","Plan":"Planen","What You'll Learn":"Das lernen Sie","Tools & Technologies":"Tools und Technologien","Learning Outcome":"Lernergebnis","General Enquiry":"Allgemeine Anfrage","Partnership":"Partnerschaft","Business Enquiry":"Geschäftsanfrage","Other":"Sonstiges","Schedule a Call":"Gespräch vereinbaren","Tell us what you are looking to build, explore or improve.":"Beschreiben Sie, was Sie entwickeln, erkunden oder verbessern möchten.","Our team reviews the requirement and understands the appropriate direction.":"Unser Team prüft Ihre Anforderungen und ermittelt die passende Vorgehensweise.","We get back to you with the next discussion or action required.":"Wir melden uns bei Ihnen, um die nächsten Schritte zu besprechen.","How quickly will GenData Tech respond to my enquiry?":"Wie schnell beantwortet GenData Tech meine Anfrage?","We aim to review enquiries and respond within 24 hours during our normal working days.":"Wir bemühen uns, Anfragen an regulären Arbeitstagen innerhalb von 24 Stunden zu beantworten.","Can I contact GenData Tech if I am not sure which service I need?":"Kann ich GenData Tech kontaktieren, wenn ich noch nicht weiß, welche Leistung ich brauche?","Yes. You can choose Other Enquiry or select the category that appears closest to your requirement. You can also explain the problem in the message field and we can help identify the appropriate direction.":"Ja. Wählen Sie „Sonstige Anfrage“ oder die passendste Kategorie und beschreiben Sie Ihr Anliegen im Nachrichtenfeld. Wir unterstützen Sie bei der Auswahl.","Can I discuss an early-stage idea?":"Kann ich eine Idee in einer frühen Phase besprechen?","Yes. You do not need to have a complete technical specification before contacting us. You can share the idea, problem, users and expected outcome.":"Ja. Eine vollständige technische Spezifikation ist nicht erforderlich. Beschreiben Sie einfach Ihre Idee, das Problem, die Zielgruppe und das gewünschte Ergebnis.","Do I need a complete project specification before contacting you?":"Benötige ich vor der Kontaktaufnahme eine vollständige Projektspezifikation?","No. A basic explanation of the requirement is enough to begin the conversation. More detailed technical requirements can be discussed later.":"Nein. Eine kurze Beschreibung Ihrer Anforderungen reicht für ein erstes Gespräch. Technische Details können wir anschließend klären.","Can I contact GenData Tech about products?":"Kann ich GenData Tech zu seinen Produkten kontaktieren?","Yes. Select Products in the enquiry category and then choose the product you are interested in.":"Ja. Wählen Sie die Kategorie „Produkte“ und anschließend das gewünschte Produkt.","Can I contact GenData Tech about training programs?":"Kann ich mich zu Schulungsprogrammen erkundigen?","Yes. Select Training and choose the program you are interested in. You can include any additional questions in the message field.":"Ja. Wählen Sie die Kategorie „Schulungen“ und Ihr gewünschtes Programm. Weitere Fragen können Sie im Nachrichtenfeld angeben.","Can businesses contact GenData Tech for partnerships?":"Können Unternehmen GenData Tech für Partnerschaften kontaktieren?","Yes. Select Other Enquiry and then Partnership or Business Enquiry to send the relevant details.":"Ja. Wählen Sie „Sonstige Anfrage“ und anschließend „Partnerschaft“ oder „Geschäftsanfrage“.","How can I contact GenData Tech directly?":"Wie kann ich GenData Tech direkt erreichen?","You can contact us through WhatsApp, phone or email using the quick contact options on this page.":"Nutzen Sie die Kontaktmöglichkeiten per WhatsApp, Telefon oder E-Mail auf dieser Seite.","Full Name":"Vollständiger Name","Tell us what you are trying to solve, improve or create.":"Beschreiben Sie, was Sie lösen, verbessern oder entwickeln möchten.","Your name":"Ihr Name","Select an option":"Option auswählen","Select a category first":"Bitte zuerst eine Kategorie auswählen","Describe what you would like to build, improve, learn or discuss...":"Beschreiben Sie, was Sie entwickeln, verbessern, lernen oder besprechen möchten ...","Your enquiry was sent, but receipt cannot be verified. Please contact us by email or WhatsApp if you do not receive a reply.":"Ihre Anfrage wurde gesendet, der Eingang konnte jedoch nicht bestätigt werden. Falls Sie keine Antwort erhalten, kontaktieren Sie uns bitte per E-Mail oder WhatsApp.","Sending...":"Wird gesendet ...","Send Enquiry":"Anfrage senden","Mon – Sat":"Mo. – Sa.","Presence":"Standorte","Services":"Dienstleistungen","Products":"Produkte","AI & Machine Learning":"KI und maschinelles Lernen"};
 
 function Contact() {
   const { lang } = useParams();
@@ -42,13 +42,6 @@ function Contact() {
   const reduceMotion = useReducedMotion();
 
   const heroShouldAnimate = heroInView && !reduceMotion;
-
-  /* ======================================================
-      GOOGLE APPS SCRIPT
-  ====================================================== */
-
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxVozSQGWXBAMzhbqT2VGp5rvZWv4TpIusnQohWwT2XzaN_y8LVUiuEiem5Q8GVdbwgwQ/exec";
 
   /* ======================================================
       OFFERING OPTIONS
@@ -148,13 +141,15 @@ function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
 
     if (
-      !formData.name ||
-      !formData.email ||
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.phone.trim() ||
       !formData.category ||
       !formData.offering ||
-      !formData.message
+      !formData.message.trim()
     ) {
       setSubmitStatus("error");
       return;
@@ -163,43 +158,39 @@ function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    /*
-      "service" is also sent so your existing
-      Google Apps Script can continue working.
-
-      Later we can update Google Sheets to store:
-      category
-      offering
-
-      as separate columns.
-    */
-
-    const submissionData = {
-      ...formData,
-
-      service: `${formData.category} - ${formData.offering}`,
-    };
-
     try {
-      await fetch(SCRIPT_URL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-
-        mode: "no-cors",
-
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-
-        body: JSON.stringify(submissionData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          language: lang === "de" ? "de" : "en",
+          website: "",
+        }),
       });
 
-      // no-cors returns an opaque response: delivery is not verifiable.
-      setSubmitStatus("unverified");
+      if (!response.ok) {
+        setSubmitStatus(response.status === 429 ? "rateLimited" : "error");
+        return;
+      }
 
-      // Keep input values available because the server receipt is opaque.
+      const result = await response.json();
+      if (!result.success) {
+        setSubmitStatus("error");
+        return;
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        category: "",
+        offering: "",
+        message: "",
+      });
     } catch (error) {
-      console.error("Contact form error:", error);
-
+      console.error("Contact form request failed:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -902,13 +893,16 @@ function Contact() {
                       htmlFor="phone"
                       className="font-body text-xs font-semibold text-slate-700"
                     >
-                      {tr("Phone Number")}
+                      {tr("Phone Number *")}
                     </label>
 
                     <input
                       id="phone"
                       type="tel"
                       name="phone"
+                      required
+                      minLength={7}
+                      maxLength={25}
                       value={formData.phone}
                       onChange={handleInputChange}
                       autoComplete="tel"
@@ -1016,10 +1010,22 @@ function Contact() {
                     />
                   </div>
 
+                  {/* Honeypot: hidden from users, checked by API */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] opacity-0"
+                    value=""
+                    readOnly
+                  />
+
                   {/* FORM STATUS */}
 
                   <AnimatePresence>
-                    {submitStatus === "unverified" && (
+                    {submitStatus === "success" && (
                       <motion.div
                         initial={{
                           opacity: 1,
@@ -1036,7 +1042,21 @@ function Contact() {
                         className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3"
                       >
                         <p className="font-body text-xs font-medium leading-6 text-blue-800">
-                          {tr("Your enquiry was sent, but receipt cannot be verified. Please contact us by email or WhatsApp if you do not receive a reply.")}
+                          {tr("Your enquiry has been received successfully. We will contact you soon.")}
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === "rateLimited" && (
+                      <motion.div
+                        initial={{ opacity: 1, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3"
+                        role="alert"
+                      >
+                        <p className="font-body text-xs font-medium leading-6 text-amber-800">
+                          {tr("Too many submissions. Please try again later.")}
                         </p>
                       </motion.div>
                     )}
