@@ -9,10 +9,9 @@ import {
 
 import { getFirestore } from "firebase-admin/firestore";
 
-const app = getApps().length
-  ? getApps()[0]
-  : initializeApp({
-      credential: applicationDefault(),
-    });
+const app = getApps()[0] ?? initializeApp({
+  credential: applicationDefault(),
+  projectId: process.env.GOOGLE_CLOUD_PROJECT,
+});
 
 export const db = getFirestore(app);
