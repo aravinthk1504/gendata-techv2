@@ -104,6 +104,7 @@ function Contact() {
     }));
   }, []);
 
+  const [website, setWebsite] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -165,7 +166,7 @@ function Contact() {
         body: JSON.stringify({
           ...formData,
           language: lang === "de" ? "de" : "en",
-          website: "",
+          website,
         }),
       });
 
@@ -181,6 +182,7 @@ function Contact() {
       }
 
       setSubmitStatus("success");
+      setWebsite("");
       setFormData({
         name: "",
         email: "",
@@ -1018,8 +1020,8 @@ function Contact() {
                     autoComplete="off"
                     aria-hidden="true"
                     className="absolute -left-[9999px] opacity-0"
-                    value=""
-                    readOnly
+                    value={website}
+                    onChange={(event) => setWebsite(event.target.value)}
                   />
 
                   {/* FORM STATUS */}
