@@ -55,7 +55,10 @@ export const contactSchema = z
   .object({
     name: z.string().trim().min(2).max(100),
     email: z.email().max(254),
-    phone: z.string().trim().max(25).default(""),
+    phone: z.string().trim().min(7).max(25).regex(/^[+\d\s().-]+$/, "Invalid phone number").refine((value) => {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 7 && digits.length <= 15;
+    }, "Phone number must contain 7 to 15 digits"),
     category: z.enum([
       "Services",
       "Products",
