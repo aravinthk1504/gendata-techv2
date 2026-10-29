@@ -1,110 +1,136 @@
 
 import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
-import { z } from "zod";
 
-import { db } from "../../../lib/firebase-admin";
+import { contactSchema } from "../../../lib/contact-validation";
+import {
+  RateLimitError,
+  saveEnquiryWithRateLimit,
+} from "../../../lib/contact-rate-limit";
 
 export const runtime = "nodejs";
 
-const enquirySchema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.email().max(254),
-  phone: z.string().trim().max(25).optional().default(""),
-  category: z.enum([
-    "Services",
-    "Products",
-    "Training",
-    "Other Enquiry",
-  ]),
-  offering: z.string().trim().min(2).max(150),
-  message: z.string().trim().min(10).max(5000),
-  language: z.enum(["en", "de"]).default("en"),
-}).strict();
+function respond(data, status) {
+  return NextResponse.json(data, {
+    status,
+    headers: { "Cache-Control": "no-store" },
+  });
+}
 
 export async function POST(request) {
   try {
     const contentType = request.headers.get("content-type") ?? "";
 
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json(
-        { success: false, error: "Unsupported content type" },
-        { status: 415 }
+    if (!contentType.toLowerCase().includes("application/json")) {
+      return respond(
+        { success: false, error: "Expected JSON" },
+        415
       );
     }
 
-    // Reject oversized requests before parsing the JSON.
-    const contentLength = Number(
+    const length = Number(
       request.headers.get("content-length") ?? "0"
     );
 
-    if (contentLength > 16_384) {
-      return NextResponse.json(
+    if (length > 16_384) {
+      return respond(
         { success: false, error: "Request too large" },
-        { status: 413 }
+        413
       );
     }
 
-    const rawBody = await request.text();
+    const raw = await request.text();
 
-    if (Buffer.byteLength(rawBody, "utf8") > 16_384) {
-      return NextResponse.json(
+    if (Buffer.byteLength(raw, "utf8") > 16_384) {
+      return respond(
         { success: false, error: "Request too large" },
-        { status: 413 }
+        413
       );
     }
 
     let body;
 
     try {
-      body = JSON.parse(rawBody);
+      body = JSON.parse(raw);
     } catch {
-      return NextResponse.json(
+      return respond(
         { success: false, error: "Invalid JSON" },
-        { status: 400 }
+        400
       );
     }
 
-    const result = enquirySchema.safeParse(body);
+    const validated = contactSchema.safeParse(body);
 
-    if (!result.success) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Invalid form data",
-          fields: z.flattenError(result.error).fieldErrors,
-        },
-        { status: 400 }
+    if (!validated.success) {
+      return respond(
+        { success: false, error: "Invalid form data" },
+        400
       );
     }
+
+    // Basic bot detection: hidden website field.
+    if (validated.data.website !== "") {
+      return respond(
+        { success: false, error: "Invalid submission" },
+        400
+      );
+    }
+
+    // This address must come from a trusted hosting proxy.
+    // On localhost, use a consistent loopback fallback.
+    const forwarded = request.headers.get("x-forwarded-for");
+    const clientAddress =
+      forwarded?.split(",")[0]?.trim() || "127.0.0.1";
+
+    const {
+      website: _honeypot,
+      ...cleanData
+    } = validated.data;
 
     const enquiry = {
-      ...result.data,
+      ...cleanData,
+      email: cleanData.email.toLowerCase(),
       status: "new",
-      emailStatus: "pending",
+      emailStatus: "not_configured",
       createdAt: FieldValue.serverTimestamp(),
     };
 
-    const document = await db.collection("enquiries").add(enquiry);
+    const enquiryId = await saveEnquiryWithRateLimit(
+      enquiry,
+      clientAddress
+    );
 
-    return NextResponse.json(
+    return respond(
       {
         success: true,
-        message: "Enquiry received successfully",
-        enquiryId: document.id,
+        message: "Enquiry saved successfully",
+        enquiryId,
       },
-      { status: 201 }
+      201
     );
   } catch (error) {
-    // Do not expose internal errors or credentials to visitors.
-    console.error("Contact API request failed:", error.code ?? "unknown");
+    if (error instanceof RateLimitError) {
+      return respond(
+        {
+          success: false,
+          error: "Too many requests. Please try again later.",
+        },
+        429
+      );
+    }
 
-    return NextResponse.json(
+   console.error("Contact API failed:", {
+  name: error?.name,
+  code: error?.code,
+  message: error?.message,
+});
+
+    return respond(
       {
         success: false,
-        error: "Unable to process the enquiry",
+        error: "Unable to process enquiry",
       },
-      { status: 500 }
+      500
     );
   }
 }
