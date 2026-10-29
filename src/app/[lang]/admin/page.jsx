@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { currentAdmin } from "../../../lib/admin-auth";
 import { db } from "../../../lib/firebase-admin";
+import { getAuth } from "firebase-admin/auth";
 import AdminDashboard from "../../../components/admin/AdminDashboard";
 
 export const dynamic="force-dynamic";
@@ -21,5 +22,7 @@ export default async function AdminPage({params}) {
       createdAt:d.createdAt?.toDate?.()?.toISOString()||null
     };
   });
-  return <AdminDashboard enquiries={enquiries} lang={lang} adminEmail={user.email||""}/>;
+  const profile = await getAuth().getUser(user.uid);
+  const adminName = profile.displayName?.trim() || profile.email?.split("@")[0] || "Administrator";
+  return <AdminDashboard enquiries={enquiries} lang={lang} adminEmail={user.email||""} adminName={adminName}/>;
 }
