@@ -9,6 +9,7 @@ const schema=z.object({
  title:z.string().trim().min(5).max(180),category:z.string().trim().min(2).max(80),
  excerpt:z.string().trim().min(10).max(500),content:z.string().trim().min(30).max(50000),
  seoTitle:z.string().trim().max(180),seoDescription:z.string().trim().max(320),
+ image:z.union([z.literal(""),z.url().refine(v=>v.startsWith("https://"),"Use an HTTPS image URL")]),imageAlt:z.string().trim().max(180),
  status:z.enum(["draft","published"])
 }).strict();
 const answer=(obj,status=200)=>NextResponse.json(obj,{status,headers:{"Cache-Control":"no-store"}});
