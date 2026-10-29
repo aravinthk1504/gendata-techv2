@@ -14,7 +14,7 @@ export default function BlogManager(){
   try{
    const body=editing?((({slug,language,...rest})=>rest)(form)):form;
    const response=await fetch(editing?`/api/admin/blogs/${encodeURIComponent(editing)}`:"/api/admin/blogs",{method:editing?"PATCH":"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-   const data=await response.json();if(!response.ok)throw Error(data.error||"Unable to save article");
+   const data=await response.json();if(!response.ok){const details=data.fields&&typeof data.fields==="object"?Object.entries(data.fields).flatMap(([field,messages])=>(Array.isArray(messages)?messages:[]).map(message=>`${field}: ${message}`)).join("; "):"";throw Error(details||data.error||"Unable to save article");}
    setNotice(editing?"Article updated":"Article created");await load();setEditing(data.id||editing);
   }catch(e){setError(e.message)}finally{setBusy(false)}
  }
