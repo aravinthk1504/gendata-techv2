@@ -1,7 +1,5 @@
-
 import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
-
 import { contactSchema } from "../../../lib/contact-validation";
 import {
   RateLimitError,
@@ -10,7 +8,7 @@ import {
 
 export const runtime = "nodejs";
 
-function respond(data, status) {
+function json(data, status) {
   return NextResponse.json(data, {
     status,
     headers: { "Cache-Control": "no-store" },
@@ -20,117 +18,85 @@ function respond(data, status) {
 export async function POST(request) {
   try {
     const contentType = request.headers.get("content-type") ?? "";
-
-    if (!contentType.toLowerCase().includes("application/json")) {
-      return respond(
-        { success: false, error: "Expected JSON" },
-        415
-      );
+    if (!/^application\/json(?:\s*;|$)/i.test(contentType)) {
+      return json({ success: false, error: "Expected JSON" }, 415);
     }
 
-    const length = Number(
-      request.headers.get("content-length") ?? "0"
-    );
-
-    if (length > 16_384) {
-      return respond(
-        { success: false, error: "Request too large" },
-        413
-      );
+    const lengthHeader = request.headers.get("content-length");
+    const length = lengthHeader === null ? 0 : Number(lengthHeader);
+    if (!Number.isFinite(length) || length < 0 || length > 16_384) {
+      return json({ success: false, error: "Request too large" }, 413);
     }
 
     const raw = await request.text();
-
     if (Buffer.byteLength(raw, "utf8") > 16_384) {
-      return respond(
-        { success: false, error: "Request too large" },
-        413
-      );
+      return json({ success: false, error: "Request too large" }, 413);
     }
 
-    let body;
-
+    let payload;
     try {
-      body = JSON.parse(raw);
+      payload = JSON.parse(raw);
     } catch {
-      return respond(
-        { success: false, error: "Invalid JSON" },
-        400
-      );
+      return json({ success: false, error: "Invalid JSON" }, 400);
     }
 
-    const validated = contactSchema.safeParse(body);
-
-    if (!validated.success) {
-      return respond(
-        { success: false, error: "Invalid form data" },
-        400
-      );
+    const parsed = contactSchema.safeParse(payload);
+    if (!parsed.success) {
+      return json({
+        success: false,
+        error: "Invalid form data",
+        fields: parsed.error.flatten().fieldErrors,
+      }, 400);
     }
 
-    // Basic bot detection: hidden website field.
-    if (validated.data.website !== "") {
-      return respond(
-        { success: false, error: "Invalid submission" },
-        400
-      );
+    if (parsed.data.website !== "") {
+      return json({ success: false, error: "Invalid submission" }, 400);
     }
 
-    // This address must come from a trusted hosting proxy.
-    // On localhost, use a consistent loopback fallback.
+    const { website: ignoredHoneypot, ...formData } = parsed.data;
+
+    // Local-development fallback only. A production deployment must
+    // derive the client address from a verified, trusted proxy.
     const forwarded = request.headers.get("x-forwarded-for");
     const clientAddress =
-      forwarded?.split(",")[0]?.trim() || "127.0.0.1";
-
-    const {
-      website: _honeypot,
-      ...cleanData
-    } = validated.data;
-
-    const enquiry = {
-      ...cleanData,
-      email: cleanData.email.toLowerCase(),
-      status: "new",
-      emailStatus: "not_configured",
-      createdAt: FieldValue.serverTimestamp(),
-    };
+      process.env.NODE_ENV === "production"
+        ? "unverified-client"
+        : forwarded?.split(",")[0]?.trim() || "127.0.0.1";
 
     const enquiryId = await saveEnquiryWithRateLimit(
-      enquiry,
+      {
+        ...formData,
+        email: formData.email.toLowerCase(),
+        status: "new",
+        emailStatus: "not_configured",
+        createdAt: FieldValue.serverTimestamp(),
+      },
       clientAddress
     );
 
-    return respond(
-      {
-        success: true,
-        message: "Enquiry saved successfully",
-        enquiryId,
-      },
-      201
-    );
+    return json({
+      success: true,
+      message: "Enquiry saved successfully",
+      enquiryId,
+    }, 201);
   } catch (error) {
     if (error instanceof RateLimitError) {
-      return respond(
-        {
-          success: false,
-          error: "Too many requests. Please try again later.",
-        },
-        429
-      );
+      return json({
+        success: false,
+        error: "Too many requests. Please try again later.",
+      }, 429);
     }
 
-   console.error("Contact API failed:", {
-  name: error?.name,
-  code: error?.code,
-  message: error?.message,
-});
-
-    return respond(
-      {
-        success: false,
-        error: "Unable to process enquiry",
-      },
-      500
-    );
+    // Server log only: do not expose Firebase or environment details
+    // in the HTTP response.
+    console.error("Contact API failed", {
+      name: error?.name ?? "unknown",
+      code: error?.code ?? "unknown",
+      message: error?.message ?? "unknown",
+    });
+    return json({
+      success: false,
+      error: "Unable to process enquiry",
+    }, 500);
   }
 }
