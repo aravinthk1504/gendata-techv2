@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, LockKeyhole } from "lucide-react";
+import { FiEye as Eye, FiEyeOff as EyeOff, FiLock as LockKeyhole } from "react-icons/fi";
 
 export default function AdminLogin({ lang }) {
   const router = useRouter();
