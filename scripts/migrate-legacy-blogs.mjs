@@ -2,6 +2,9 @@
 // Run locally with a valid GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_CLOUD_PROJECT.
 // Existing CMS documents are never overwritten. Review and complete each article before publishing.
 import {initializeApp,applicationDefault} from "firebase-admin/app";
+import {createRequire} from "node:module";
+const require=createRequire(import.meta.url);
+require("@next/env").loadEnvConfig(process.cwd());
 import {getFirestore,FieldValue} from "firebase-admin/firestore";
 const records = [
   {
