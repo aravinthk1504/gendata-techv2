@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation"
 import { isValidLanguage } from "../../i18n/config"
 import Hero from "../../sections/home/Hero"
