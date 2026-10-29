@@ -3,7 +3,7 @@ import {useMemo,useState} from "react";
 import {useRouter} from "next/navigation";
 
 const statuses=["new","in_progress","contacted","completed"];
-export default function AdminDashboard({enquiries,lang,adminEmail}){
+export default function AdminDashboard({enquiries,lang,adminEmail,adminName}){
  const router=useRouter();
  const [tab,setTab]=useState("overview"),[search,setSearch]=useState("");
  const filtered=useMemo(()=>enquiries.filter(e=>[e.name,e.email,e.phone,e.category,e.offering].join(" ").toLowerCase().includes(search.toLowerCase())),[enquiries,search]);
@@ -21,7 +21,7 @@ export default function AdminDashboard({enquiries,lang,adminEmail}){
  return <main className="min-h-screen bg-[#f5f8ff] px-4 py-10 sm:px-8">
  <div className="mx-auto max-w-7xl">
   <header className="flex flex-wrap items-center justify-between gap-4">
-   <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#057cfa]">GenData Tech / Admin</p><h1 className="mt-2 text-3xl font-bold text-[#081b3a]">Management dashboard</h1><p className="mt-1 text-sm text-slate-500">Signed in as {adminEmail}</p></div>
+   <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#057cfa]">GenData Tech / Admin</p><h1 className="mt-2 text-3xl font-bold text-[#081b3a]">Welcome, {adminName || "Administrator"}</h1><p className="mt-1 text-sm font-medium text-slate-600">Management dashboard</p><p className="mt-1 text-sm text-slate-500">Signed in as {adminEmail}</p></div>
    <button onClick={logout} className="rounded-full border border-slate-300 bg-white px-5 py-2 text-sm font-semibold">Sign out</button>
   </header>
   <nav className="my-8 flex flex-wrap gap-2" aria-label="Admin sections">
