@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getPageMetadata } from "../../../i18n/pageMetadata"
 import Blog from "../../../components/migrated/Blog"
 import { getPublishedBlogs } from "../../../lib/public-blogs"
