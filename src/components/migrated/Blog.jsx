@@ -36,11 +36,6 @@ function Blog({posts = []}) {
   const [activeCategory, setActiveCategory] = useState("All")
 
 
-  const featuredPost =
-    blogPosts.find((post) => post.featured) ||
-    blogPosts[0]
-
-
   const typeFilteredPosts =
     activeType === "all"
       ? blogPosts
@@ -69,6 +64,8 @@ function Blog({posts = []}) {
             post.category === activeCategory
         )
 
+
+  const featuredPost = filteredPosts.find((post) => post.featured) || filteredPosts[0];
 
   const handleTypeChange = (type) => {
     setActiveType(type)
@@ -463,7 +460,8 @@ function Blog({posts = []}) {
             </div>
 
 
-            <div className="mt-10 flex flex-wrap gap-2">
+            <div className="mt-10 flex flex-wrap items-center gap-2">
+              <span className="mr-3 text-xs font-semibold uppercase tracking-wider text-[#002DCC]">Filter by</span>
               {[
                 { id: "all", label: "All" },
                 { id: "article", label: tr("Articles") },
@@ -535,12 +533,11 @@ function Blog({posts = []}) {
             ) : (
               <div className="mt-10 rounded-[24px] border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
                 <p className="font-heading text-lg font-semibold text-slate-900">
-                  {tr("No events published yet.")}
+                  {activeType==="event"?"No events published yet.":activeType==="article"?"No articles published yet.":"No content published yet."}
                 </p>
 
                 <p className="mx-auto mt-3 max-w-lg font-body text-sm leading-7 text-slate-500">
-                  Lectures, workshops and other GenData Tech
-                  events will appear here when they are published.
+                  Published {activeType==="event"?"events":activeType==="article"?"articles":"articles and events"} will appear here.
                 </p>
               </div>
             )}
