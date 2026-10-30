@@ -1,7 +1,6 @@
 "use client"
 
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
-import TechHeroSculpture from "../layout/TechHeroSculpture"
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
@@ -496,7 +495,105 @@ function About() {
                 }}
                 className="relative mx-auto w-full max-w-[470px]"
               >
-                <TechHeroSculpture variant="about" animate={heroShouldAnimate}/>
+                <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[340px]">
+                  {/* BACKGROUND RING */}
+
+                  <motion.div
+                    className="absolute h-[330px] w-[330px] rounded-full border border-white/[0.05]"
+                    animate={
+                      heroShouldAnimate
+                        ? {
+                            rotate: 360,
+                          }
+                        : {
+                            rotate: 0,
+                          }
+                    }
+                    transition={
+                      heroShouldAnimate
+                        ? {
+                            duration: 35,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }
+                        : {
+                            duration: 0.2,
+                          }
+                    }
+                  >
+                    <div className="absolute left-1/2 top-[-4px] h-2 w-2 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_16px_rgba(5,124,250,0.9)]" />
+                  </motion.div>
+
+                  {/* STACK */}
+
+                  <div className="relative z-10 flex w-full max-w-[330px] flex-col gap-3">
+                    {[
+                      {
+                        number: "04",
+                        label: "Intelligence",
+                        sub: "Decision & reasoning",
+                      },
+                      {
+                        number: "03",
+                        label: "AI & Automation",
+                        sub: "Models, agents & workflows",
+                      },
+                      {
+                        number: "02",
+                        label: tr("Digital Products"),
+                        sub: "Platforms & applications",
+                      },
+                      {
+                        number: "01",
+                        label: "Engineering Systems",
+                        sub: "Software, mobile & IoT",
+                      },
+                    ].map((layer, index) => (
+                      <motion.div
+                        key={layer.number}
+                        animate={
+                          heroShouldAnimate
+                            ? {
+                                x: index % 2 === 0 ? [0, 5, 0] : [0, -5, 0],
+                              }
+                            : {
+                                x: 0,
+                              }
+                        }
+                        transition={
+                          heroShouldAnimate
+                            ? {
+                                duration: 4 + index * 0.6,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              }
+                            : {
+                                duration: 0.2,
+                              }
+                        }
+                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#06152C]/90 px-5 py-4 backdrop-blur-sm"
+                      >
+                        <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-transparent via-[#057CFA] to-transparent" />
+
+                        <div className="flex items-center justify-between gap-5">
+                          <div>
+                            <p className="font-heading text-sm font-semibold text-white">
+                              {layer.label}
+                            </p>
+
+                            <p className="mt-1 font-body text-[10px] text-slate-300">
+                              {layer.sub}
+                            </p>
+                          </div>
+
+                          <span className="font-heading text-[10px] font-semibold text-[#057CFA]">
+                            {layer.number}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
