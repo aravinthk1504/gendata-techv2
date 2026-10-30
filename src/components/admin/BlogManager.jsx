@@ -6,6 +6,8 @@ const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eve
 export default function BlogManager(){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
+ const checks=[["Title",form.title.trim().length>=5],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
+ const ready=checks.every(([,ok])=>ok);
  const [preview,setPreview]=useState(false);
  const [section,setSection]=useState("content");
  const [query,setQuery]=useState(""),[statusFilter,setStatusFilter]=useState("all"),[languageFilter,setLanguageFilter]=useState("all"),[categoryFilter,setCategoryFilter]=useState("all");
@@ -46,7 +48,9 @@ export default function BlogManager(){
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
  }
  async function save(event){
-  event.preventDefault();setBusy(true);setError("");setNotice("");
+  event.preventDefault();setError("");setNotice("");
+  if(form.status==="published"&&!ready){setError("Complete the publishing checklist before publishing. Drafts can be saved at any time.");setSection("seo");return;}
+  setBusy(true);
   try{
    const body=editing?((({slug,language,...rest})=>rest)(form)):form;
    const response=await fetch(editing?`/api/admin/blogs/${encodeURIComponent(editing)}`:"/api/admin/blogs",{method:editing?"PATCH":"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
@@ -104,6 +108,7 @@ export default function BlogManager(){
     <div className="border-t border-slate-100 pt-4"><p className="mb-2 text-sm font-semibold">Insert photo or diagram into the article</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border-2 border-[#057cfa] bg-blue-50 px-5 py-3 text-sm font-semibold text-[#003cba]"><FiUpload size={17}/>{uploading?"Uploading…":"Upload inline image"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"inline");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">Inserted into Markdown content automatically. Save the article afterwards.</p></div>
    </div>
    <div className={section==="seo"?"space-y-4":"hidden"}>
+    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4"><div className="flex flex-wrap items-center justify-between gap-2"><h3 className="text-sm font-bold">Publishing checklist</h3><span className={"text-xs font-semibold "+(ready?"text-green-700":"text-amber-700")}>{checks.filter(([,ok])=>ok).length}/{checks.length} complete</span></div><div className="mt-3 grid gap-2 sm:grid-cols-2">{checks.map(([name,ok])=><p key={name} className={"text-xs "+(ok?"text-green-700":"text-slate-600")}><span aria-hidden="true">{ok?"✓":"○"}</span> {name}</p>)}</div><p className="mt-3 text-xs text-slate-500">All checks are required for publishing. Incomplete articles can still be saved as drafts.</p></div>
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">SEO title<input value={form.seoTitle} onChange={e=>field("seoTitle",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
      <label className="text-sm font-semibold md:col-span-2">SEO description<textarea rows={3} value={form.seoDescription} onChange={e=>field("seoDescription",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
