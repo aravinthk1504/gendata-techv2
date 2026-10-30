@@ -10,7 +10,7 @@ export default function SiteChrome({ lang, navigation, footer, children }) {
   const pathname = usePathname() || "";
   const isAdmin = /^\/(en|de)\/admin(?:\/|$)/.test(pathname);
 
-  if (isAdmin) return <>{children}</>;
+  if (isAdmin) return <><CustomCursor />{children}</>;
 
   return (
     <>
