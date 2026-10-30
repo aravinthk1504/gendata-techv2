@@ -7,6 +7,7 @@ import { db } from "../../../../lib/firebase-admin";
 export const runtime = "nodejs";
 const schema=z.object({
  type:z.enum(["article","event"]).default("article"),
+ gallery:z.array(z.object({url:z.url().refine(v=>v.startsWith("https://")),caption:z.string().max(180)}).strict()).max(30).default([]),
  eventDate:z.string().max(30).default(""),
  eventTime:z.string().max(50).default(""),
  location:z.string().max(180).default(""),
