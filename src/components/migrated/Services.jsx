@@ -533,13 +533,13 @@ function Services() {
 
               {/* Exactly the Home hero's 570px infinity ribbon sizing. On mobile,
                   render it behind the text, without a separate visual block. */}
-              <div className="pointer-events-none absolute inset-x-0 top-[165px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+              <div className="pointer-events-none hidden lg:relative lg:inset-auto lg:z-auto lg:block">
                 <div className="w-full max-w-[420px] translate-x-0 opacity-40 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
                   <InfinityVisual />
                 </div>
               </div>
               {/* Keep service text and tags legible over the mobile ribbon. */}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#030b18]/85 via-[#030b18]/65 to-[#030b18]/40 lg:hidden" />
+              <div aria-hidden="true" className="pointer-events-none hidden" />
             </div>
           </div>
         </section>
