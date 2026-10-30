@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MarkdownContent from "./MarkdownContent";
+import EventGallery from "./EventGallery";
 export default function PublicBlogArticle({post,lang}){
  return <main className="min-h-screen bg-white">
   <section className="bg-[#06142f] px-5 pb-16 pt-32 text-white sm:pt-40">
@@ -16,5 +17,6 @@ export default function PublicBlogArticle({post,lang}){
    {post.image&&<img src={post.image} alt={post.imageAlt||post.title} className="mb-10 aspect-video w-full rounded-2xl object-cover"/>}
    <MarkdownContent content={post.content}/>
   </article>
+  {post.type==="event"&&<EventGallery photos={post.gallery||[]}/>}
  </main>;
 }
