@@ -1,6 +1,7 @@
 "use client"
 
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
+import TechHeroSculpture from "../layout/TechHeroSculpture"
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
@@ -495,18 +496,7 @@ function About() {
                 }}
                 className="relative mx-auto w-full max-w-[470px]"
               >
-                <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[340px]">
-                  {/* Company architecture: an expanding capability map, not a rotating orbit */}
-                  <div className="relative w-full max-w-[360px] rounded-3xl border border-white/10 bg-[#06152c]/85 p-5 shadow-[0_20px_65px_rgba(5,124,250,0.12)]">
-                    <div className="mb-6 flex items-center justify-between"><span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">GenData Tech</span><span className="text-[9px] text-slate-400">Our capabilities</span></div>
-                    <motion.div className="mx-auto flex w-40 items-center justify-center rounded-xl border border-cyan-400/35 bg-[#057CFA]/15 px-4 py-3 text-center text-sm font-semibold text-white" animate={heroShouldAnimate?{boxShadow:["0 0 0px rgba(5,124,250,0)","0 0 25px rgba(5,124,250,0.3)","0 0 0px rgba(5,124,250,0)"]}:{}} transition={{duration:3.5,repeat:heroShouldAnimate?Infinity:0}}>Intelligent Solutions</motion.div>
-                    <div className="mx-auto h-8 w-px bg-gradient-to-b from-[#057CFA] to-cyan-400/30"/>
-                    <div className="mb-3 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"/>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[["AI & Automation","Models & agents"],["Software","Platforms & APIs"],["IoT Solutions","Connected systems"],["Data Science","Insights & models"]].map(([name,detail],i)=><motion.div key={name} className="rounded-xl border border-cyan-500/20 bg-white/[0.04] p-3" animate={heroShouldAnimate?{y:[0,-5,0],borderColor:["rgba(5,124,250,0.2)","rgba(34,211,238,0.6)","rgba(5,124,250,0.2)"]}:{}} transition={{duration:4,delay:i*0.5,repeat:heroShouldAnimate?Infinity:0}}><div className="mb-2 h-1 w-7 rounded-full bg-cyan-400"/><p className="text-xs font-semibold text-white">{name}</p><p className="mt-1 text-[10px] text-slate-400">{detail}</p></motion.div>)}
-                    </div>
-                  </div>
-                </div>
+                <TechHeroSculpture variant="about" animate={heroShouldAnimate}/>
               </motion.div>
             </div>
           </div>
