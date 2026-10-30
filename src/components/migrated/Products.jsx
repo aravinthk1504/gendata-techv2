@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
+import TechHeroSculpture from "../layout/TechHeroSculpture"
 
 import { useRef, useState } from "react";
 
@@ -522,18 +523,8 @@ function Products() {
                 }}
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                {/* Product dashboard preview — distinct from Contact's message flow */}
-                <div className="relative w-[390px] max-w-full overflow-hidden rounded-2xl border border-cyan-400/25 bg-[#07182f] p-4 shadow-[0_25px_90px_rgba(5,124,250,0.15)]">
-                  <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
-                    <div className="flex gap-1.5"><span className="h-2 w-2 rounded-full bg-cyan-400"/><span className="h-2 w-2 rounded-full bg-blue-500/60"/><span className="h-2 w-2 rounded-full bg-white/20"/></div>
-                    <span className="text-[10px] font-semibold tracking-[0.2em] text-cyan-200">GENDATA / PRODUCTS</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    {["LMS","CRM","ERP","Billing"].map((product,i)=><motion.div key={product} className="rounded-xl border border-white/10 bg-white/[0.04] p-4" animate={heroShouldAnimate?{borderColor:["rgba(255,255,255,0.1)","rgba(5,124,250,0.65)","rgba(255,255,255,0.1)"],y:[0,-3,0]}:{}} transition={{duration:3.6,delay:i*0.65,repeat:heroShouldAnimate?Infinity:0}}>
-                      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#057CFA]/20"><FiGrid className="text-sm text-cyan-300"/></div>
-                      <span className="text-sm font-semibold text-white">{product}</span>
-                      <div className="mt-3 h-1.5 rounded-full bg-white/10"><motion.div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" initial={{width:"20%"}} animate={heroShouldAnimate?{width:["25%","85%","25%"]}:{width:"65%"}} transition={{duration:5,delay:i*0.6,repeat:heroShouldAnimate?Infinity:0}}/></div>
-                    </motion.div>)}
+                <TechHeroSculpture variant="products" animate={heroShouldAnimate}/>
+              </motion.div>)}
                   </div>
                   <div className="mt-3 flex items-center justify-between rounded-lg border border-cyan-500/15 bg-[#057CFA]/10 px-3 py-2"><span className="text-[10px] text-slate-300">Connected product ecosystem</span><motion.span className="h-2 w-2 rounded-full bg-cyan-400" animate={heroShouldAnimate?{opacity:[0.3,1,0.3]}:{opacity:1}} transition={{duration:2,repeat:heroShouldAnimate?Infinity:0}}/></div>
                 </div>
