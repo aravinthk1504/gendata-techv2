@@ -26,9 +26,9 @@ export default function AdminDashboard({enquiries,lang,adminEmail,adminName}){
    <button onClick={logout} className="rounded-full border border-slate-300 bg-white px-5 py-2 text-sm font-semibold">Sign out</button>
   </header>
   <nav className="my-8 flex flex-wrap gap-2" aria-label="Admin sections">
-   {["overview","enquiries","blogs"].map(id=><button key={id} onClick={()=>setTab(id)} className={`rounded-full px-5 py-2 text-sm font-semibold ${tab===id?"bg-[#057cfa] text-white":"border border-slate-200 bg-white text-slate-700"}`}>{id==="blogs"?"Blog management":id[0].toUpperCase()+id.slice(1)}</button>)}
+   {["overview","enquiries","blogs","events"].map(id=><button key={id} onClick={()=>setTab(id)} className={`rounded-full px-5 py-2 text-sm font-semibold ${tab===id?"bg-[#057cfa] text-white":"border border-slate-200 bg-white text-slate-700"}`}>{id==="blogs"?"Article management":id==="events"?"Event management":id[0].toUpperCase()+id.slice(1)}</button>)}
   </nav>
-  {tab==="blogs"?<BlogManager/>:<>
+  {tab==="blogs"?<BlogManager key="articles" contentType="article"/>:tab==="events"?<BlogManager key="events" contentType="event"/>:<>
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[["Total enquiries",enquiries.length],["New",counts.new],["In progress",counts.in_progress],["Completed",counts.completed]].map(([label,value])=><div key={label} className="rounded-2xl border border-slate-200 bg-white p-6"><p className="text-sm text-slate-500">{label}</p><p className="mt-3 text-3xl font-bold text-[#081b3a]">{value}</p></div>)}</div>
   <div className="mt-6 grid gap-6 lg:grid-cols-2">
    <section className="rounded-3xl border border-slate-200 bg-white p-6"><h2 className="text-lg font-bold">Enquiries · last 6 months</h2><p className="mt-1 text-xs text-slate-500">Based on the latest 250 Firestore enquiries</p>
