@@ -2,7 +2,7 @@
 import {useEffect,useState} from "react";
 import MarkdownContent from "../blog/MarkdownContent";
 import {FiUpload,FiTrash2} from "react-icons/fi";
-const blank={type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
+const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
 export default function BlogManager(){
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState(blank);
  const [preview,setPreview]=useState(false);
@@ -12,7 +12,7 @@ export default function BlogManager(){
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
  useEffect(()=>{load()},[]);
  function field(name,value){setForm(v=>({...v,[name]:value}))}
- function edit(item){setEditing(item.id);setForm({type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("")}
+ function edit(item){setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("")}
  function reset(){setEditing(null);setForm(blank);setError("");setNotice("")}
  async function removeEntry(item){
   if(!item||busy||uploading)return;
@@ -39,6 +39,23 @@ export default function BlogManager(){
    setNotice("Image uploaded successfully. Save the article to keep the link.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
  }
+ async function uploadGallery(files){
+  const selected=Array.from(files||[]).slice(0,Math.max(0,30-form.gallery.length));
+  if(!selected.length)return;
+  setUploading(true);setError("");setNotice("");
+  const added=[];
+  try{
+   for(const file of selected){
+    const payload=new FormData();payload.set("file",file);payload.set("kind","event");
+    const response=await fetch("/api/admin/media",{method:"POST",body:payload});
+    const data=await response.json();if(!response.ok)throw Error(data.error||"Upload failed");
+    added.push({url:data.url,caption:file.name.replace(/\.[^.]+$/,"").slice(0,180)});
+   }
+   setForm(current=>({...current,gallery:[...current.gallery,...added]}));
+   setNotice("Gallery uploaded. Save the event to keep these images.");
+  }catch(e){setForm(current=>({...current,gallery:[...current.gallery,...added]}));setError(e.message||"Some images failed to upload")}finally{setUploading(false)}
+ }
+ function moveGallery(index,delta){setForm(v=>{const next=[...v.gallery],other=index+delta;if(other<0||other>=next.length)return v;[next[index],next[other]]=[next[other],next[index]];return {...v,gallery:next}})}
  async function save(event){
   event.preventDefault();setBusy(true);setError("");setNotice("");
   try{
@@ -63,6 +80,10 @@ export default function BlogManager(){
    {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-48 w-auto rounded-xl object-contain"/>}
    <div className="flex flex-wrap items-center justify-between gap-2 md:col-span-2"><span className="text-sm font-semibold">Article content (Markdown)</span><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit content":"Preview article"}</button></div><div className="md:col-span-2">{preview?<div className="min-h-60 rounded-xl border border-slate-200 p-5 md:col-span-2">{form.image&&<img src={form.image} alt={form.imageAlt||form.title} className="mb-5 w-full rounded-xl object-cover"/>}<h2 className="mb-3 text-2xl font-bold">{form.title||"Untitled article"}</h2><p className="mb-5 text-slate-500">{form.excerpt}</p><MarkdownContent content={form.content}/></div>:<><div className="flex flex-wrap gap-2 md:col-span-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Insert Image / Diagram","![Diagram description](https://example.com/diagram.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>field("content",form.content+(form.content?"\n":"")+snippet)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div><textarea aria-label="Article content" required minLength={30} rows={12} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here using Markdown..."/></>}</div>
    <div><p className="mb-2 text-sm font-semibold text-slate-700">Photos and diagrams inside the content</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border-2 border-[#057cfa] bg-blue-50 px-5 py-3 text-sm font-semibold text-[#003cba] transition hover:bg-blue-100"><FiUpload size={17}/> {uploading?"Uploading…":"Upload photo / diagram"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"inline");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
+   {form.type==="event"&&<div className="md:col-span-2 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+    <div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="font-semibold text-[#081b3a]">Event photo gallery</h3><p className="text-xs text-slate-500">Up to 30 photos · JPG, PNG, WebP · 5 MB each</p></div><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-4 py-3 text-sm font-semibold text-white"><FiUpload/> Add gallery photos<input className="sr-only" type="file" multiple accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadGallery(e.target.files);e.target.value=""}}/></label></div>
+    <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{form.gallery.map((photo,index)=><div key={photo.url+index} className="rounded-xl border border-slate-200 bg-white p-2"><img src={photo.url} alt={photo.caption||"Event photo"} className="aspect-video w-full rounded-lg object-cover"/><input aria-label={`Caption for photo ${index+1}`} className="mt-2 w-full rounded-lg border p-2 text-xs" value={photo.caption} onChange={e=>setForm(v=>({...v,gallery:v.gallery.map((x,i)=>i===index?{...x,caption:e.target.value}:x)}))} maxLength={180}/><div className="mt-2 flex gap-1"><button type="button" disabled={index===0} onClick={()=>moveGallery(index,-1)} className="rounded border px-2 py-1 text-xs disabled:opacity-30">←</button><button type="button" disabled={index===form.gallery.length-1} onClick={()=>moveGallery(index,1)} className="rounded border px-2 py-1 text-xs disabled:opacity-30">→</button><button type="button" onClick={()=>setForm(v=>({...v,gallery:v.gallery.filter((_,i)=>i!==index)}))} className="ml-auto rounded border border-red-200 px-2 py-1 text-xs text-red-600">Remove</button></div></div>)}</div>
+   </div>}
    {uploading&&<p role="status" className="text-sm text-blue-600">Uploading image…</p>}
    <div className="grid grid-cols-2 gap-4 md:col-span-2"><label className="text-sm font-semibold">Language<select disabled={!!editing} value={form.language} onChange={e=>field("language",e.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 p-3"><option value="en">English</option><option value="de">German</option></select></label><label className="text-sm font-semibold">Status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option></select></label></div>
    {error&&<p role="alert" className="text-sm text-red-700">{error}</p>}{notice&&<p role="status" className="text-sm text-green-700">{notice}</p>}
