@@ -268,7 +268,7 @@ function Products() {
 
        <section
   ref={heroRef}
-  className={`relative overflow-hidden bg-[#030b18] px-6 pt-32 ${lang === "de" ? "pb-[206px]" : "pb-[186px]"} sm:pt-36 sm:pb-[132px] lg:px-10 lg:pt-32 lg:pb-20"
+  className={`relative overflow-hidden bg-[#030b18] px-6 pt-32 ${lang === "de" ? "pb-[206px]" : "pb-[186px]"} sm:pt-36 sm:pb-[132px] lg:px-10 lg:pt-32 lg:pb-20`}
 >
           {/* MAIN GLOW */}
 
