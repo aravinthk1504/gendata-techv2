@@ -390,7 +390,7 @@ function Products() {
                     duration: 0.6,
                     delay: 0.08,
                   }}
-                  className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
+                  className="mt-5 max-w-4xl font-heading text-[clamp(1.75rem,6.5vw,2.5rem)] break-words [overflow-wrap:anywhere] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
                   {tr("Digital products built")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
