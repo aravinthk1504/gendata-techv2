@@ -2,7 +2,8 @@
 import {useEffect,useState} from "react";
 import MarkdownContent from "../blog/MarkdownContent";
 import {FiUpload,FiTrash2} from "react-icons/fi";
-const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
+const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
+const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
 export default function BlogManager(){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
@@ -89,7 +90,7 @@ export default function BlogManager(){
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">Article title<input required minLength={5} value={form.title} onChange={e=>field("title",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal" placeholder="Enter a clear article title"/></label>
      <label className="text-sm font-semibold">URL slug<input required disabled={!!editing} value={form.slug} onChange={e=>field("slug",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal disabled:bg-slate-100"/></label>
-     <label className="text-sm font-semibold">Category<input required value={form.category} onChange={e=>field("category",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+     <label className="text-sm font-semibold">Category<select required value={form.category} onChange={e=>field("category",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal">{!BLOG_CATEGORIES.includes(form.category)&&<option value={form.category}>{form.category} (existing)</option>}{BLOG_CATEGORIES.map(category=><option key={category} value={category}>{category}</option>)}</select></label>
      <label className="text-sm font-semibold md:col-span-2">Short summary<textarea required rows={2} value={form.excerpt} onChange={e=>field("excerpt",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
     </div>
     <div className="flex items-center justify-between gap-3"><h3 className="text-sm font-bold">Article body (Markdown)</h3><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit":"Preview"}</button></div>
