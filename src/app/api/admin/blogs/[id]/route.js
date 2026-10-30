@@ -27,7 +27,7 @@ export async function PATCH(request,{params}){
  try{
   const raw=await request.text();if(Buffer.byteLength(raw,"utf8")>65000)return answer({error:"Content too large"},413);
   const parsed=schema.safeParse(JSON.parse(raw));if(!parsed.success)return answer({error:"Invalid article",fields:parsed.error.flatten().fieldErrors},400);
-  if(parsed.data.type==="event"&&(!/^\\d{4}-\\d{2}-\\d{2}$/.test(parsed.data.eventDate)||!parsed.data.eventTime.trim()))return answer({error:"Event date and time are required"},400);
+  if(parsed.data.type==="event"&&(!/^\d{4}-\d{2}-\d{2}$/.test(parsed.data.eventDate)||!parsed.data.eventTime.trim()))return answer({error:"Event date and time are required"},400);
   const ref=db.collection("cmsBlogs").doc(id);
   await db.runTransaction(async tx=>{
    const snap=await tx.get(ref);if(!snap.exists)throw new Error("NOT_FOUND");
