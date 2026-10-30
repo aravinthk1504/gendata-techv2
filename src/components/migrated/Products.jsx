@@ -524,10 +524,6 @@ function Products() {
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
                 <TechHeroSculpture variant="products" animate={heroShouldAnimate}/>
-              </motion.div>)}
-                  </div>
-                  <div className="mt-3 flex items-center justify-between rounded-lg border border-cyan-500/15 bg-[#057CFA]/10 px-3 py-2"><span className="text-[10px] text-slate-300">Connected product ecosystem</span><motion.span className="h-2 w-2 rounded-full bg-cyan-400" animate={heroShouldAnimate?{opacity:[0.3,1,0.3]}:{opacity:1}} transition={{duration:2,repeat:heroShouldAnimate?Infinity:0}}/></div>
-                </div>
               </motion.div>
             </div>
           </div>
