@@ -425,20 +425,23 @@ function Blog({posts = []}) {
               </p>
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
-                {tr("Insights & Events.")}
+                {tr("Insights & Articles.")}
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Browse technical articles and published
-                GenData Tech events from one place.
+                Browse insights across AI, software, IoT and our technology services.
               </p>
             </div>
 
 
-            <div className="mt-10 flex flex-wrap gap-2 border-b border-slate-200 pb-7">
-              {domains.map(domain=><button key={domain} type="button" onClick={()=>setActiveCategory(domain)} className={`rounded-full border px-4 py-2.5 font-body text-[11px] font-semibold transition ${activeCategory===domain?"border-[#057CFA] bg-[#057CFA] text-white":"border-slate-200 bg-white text-slate-600 hover:border-[#057CFA] hover:text-[#002DCC]"}`}>{domain}</button>)}
-            </div>
-
+            <div className="mt-10 grid items-start gap-8 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[260px_minmax(0,1fr)]">
+              <aside aria-label="Filter articles by technology domain" className="rounded-2xl border border-slate-200 bg-white p-4 lg:sticky lg:top-24">
+                <h3 className="mb-4 font-heading text-sm font-semibold text-[#081b3a]">Browse by domain</h3>
+                <div className="flex flex-wrap gap-2 lg:flex-col lg:items-stretch">
+                  {domains.map(domain=><button key={domain} type="button" onClick={()=>setActiveCategory(domain)} aria-pressed={activeCategory===domain} className={`rounded-xl border px-3 py-2.5 text-left font-body text-[11px] font-semibold transition ${activeCategory===domain?"border-[#057CFA] bg-[#057CFA] text-white":"border-slate-200 bg-white text-slate-600 hover:border-[#057CFA] hover:text-[#002DCC]"}`}>{domain}</button>)}
+                </div>
+              </aside>
+              <div className="min-w-0">
             <div className="mt-9">
               <p className="font-body text-xs text-slate-500">
                 Showing{" "}
@@ -453,7 +456,7 @@ function Blog({posts = []}) {
 
 
             {filteredPosts.length > 0 ? (
-              <div className="mt-10 grid gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-7 grid gap-x-7 gap-y-12 md:grid-cols-2">
                 {filteredPosts.map(
                   (post, index) => (
                     <BlogCard
@@ -475,6 +478,9 @@ function Blog({posts = []}) {
                 </p>
               </div>
             )}
+
+              </div>
+            </div>
           </div>
         </section>
 
