@@ -214,40 +214,8 @@ function Blog({posts = []}) {
                 }}
                 className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                <motion.div
-                  className="absolute h-[295px] w-[295px] rounded-full border border-white/[0.06]"
-                  animate={
-                    heroShouldAnimate
-                      ? { rotate: 360 }
-                      : {}
-                  }
-                  transition={{
-                    duration: 36,
-                    repeat: heroShouldAnimate
-                      ? Infinity
-                      : 0,
-                    ease: "linear",
-                  }}
-                >
-                  <div className="absolute left-1/2 top-[-5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-                <motion.div
-                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    heroShouldAnimate
-                      ? { rotate: -360 }
-                      : {}
-                  }
-                  transition={{
-                    duration: 26,
-                    repeat: heroShouldAnimate
-                      ? Infinity
-                      : 0,
-                    ease: "linear",
-                  }}
-                />
-
+                {/* Insights publishing cards */}
+                {[0,1,2].map(i=><motion.div key={i} className="absolute h-44 w-32 rounded-2xl border border-[#057CFA]/30 bg-[#06152C]/90 p-4 shadow-xl" style={{left:`${16+i*23}%`,top:`${18+i*12}%`}} animate={heroShouldAnimate?{y:[0,-8,0]}:{y:0}} transition={{duration:4,delay:i*0.6,repeat:heroShouldAnimate?Infinity:0}}><div className="mb-5 h-2 w-12 rounded-full bg-[#057CFA]"/><div className="mb-2 h-1.5 w-full rounded bg-white/25"/><div className="mb-2 h-1.5 w-4/5 rounded bg-white/20"/><div className="h-1.5 w-3/5 rounded bg-white/20"/></motion.div>)}
                 <div className="relative z-10 flex h-[130px] w-[130px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.15)]">
                   <span className="h-3 w-3 rounded-full bg-[#057CFA] shadow-[0_0_22px_rgba(5,124,250,1)]" />
                   <span className="mt-3 font-heading text-sm font-semibold text-white">
