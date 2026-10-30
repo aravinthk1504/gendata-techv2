@@ -115,7 +115,9 @@ button:focus-visible {
 
 /* Restored Vite cursor behavior only for devices with a precision pointer. */
 @media (pointer: fine) and (min-width: 768px) {
-  body, a, button { cursor: none; }
+  body:has([data-admin-page]) a, body:has([data-admin-page]) button { cursor: pointer; }
+  body:not(:has([data-admin-page])), body:not(:has([data-admin-page])) a, body:not(:has([data-admin-page])) button { cursor: none; }
+  body:has([data-admin-page]) { cursor: auto; }
 }
 
 
