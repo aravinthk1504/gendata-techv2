@@ -522,62 +522,9 @@ function Products() {
                 }}
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                {/* OUTER RING */}
-
-                <motion.div
-                  className="absolute h-[290px] w-[290px] rounded-full border border-white/[0.06]"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: 360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 34,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute left-1/2 top-[-4px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-                {/* INNER RING */}
-
-                <motion.div
-                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: -360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 25,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute bottom-[18px] right-[14px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
-                </motion.div>
-
+                {/* Product modules and connected workflows */}
+                <div className="absolute inset-12 rounded-3xl border border-[#057CFA]/20 bg-[#057CFA]/5" />
+                {[0,1,2].map((n)=><motion.div key={n} className="absolute left-1/2 top-1/2 h-px w-[240px] origin-left bg-gradient-to-r from-[#057CFA]/60 to-transparent" style={{rotate:n*60}} animate={heroShouldAnimate?{opacity:[0.3,0.9,0.3]}:{opacity:0.45}} transition={{duration:3,delay:n*0.7,repeat:heroShouldAnimate?Infinity:0}}/>)}
                 {/* CENTER */}
 
                 <motion.div
