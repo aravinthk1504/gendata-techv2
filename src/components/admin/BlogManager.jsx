@@ -8,6 +8,10 @@ export default function BlogManager(){
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
  const [preview,setPreview]=useState(false);
  const [section,setSection]=useState("content");
+ const [query,setQuery]=useState(""),[statusFilter,setStatusFilter]=useState("all"),[languageFilter,setLanguageFilter]=useState("all"),[categoryFilter,setCategoryFilter]=useState("all");
+ const articles=items.filter(item=>(item.type||"article")==="article");
+ const categories=[...new Set(articles.map(item=>item.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ const matching=articles.filter(item=>(statusFilter==="all"||item.status===statusFilter)&&(languageFilter==="all"||item.language===languageFilter)&&(categoryFilter==="all"||item.category===categoryFilter)&&[item.title,item.category,item.excerpt,item.slug].some(x=>(x||"").toLowerCase().includes(query.trim().toLowerCase())));
  const [deleting,setDeleting]=useState(null);
  const [uploading,setUploading]=useState(false);
  const [busy,setBusy]=useState(false),[error,setError]=useState(""),[notice,setNotice]=useState("");
@@ -56,10 +60,17 @@ export default function BlogManager(){
    <div><h2 className="text-lg font-bold">Blog Management</h2><p className="mt-1 text-xs text-slate-500">Select an article to edit, or start a new one.</p></div>
    <button type="button" onClick={reset} className="rounded-full bg-[#057cfa] px-5 py-2 text-sm font-semibold text-white">+ New article</button>
   </div>
-  <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">{items.filter(item=>(item.type||"article")==="article").length?items.filter(item=>(item.type||"article")==="article").map(item=><div key={item.id} className={"flex min-w-0 items-center gap-2 rounded-xl border p-3 "+(editing===item.id?"border-[#057cfa] bg-blue-50":"border-slate-200")}>
+  <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <input aria-label="Search blog articles" type="search" placeholder="Search articles..." value={query} onChange={e=>setQuery(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"/>
+    <select aria-label="Filter by publishing status" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Drafts</option></select>
+    <select aria-label="Filter by category" value={categoryFilter} onChange={e=>setCategoryFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All categories</option>{categories.map(category=><option key={category} value={category}>{category}</option>)}</select>
+    <select aria-label="Filter by language" value={languageFilter} onChange={e=>setLanguageFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All languages</option><option value="en">English</option><option value="de">German</option></select>
+  </div>
+  <div className="mt-3 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-slate-500">Showing {matching.length} of {articles.length} articles</p><button type="button" onClick={()=>{setQuery("");setStatusFilter("all");setLanguageFilter("all");setCategoryFilter("all")}} className="text-xs font-semibold text-[#057cfa] hover:underline">Clear filters</button></div>
+  <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">{matching.length?matching.map(item=><div key={item.id} className={"flex min-w-0 items-center gap-2 rounded-xl border p-3 "+(editing===item.id?"border-[#057cfa] bg-blue-50":"border-slate-200")}>
    <button type="button" onClick={()=>edit(item)} className="min-w-0 flex-1 text-left"><span className="block truncate text-sm font-semibold">{item.title}</span><span className="mt-1 block text-xs text-slate-500">{item.category} · {item.language.toUpperCase()} · {item.status}</span></button>
    <button type="button" disabled={Boolean(deleting)||busy||uploading} onClick={()=>{if(window.confirm('Permanently delete "'+item.title+'"? The entry will be deleted, but Cloudinary images will remain.'))removeEntry(item)}} aria-label={"Delete "+item.title} className="rounded-lg border border-red-200 bg-red-50 p-2 text-red-600 disabled:opacity-50"><FiTrash2 size={16}/></button>
-  </div>):<p className="text-sm text-slate-500">No blog articles yet.</p>}</div>
+  </div>):<p className="text-sm text-slate-500">{articles.length?"No articles match your filters.":"No blog articles yet."}</p>}</div>
  </div>
  <form onSubmit={save} noValidate className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
