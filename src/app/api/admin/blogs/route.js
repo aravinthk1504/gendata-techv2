@@ -43,6 +43,7 @@ export async function POST(request){
   const parsed=schema.safeParse(JSON.parse(raw));
   if(!parsed.success)return response({error:"Invalid article",fields:parsed.error.flatten().fieldErrors},400);
   const data=parsed.data;
+  if(data.type==="event"&&(!/^\\d{4}-\\d{2}-\\d{2}$/.test(data.eventDate)||!data.eventTime.trim()))return response({error:"Event date and time are required"},400);
   const id=`${data.language}_${data.slug}`;
   const ref=db.collection("cmsBlogs").doc(id);
   const existing=await ref.get();
