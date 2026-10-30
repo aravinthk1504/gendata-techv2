@@ -339,7 +339,7 @@ function Services() {
 
         <section
           ref={heroRef}
-          className="relative flex min-h-[calc(94svh+30px)] items-start overflow-hidden bg-[#030b18] px-6 pb-[78px] pt-28 sm:min-h-[94svh] sm:pb-16 sm:pt-36 lg:min-h-[calc(88svh+80px)] lg:items-center lg:px-10 lg:pb-16 lg:pt-28"
+          className="relative flex min-h-[calc(94svh+50px)] items-start overflow-hidden bg-[#030b18] px-6 pb-[78px] pt-28 sm:min-h-[94svh] sm:pb-16 sm:pt-36 lg:min-h-[calc(88svh+80px)] lg:items-center lg:px-10 lg:pb-16 lg:pt-28"
         >
           {/* MAIN GLOW */}
 
@@ -533,8 +533,8 @@ function Services() {
 
               {/* Exactly the Home hero's 570px infinity ribbon sizing. On mobile,
                   render it behind the text, without a separate visual block. */}
-              <div className="pointer-events-none absolute inset-x-0 top-[105px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
-                <div className="w-[112%] max-w-[520px] translate-x-[5%] opacity-65 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
+              <div className="pointer-events-none absolute inset-x-0 top-[165px] z-0 flex justify-center overflow-visible sm:top-[125px] lg:relative lg:inset-auto lg:z-auto lg:block">
+                <div className="w-full max-w-[420px] translate-x-0 opacity-40 sm:w-[90%] sm:max-w-[590px] sm:translate-x-[8%] lg:w-full lg:max-w-none lg:translate-x-0 lg:opacity-100">
                   <InfinityVisual />
                 </div>
               </div>
