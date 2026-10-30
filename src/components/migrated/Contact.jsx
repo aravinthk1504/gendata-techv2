@@ -328,7 +328,7 @@ function Contact() {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-[66px] sm:pt-36 sm:pb-28 lg:px-10 lg:pt-32 lg:pb-20"
+          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-[36px] sm:pt-36 sm:pb-28 lg:px-10 lg:pt-32 lg:pb-20"
         >
           {/* MAIN GLOW */}
 
