@@ -11,7 +11,7 @@ export default function Hero({ content, lang }) {
   const tags = t("hero.tags", { returnObjects: true });
 
   return (
-    <section className="relative flex min-h-[calc(100svh-8px)] items-start sm:items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-28 sm:pb-24 sm:pt-16 lg:px-10">
+    <section className="relative flex min-h-[calc(100svh-8px)] items-start sm:items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-36 sm:pb-24 sm:pt-16 lg:px-10">
       <AnimatedBackground />
       <NeuralBackground />
       <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center text-center">
@@ -22,7 +22,7 @@ export default function Hero({ content, lang }) {
           </span>
         </div>
 
-        <h1 className="max-w-[960px] font-heading text-[clamp(2rem,7.5vw,4.5rem)] sm:text-[clamp(2.25rem,8vw,4.5rem)] font-semibold leading-[1.09] tracking-[-0.045em] text-white">
+        <h1 className="max-w-[960px] font-heading text-[clamp(1.85rem,7vw,4.5rem)] sm:text-[clamp(2.25rem,8vw,4.5rem)] font-semibold leading-[1.09] tracking-[-0.045em] text-white">
           {t("hero.titleLine1")}
           <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
             {t("hero.titleLine2")}
