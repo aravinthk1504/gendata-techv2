@@ -6,6 +6,12 @@ import { db } from "../../../../../lib/firebase-admin";
 
 export const runtime="nodejs";
 const schema=z.object({
+ type:z.enum(["article","event"]).default("article"),
+ eventDate:z.string().max(30).default(""),
+ eventTime:z.string().max(50).default(""),
+ location:z.string().max(180).default(""),
+ eventMode:z.enum(["online","in-person","hybrid"]).default("online"),
+ registrationUrl:z.union([z.literal(""),z.url().refine(x=>x.startsWith("https://"))]).default(""),
  title:z.string().trim().min(5).max(180),category:z.string().trim().min(2).max(80),
  excerpt:z.string().trim().min(10).max(500),content:z.string().trim().min(30).max(50000),
  seoTitle:z.string().trim().max(180),seoDescription:z.string().trim().max(320),
