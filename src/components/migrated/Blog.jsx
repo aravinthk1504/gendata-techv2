@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams } from "next/navigation";
-import { useMemo, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import Link from "../layout/LocalizedLink"
 import { motion, useInView, useReducedMotion } from "motion/react"
 
@@ -16,7 +16,7 @@ import CommonCTA from "../layout/CommonCTA"
 
 
 
-const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","GenData Tech / Insights & Events":"GenData Tech / Einblicke & Veranstaltungen","Insights that inform.":"Einblicke, die informieren.","Events that connect.":"Veranstaltungen, die verbinden.","Explore Insights":"Einblicke entdecken","Featured insight.":"Ausgewählter Beitrag.","Insights & Events.":"Einblicke & Veranstaltungen.","No events published yet.":"Noch keine Veranstaltungen veröffentlicht.","Articles":"Artikel","Featured Insight":"Ausgewählter Beitrag","Events":"Veranstaltungen","Software":"Software","All":"Alle","Ideas":"Ideen","Featured":"Empfohlen","Learn • Share":"Lernen • Teilen"};
+const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","GenData Tech / Insights":"GenData Tech / Einblicke & Veranstaltungen","Insights that inform.":"Einblicke, die informieren.","Technology that inspires.":"Veranstaltungen, die verbinden.","Explore Insights":"Einblicke entdecken","Featured insight.":"Ausgewählter Beitrag.","Insights & Articles.":"Einblicke & Veranstaltungen.","No events published yet.":"Noch keine Veranstaltungen veröffentlicht.","Articles":"Artikel","Featured Insight":"Ausgewählter Beitrag","Events":"Veranstaltungen","Software":"Software","All":"Alle","Ideas":"Ideen","Featured":"Empfohlen","Learn • Share":"Lernen • Teilen"};
 
 function Blog({posts = []}) {
   const blogPosts = posts;
@@ -32,46 +32,21 @@ function Blog({posts = []}) {
   const reduceMotion = useReducedMotion()
   const heroShouldAnimate = heroInView && !reduceMotion
 
-  const [activeType, setActiveType] = useState("all")
-  const [activeCategory, setActiveCategory] = useState("All")
-
-
-  const typeFilteredPosts =
-    activeType === "all"
-      ? blogPosts
-      : blogPosts.filter(
-          (post) => post.type === activeType
-        )
-
-
-  const categories = useMemo(() => {
-    return [
-      "All",
-      ...new Set(
-        typeFilteredPosts.map(
-          (post) => post.category
-        )
-      ),
-    ]
-  }, [typeFilteredPosts])
-
-
-  const filteredPosts =
-    activeCategory === "All"
-      ? typeFilteredPosts
-      : typeFilteredPosts.filter(
-          (post) =>
-            post.category === activeCategory
-        )
-
-
-  const featuredPost = filteredPosts.find((post) => post.featured) || filteredPosts[0];
-
-  const handleTypeChange = (type) => {
-    setActiveType(type)
-    setActiveCategory("All")
-  }
-
+  const domains = ["All","AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
+  const [activeCategory,setActiveCategory]=useState("All");
+  const domainFor = (category="") => {
+    const v=category.toLowerCase();
+    if(/iot|internet of things|embedded|sensor/.test(v))return "IoT Solutions";
+    if(/full.?stack|mern|next.?js/.test(v))return "Full Stack Development";
+    if(/mobile|app develop|android|ios/.test(v))return "App Development";
+    if(/web|frontend|front.end|website/.test(v))return "Web Development";
+    if(/software|backend|api develop/.test(v))return "Software Development";
+    if(/data science|analytics|data analysis/.test(v))return "Data Science";
+    if(/\bai\b|artificial intelligence|machine learning|\bml\b|deep learning|agent|rag|llm/.test(v))return "AI & Machine Learning";
+    return "Technology Trends";
+  };
+  const filteredPosts=activeCategory==="All"?blogPosts:blogPosts.filter(post=>domainFor(post.category)===activeCategory);
+  const featuredPost=blogPosts.find(post=>post.featured)||blogPosts[0];
 
   return (
     <>
@@ -195,7 +170,7 @@ function Blog({posts = []}) {
                   className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
                   Explore technical articles, practical ideas,
-                  lectures, workshops and events from GenData Tech
+                  research and developments from GenData Tech
                   across AI, software, data and connected technology.
                 </motion.p>
 
@@ -289,7 +264,7 @@ function Blog({posts = []}) {
                     className: "right-3 top-7",
                   },
                   {
-                    label: "Events",
+                    label: "ML",
                     className: "bottom-12 left-1",
                   },
                   {
@@ -460,50 +435,9 @@ function Blog({posts = []}) {
             </div>
 
 
-            <div className="mt-10 flex flex-wrap items-center gap-2">
-              <span className="mr-3 text-xs font-semibold uppercase tracking-wider text-[#002DCC]">Filter by</span>
-              {[
-                { id: "all", label: "All" },
-                { id: "article", label: tr("Articles") },
-                { id: "event", label: "Events" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() =>
-                    handleTypeChange(item.id)
-                  }
-                  className={`rounded-full border px-5 py-2.5 font-body text-[10px] font-semibold transition ${
-                    activeType === item.id
-                      ? "border-[#06152C] bg-[#06152C] text-white"
-                      : "border-slate-200 bg-white text-slate-500 hover:border-[#057CFA]/40 hover:text-[#002DCC]"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+            <div className="mt-10 flex flex-wrap gap-2 border-b border-slate-200 pb-7">
+              {domains.map(domain=><button key={domain} type="button" onClick={()=>setActiveCategory(domain)} className={`rounded-full border px-4 py-2.5 font-body text-[11px] font-semibold transition ${activeCategory===domain?"border-[#057CFA] bg-[#057CFA] text-white":"border-slate-200 bg-white text-slate-600 hover:border-[#057CFA] hover:text-[#002DCC]"}`}>{domain}</button>)}
             </div>
-
-
-            <div className="mt-4 flex flex-wrap gap-2 border-b border-slate-200 pb-7">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() =>
-                    setActiveCategory(category)
-                  }
-                  className={`rounded-full px-4 py-2 font-body text-[10px] font-semibold transition ${
-                    activeCategory === category
-                      ? "bg-[#057CFA] text-white"
-                      : "border border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:text-[#002DCC]"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-
 
             <div className="mt-9">
               <p className="font-body text-xs text-slate-500">
@@ -533,11 +467,11 @@ function Blog({posts = []}) {
             ) : (
               <div className="mt-10 rounded-[24px] border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
                 <p className="font-heading text-lg font-semibold text-slate-900">
-                  {activeType==="event"?"No events published yet.":activeType==="article"?"No articles published yet.":"No content published yet."}
+                  "No articles in this category yet."
                 </p>
 
                 <p className="mx-auto mt-3 max-w-lg font-body text-sm leading-7 text-slate-500">
-                  Published {activeType==="event"?"events":activeType==="article"?"articles":"articles and events"} will appear here.
+                  New published articles will appear here.
                 </p>
               </div>
             )}
