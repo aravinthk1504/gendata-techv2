@@ -29,7 +29,15 @@ export async function POST(req){
   const auth=Buffer.from(`${key}:${secret}`).toString("base64");
   const result=await fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`,{method:"POST",headers:{Authorization:`Basic ${auth}`},body:payload,cache:"no-store",signal:AbortSignal.timeout(30000)});
   const data=await result.json();
-  if(!result.ok||!data.secure_url){console.error("Cloudinary upload rejected",result.status);return json({error:"Cloudinary upload failed. Check account settings and free-tier limits."},502)}
+  if(!result.ok||!data.secure_url){
+   const status=result.status;
+   console.error("Cloudinary upload rejected",status);
+   if(status===401)return json({error:"Cloudinary authentication failed (401). Verify that the Cloud Name, API Key and API Secret belong to the same Cloudinary environment."},502);
+   if(status===403)return json({error:"Cloudinary denied upload access (403). Check the API key role and write permissions for gendata-tech/articles and gendata-tech/events."},502);
+   if(status===400)return json({error:"Cloudinary rejected the upload parameters (400). Verify the media folder permissions and supported file format."},502);
+   if(status===420||status===429)return json({error:"Cloudinary rate limit or account usage limit reached. Check Cloudinary usage."},502);
+   return json({error:`Cloudinary upload failed (provider status ${status}). Check the Cloudinary account activity and server logs.`},502);
+  }
   return json({url:data.secure_url,publicId:data.public_id,width:data.width,height:data.height});
  }catch(e){console.error("Media upload failed",e.name||"unknown");return json({error:"Unable to upload image"},500)}
 }
