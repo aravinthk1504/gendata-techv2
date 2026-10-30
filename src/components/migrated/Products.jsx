@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
-import TechHeroSculpture from "../layout/TechHeroSculpture"
 
 import { useRef, useState } from "react";
 
@@ -523,7 +522,187 @@ function Products() {
                 }}
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                <TechHeroSculpture variant="products" animate={heroShouldAnimate}/>
+                {/* OUTER RING */}
+
+                <motion.div
+                  className="absolute h-[290px] w-[290px] rounded-full border border-white/[0.06]"
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          rotate: 360,
+                        }
+                      : {
+                          rotate: 0,
+                        }
+                  }
+                  transition={
+                    heroShouldAnimate
+                      ? {
+                          duration: 34,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }
+                      : {
+                          duration: 0.2,
+                        }
+                  }
+                >
+                  <div className="absolute left-1/2 top-[-4px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
+                </motion.div>
+
+                {/* INNER RING */}
+
+                <motion.div
+                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          rotate: -360,
+                        }
+                      : {
+                          rotate: 0,
+                        }
+                  }
+                  transition={
+                    heroShouldAnimate
+                      ? {
+                          duration: 25,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }
+                      : {
+                          duration: 0.2,
+                        }
+                  }
+                >
+                  <div className="absolute bottom-[18px] right-[14px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
+                </motion.div>
+
+                {/* CENTER */}
+
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          scale: [1, 1.035, 1],
+                        }
+                      : {
+                          scale: 1,
+                        }
+                  }
+                  transition={{
+                    duration: 3,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="relative z-10 flex h-[125px] w-[125px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.14)]"
+                >
+                  <FiGrid className="text-xl text-[#057CFA]" />
+
+                  <span className="mt-2 font-heading text-sm font-semibold text-white">
+                    Products
+                  </span>
+
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
+                    GenData Tech
+                  </span>
+                </motion.div>
+
+                {/* LMS */}
+
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          y: [0, -6, 0],
+                        }
+                      : {
+                          y: 0,
+                        }
+                  }
+                  transition={{
+                    duration: 4,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
+                    LMS
+                  </p>
+                </motion.div>
+
+                {/* CRM */}
+
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          x: [0, 5, 0],
+                        }
+                      : {
+                          x: 0,
+                        }
+                  }
+                  transition={{
+                    duration: 4.5,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
+                    CRM
+                  </p>
+                </motion.div>
+
+                {/* ERP */}
+
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          y: [0, 6, 0],
+                        }
+                      : {
+                          y: 0,
+                        }
+                  }
+                  transition={{
+                    duration: 5,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
+                    ERP
+                  </p>
+                </motion.div>
+
+                {/* BILLING */}
+
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          x: [0, -5, 0],
+                        }
+                      : {
+                          x: 0,
+                        }
+                  }
+                  transition={{
+                    duration: 4.8,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute left-5 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-body text-[9px] font-semibold text-slate-200">
+                    Billing
+                  </p>
+                </motion.div>
               </motion.div>
             </div>
           </div>
