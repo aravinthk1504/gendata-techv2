@@ -12,6 +12,13 @@ function inline(source){
 }
 export default function MarkdownContent({content}){
  return <div className="space-y-4 text-base leading-8 text-slate-700">{String(content||"").split(/\r?\n/).map((line,i)=>{
+  const image = line.trim().match(/^!\[([^\]]{1,200})\]\((https:\/\/[^\s)]+)\)$/);
+  if(image){
+    return <figure key={i} className="my-8">
+      <img src={image[2]} alt={image[1]} loading="lazy" decoding="async" className="mx-auto h-auto max-h-[680px] w-auto max-w-full rounded-2xl border border-slate-100 object-contain shadow-sm"/>
+      <figcaption className="mt-3 text-center text-sm text-slate-500">{image[1]}</figcaption>
+    </figure>;
+  }
   if(line.startsWith("### "))return <h3 key={i} className="pt-3 text-xl font-bold text-[#081b3a]">{inline(line.slice(4))}</h3>;
   if(line.startsWith("## "))return <h2 key={i} className="pt-4 text-2xl font-bold text-[#081b3a]">{inline(line.slice(3))}</h2>;
   if(line.startsWith("# "))return <h2 key={i} className="pt-4 text-3xl font-bold text-[#081b3a]">{inline(line.slice(2))}</h2>;
