@@ -522,134 +522,21 @@ function Products() {
                 }}
                 className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                {/* Product modules and connected workflows */}
-                <div className="absolute inset-12 rounded-3xl border border-[#057CFA]/20 bg-[#057CFA]/5" />
-                {[0,1,2].map((n)=><motion.div key={n} className="absolute left-1/2 top-1/2 h-px w-[240px] origin-left bg-gradient-to-r from-[#057CFA]/60 to-transparent" style={{rotate:n*60}} animate={heroShouldAnimate?{opacity:[0.3,0.9,0.3]}:{opacity:0.45}} transition={{duration:3,delay:n*0.7,repeat:heroShouldAnimate?Infinity:0}}/>)}
-                {/* CENTER */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          scale: [1, 1.035, 1],
-                        }
-                      : {
-                          scale: 1,
-                        }
-                  }
-                  transition={{
-                    duration: 3,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10 flex h-[125px] w-[125px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.14)]"
-                >
-                  <FiGrid className="text-xl text-[#057CFA]" />
-
-                  <span className="mt-2 font-heading text-sm font-semibold text-white">
-                    Products
-                  </span>
-
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    GenData Tech
-                  </span>
-                </motion.div>
-
-                {/* LMS */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, -6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    LMS
-                  </p>
-                </motion.div>
-
-                {/* CRM */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, 5, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    CRM
-                  </p>
-                </motion.div>
-
-                {/* ERP */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, 6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    ERP
-                  </p>
-                </motion.div>
-
-                {/* BILLING */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, -5, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.8,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute left-5 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Billing
-                  </p>
-                </motion.div>
+                {/* Product dashboard preview — distinct from Contact's message flow */}
+                <div className="relative w-[390px] max-w-full overflow-hidden rounded-2xl border border-cyan-400/25 bg-[#07182f] p-4 shadow-[0_25px_90px_rgba(5,124,250,0.15)]">
+                  <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+                    <div className="flex gap-1.5"><span className="h-2 w-2 rounded-full bg-cyan-400"/><span className="h-2 w-2 rounded-full bg-blue-500/60"/><span className="h-2 w-2 rounded-full bg-white/20"/></div>
+                    <span className="text-[10px] font-semibold tracking-[0.2em] text-cyan-200">GENDATA / PRODUCTS</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {["LMS","CRM","ERP","Billing"].map((product,i)=><motion.div key={product} className="rounded-xl border border-white/10 bg-white/[0.04] p-4" animate={heroShouldAnimate?{borderColor:["rgba(255,255,255,0.1)","rgba(5,124,250,0.65)","rgba(255,255,255,0.1)"],y:[0,-3,0]}:{}} transition={{duration:3.6,delay:i*0.65,repeat:heroShouldAnimate?Infinity:0}}>
+                      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#057CFA]/20"><FiGrid className="text-sm text-cyan-300"/></div>
+                      <span className="text-sm font-semibold text-white">{product}</span>
+                      <div className="mt-3 h-1.5 rounded-full bg-white/10"><motion.div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" initial={{width:"20%"}} animate={heroShouldAnimate?{width:["25%","85%","25%"]}:{width:"65%"}} transition={{duration:5,delay:i*0.6,repeat:heroShouldAnimate?Infinity:0}}/></div>
+                    </motion.div>)}
+                  </div>
+                  <div className="mt-3 flex items-center justify-between rounded-lg border border-cyan-500/15 bg-[#057CFA]/10 px-3 py-2"><span className="text-[10px] text-slate-300">Connected product ecosystem</span><motion.span className="h-2 w-2 rounded-full bg-cyan-400" animate={heroShouldAnimate?{opacity:[0.3,1,0.3]}:{opacity:1}} transition={{duration:2,repeat:heroShouldAnimate?Infinity:0}}/></div>
+                </div>
               </motion.div>
             </div>
           </div>
