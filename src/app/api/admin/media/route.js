@@ -25,7 +25,7 @@ export async function POST(req){
   const kind=form.get("kind")==="event"?"events":"articles";
   const payload=new FormData();
   payload.set("file",new Blob([bytes],{type:file.type}),"upload-image");
-  payload.set("folder",`gendata-tech/${kind}`);
+  payload.set("asset_folder",`gendata-tech/${kind}`);
   const auth=Buffer.from(`${key}:${secret}`).toString("base64");
   const result=await fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`,{method:"POST",headers:{Authorization:`Basic ${auth}`},body:payload,cache:"no-store",signal:AbortSignal.timeout(30000)});
   const data=await result.json();
