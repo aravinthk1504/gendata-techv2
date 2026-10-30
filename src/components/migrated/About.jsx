@@ -496,34 +496,8 @@ function About() {
                 className="relative mx-auto w-full max-w-[470px]"
               >
                 <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[340px]">
-                  {/* BACKGROUND RING */}
-
-                  <motion.div
-                    className="absolute h-[330px] w-[330px] rounded-full border border-white/[0.05]"
-                    animate={
-                      heroShouldAnimate
-                        ? {
-                            rotate: 360,
-                          }
-                        : {
-                            rotate: 0,
-                          }
-                    }
-                    transition={
-                      heroShouldAnimate
-                        ? {
-                            duration: 35,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }
-                        : {
-                            duration: 0.2,
-                          }
-                    }
-                  >
-                    <div className="absolute left-1/2 top-[-4px] h-2 w-2 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_16px_rgba(5,124,250,0.9)]" />
-                  </motion.div>
-
+                  {/* Layered company capabilities; no rotating orbit */}
+                  <div className="pointer-events-none absolute inset-6 rounded-3xl border border-[#057CFA]/10 bg-[#057CFA]/5" />
                   {/* STACK */}
 
                   <div className="relative z-10 flex w-full max-w-[330px] flex-col gap-3">
