@@ -899,40 +899,8 @@ function Training() {
                 }}
                 className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                <motion.div
-                  className="absolute h-[295px] w-[295px] rounded-full border border-white/[0.06]"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: 360,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 35,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "linear",
-                  }}
-                >
-                  <div className="absolute left-1/2 top-[-5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-                <motion.div
-                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: -360,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 26,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "linear",
-                  }}
-                />
-
+                {/* Learning progression steps */}
+                {[0,1,2,3].map(i=><motion.div key={i} className="absolute h-14 w-14 rounded-xl border border-[#057CFA]/30 bg-[#057CFA]/10" style={{left:`${12+i*19}%`,top:`${62-i*12}%`}} animate={heroShouldAnimate?{y:[0,-8,0],opacity:[0.5,1,0.5]}:{opacity:0.8}} transition={{duration:3,delay:i*0.4,repeat:heroShouldAnimate?Infinity:0}}><span className="flex h-full items-center justify-center text-xs font-bold text-cyan-200">{String(i+1).padStart(2,"0")}</span></motion.div>)}
                 <div className="relative z-10 flex h-[130px] w-[130px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.15)]">
                   <FiBookOpen className="text-2xl text-[#057CFA]" />
 
