@@ -7,14 +7,15 @@ export default function BlogManager(){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
  const [preview,setPreview]=useState(false);
+ const [section,setSection]=useState("content");
  const [deleting,setDeleting]=useState(null);
  const [uploading,setUploading]=useState(false);
  const [busy,setBusy]=useState(false),[error,setError]=useState(""),[notice,setNotice]=useState("");
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
  useEffect(()=>{load()},[]);
  function field(name,value){setForm(v=>({...v,[name]:value}))}
- function edit(item){setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("")}
- function reset(){setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("")}
+ function edit(item){setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
+ function reset(){setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
  async function removeEntry(item){
   if(!item||busy||uploading)return;
   setDeleting(item.id);setError("");setNotice("");
@@ -49,24 +50,60 @@ export default function BlogManager(){
    setNotice(editing?`${contentType==="event"?"Event":"Article"} updated`:`${contentType==="event"?"Event":"Article"} created`);await load();setEditing(data.id||editing);
   }catch(e){setError(e.message)}finally{setBusy(false)}
  }
- return <section className="mt-6 flex flex-col gap-6">
- <div className="rounded-3xl border border-slate-200 bg-white p-6">
-  <div className="flex items-center justify-between gap-3"><h2 className="text-lg font-bold">{contentType==="event"?"Event management":"Article management"}</h2><button onClick={reset} className="rounded-full bg-[#057cfa] px-4 py-2 text-xs font-semibold text-white">{contentType==="event"?"New event":"New article"}</button></div>
-  <p className="mt-2 text-xs text-slate-500">Manage {contentType==="event"?"events and galleries":"blog articles"} independently. Published content appears on the public website.</p>
-  <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{items.filter(item=>(item.type||"article")===contentType).length?items.filter(item=>(item.type||"article")===contentType).map(item=><div key={item.id} className={`flex items-center gap-2 rounded-xl border p-3 ${editing===item.id?"border-[#057cfa] bg-blue-50":"border-slate-200"}`}><button type="button" onClick={()=>edit(item)} className="min-w-0 flex-1 text-left"><span className="block font-semibold">{item.title}</span><span className="mt-1 block text-xs text-slate-500">{item.type==="event"?"Event":"Article"} · {item.category} · {item.language.toUpperCase()} · {item.status}</span></button><button type="button" disabled={Boolean(deleting)} onClick={()=>{if(window.confirm(`Permanently delete "${item.title}"? This removes the Firestore entry and unpublishes it. Images remain in Cloudinary.`))removeEntry(item)}} title="Delete" aria-label={`Delete ${item.title}`} className="rounded-lg border border-red-200 bg-red-50 p-2.5 text-red-600 hover:bg-red-100 disabled:opacity-50"><FiTrash2 size={16}/></button></div>):<p className="text-sm text-slate-500">No CMS articles yet.</p>}</div>
- </div>
- <form onSubmit={save} className="rounded-3xl border border-slate-200 bg-white p-6">
-  <h2 className="text-lg font-bold">{editing?`Edit ${contentType}`:`Create ${contentType}`}</h2>
-  <p className="mt-1 text-xs text-slate-500">Write in Markdown, preview, then save a draft or publish.</p>
-  <div className="mt-5 grid gap-5 md:grid-cols-2"><label className="text-sm font-semibold">Content type<select value={contentType} disabled className="mt-2 w-full rounded-xl border border-slate-200 p-3"><option value="article">Article</option></select></label>   {[["title","Title"],["slug","URL slug"],["category","Category"],["excerpt","Summary / excerpt"],["seoTitle","SEO title"],["seoDescription","SEO description"],["image","HTTPS cover image URL"],["imageAlt","Image description (alt text)"]].map(([name,label])=><label key={name} className={`block text-sm font-semibold ${["title","excerpt","image"].includes(name)?"md:col-span-2":""}`}>{label}<input required={["title","slug","category","excerpt"].includes(name)} disabled={!!editing&&name==="slug"} value={form[name]} onChange={e=>field(name,e.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm font-normal"/></label>)}
-   <div><p className="mb-2 text-sm font-semibold text-slate-700">Cover photo</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#002dcc]"><FiUpload size={17}/> {uploading?"Uploading…":"Upload cover image"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
-   {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-48 w-auto rounded-xl object-contain"/>}
-   <div className="flex flex-wrap items-center justify-between gap-2 md:col-span-2"><span className="text-sm font-semibold">Article content (Markdown)</span><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit content":"Preview article"}</button></div><div className="md:col-span-2">{preview?<div className="min-h-60 rounded-xl border border-slate-200 p-5 md:col-span-2">{form.image&&<img src={form.image} alt={form.imageAlt||form.title} className="mb-5 w-full rounded-xl object-cover"/>}<h2 className="mb-3 text-2xl font-bold">{form.title||"Untitled article"}</h2><p className="mb-5 text-slate-500">{form.excerpt}</p><MarkdownContent content={form.content}/></div>:<><div className="flex flex-wrap gap-2 md:col-span-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Insert Image / Diagram","![Diagram description](https://example.com/diagram.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>field("content",form.content+(form.content?"\n":"")+snippet)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div><textarea aria-label="Article content" required minLength={30} rows={12} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here using Markdown..."/></>}</div>
-   <div><p className="mb-2 text-sm font-semibold text-slate-700">Photos and diagrams inside the content</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border-2 border-[#057cfa] bg-blue-50 px-5 py-3 text-sm font-semibold text-[#003cba] transition hover:bg-blue-100"><FiUpload size={17}/> {uploading?"Uploading…":"Upload photo / diagram"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"inline");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
-      {uploading&&<p role="status" className="text-sm text-blue-600">Uploading image…</p>}
-   <div className="grid grid-cols-2 gap-4 md:col-span-2"><label className="text-sm font-semibold">Language<select disabled={!!editing} value={form.language} onChange={e=>field("language",e.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 p-3"><option value="en">English</option><option value="de">German</option></select></label><label className="text-sm font-semibold">Status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option></select></label></div>
-   {error&&<p role="alert" className="text-sm text-red-700">{error}</p>}{notice&&<p role="status" className="text-sm text-green-700">{notice}</p>}
-   <button disabled={busy||uploading} type="submit" className="md:col-span-2 rounded-full bg-[#057cfa] px-6 py-3 text-sm font-semibold text-white disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Create article"}</button>
+ return <section className="mt-6 space-y-5">
+ <div className="rounded-3xl border border-slate-200 bg-white p-5">
+  <div className="flex flex-wrap items-center justify-between gap-3">
+   <div><h2 className="text-lg font-bold">Blog Management</h2><p className="mt-1 text-xs text-slate-500">Select an article to edit, or start a new one.</p></div>
+   <button type="button" onClick={reset} className="rounded-full bg-[#057cfa] px-5 py-2 text-sm font-semibold text-white">+ New article</button>
   </div>
- </form></section>;
+  <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">{items.filter(item=>(item.type||"article")==="article").length?items.filter(item=>(item.type||"article")==="article").map(item=><div key={item.id} className={"flex min-w-0 items-center gap-2 rounded-xl border p-3 "+(editing===item.id?"border-[#057cfa] bg-blue-50":"border-slate-200")}>
+   <button type="button" onClick={()=>edit(item)} className="min-w-0 flex-1 text-left"><span className="block truncate text-sm font-semibold">{item.title}</span><span className="mt-1 block text-xs text-slate-500">{item.category} · {item.language.toUpperCase()} · {item.status}</span></button>
+   <button type="button" disabled={Boolean(deleting)||busy||uploading} onClick={()=>{if(window.confirm('Permanently delete "'+item.title+'"? The entry will be deleted, but Cloudinary images will remain.'))removeEntry(item)}} aria-label={"Delete "+item.title} className="rounded-lg border border-red-200 bg-red-50 p-2 text-red-600 disabled:opacity-50"><FiTrash2 size={16}/></button>
+  </div>):<p className="text-sm text-slate-500">No blog articles yet.</p>}</div>
+ </div>
+ <form onSubmit={save} noValidate className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
+  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
+   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p></div>
+   <button disabled={busy||uploading} type="submit" className="rounded-full bg-[#057cfa] px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
+  </div>
+  <div className="flex flex-wrap gap-2 border-b border-slate-100 px-5 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
+   {[["content","Content"],["media","Images"],["seo","SEO & Publishing"]].map(([id,name])=><button key={id} type="button" role="tab" aria-selected={section===id} onClick={()=>setSection(id)} className={"rounded-full px-4 py-2 text-sm font-semibold "+(section===id?"bg-[#057cfa] text-white":"bg-slate-100 text-slate-600 hover:bg-slate-200")}>{name}</button>)}
+  </div>
+  <div className="px-5 py-5 sm:px-6">
+   <div className={section==="content"?"space-y-4":"hidden"}>
+    <div className="grid gap-4 md:grid-cols-2">
+     <label className="text-sm font-semibold md:col-span-2">Article title<input required minLength={5} value={form.title} onChange={e=>field("title",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal" placeholder="Enter a clear article title"/></label>
+     <label className="text-sm font-semibold">URL slug<input required disabled={!!editing} value={form.slug} onChange={e=>field("slug",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal disabled:bg-slate-100"/></label>
+     <label className="text-sm font-semibold">Category<input required value={form.category} onChange={e=>field("category",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+     <label className="text-sm font-semibold md:col-span-2">Short summary<textarea required rows={2} value={form.excerpt} onChange={e=>field("excerpt",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+    </div>
+    <div className="flex items-center justify-between gap-3"><h3 className="text-sm font-bold">Article body (Markdown)</h3><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit":"Preview"}</button></div>
+    {preview?<div className="max-h-[480px] overflow-auto rounded-xl border border-slate-200 p-5"><h2 className="mb-3 text-2xl font-bold">{form.title||"Untitled article"}</h2><p className="mb-5 text-slate-500">{form.excerpt}</p><MarkdownContent content={form.content}/></div>:<>
+     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}))} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
+     <textarea aria-label="Article content" required minLength={30} rows={9} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here..."/>
+    </>}
+   </div>
+   <div className={section==="media"?"space-y-4":"hidden"}>
+    <div className="grid gap-4 sm:grid-cols-2">
+     <div><p className="mb-2 text-sm font-semibold">Cover image</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white"><FiUpload size={17}/>{uploading?"Uploading…":"Upload cover photo"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
+     {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-36 w-full rounded-xl object-contain"/>}
+     <label className="text-sm font-semibold sm:col-span-2">Cover image URL<input value={form.image} onChange={e=>field("image",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal" placeholder="https://..."/></label>
+     <label className="text-sm font-semibold sm:col-span-2">Image description (alt text)<input value={form.imageAlt} onChange={e=>field("imageAlt",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+    </div>
+    <div className="border-t border-slate-100 pt-4"><p className="mb-2 text-sm font-semibold">Insert photo or diagram into the article</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border-2 border-[#057cfa] bg-blue-50 px-5 py-3 text-sm font-semibold text-[#003cba]"><FiUpload size={17}/>{uploading?"Uploading…":"Upload inline image"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"inline");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">Inserted into Markdown content automatically. Save the article afterwards.</p></div>
+   </div>
+   <div className={section==="seo"?"space-y-4":"hidden"}>
+    <div className="grid gap-4 md:grid-cols-2">
+     <label className="text-sm font-semibold md:col-span-2">SEO title<input value={form.seoTitle} onChange={e=>field("seoTitle",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+     <label className="text-sm font-semibold md:col-span-2">SEO description<textarea rows={3} value={form.seoDescription} onChange={e=>field("seoDescription",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
+     <label className="text-sm font-semibold">Language<select disabled={!!editing} value={form.language} onChange={e=>field("language",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="en">English</option><option value="de">German</option></select></label>
+     <label className="text-sm font-semibold">Publishing status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option></select></label>
+    </div>
+   </div>
+   {uploading&&<p role="status" className="mt-4 text-sm text-blue-600">Uploading image…</p>}
+   {error&&<p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
+   {notice&&<p role="status" className="mt-4 rounded-xl bg-green-50 p-3 text-sm text-green-700">{notice}</p>}
+  </div>
+ </form>
+ </section>;
 }
