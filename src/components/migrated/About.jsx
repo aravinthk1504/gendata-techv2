@@ -1,6 +1,7 @@
 "use client"
 
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
+import CountUpStat from "../layout/CountUpStat"
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
@@ -92,17 +93,17 @@ function About() {
 
   const companyStats = [
     {
-      value: "2",
+      value: 2,
       label: tr("Clients"),
       description: tr("Client relationship"),
     },
     {
-      value: "1",
+      value: 1,
       label: tr("Project"),
       description: tr("Project delivered"),
     },
     {
-      value: "2",
+      value: 2,
       label: tr("Years"),
       description: tr("Building GenData Tech"),
     },
@@ -698,7 +699,7 @@ function About() {
                 >
                   <div className="flex items-end gap-3">
                     <span className="font-heading text-5xl font-semibold tracking-[-0.05em] text-slate-950 lg:text-6xl">
-                      {stat.value}
+                      <CountUpStat value={stat.value}/>
                     </span>
 
                     <span className="pb-1 font-heading text-sm font-semibold text-[#057CFA]">
