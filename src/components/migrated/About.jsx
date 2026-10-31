@@ -467,129 +467,44 @@ function About() {
                 </motion.div>
               </div>
 
-              {/* ==================================================
-                  HERO INTELLIGENCE STACK
-              ================================================== */}
-
+              {/* Company identity showcase — calm, credible and intentionally minimal */}
               <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 1,
-                        scale: 0.96,
-                      }
-                }
-                transition={{
-                  duration: 0.7,
-                  delay: 0.16,
-                }}
+                initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.7, delay: 0.15, ease: "easeOut" }}
                 className="relative mx-auto w-full max-w-[470px]"
               >
-                <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[340px]">
-                  {/* BACKGROUND RING */}
-
-                  <motion.div
-                    className="absolute h-[330px] w-[330px] rounded-full border border-white/[0.05]"
-                    animate={
-                      heroShouldAnimate
-                        ? {
-                            rotate: 360,
-                          }
-                        : {
-                            rotate: 0,
-                          }
-                    }
-                    transition={
-                      heroShouldAnimate
-                        ? {
-                            duration: 35,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }
-                        : {
-                            duration: 0.2,
-                          }
-                    }
-                  >
-                    <div className="absolute left-1/2 top-[-4px] h-2 w-2 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_16px_rgba(5,124,250,0.9)]" />
-                  </motion.div>
-
-                  {/* STACK */}
-
-                  <div className="relative z-10 flex w-full max-w-[330px] flex-col gap-3">
-                    {[
-                      {
-                        number: "04",
-                        label: "Intelligence",
-                        sub: "Decision & reasoning",
-                      },
-                      {
-                        number: "03",
-                        label: "AI & Automation",
-                        sub: "Models, agents & workflows",
-                      },
-                      {
-                        number: "02",
-                        label: tr("Digital Products"),
-                        sub: "Platforms & applications",
-                      },
-                      {
-                        number: "01",
-                        label: "Engineering Systems",
-                        sub: "Software, mobile & IoT",
-                      },
-                    ].map((layer, index) => (
+                <div className="relative overflow-hidden rounded-[26px] border border-white/15 bg-gradient-to-br from-[#102a47] via-[#091d34] to-[#061326] px-6 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.24)] sm:px-9 sm:py-10">
+                  <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#057CFA]/10 blur-[76px]" />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(130deg,transparent 47%,#80dfff 50%,transparent 53%)", backgroundSize: "32px 32px" }} />
+                  <div className="relative">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="font-body text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">GenData Tech</span>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/[0.07] text-cyan-300" aria-hidden="true"><FiLayers size={20} /></span>
+                    </div>
+                    <div className="relative mt-7 h-px overflow-hidden bg-white/10">
                       <motion.div
-                        key={layer.number}
-                        animate={
-                          heroShouldAnimate
-                            ? {
-                                x: index % 2 === 0 ? [0, 5, 0] : [0, -5, 0],
-                              }
-                            : {
-                                x: 0,
-                              }
-                        }
-                        transition={
-                          heroShouldAnimate
-                            ? {
-                                duration: 4 + index * 0.6,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                              }
-                            : {
-                                duration: 0.2,
-                              }
-                        }
-                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#06152C]/90 px-5 py-4 backdrop-blur-sm"
-                      >
-                        <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-transparent via-[#057CFA] to-transparent" />
-
-                        <div className="flex items-center justify-between gap-5">
-                          <div>
-                            <p className="font-heading text-sm font-semibold text-white">
-                              {layer.label}
-                            </p>
-
-                            <p className="mt-1 font-body text-[10px] text-slate-300">
-                              {layer.sub}
-                            </p>
-                          </div>
-
-                          <span className="font-heading text-[10px] font-semibold text-[#057CFA]">
-                            {layer.number}
-                          </span>
-                        </div>
-                      </motion.div>
-                    ))}
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#057CFA] to-cyan-300"
+                        initial={reduceMotion ? false : { scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        style={{ transformOrigin: "left" }}
+                        transition={{ duration: reduceMotion ? 0 : 1, delay: 0.42, ease: "easeOut" }}
+                      />
+                    </div>
+                    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.65, delay: 0.45 }}>
+                      <p className="mt-9 max-w-[370px] font-heading text-[clamp(1.65rem,3vw,2.25rem)] font-semibold leading-[1.2] tracking-[-0.035em] text-white">
+                        {lang === "de" ? "Auf Vertrauen gebaut. Von Innovation angetrieben." : "Built on trust. Driven by innovation."}
+                      </p>
+                      <p className="mt-5 max-w-[360px] font-body text-sm leading-7 text-slate-300">
+                        {lang === "de" ? "Praxisnahe Technologielösungen mit einem klaren Anspruch an Qualität, Transparenz und nachhaltigen Mehrwert." : "Engineering practical technology solutions with a commitment to quality, clarity, and meaningful results."}
+                      </p>
+                    </motion.div>
+                    <div className="mt-9 flex items-center gap-3">
+                      <div className="h-[2px] w-9 rounded-full bg-cyan-300" aria-hidden="true" />
+                      <span className="font-body text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
+                        {lang === "de" ? "Gegründet 2025" : "Established 2025"}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
