@@ -818,15 +818,15 @@ function About() {
 
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  {lang === "de" ? "Unsere Grundsätze" : "Our Principles"}
+                  {lang === "de" ? "Warum GenData Tech" : "Why Choose GenData Tech"}
                 </p>
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  {lang === "de" ? "Wie wir Technologie verstehen." : "How we think about technology."}
+                  {lang === "de" ? "Was uns auszeichnet." : "Why choose us."}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-900">
-                  {lang === "de" ? "Klare Grundsätze prägen unseren Umgang mit Technologie,\n                  Produkten und Problemlösungen." : "A small set of principles guides how we approach technology,\n                  products and problem solving."}
+                  {lang === "de" ? "Wir verbinden praxisorientierte KI, durchdachtes Engineering und klare Lösungen für reale Anforderungen." : "Practical AI, thoughtful engineering and solutions built around real requirements define our approach."}
                 </p>
               </div>
 
