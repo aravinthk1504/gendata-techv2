@@ -243,29 +243,26 @@ function About() {
   const journey = [
     {
       number: "01",
-      year: "2024",
+      year: "2025",
       label: tr("Started"),
       title: tr("The beginning of GenData Tech"),
-      description:
-        tr("GenData Tech began with a focus on building technology around AI, data and practical digital solutions."),
+      description: tr("GenData Tech began with a focus on building technology around AI, data and practical digital solutions."),
     },
-
     {
       number: "02",
-      year: "2025",
+      year: "2026",
       label: tr("Built"),
       title: tr("Our first client and project"),
-      description:
-        tr("The journey moved from ideas into real delivery through our first client relationship and completed project."),
+      description: tr("The journey moved from ideas into real delivery through our first client relationship and completed project."),
     },
-
     {
       number: "03",
-      year: "2026",
-      label: tr("Now"),
-      title: tr("Expanding our AI-focused direction"),
-      description:
-        tr("Today we are strengthening our focus on AI systems, automation, digital products, engineering and technology training."),
+      year: "2027",
+      label: lang === "de" ? "Ausblick" : "Looking Ahead",
+      title: lang === "de" ? "Unsere nächsten Schritte" : "Our next chapter",
+      description: lang === "de"
+        ? "Wir wollen unsere Kompetenzen in KI, Automatisierung, Softwareentwicklung und praxisorientierter Weiterbildung weiter ausbauen."
+        : "We plan to expand our capabilities in AI, automation, software engineering and practical technology training.",
     },
   ];
 
