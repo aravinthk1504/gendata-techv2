@@ -49,6 +49,14 @@ function Products() {
   const reduceMotion = useReducedMotion();
 
   const heroShouldAnimate = heroInView && !reduceMotion;
+  const [heroProductIndex, setHeroProductIndex] = useState(0);
+  const heroProductPreviews = [
+    { name: "LMS", title: "Learning Management", metrics: [{ label: "Sample course modules", value: "08" }, { label: "Learning paths", value: "04" }], rows: [{ label: "Course Management", action: "Manage" }, { label: "Student Progress", action: "Track" }, { label: "Learning Resources", action: "View" }] },
+    { name: "CRM", title: "Customer Relationship", metrics: [{ label: "Sample contacts", value: "128" }, { label: "Lead pipelines", value: "04" }], rows: [{ label: "Customer Records", action: "Manage" }, { label: "Lead Pipeline", action: "Track" }, { label: "Follow-ups", action: "Review" }] },
+    { name: "ERP", title: "Enterprise Management", metrics: [{ label: "Business units", value: "04" }, { label: "Workflows", value: "12" }], rows: [{ label: "Operations", action: "Manage" }, { label: "Inventory", action: "Track" }, { label: "Team Activities", action: "View" }] },
+    { name: "Billing", title: "Billing & Invoicing", metrics: [{ label: "Sample invoices", value: "48" }, { label: "Sample revenue", value: "₹24K" }], rows: [{ label: "Invoice Creation", action: "Create" }, { label: "Payment Records", action: "Track" }, { label: "Customer Billing", action: "Manage" }] },
+    { name: "IoT", title: "IoT Device Monitoring", sensors: [{ label: "Temperature", value: "26.4°" }, { label: "Humidity", value: "62%" }, { label: "Devices", value: "04" }] },
+  ];
 
   /* ======================================================
       FAQ
@@ -496,213 +504,74 @@ function Products() {
                 </motion.div>
               </div>
 
-              {/* ==================================================
-                  PRODUCT HERO VISUAL
-              ================================================== */}
 
+              {/* Interactive product portfolio — conceptual interfaces, not live product data */}
               <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 1,
-                        scale: 0.96,
-                      }
-                }
-                transition={{
-                  duration: 0.65,
-                  delay: 0.15,
-                }}
-                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.6, delay: 0.15 }}
+                className="relative mx-auto w-full min-w-0 max-w-[470px] lg:justify-self-center"
               >
-                {/* OUTER RING */}
-
-                <motion.div
-                  className="absolute h-[290px] w-[290px] rounded-full border border-white/[0.06]"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: 360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 34,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute left-1/2 top-[-4px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-                </motion.div>
-
-                {/* INNER RING */}
-
-                <motion.div
-                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          rotate: -360,
-                        }
-                      : {
-                          rotate: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 25,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                >
-                  <div className="absolute bottom-[18px] right-[14px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
-                </motion.div>
-
-                {/* CENTER */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          scale: [1, 1.035, 1],
-                        }
-                      : {
-                          scale: 1,
-                        }
-                  }
-                  transition={{
-                    duration: 3,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10 flex h-[125px] w-[125px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.14)]"
-                >
-                  <FiGrid className="text-xl text-[#057CFA]" />
-
-                  <span className="mt-2 font-heading text-sm font-semibold text-white">
-                    Products
-                  </span>
-
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    GenData Tech
-                  </span>
-                </motion.div>
-
-                {/* LMS */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, -6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    LMS
-                  </p>
-                </motion.div>
-
-                {/* CRM */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, 5, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    CRM
-                  </p>
-                </motion.div>
-
-                {/* ERP */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, 6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    ERP
-                  </p>
-                </motion.div>
-
-                {/* BILLING */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, -5, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.8,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute left-5 top-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Billing
-                  </p>
-                </motion.div>
+                <div className="overflow-hidden rounded-xl border border-[#244762] bg-[#08192e] shadow-[0_24px_65px_rgba(0,0,0,0.35)]">
+                  <div className="flex h-10 items-center justify-between border-b border-[#284057] bg-[#0c223c] px-3">
+                    <div className="flex gap-1" aria-hidden="true"><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/></div>
+                    <span className="font-body text-[11px] font-semibold text-white">GenData <span className="text-cyan-300">Products</span></span>
+                    <span className="text-cyan-300" aria-hidden="true">◇</span>
+                  </div>
+                  <div className="min-h-[228px] p-4" aria-live="polite">
+                    <motion.div key={heroProductIndex} initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.32 }}>
+                      <div className="mb-4 flex items-center justify-between gap-2">
+                        <span className="font-heading text-xs font-semibold text-white">{heroProductPreviews[heroProductIndex].title}</span>
+                        <span className="shrink-0 font-body text-[9px] uppercase tracking-wide text-cyan-300">{heroProductIndex === 4 ? "Future concept" : "Concept preview"}</span>
+                      </div>
+                      {heroProductIndex === 4 ? (
+                        <>
+                          <div className="grid grid-cols-3 gap-2">
+                            {heroProductPreviews[4].sensors.map((item) => (
+                              <div key={item.label} className="rounded-lg border border-[#22536f] bg-[#102d43] px-2 py-3 text-center">
+                                <p className="font-body text-[9px] text-slate-300">{item.label}</p>
+                                <p className="mt-2 font-heading text-base font-semibold text-cyan-200">{item.value}</p>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-4 flex h-[65px] items-end gap-2 border-b border-[#2d506a] px-2">
+                            {[35, 51, 43, 65, 56, 76, 59, 87].map((height, i) => (
+                              <motion.div key={i} className="flex-1 rounded-t-sm bg-gradient-to-t from-[#1257a9] to-[#57d8f5]" initial={reduceMotion ? false : { height: 0 }} animate={{ height: height + "%" }} transition={{ duration: reduceMotion ? 0 : 0.6, delay: i * 0.05 }}/>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="grid grid-cols-2 gap-2">
+                            {heroProductPreviews[heroProductIndex].metrics.map((metric) => (
+                              <div key={metric.label} className="rounded-lg border border-[#2a435b] bg-[#102a43] p-3">
+                                <p className="font-body text-[10px] text-slate-300">{metric.label}</p>
+                                <p className="mt-1.5 font-heading text-xl font-semibold text-white">{metric.value}</p>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-3">
+                            {heroProductPreviews[heroProductIndex].rows.map((row) => (
+                              <div key={row.label} className="flex items-center justify-between gap-3 border-b border-[#213c55] py-2">
+                                <span className="font-body text-[11px] text-slate-200">{row.label}</span>
+                                <span className="rounded border border-[#29677e] bg-[#113f57] px-2 py-1 font-body text-[9px] text-cyan-200">{row.action}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </motion.div>
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-wrap justify-center gap-2" role="group" aria-label="Select product concept preview">
+                  {heroProductPreviews.map((product, index) => (
+                    <button key={product.name} type="button" aria-pressed={heroProductIndex === index} onClick={() => setHeroProductIndex(index)}
+                      className={`rounded-lg border px-3 py-2 font-body text-[11px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 ${heroProductIndex === index ? "border-[#057CFA] bg-[#057CFA] text-white" : "border-[#33536f] bg-[#10263c] text-slate-300 hover:border-cyan-400 hover:text-white"}`}>
+                      {product.name}
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-3 text-center font-body text-[9px] uppercase tracking-wide text-slate-400">Illustrative concepts · IoT planned for the future</p>
               </motion.div>
             </div>
           </div>
