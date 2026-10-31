@@ -818,11 +818,11 @@ function About() {
 
               <div>
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                  {lang === "de" ? "Warum GenData Tech" : "Why Choose GenData Tech"}
+                  {lang === "de" ? "Unsere Grundsätze" : "Our Principles"}
                 </p>
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                  {lang === "de" ? "Was uns auszeichnet." : "Why choose us."}
+                  {lang === "de" ? "Wie wir Technologie verstehen." : "How we think about technology."}
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-900">
@@ -929,6 +929,24 @@ function About() {
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY CHOOSE US — dedicated section */}
+        <section className="bg-[#F4F8FC] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="max-w-3xl">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">{lang === "de" ? "Warum GenData Tech" : "Why Choose GenData Tech"}</p>
+              <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">{lang === "de" ? "Technologie mit klarem Ziel." : "Technology built around your needs."}</h2>
+              <p className="mt-4 font-body text-sm leading-7 text-slate-600 sm:text-base">{lang === "de" ? "Wir verbinden KI-Kompetenz mit praxisorientierter Entwicklung und transparenter Zusammenarbeit." : "We combine AI expertise with practical engineering and clear collaboration to build solutions that serve real requirements."}</p>
+            </div>
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {[
+                {title:lang==="de"?"KI im Mittelpunkt":"AI-first thinking",description:lang==="de"?"Intelligente Funktionen stehen dort im Fokus, wo sie echten Nutzen bringen.":"We apply intelligence where it can solve meaningful problems."},
+                {title:lang==="de"?"Individuelle Lösungen":"Tailored engineering",description:lang==="de"?"Wir entwickeln passend zu Anforderungen, Nutzern und Arbeitsabläufen.":"Solutions are shaped around your workflows, users and technical needs."},
+                {title:lang==="de"?"Klare Zusammenarbeit":"Clear collaboration",description:lang==="de"?"Wir kommunizieren Anforderungen und nächste Schritte transparent.":"We keep requirements, decisions and next steps understandable."}
+              ].map((reason,index)=><div key={reason.title} className="rounded-2xl border border-slate-200 bg-white p-6"><span className="font-heading text-xs font-semibold text-[#057CFA]">0{index+1}</span><h3 className="mt-4 font-heading text-lg font-semibold text-slate-950">{reason.title}</h3><p className="mt-3 font-body text-sm leading-7 text-slate-600">{reason.description}</p></div>)}
             </div>
           </div>
         </section>
