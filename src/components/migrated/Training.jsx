@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
-import TrainingHeroDashboard from "../training/TrainingHeroDashboard"
 import CountUpStat from "../layout/CountUpStat"
 
 import { useRef, useState } from "react";
@@ -901,7 +900,47 @@ function Training() {
                 }}
                 className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
               >
-                <TrainingHeroDashboard active={heroShouldAnimate}/>
+                {/* Learning progression steps */}
+                {[0,1,2,3].map(i=><motion.div key={i} className="absolute h-14 w-14 rounded-xl border border-[#057CFA]/30 bg-[#057CFA]/10" style={{left:`${12+i*19}%`,top:`${62-i*12}%`}} animate={heroShouldAnimate?{y:[0,-8,0],opacity:[0.5,1,0.5]}:{opacity:0.8}} transition={{duration:3,delay:i*0.4,repeat:heroShouldAnimate?Infinity:0}}><span className="flex h-full items-center justify-center text-xs font-bold text-cyan-200">{String(i+1).padStart(2,"0")}</span></motion.div>)}
+                <div className="relative z-10 flex h-[130px] w-[130px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.15)]">
+                  <FiBookOpen className="text-2xl text-[#057CFA]" />
+
+                  <span className="mt-2 font-heading text-sm font-semibold text-white">
+                    {tr("Learn")}
+                  </span>
+
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
+                    {tr("Build • Apply")}
+                  </span>
+                </div>
+
+                {[
+                  {
+                    label: tr("AI & ML"),
+                    className: "right-1 top-8",
+                  },
+                  {
+                    label: tr("Data"),
+                    className: "bottom-12 left-1",
+                  },
+                  {
+                    label: tr("Development"),
+                    className: "bottom-3 right-4",
+                  },
+                  {
+                    label: tr("IoT"),
+                    className: "left-4 top-12",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className={`absolute ${item.className} rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm`}
+                  >
+                    <span className="font-body text-[9px] font-semibold text-slate-200">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
               </motion.div>
             </div>
           </div>
