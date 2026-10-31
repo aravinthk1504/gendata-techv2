@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
 import TrainingHeroDashboard from "../training/TrainingHeroDashboard"
+import CountUpStat from "../layout/CountUpStat"
 
 import { useRef, useState } from "react";
 
@@ -79,7 +80,7 @@ function Training() {
       Replace XX+ with your real student count
   ====================================================== */
 
-  const studentsTrained = "XX+";
+  const studentsTrained = 60;
 
   /* ======================================================
       TRAINING STATE
@@ -906,43 +907,12 @@ function Training() {
           </div>
         </section>
 
-        {/* ======================================================
-            TRAINING SNAPSHOT
-        ====================================================== */}
-
-        <section className="border-b border-slate-100 bg-white px-6 lg:px-10">
-          <div className="mx-auto grid max-w-[1400px] divide-y divide-slate-100 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            <div className="py-8 text-center">
-              <p className="font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950">
-                8
-              </p>
-
-              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {tr("Training Tracks")}
-              </p>
-            </div>
-
-            <div className="py-8 text-center">
-              <p className="font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950">
-                {studentsTrained}
-              </p>
-
-              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {tr("Students Trained")}
-              </p>
-            </div>
-
-            <div className="py-8 text-center">
-              <p className="font-heading text-2xl font-semibold tracking-[-0.04em] text-slate-950">
-                {tr("Practical")}
-              </p>
-
-              <p className="mt-2 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {tr("Learning Approach")}
-              </p>
-            </div>
+        <div className="border-b border-slate-100 bg-white px-6 py-6 lg:px-10">
+          <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-3 text-center">
+            <CountUpStat value={studentsTrained} suffix="+" className="font-heading text-3xl font-semibold text-[#057CFA]"/>
+            <span className="text-sm font-semibold text-slate-600">{tr("Students Trained")}</span>
           </div>
-        </section>
+        </div>
 
         {/* ======================================================
             TRAINING EXPLORER
