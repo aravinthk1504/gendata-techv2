@@ -432,81 +432,53 @@ function About() {
                   {lang === "de" ? "GenData Tech entwickelt als KI-orientiertes Technologieunternehmen\n                  intelligente Systeme, digitale Produkte und technische\n                  Lösungen für konkrete geschäftliche Herausforderungen." : "GenData Tech is an AI-focused technology company building\n                  intelligent systems, digital products and engineering\n                  solutions designed around practical business and real-world\n                  challenges."}
                 </motion.p>
 
-                <motion.div
-                  initial={{
-                    opacity: 1,
-                    y: 15,
-                  }}
-                  animate={
-                    heroInView
-                      ? {
-                          opacity: 1,
-                          y: 0,
-                        }
-                      : {
-                          opacity: 1,
-                          y: 15,
-                        }
-                  }
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.24,
-                  }}
-                  className="mt-8 flex flex-wrap gap-2.5"
-                >
-                  {["AI", "Automation", "Products", "Engineering"].map(
-                    (item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-200"
-                      >
-                        {item}
-                      </span>
-                    ),
-                  )}
-                </motion.div>
+
               </div>
 
-              {/* Company identity showcase — calm, credible and intentionally minimal */}
+              {/* Our foundation: a restrained architectural motion graphic */}
               <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.7, delay: 0.15, ease: "easeOut" }}
-                className="relative mx-auto w-full max-w-[470px]"
+                transition={{ duration: reduceMotion ? 0 : 0.7, ease: "easeOut" }}
+                className="mx-auto w-full max-w-[470px]"
+                aria-label={lang === "de" ? "Unsere Grundlage: Vertrauen, Qualität und Fortschritt. Gegründet 2025." : "Our foundation: Trust, Quality and Progress. Established 2025."}
               >
-                <div className="relative overflow-hidden rounded-[26px] border border-white/15 bg-gradient-to-br from-[#102a47] via-[#091d34] to-[#061326] px-6 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.24)] sm:px-9 sm:py-10">
-                  <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#057CFA]/10 blur-[76px]" />
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(130deg,transparent 47%,#80dfff 50%,transparent 53%)", backgroundSize: "32px 32px" }} />
-                  <div className="relative">
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="font-body text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">GenData Tech</span>
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/[0.07] text-cyan-300" aria-hidden="true"><FiLayers size={20} /></span>
-                    </div>
-                    <div className="relative mt-7 h-px overflow-hidden bg-white/10">
+                <div className="relative flex h-[270px] items-end justify-center gap-5 overflow-hidden border-b border-[#194366] px-4 pb-9 sm:h-[310px] sm:gap-8">
+                  <span className="absolute left-1/2 top-4 -translate-x-1/2 whitespace-nowrap font-body text-[10px] font-medium uppercase tracking-[0.25em] text-[#579dc3]">
+                    {lang === "de" ? "Unser Fundament" : "Our Foundation"}
+                  </span>
+                  {[
+                    { label: lang === "de" ? "Vertrauen" : "Trust", height: 125 },
+                    { label: lang === "de" ? "Qualität" : "Quality", height: 166 },
+                    { label: lang === "de" ? "Fortschritt" : "Progress", height: 145 },
+                  ].map((pillar, index) => (
+                    <div key={pillar.label} className="relative z-10 flex w-[72px] shrink-0 flex-col items-center gap-3">
                       <motion.div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#057CFA] to-cyan-300"
-                        initial={reduceMotion ? false : { scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        style={{ transformOrigin: "left" }}
-                        transition={{ duration: reduceMotion ? 0 : 1, delay: 0.42, ease: "easeOut" }}
-                      />
+                        initial={reduceMotion ? false : { scaleY: 0, opacity: 0 }}
+                        animate={{ scaleY: 1, opacity: 1 }}
+                        style={{ height: pillar.height, transformOrigin: "bottom" }}
+                        transition={{ duration: reduceMotion ? 0 : 1.15, delay: reduceMotion ? 0 : index * 0.25 + 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative w-11 border-x border-t border-[#245578] bg-gradient-to-b from-[#0C65A5]/20 to-transparent"
+                      >
+                        <motion.div
+                          className="absolute -left-px -right-px -top-px h-[2px] bg-gradient-to-r from-[#057CFA] to-[#80E5F8] shadow-[0_0_12px_#109cfb]"
+                          animate={reduceMotion ? undefined : { opacity: [0.6, 1, 0.6] }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.4 }}
+                        />
+                      </motion.div>
+                      <span className="font-body text-[10px] font-medium uppercase tracking-[0.09em] text-slate-300">{pillar.label}</span>
                     </div>
-                    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.65, delay: 0.45 }}>
-                      <p className="mt-9 max-w-[370px] font-heading text-[clamp(1.65rem,3vw,2.25rem)] font-semibold leading-[1.2] tracking-[-0.035em] text-white">
-                        {lang === "de" ? "Auf Vertrauen gebaut. Von Innovation angetrieben." : "Built on trust. Driven by innovation."}
-                      </p>
-                      <p className="mt-5 max-w-[360px] font-body text-sm leading-7 text-slate-300">
-                        {lang === "de" ? "Praxisnahe Technologielösungen mit einem klaren Anspruch an Qualität, Transparenz und nachhaltigen Mehrwert." : "Engineering practical technology solutions with a commitment to quality, clarity, and meaningful results."}
-                      </p>
-                    </motion.div>
-                    <div className="mt-9 flex items-center gap-3">
-                      <div className="h-[2px] w-9 rounded-full bg-cyan-300" aria-hidden="true" />
-                      <span className="font-body text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
-                        {lang === "de" ? "Gegründet 2025" : "Established 2025"}
-                      </span>
-                    </div>
-                  </div>
+                  ))}
+                  <motion.div
+                    initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: reduceMotion ? 0 : 1.2, delay: reduceMotion ? 0 : 0.9 }}
+                    className="pointer-events-none absolute bottom-[18px] left-[8%] h-px w-[84%] origin-center bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent"
+                  />
                 </div>
+                <p className="mt-5 text-center font-body text-[10px] font-medium uppercase tracking-[0.22em] text-[#6595ae]">
+                  {lang === "de" ? "Gegründet 2025" : "Established 2025"}
+                </p>
               </motion.div>
             </div>
           </div>
