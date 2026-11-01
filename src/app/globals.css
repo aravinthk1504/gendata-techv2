@@ -166,3 +166,52 @@ button:focus-visible {
 }
 
 @keyframes eventGalleryScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+
+/* Connected step timeline on phones. Keep the existing horizontal travelling
+   glow on desktop; a vertical track avoids crossing wrapped mobile copy. */
+@media (max-width: 639px) {
+  .gd-process-steps > * {
+    position: relative;
+    padding-left: 56px;
+    min-width: 0;
+  }
+  .gd-process-steps > * > :first-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .gd-process-steps > *:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 43px;
+    bottom: -16px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, rgba(5,124,250,.65), rgba(33,212,243,.23));
+  }
+  .gd-process-steps > *:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 18px;
+    top: 43px;
+    width: 4px;
+    height: 32px;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, transparent, #21d4f3, transparent);
+    box-shadow: 0 0 10px rgba(33,212,243,.6);
+    animation: gd-process-mobile-travel 2.8s linear infinite;
+  }
+  .gd-process-steps > * > h3 { margin-top: 0; }
+  @keyframes gd-process-mobile-travel {
+    0% { top: 43px; opacity: 0; }
+    20% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: calc(100% + 4px); opacity: 0; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gd-process-steps > *::after { animation: none !important; opacity: 0; }
+}
