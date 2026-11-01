@@ -60,8 +60,10 @@ export default function ProcessFlowGlow({ breakpoint = "lg", columns, mobileOnly
     };
   }, []);
 
-  // A single animation spans the entire line, rather than restarting at
-  // each intermediate card. Accessible static track remains with reduced motion.
+  // One small cyan glow travels from the first marker to the last, as in
+  // the original process-line animation. Keep the faint line static;
+  // unlike a progress bar, it does not fill up as the glow moves.
+  // Reduced-motion visitors see only the static connector.
   const playMobile = Boolean(mobileTrack && mobileVisible && !reduceMotion);
   const duration = (mobileTrack?.count ?? 6) * 1.4;
   const lineStyle = columns
@@ -76,7 +78,7 @@ export default function ProcessFlowGlow({ breakpoint = "lg", columns, mobileOnly
       <div
         ref={mobileRef}
         aria-hidden="true"
-        className="gd-process-mobile-line pointer-events-none absolute z-0 w-[2px] overflow-hidden sm:hidden"
+        className="gd-process-mobile-line pointer-events-none absolute z-0 w-[2px] overflow-visible sm:hidden"
         style={{
           left: mobileTrack?.left ?? 19,
           top: mobileTrack?.top ?? 20,
@@ -85,20 +87,12 @@ export default function ProcessFlowGlow({ breakpoint = "lg", columns, mobileOnly
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#057CFA]/40 via-[#21d4f3]/30 to-[#057CFA]/40" />
         {playMobile && (
-          <>
-            <motion.span
-              className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-[#057CFA] to-[#21d4f3]"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: [0, 1] }}
-              transition={{ duration, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.span
-              className="absolute -left-px top-0 h-7 w-[4px] rounded-full bg-gradient-to-b from-transparent via-[#21d4f3] to-transparent shadow-[0_0_13px_rgba(33,212,243,0.95)]"
-              initial={{ y: -28 }}
-              animate={{ y: [-28, mobileTrack.height] }}
-              transition={{ duration, repeat: Infinity, ease: "linear" }}
-            />
-          </>
+          <motion.span
+            className="absolute -left-px top-0 h-9 w-[4px] rounded-full bg-gradient-to-b from-transparent via-[#21d4f3] to-transparent shadow-[0_0_13px_rgba(33,212,243,0.95)]"
+            initial={{ y: -18 }}
+            animate={{ y: [-18, mobileTrack.height - 18] }}
+            transition={{ duration, repeat: Infinity, ease: "linear" }}
+          />
         )}
       </div>
       {!mobileOnly && (
