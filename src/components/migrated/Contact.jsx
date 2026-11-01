@@ -1,6 +1,7 @@
 "use client"
 
 import { useParams } from "next/navigation";
+import ContactFirstConnectionHero from "../contact/ContactFirstConnectionHero";
 import { useEffect, useRef, useState } from "react";
 
 import {
@@ -541,132 +542,14 @@ function Contact() {
                 </motion.div>
               </div>
 
-              {/* ==================================================
-                  HERO VISUAL
-              ================================================== */}
-
+              {/* Approved First Connection envelope and paper-plane illustration. */}
               <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 1,
-                        scale: 0.96,
-                      }
-                }
-                transition={{
-                  duration: 0.65,
-                  delay: 0.15,
-                }}
-                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex"
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.65 }}
+                className="relative mx-auto w-full min-w-0 max-w-[530px] lg:justify-self-center"
               >
-                {/* Message delivery flow */}
-                <div className="absolute inset-9 rounded-3xl border border-[#057CFA]/20" />
-                {[0,1,2].map(i=><motion.div key={i} className="absolute left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-[#057CFA]/70 to-transparent" style={{top:`${28+i*23}%`}} animate={heroShouldAnimate?{opacity:[0.2,1,0.2],x:[-15,15,-15]}:{opacity:0.5}} transition={{duration:3.5,delay:i*0.7,repeat:heroShouldAnimate?Infinity:0}}/>)}
-                {/* CENTER */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          scale: [1, 1.035, 1],
-                        }
-                      : {
-                          scale: 1,
-                        }
-                  }
-                  transition={{
-                    duration: 3,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10 flex h-[125px] w-[125px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.14)]"
-                >
-                  <FiMessageCircle className="text-xl text-[#057CFA]" />
-
-                  <span className="mt-2 font-heading text-sm font-semibold text-white">
-                    {tr("Connect")}
-                  </span>
-
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    GenData Tech
-                  </span>
-                </motion.div>
-
-                {/* NODES */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, -6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Services
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, 5, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 4.5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    Products
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          y: [0, 6, 0],
-                        }
-                      : {
-                          y: 0,
-                        }
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat: heroShouldAnimate ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-                  <p className="font-body text-[9px] font-semibold text-slate-200">
-                    {tr("Training")}
-                  </p>
-                </motion.div>
+                <ContactFirstConnectionHero active={heroShouldAnimate} lang={lang} />
               </motion.div>
             </div>
           </div>
