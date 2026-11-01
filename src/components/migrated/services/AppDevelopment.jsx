@@ -498,9 +498,7 @@ function AppDevelopment() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
-                  GenData Tech develops mobile applications for
-                  Android, iOS and connected business requirements
-                  with modern interfaces and backend integration.
+                  {lang === "de" ? "GenData Tech entwickelt mobile Anwendungen für Android, iOS und vernetzte Geschäftsanforderungen mit modernen Oberflächen und Backend-Integration." : "GenData Tech develops mobile applications for Android, iOS and connected business requirements with modern interfaces and backend integration."}
                 </motion.p>
 
 
@@ -1076,6 +1074,7 @@ function AppDevelopment() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
