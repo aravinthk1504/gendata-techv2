@@ -919,7 +919,7 @@ function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full gd-brand-primary px-6 py-3.5 font-body text-xs font-semibold text-white transition  disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isSubmitting ? tr("Sending...") : tr("Send Enquiry")}
 
