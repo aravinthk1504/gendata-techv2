@@ -170,9 +170,9 @@ function Blog({posts = []}) {
                   }}
                   className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
-                  Explore technical articles, practical ideas,
-                  research and developments from GenData Tech
-                  across AI, software, data and connected technology.
+                  {lang === "de"
+                    ? "Entdecken Sie technische Fachartikel, praxisnahe Ideen, Forschung und Entwicklungen von GenData Tech rund um KI, Software, Daten und vernetzte Technologien."
+                    : "Explore technical articles, practical ideas, research and developments from GenData Tech across AI, software, data and connected technology."}
                 </motion.p>
 
 
