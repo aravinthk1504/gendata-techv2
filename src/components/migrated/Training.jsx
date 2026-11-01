@@ -702,7 +702,7 @@ function Training() {
       
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-[226px] sm:pt-36 sm:pb-[142px] lg:px-10 lg:pt-32 lg:pb-20"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-20 lg:pt-32"
         >
           {/* MAIN GLOW */}
 
@@ -883,9 +883,9 @@ function Training() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.15 }}
-                className="relative mx-auto flex w-full max-w-[460px] min-w-0 items-center justify-center lg:justify-self-center"
+                className="relative mx-auto flex w-full max-w-[500px] min-w-0 items-center justify-center lg:justify-self-center"
               >
-                <TrainingHeroDashboard active={heroShouldAnimate} />
+                <TrainingHeroDashboard active={heroShouldAnimate} lang={lang} />
               </motion.div>
             </div>
           </div>
