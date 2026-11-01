@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
-import ServiceFlowVisual from "../../layout/ServiceFlowVisual"
+import IotConnectedHero from "../../layout/IotConnectedHero"
 
 import { useRef, useState } from "react"
 
@@ -584,8 +584,8 @@ function IoTSolutions() {
                   COMPACT HERO VISUAL
               ================================================== */}
 
-              <div className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center">
-                <ServiceFlowVisual variant="iot" active={heroShouldAnimate}/>
+              <div className="relative mx-auto flex w-full min-w-0 max-w-[500px] items-center justify-center lg:justify-self-center">
+                <IotConnectedHero active={heroShouldAnimate} lang={lang} />
               </div>
 
             </div>
