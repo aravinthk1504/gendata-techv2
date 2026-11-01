@@ -490,9 +490,7 @@ function AIMLDevelopment() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech develops AI and machine learning
-                  solutions designed around data, workflows and
-                  practical application requirements.
+                  {lang === "de" ? "GenData Tech entwickelt KI- und Machine-Learning-Lösungen, die auf Daten, Arbeitsabläufe und praktische Anwendungsanforderungen abgestimmt sind." : "GenData Tech develops AI and machine learning solutions designed around data, workflows and practical application requirements."}
                 </motion.p>
 
 
@@ -1090,6 +1088,7 @@ function AIMLDevelopment() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
