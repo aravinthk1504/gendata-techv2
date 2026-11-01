@@ -453,7 +453,7 @@ function Contact() {
                   }}
                   className="mt-5 max-w-4xl font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
                 >
-                  {tr("Let&apos;s build something")}
+                  {tr("Let's build something")}
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
                     {tr("intelligent together.")}
                   </span>
@@ -481,9 +481,9 @@ function Contact() {
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  Tell us what you are looking to build, improve or explore.
-                  We’ll review your requirement and help identify the right
-                  next step.
+                  {lang === "de"
+                    ? "Erzählen Sie uns, was Sie entwickeln, verbessern oder erkunden möchten. Wir prüfen Ihre Anforderungen und helfen Ihnen, den passenden nächsten Schritt zu finden."
+                    : "Tell us what you are looking to build, improve or explore. We’ll review your requirement and help identify the right next step."}
                 </motion.p>
 
                 {/* INFO */}
@@ -516,7 +516,7 @@ function Contact() {
                     </p>
 
                     <p className="mt-2 font-heading text-sm font-semibold text-white">
-                      Mon – Sat
+                      {lang === "de" ? "Mo – Sa" : "Mon – Sat"}
                     </p>
                   </div>
 
@@ -532,11 +532,11 @@ function Contact() {
 
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                     <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-300">
-                      Presence
+                      {tr("Presence")}
                     </p>
 
                     <p className="mt-2 font-heading text-sm font-semibold text-white">
-                      2 Locations
+                      {lang === "de" ? "2 Standorte" : "2 Locations"}
                     </p>
                   </div>
                 </motion.div>
