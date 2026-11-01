@@ -936,6 +936,7 @@ function Services() {
                     <button
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
                       <span className="font-heading text-sm font-semibold leading-6 text-slate-900 sm:text-base">
