@@ -152,7 +152,7 @@ function IntelligenceProcess({ content }) {
             />
           </div>
 
-          <div className="gd-process-steps grid gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
+          <div className="gd-process-steps gd-home-process-steps grid gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
             {stages.map((stage, index) => (
               <PipelineNode
                 key={stage.title}
