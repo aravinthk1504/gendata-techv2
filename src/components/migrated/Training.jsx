@@ -841,9 +841,9 @@ function Training() {
                   }}
                   className="mt-5 max-w-[650px] font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
-                  Practical technology training designed to help learners
-                  understand concepts, work with modern tools and apply their
-                  skills through hands-on learning.
+                  {lang === "de"
+                    ? "Praxisorientierte Technologieschulungen, die Lernenden helfen, Konzepte zu verstehen, moderne Werkzeuge einzusetzen und ihre Fähigkeiten durch praktische Projekte anzuwenden."
+                    : "Practical technology training designed to help learners understand concepts, work with modern tools and apply their skills through hands-on learning."}
                 </motion.p>
 
                 <motion.button
