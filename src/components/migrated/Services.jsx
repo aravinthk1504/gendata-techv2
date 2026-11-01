@@ -1045,7 +1045,7 @@ function Services() {
                   <div className="mt-7 flex flex-wrap gap-3">
                     <Link
                       to="/contact"
-                      className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
+                      className="group inline-flex items-center gap-2 rounded-full gd-brand-primary px-6 py-3.5 font-body text-xs font-semibold text-white transition "
                     >
                       {tr("Start a Project")}
                       <FiArrowRight className="transition group-hover:translate-x-1" />
