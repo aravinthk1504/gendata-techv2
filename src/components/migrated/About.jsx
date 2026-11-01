@@ -830,7 +830,7 @@ function About() {
 
               <ProcessFlowGlow />
 
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
+              <div className="gd-process-steps grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
                 {approach.map((step, index) => (
                   <motion.div
                     key={step.number}
