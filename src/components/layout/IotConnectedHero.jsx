@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import useHeroAutoCycle from "./useHeroAutoCycle";
 
 const sensorCards = [
   {
@@ -29,6 +30,7 @@ export default function IotConnectedHero({ active = true, lang = "en" }) {
   const animate = active && !reducedMotion;
   const german = lang === "de";
   const automation = mode === "automation";
+  const autoCycle = useHeroAutoCycle({ active, index: mode === "monitoring" ? 0 : 1, setIndex: (updater) => setMode(previous => (typeof updater === "function" ? updater(previous === "monitoring" ? 0 : 1) : updater) === 0 ? "monitoring" : "automation"), count: 2 });
 
   const labels = german ? {
     monitor: "Überwachung", auto: "Automatisierung", title: "Gerätemonitor",
@@ -51,7 +53,7 @@ export default function IotConnectedHero({ active = true, lang = "en" }) {
   };
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-[500px]">
+    <div {...autoCycle} className="mx-auto w-full min-w-0 max-w-[500px]">
       <div
         role="img"
         aria-label={german
