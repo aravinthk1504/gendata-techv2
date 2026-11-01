@@ -34,7 +34,7 @@ export default function Hero({ content, lang }) {
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          <Link href={localizedPath("/services")} className="gd-hero-button gd-hero-button--primary group min-w-55">
+          <Link href="#ai-capabilities" className="gd-hero-button gd-hero-button--primary group min-w-55">
             {t("hero.primaryCta")}
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
