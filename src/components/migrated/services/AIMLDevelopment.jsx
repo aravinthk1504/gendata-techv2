@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
+import useDesktopHeroMotion from "../../layout/useDesktopHeroMotion"
 import AiNeuralEngineHero from "../../layout/AiNeuralEngineHero"
 
 import { useRef, useState } from "react"
@@ -44,8 +45,10 @@ function AIMLDevelopment() {
 
   const reduceMotion = useReducedMotion()
 
-  const heroShouldAnimate =
+  const glowShouldAnimate =
     heroInView && !reduceMotion
+
+  const glowShouldAnimate = useDesktopHeroMotion(heroShouldAnimate)
 
   /* ======================================================
       FAQ
@@ -333,7 +336,7 @@ function AIMLDevelopment() {
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[520px] w-[850px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[170px]"
             animate={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     opacity: [0.55, 0.95, 0.55],
                     scale: [1, 1.05, 1],
@@ -344,7 +347,7 @@ function AIMLDevelopment() {
                   }
             }
             transition={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     duration: 8,
                     repeat: Infinity,
@@ -362,7 +365,7 @@ function AIMLDevelopment() {
           <motion.div
             className="pointer-events-none absolute -right-32 top-24 h-[380px] w-[380px] rounded-full bg-[#057CFA]/10 blur-[120px]"
             animate={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     x: [0, -22, 0],
                     y: [0, 18, 0],
@@ -375,7 +378,7 @@ function AIMLDevelopment() {
                   }
             }
             transition={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     duration: 9,
                     repeat: Infinity,
@@ -404,7 +407,7 @@ function AIMLDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid min-w-0 min-h-[530px] items-center gap-10 sm:min-h-[530px] sm:gap-12 lg:min-h-[420px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+            <div className="grid min-w-0 min-h-0 items-center gap-8 sm:gap-10 lg:min-h-[465px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
 
               {/* HERO COPY */}
 
@@ -574,7 +577,7 @@ function AIMLDevelopment() {
 
 
               {/* Interactive neural intelligence concept; no live model or heavyweight 3D runtime. */}
-              <div className="relative mx-auto flex w-full min-w-0 max-w-[540px] items-center justify-center lg:justify-self-center">
+              <div className="relative mx-auto flex w-full min-w-0 max-w-[500px] items-center justify-center lg:justify-self-center">
                 <AiNeuralEngineHero active={heroShouldAnimate} lang={lang} />
               </div>
 
