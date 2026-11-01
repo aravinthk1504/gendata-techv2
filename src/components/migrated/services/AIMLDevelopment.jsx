@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
+import AiNeuralEngineHero from "../../layout/AiNeuralEngineHero"
 
 import { useRef, useState } from "react"
 
@@ -572,148 +573,9 @@ function AIMLDevelopment() {
 
 
 
-              {/* Lightweight AI processor / data-flow illustration (no 3D runtime). */}
-              <div
-                className="relative mx-auto hidden h-[420px] w-full max-w-[480px] items-center justify-center lg:flex"
-                role="img"
-                aria-label="AI processor connected to data, models, agents, and automation"
-              >
-                <svg
-                  viewBox="0 0 480 420"
-                  className="block h-full w-full overflow-visible"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <linearGradient id="gd-ai-chip-bg" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stopColor="#123b69" />
-                      <stop offset="1" stopColor="#051324" />
-                    </linearGradient>
-                    <linearGradient id="gd-ai-circuit-line" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stopColor="#057CFA" />
-                      <stop offset="1" stopColor="#60D9FF" />
-                    </linearGradient>
-                    <radialGradient id="gd-ai-ambient">
-                      <stop offset="0" stopColor="#057CFA" stopOpacity="0.24" />
-                      <stop offset="1" stopColor="#057CFA" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-
-                  {/* Static ambient glow and a subtle engineering grid. */}
-                  <ellipse cx="240" cy="210" rx="220" ry="190" fill="url(#gd-ai-ambient)" />
-                  {Array.from({ length: 9 }, (_, i) => (
-                    <path
-                      key={`grid-v-${i}`}
-                      d={`M ${40 + i * 50} 36 V 384`}
-                      stroke="#4C84BF"
-                      strokeWidth="0.7"
-                      strokeOpacity="0.10"
-                    />
-                  ))}
-                  {Array.from({ length: 7 }, (_, i) => (
-                    <path
-                      key={`grid-h-${i}`}
-                      d={`M 24 ${60 + i * 50} H 456`}
-                      stroke="#4C84BF"
-                      strokeWidth="0.7"
-                      strokeOpacity="0.10"
-                    />
-                  ))}
-
-                  {/* Four dedicated data paths, rather than circular orbits. */}
-                  {[
-                    "M128 103 H151 V173 H171",
-                    "M352 103 H329 V173 H309",
-                    "M128 317 H151 V247 H171",
-                    "M352 317 H329 V247 H309",
-                  ].map((d, index) => (
-                    <path
-                      key={`connector-${index}`}
-                      d={d}
-                      fill="none"
-                      stroke="url(#gd-ai-circuit-line)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeOpacity="0.7"
-                    />
-                  ))}
-
-                  {/* Small data signals run only while this hero is visible. */}
-                  {heroShouldAnimate && (
-                    <>
-                      <circle r="4" fill="#60D9FF">
-                        <animateMotion
-                          path="M128 103 H151 V173 H171"
-                          dur="3.6s"
-                          repeatCount="indefinite"
-                        />
-                      </circle>
-                      <circle r="4" fill="#60D9FF">
-                        <animateMotion
-                          path="M352 103 H329 V173 H309"
-                          dur="4.1s"
-                          repeatCount="indefinite"
-                        />
-                      </circle>
-                      <circle r="4" fill="#60D9FF">
-                        <animateMotion
-                          path="M128 317 H151 V247 H171"
-                          dur="3.9s"
-                          repeatCount="indefinite"
-                        />
-                      </circle>
-                      <circle r="4" fill="#60D9FF">
-                        <animateMotion
-                          path="M352 317 H329 V247 H309"
-                          dur="4.5s"
-                          repeatCount="indefinite"
-                        />
-                      </circle>
-                    </>
-                  )}
-
-                  {/* Squared central processor with static chip pins. */}
-                  <rect x="163" y="123" width="154" height="174" rx="27" fill="#057CFA" opacity="0.09" />
-                  <rect x="171" y="131" width="138" height="158" rx="23" fill="url(#gd-ai-chip-bg)" stroke="#268DD6" strokeWidth="1.8" />
-                  <rect x="184" y="144" width="112" height="132" rx="16" fill="#06152C" stroke="#60D9FF" strokeOpacity="0.28" />
-                  {[158,181,204,227,250].map(y => (
-                    <g key={`pin-${y}`} stroke="#4C9EFF" strokeWidth="2" strokeLinecap="round">
-                      <path d={`M162 ${y} h9`} />
-                      <path d={`M309 ${y} h9`} />
-                    </g>
-                  ))}
-                  <rect x="223" y="174" width="34" height="34" rx="9" fill="#057CFA" fillOpacity="0.17" stroke="#60D9FF" strokeOpacity="0.5" />
-                  <path d="M230 191 l6 -7 l-2 8 h11 l-6 8 l2 -8 h-11" fill="none" stroke="#60D9FF" strokeWidth="1.8" strokeLinejoin="round" />
-                  <text x="240" y="237" textAnchor="middle" fill="#FFFFFF" fontFamily="Arial, sans-serif" fontSize="21" fontWeight="700" letterSpacing="1">{tr("AI / ML")}</text>
-                  <text x="240" y="258" textAnchor="middle" fill="#B6D9FA" fontFamily="Arial, sans-serif" fontSize="9" letterSpacing="1.7">{tr("INTELLIGENCE")}</text>
-
-                  {[
-                    { x: 10, y: 72, label: tr("DATA"), sub: "Inputs" },
-                    { x: 352, y: 72, label: tr("MODELS"), sub: "Prediction" },
-                    { x: 10, y: 286, label: tr("AUTOMATION"), sub: "Workflows" },
-                    { x: 352, y: 286, label: tr("AGENTS"), sub: "Decisions" },
-                  ].map((node, index) => (
-                    <g key={node.label}>
-                      <rect
-                        x={node.x}
-                        y={node.y}
-                        width="118"
-                        height="62"
-                        rx="12"
-                        fill="#091C34"
-                        stroke="#4389CB"
-                        strokeOpacity="0.45"
-                      />
-                      <rect x={node.x + 13} y={node.y + 13} width="6" height="6" rx="2" fill={index % 2 ? "#60D9FF" : "#057CFA"} />
-                      <text x={node.x + 26} y={node.y + 20} fill="#F1F8FF" fontFamily="Arial, sans-serif" fontSize="11" fontWeight="700" letterSpacing="0.8">
-                        {node.label}
-                      </text>
-                      <text x={node.x + 13} y={node.y + 43} fill="#AEC6DE" fontFamily="Arial, sans-serif" fontSize="10">
-                        {node.sub}
-                      </text>
-                    </g>
-                  ))}
-                </svg>
+              {/* Interactive neural intelligence concept; no live model or heavyweight 3D runtime. */}
+              <div className="relative mx-auto flex w-full min-w-0 max-w-[540px] items-center justify-center lg:justify-self-center">
+                <AiNeuralEngineHero active={heroShouldAnimate} lang={lang} />
               </div>
 
             </div>
