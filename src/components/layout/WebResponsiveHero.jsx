@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import useHeroAutoCycle from "./useHeroAutoCycle";
 
 /**
  * Illustrated, interactive website preview for the Web Development hero.
@@ -14,9 +15,10 @@ export default function WebResponsiveHero({ active = true, lang = "en" }) {
   const isMobile = view === "mobile";
   const german = lang === "de";
   const duration = prefersReducedMotion ? 0 : 0.55;
+  const autoCycle = useHeroAutoCycle({ active, index: view === "desktop" ? 0 : 1, setIndex: (updater) => setView(previous => (typeof updater === "function" ? updater(previous === "desktop" ? 0 : 1) : updater) === 0 ? "desktop" : "mobile"), count: 2 });
 
   return (
-    <div className="relative mx-auto w-full max-w-[470px] min-w-0">
+    <div {...autoCycle} className="relative mx-auto w-full max-w-[470px] min-w-0">
       <div className="mb-3 flex items-center justify-center gap-2" role="group" aria-label={german ? "Vorschaugerät wählen" : "Choose preview device"}>
         {[
           { id: "desktop", label: "Desktop" },
