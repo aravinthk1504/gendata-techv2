@@ -77,7 +77,7 @@ export default function AppMobileExperienceHero({ active = true, lang = "en" }) 
     setDirection(index >= screen ? 1 : -1);
     setScreen(index);
   };
-  const transition = reducedMotion ? { duration: 0 } : { type: "tween", ease: "easeOut", duration: 0.42 };
+  const transition = reducedMotion || !active ? { duration: 0 } : { type: "tween", ease: "easeOut", duration: 0.42 };
   const variants = {
     enter: (dir) => ({ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : 24 * dir }),
     center: { opacity: 1, x: 0 },
@@ -89,9 +89,8 @@ export default function AppMobileExperienceHero({ active = true, lang = "en" }) 
       <div className="pointer-events-none absolute left-1/2 top-12 h-[280px] w-[270px] -translate-x-1/2 rounded-full bg-[#057cfa]/[0.12] blur-[48px]" aria-hidden="true" />
 
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reducedMotion ? 0 : 0.7 }}
         className="relative z-10 h-[387px] w-[215px] rounded-[32px] border-[5px] border-[#2e4e68] bg-[#0d1f32] p-[4px] shadow-[0_28px_65px_rgba(0,0,0,0.5),0_0_0_1px_rgba(109,162,197,0.2)]"
       >
         <div aria-hidden="true" className="absolute -left-[7px] top-[74px] h-8 w-[2px] rounded bg-[#426481]" />
