@@ -491,9 +491,7 @@ function Services() {
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech combines artificial intelligence, software
-                  engineering, web, mobile and IoT technologies to build
-                  practical digital systems around real requirements.
+                  {lang === "de" ? "GenData Tech vereint künstliche Intelligenz, Softwareentwicklung sowie Web-, Mobil- und IoT-Technologien zu praxistauglichen digitalen Systemen." : "GenData Tech combines artificial intelligence, software engineering, web, mobile and IoT technologies to build practical digital systems around real requirements."}
                 </motion.p>
 
                 <motion.div
@@ -664,8 +662,7 @@ function Services() {
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-200">
-                  The technology may change, but our focus remains on what the
-                  system needs to achieve.
+                  {lang === "de" ? "Die Technologie kann sich ändern. Unser Fokus bleibt darauf, was das System erreichen soll." : "The technology may change, but our focus remains on what the system needs to achieve."}
                 </p>
               </div>
 
@@ -854,9 +851,7 @@ function Services() {
 
               <div className="lg:pb-1">
                 <p className="max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base sm:leading-8">
-                  Explore practical insights around artificial intelligence,
-                  automation, software engineering and digital product
-                  development.
+                  {lang === "de" ? "Entdecken Sie praxisnahe Einblicke in künstliche Intelligenz, Automatisierung, Softwareentwicklung und digitale Produkte." : "Explore practical insights around artificial intelligence, automation, software engineering and digital product development."}
                 </p>
               </div>
             </div>
@@ -926,8 +921,7 @@ function Services() {
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Find answers to common questions about AI, software, web, mobile
-                and IoT development services.
+                {lang === "de" ? "Hier finden Sie Antworten auf häufige Fragen zur Entwicklung von KI-, Software-, Web-, App- und IoT-Lösungen." : "Find answers to common questions about AI, software, web, mobile and IoT development services."}
               </p>
             </div>
 
@@ -1020,14 +1014,11 @@ function Services() {
                   </p>
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                    Tell us the problem. We&apos;ll help identify the right
-                    direction.
+                    {lang === "de" ? "Beschreiben Sie uns Ihre Herausforderung. Wir helfen Ihnen, den passenden Weg zu finden." : "Tell us the problem. We'll help identify the right direction."}
                   </h2>
 
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
-                    You don&apos;t need to know the exact technology before
-                    contacting us. Share the requirement and we can discuss the
-                    most suitable technical approach.
+                    {lang === "de" ? "Sie müssen die passende Technologie noch nicht kennen. Teilen Sie uns Ihre Anforderungen mit, und wir besprechen gemeinsam den geeigneten Ansatz." : "You don't need to know the exact technology before contacting us. Share the requirement and we can discuss the most suitable technical approach."}
                   </p>
                 </div>
 
