@@ -173,6 +173,12 @@ button:focus-visible {
   .gd-process-steps > * { position: relative; padding-left: 56px; min-width: 0; }
   .gd-process-steps > * > [data-process-marker] { position: absolute; left: 0; top: 0; }
   .gd-process-steps > * > h3 { margin-top: 0; }
+  .gd-home-process-steps > * > :first-child { height: 0; margin-bottom: 0; }
+  .gd-home-process-steps > * > :first-child [data-process-marker] {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
 
 /* Shared prominent action theme, matching Home's Explore AI Capabilities button. */
