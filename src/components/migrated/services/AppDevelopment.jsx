@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
-import ServiceFlowVisual from "../../layout/ServiceFlowVisual"
+import AppMobileExperienceHero from "../../layout/AppMobileExperienceHero"
 
 import { useRef, useState } from "react"
 
@@ -585,8 +585,8 @@ function AppDevelopment() {
                   COMPACT HERO VISUAL
               ================================================== */}
 
-              <div className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center">
-                <ServiceFlowVisual variant="app" active={heroShouldAnimate}/>
+              <div className="relative mx-auto flex w-full min-w-0 max-w-[470px] items-center justify-center lg:justify-self-center">
+                <AppMobileExperienceHero active={heroShouldAnimate} lang={lang} />
               </div>
 
             </div>
