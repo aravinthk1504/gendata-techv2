@@ -1062,7 +1062,7 @@ function Contact() {
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
-                    Tell us what you are trying to solve, improve or create.
+                    {tr("Tell us what you are trying to solve, improve or create.")}
                   </p>
                 </div>
 
