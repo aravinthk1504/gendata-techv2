@@ -215,3 +215,14 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .gd-process-steps > *::after { animation: none !important; opacity: 0; }
 }
+
+/* Shared prominent action theme, matching Home's Explore AI Capabilities button. */
+.gd-brand-primary {
+  background: linear-gradient(95deg, #21d4f3 0%, #057cfa 100%);
+  color: #030b18;
+  border-color: transparent;
+  transition: filter 220ms ease, transform 220ms ease;
+}
+.gd-brand-primary:hover { filter: brightness(1.1); }
+.gd-brand-primary:focus-visible { outline: 2px solid #057cfa; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .gd-brand-primary { transition: none; } }
