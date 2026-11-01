@@ -496,9 +496,7 @@ function WebDevelopment() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech develops modern, responsive and
-                  performance-focused websites for businesses,
-                  startups, products and digital brands.
+                  {lang === "de" ? "GenData Tech entwickelt moderne, responsive und leistungsstarke Websites für Unternehmen, Start-ups, Produkte und digitale Marken." : "GenData Tech develops modern, responsive and performance-focused websites for businesses, startups, products and digital brands."}
                 </motion.p>
 
 
@@ -1071,6 +1069,7 @@ function WebDevelopment() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
