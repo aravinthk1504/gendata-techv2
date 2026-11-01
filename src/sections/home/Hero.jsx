@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { homeText, localizedHref } from "../../lib/homeText";
 import AnimatedBackground from "./AnimatedBackground";
-import NeuralBackground from "./NeuralBackground";
+import IntelligenceHorizonBackground from "./IntelligenceHorizonBackground";
 
 export default function Hero({ content, lang }) {
   const t = (key, variables) => homeText(content, key, variables);
@@ -13,7 +13,7 @@ export default function Hero({ content, lang }) {
   return (
     <section className="relative flex min-h-[calc(100svh-8px)] items-start sm:items-center overflow-hidden bg-[#030b18] px-6 pb-14 pt-36 sm:pb-24 sm:pt-16 lg:px-10">
       <AnimatedBackground />
-      <NeuralBackground />
+      <IntelligenceHorizonBackground />
       <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center text-center">
         <div className="mb-7 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
           <span className="h-2 w-2 rounded-full bg-brand-accent" />
