@@ -3,6 +3,7 @@
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { homeText } from "../../lib/homeText";
+import ProcessFlowGlow from "../../components/layout/ProcessFlowGlow";
 
 const getStages = (t) => t("process.stages", { returnObjects: true });
 
@@ -18,7 +19,7 @@ function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
       <div className="relative z-10 mb-5 flex items-center sm:mb-6 lg:mb-7">
         <motion.div
           whileHover={{ scale: 1.08 }}
-          className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-brand-accent/30 bg-[#06152c]"
+          data-process-marker className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-brand-accent/30 bg-[#06152c]"
         >
           <div className="absolute inset-0 rounded-full bg-brand-accent/10 blur-xl opacity-0 transition duration-500 group-hover:opacity-100" />
 
@@ -42,7 +43,7 @@ function PipelineNode({ stage, index, shouldAnimate, totalStages }) {
         </motion.div>
 
         {index !== totalStages - 1 && (
-          <div className="relative ml-4 h-px flex-1 overflow-hidden bg-white/8 lg:hidden">
+          <div className="relative ml-4 hidden h-px flex-1 overflow-hidden bg-white/8 lg:hidden">
             <motion.span
               animate={
                 shouldAnimate ? { x: ["-100%", "250%"] } : { x: "-100%" }
@@ -136,6 +137,7 @@ function IntelligenceProcess({ content }) {
         </div>
 
         <div className="relative mt-12 sm:mt-14 lg:mt-14">
+          <ProcessFlowGlow mobileOnly />
           <div className="absolute left-7 right-7 top-7 hidden h-px bg-white/8 lg:block" />
 
           <div className="absolute left-7 right-7 top-7 hidden h-px overflow-hidden lg:block">
@@ -150,7 +152,7 @@ function IntelligenceProcess({ content }) {
             />
           </div>
 
-          <div className="grid gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
+          <div className="gd-process-steps grid gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
             {stages.map((stage, index) => (
               <PipelineNode
                 key={stage.title}
