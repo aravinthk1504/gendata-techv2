@@ -503,9 +503,7 @@ function FullStackDevelopment() {
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8 lg:mt-5"
                 >
-                  GenData Tech develops full-stack applications that
-                  connect modern user interfaces with backend systems,
-                  databases, APIs and application logic.
+                  {lang === "de" ? "GenData Tech entwickelt Full-Stack-Anwendungen, die moderne Benutzeroberflächen mit Backend-Systemen, Datenbanken, APIs und Anwendungslogik verbinden." : "GenData Tech develops full-stack applications that connect modern user interfaces with backend systems, databases, APIs and application logic."}
                 </motion.p>
 
 
@@ -1106,6 +1104,7 @@ function FullStackDevelopment() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
