@@ -215,7 +215,7 @@ export default function Navbar({ lang = "en", navigation = {} }) {
               onClick={() => {
                 if (mobileMenuRef.current) mobileMenuRef.current.open = false
               }}
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#057CFA] px-5 py-3 font-body text-sm font-semibold text-white transition hover:bg-[#002DCC]"
+              className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full gd-brand-primary px-5 py-3 font-body text-sm font-semibold text-white transition "
             >
               {navigation.contact || "Let's Talk"}
             </Link>
