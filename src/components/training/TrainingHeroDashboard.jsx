@@ -68,7 +68,7 @@ export default function TrainingHeroDashboard({ active = true, lang = "en" }) {
     index: selected,
     setIndex: setSelected,
     count: tracks.length,
-    delay: 5000,
+    delay: 3000,
   });
   const german = lang === "de";
   const track = tracks[selected];
