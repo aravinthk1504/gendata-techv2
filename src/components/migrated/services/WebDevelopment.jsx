@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
-import ServiceFlowVisual from "../../layout/ServiceFlowVisual"
+import WebResponsiveHero from "../../layout/WebResponsiveHero"
 
 import { useRef, useState } from "react"
 
@@ -583,8 +583,8 @@ function WebDevelopment() {
                   COMPACT HERO VISUAL
               ================================================== */}
 
-              <div className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center">
-                <ServiceFlowVisual variant="web" active={heroShouldAnimate}/>
+              <div className="relative mx-auto flex w-full min-w-0 max-w-[470px] items-center justify-center lg:justify-self-center">
+                <WebResponsiveHero active={heroShouldAnimate} lang={lang} />
               </div>
 
             </div>
