@@ -115,7 +115,7 @@ export default function InsightsEditorialHero({ active = true, lang = "en" }) {
     index: selected,
     setIndex: setSelected,
     count: themes.length,
-    delay: 5000,
+    delay: 3000,
   });
   const german = lang === "de";
   const current = themes[selected];
