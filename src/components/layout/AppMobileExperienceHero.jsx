@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import useHeroAutoCycle from "./useHeroAutoCycle";
 import { FiArrowRight, FiCalendar, FiCheck, FiClock, FiHome, FiMapPin, FiMenu, FiUser, FiGrid, FiLayers, FiWifi, FiBattery } from "react-icons/fi";
 
 const screens = [
@@ -78,6 +79,7 @@ export default function AppMobileExperienceHero({ active = true, lang = "en" }) 
     setScreen(index);
   };
   const transition = reducedMotion || !active ? { duration: 0 } : { type: "tween", ease: "easeOut", duration: 0.42 };
+  const autoCycle = useHeroAutoCycle({ active, index: screen, setIndex: setScreen, count: screens.length });
   const variants = {
     enter: (dir) => ({ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : 24 * dir }),
     center: { opacity: 1, x: 0 },
@@ -85,7 +87,7 @@ export default function AppMobileExperienceHero({ active = true, lang = "en" }) 
   };
 
   return (
-    <div className="relative mx-auto flex w-full max-w-[470px] min-w-0 flex-col items-center justify-center">
+    <div {...autoCycle} className="relative mx-auto flex w-full max-w-[470px] min-w-0 flex-col items-center justify-center">
       <div className="pointer-events-none absolute left-1/2 top-12 h-[280px] w-[270px] -translate-x-1/2 rounded-full bg-[#057cfa]/[0.12] blur-[48px]" aria-hidden="true" />
 
       <motion.div
