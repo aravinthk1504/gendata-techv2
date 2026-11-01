@@ -343,7 +343,7 @@ function Blog({posts = []}) {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Browse insights across AI, software, IoT and our technology services.
+                {lang === "de" ? "Entdecken Sie Beiträge zu KI, Software, IoT und unseren Technologieleistungen." : "Browse insights across AI, software, IoT and our technology services."}
               </p>
             </div>
 
@@ -384,11 +384,11 @@ function Blog({posts = []}) {
             ) : (
               <div className="mt-10 rounded-[24px] border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
                 <p className="font-heading text-lg font-semibold text-slate-900">
-                  No articles in this category yet.
+                  {lang === "de" ? "In dieser Kategorie gibt es noch keine Artikel." : "No articles in this category yet."}
                 </p>
 
                 <p className="mx-auto mt-3 max-w-lg font-body text-sm leading-7 text-slate-500">
-                  New published articles will appear here.
+                  {lang === "de" ? "Neue veröffentlichte Artikel erscheinen hier." : "New published articles will appear here."}
                 </p>
               </div>
             )}
