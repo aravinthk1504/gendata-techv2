@@ -496,9 +496,7 @@ function SoftwareDevelopment() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech develops custom software systems around
-                  business processes, internal operations, users and
-                  digital workflows.
+                  {lang === "de" ? "GenData Tech entwickelt individuelle Softwaresysteme für Geschäftsprozesse, interne Abläufe, Nutzer und digitale Arbeitsabläufe." : "GenData Tech develops custom software systems around business processes, internal operations, users and digital workflows."}
                 </motion.p>
 
 
@@ -1073,6 +1071,7 @@ function SoftwareDevelopment() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
