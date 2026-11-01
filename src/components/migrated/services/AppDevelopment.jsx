@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import ProcessFlowGlow from "../../layout/ProcessFlowGlow"
+import useDesktopHeroMotion from "../../layout/useDesktopHeroMotion"
 import AppMobileExperienceHero from "../../layout/AppMobileExperienceHero"
 
 import { useRef, useState } from "react"
@@ -47,8 +48,10 @@ function AppDevelopment() {
 
   const reduceMotion = useReducedMotion()
 
-  const heroShouldAnimate =
+  const glowShouldAnimate =
     heroInView && !reduceMotion
+
+  const glowShouldAnimate = useDesktopHeroMotion(heroShouldAnimate)
 
 
   /* ======================================================
@@ -341,7 +344,7 @@ function AppDevelopment() {
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
             animate={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     opacity: [0.55, 0.9, 0.55],
                     scale: [1, 1.04, 1],
@@ -352,7 +355,7 @@ function AppDevelopment() {
                   }
             }
             transition={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     duration: 8,
                     repeat: Infinity,
@@ -370,7 +373,7 @@ function AppDevelopment() {
           <motion.div
             className="pointer-events-none absolute -right-28 top-20 h-[320px] w-[320px] rounded-full bg-[#057CFA]/10 blur-[110px]"
             animate={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     x: [0, -18, 0],
                     y: [0, 14, 0],
@@ -383,7 +386,7 @@ function AppDevelopment() {
                   }
             }
             transition={
-              heroShouldAnimate
+              glowShouldAnimate
                 ? {
                     duration: 9,
                     repeat: Infinity,
@@ -412,7 +415,7 @@ function AppDevelopment() {
 
           <div className="relative mx-auto max-w-[1400px]">
 
-            <div className="grid min-w-0 min-h-[530px] items-center gap-10 sm:min-h-[530px] sm:gap-12 lg:min-h-[420px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
+            <div className="grid min-w-0 min-h-0 items-center gap-8 sm:gap-10 lg:min-h-[465px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-10" >
 
               {/* HERO COPY */}
 
