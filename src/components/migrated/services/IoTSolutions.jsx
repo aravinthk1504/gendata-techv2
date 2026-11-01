@@ -497,9 +497,7 @@ function IoTSolutions() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base sm:leading-8"
                 >
-                  GenData Tech develops connected IoT systems that
-                  combine sensors, controllers, monitoring,
-                  automation and software integration.
+                  {lang === "de" ? "GenData Tech entwickelt vernetzte IoT-Systeme, die Sensoren, Controller, Überwachung, Automatisierung und Softwareintegration kombinieren." : "GenData Tech develops connected IoT systems that combine sensors, controllers, monitoring, automation and software integration."}
                 </motion.p>
 
 
@@ -1074,6 +1072,7 @@ function IoTSolutions() {
                             : index
                         )
                       }
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
 
