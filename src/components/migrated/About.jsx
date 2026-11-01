@@ -2,6 +2,7 @@
 
 import ProcessFlowGlow from "../layout/ProcessFlowGlow"
 import CountUpStat from "../layout/CountUpStat"
+import AboutInnovationStudioHero from "../about/AboutInnovationStudioHero"
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
@@ -435,48 +436,15 @@ function About() {
 
               </div>
 
-              {/* Our foundation: a restrained architectural motion graphic */}
+              {/* Visual-only isometric studio: software, AI, and IoT engineering. */}
               <motion.div
                 initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: reduceMotion ? 0 : 0.7, ease: "easeOut" }}
-                className="mx-auto w-full max-w-[470px]"
-                aria-label={lang === "de" ? "Unsere Grundlage: Vertrauen, Qualität und Fortschritt. Gegründet 2025." : "Our foundation: Trust, Quality and Progress. Established 2025."}
+                className="mx-auto w-full min-w-0 max-w-[570px] lg:justify-self-center"
               >
-                <div className="relative flex h-[270px] items-end justify-center gap-5 overflow-hidden border-b border-[#194366] px-4 pb-9 sm:h-[310px] sm:gap-8">
-                  <span className="absolute left-1/2 top-4 -translate-x-1/2 whitespace-nowrap font-body text-[10px] font-medium uppercase tracking-[0.25em] text-[#579dc3]">
-                    {lang === "de" ? "Unser Fundament" : "Our Foundation"}
-                  </span>
-                  {[
-                    { label: lang === "de" ? "Vertrauen" : "Trust", height: 125 },
-                    { label: lang === "de" ? "Qualität" : "Quality", height: 166 },
-                    { label: lang === "de" ? "Fortschritt" : "Progress", height: 145 },
-                  ].map((pillar, index) => (
-                    <div key={pillar.label} className="relative z-10 flex w-[72px] shrink-0 flex-col items-center gap-3">
-                      <motion.div
-                        initial={reduceMotion ? false : { scaleY: 0, opacity: 0 }}
-                        animate={{ scaleY: 1, opacity: 1 }}
-                        style={{ height: pillar.height, transformOrigin: "bottom" }}
-                        transition={{ duration: reduceMotion ? 0 : 1.15, delay: reduceMotion ? 0 : index * 0.25 + 0.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-11 border-x border-t border-[#245578] bg-gradient-to-b from-[#0C65A5]/20 to-transparent"
-                      >
-                        <motion.div
-                          className="absolute -left-px -right-px -top-px h-[2px] bg-gradient-to-r from-[#057CFA] to-[#80E5F8] shadow-[0_0_12px_#109cfb]"
-                          animate={reduceMotion ? undefined : { opacity: [0.6, 1, 0.6] }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.4 }}
-                        />
-                      </motion.div>
-                      <span className="font-body text-[10px] font-medium uppercase tracking-[0.09em] text-slate-300">{pillar.label}</span>
-                    </div>
-                  ))}
-                  <motion.div
-                    initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: reduceMotion ? 0 : 1.2, delay: reduceMotion ? 0 : 0.9 }}
-                    className="pointer-events-none absolute bottom-[18px] left-[8%] h-px w-[84%] origin-center bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent"
-                  />
-                </div>
-                <p className="mt-5 text-center font-body text-[10px] font-medium uppercase tracking-[0.22em] text-[#6595ae]">
+                <AboutInnovationStudioHero active={heroShouldAnimate} lang={lang} />
+                <p className="mt-2 text-center font-body text-[10px] font-medium uppercase tracking-[0.2em] text-[#6595ae]">
                   {lang === "de" ? "Gegründet 2025" : "Established 2025"}
                 </p>
               </motion.div>
