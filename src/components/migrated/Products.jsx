@@ -421,9 +421,7 @@ function Products() {
                   }}
                   className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
                 >
-                  GenData Tech develops digital products that bring information,
-                  users and workflows together through structured software
-                  platforms.
+                  {lang === "de" ? "GenData Tech entwickelt digitale Produkte, die Informationen, Nutzer und Arbeitsabläufe auf strukturierten Softwareplattformen zusammenführen." : "GenData Tech develops digital products that bring information, users and workflows together through structured software platforms."}
                 </motion.p>
 
                 <motion.div
@@ -523,20 +521,15 @@ function Products() {
 
               <div className="space-y-5">
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  GenData Tech&apos;s product direction focuses on building
-                  structured digital platforms for common learning and business
-                  requirements.
+                  {lang === "de" ? "GenData Tech konzentriert sich auf strukturierte digitale Plattformen für Anforderungen im Bildungs- und Geschäftsbereich." : "GenData Tech's product direction focuses on building structured digital platforms for common learning and business requirements."}
                 </p>
 
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  Each product is designed around a clear operational area while
-                  maintaining a consistent focus on usable interfaces, connected
-                  information and practical workflows.
+                  {lang === "de" ? "Jedes Produkt richtet sich an einen klar definierten Einsatzbereich. Nutzerfreundliche Oberflächen, verknüpfte Informationen und praxisnahe Abläufe stehen im Mittelpunkt." : "Each product is designed around a clear operational area while maintaining a consistent focus on usable interfaces, connected information and practical workflows."}
                 </p>
 
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  Our product portfolio includes learning management, customer
-                  relationships, business operations and billing systems.
+                  {lang === "de" ? "Unser Portfolio umfasst Lernmanagement, Kundenbeziehungen, Geschäftsprozesse und Abrechnungssysteme." : "Our product portfolio includes learning management, customer relationships, business operations and billing systems."}
                 </p>
               </div>
             </div>
@@ -559,8 +552,7 @@ function Products() {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Explore platforms designed around learning, customer management,
-                business operations and billing workflows.
+                {lang === "de" ? "Entdecken Sie Plattformen für Lernmanagement, Kundenverwaltung, Geschäftsprozesse und Abrechnung." : "Explore platforms designed around learning, customer management, business operations and billing workflows."}
               </p>
             </div>
 
@@ -662,9 +654,7 @@ function Products() {
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
-                  Our focus is not only on adding features. We think about how
-                  users, information and actions work together across the
-                  product.
+                  {lang === "de" ? "Uns geht es nicht nur um Funktionen. Wir gestalten das Zusammenspiel von Nutzern, Informationen und Abläufen." : "Our focus is not only on adding features. We think about how users, information and actions work together across the product."}
                 </p>
               </div>
 
@@ -733,8 +723,7 @@ function Products() {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
-                Product development connects requirements, architecture, user
-                experience and engineering through one continuous process.
+                {lang === "de" ? "Produktentwicklung verbindet Anforderungen, Architektur, Nutzererlebnis und Technik in einem durchgängigen Prozess." : "Product development connects requirements, architecture, user experience and engineering through one continuous process."}
               </p>
             </div>
 
@@ -796,9 +785,7 @@ function Products() {
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
-                  Our product portfolio addresses different areas while
-                  following a consistent approach to usable software, structured
-                  data and connected workflows.
+                  {lang === "de" ? "Unser Portfolio deckt verschiedene Bereiche ab und verfolgt einen einheitlichen Ansatz für benutzerfreundliche Software, strukturierte Daten und vernetzte Abläufe." : "Our product portfolio addresses different areas while following a consistent approach to usable software, structured data and connected workflows."}
                 </p>
               </div>
 
@@ -876,8 +863,7 @@ function Products() {
               </h2>
 
               <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Learn more about our product portfolio and how to start a
-                product enquiry.
+                {lang === "de" ? "Erfahren Sie mehr über unser Produktportfolio und darüber, wie Sie eine Produktanfrage stellen." : "Learn more about our product portfolio and how to start a product enquiry."}
               </p>
             </div>
 
