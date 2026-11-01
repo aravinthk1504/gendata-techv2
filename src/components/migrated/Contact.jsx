@@ -575,8 +575,7 @@ function Contact() {
                   </h2>
 
                   <p className="mt-3 font-body text-sm leading-7 text-slate-500">
-                    Choose the most convenient way to reach GenData Tech
-                    directly.
+                    {lang === "de" ? "Wählen Sie den bequemsten Weg, um GenData Tech direkt zu kontaktieren." : "Choose the most convenient way to reach GenData Tech directly."}
                   </p>
 
                   <div className="mt-6 space-y-3">
@@ -666,8 +665,7 @@ function Contact() {
                   </h2>
 
                   <p className="mt-4 max-w-2xl font-body text-sm leading-7 text-slate-500">
-                    Select the area you&apos;re interested in and provide a few
-                    details about your requirement.
+                    {lang === "de" ? "Wählen Sie Ihren Interessensbereich und beschreiben Sie kurz Ihre Anforderungen." : "Select the area you're interested in and provide a few details about your requirement."}
                   </p>
                 </div>
 
@@ -954,8 +952,7 @@ function Contact() {
 
               <div>
                 <p className="max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                  Our presence supports direct communication and collaboration
-                  across our technology, product and training activities.
+                  {lang === "de" ? "Unsere Standorte ermöglichen direkten Austausch und Zusammenarbeit in den Bereichen Technologie, Produkte und Schulungen." : "Our presence supports direct communication and collaboration across our technology, product and training activities."}
                 </p>
               </div>
             </div>
@@ -1077,8 +1074,7 @@ function Contact() {
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
-                    Share the functionality, users or expected outcome you
-                    currently know.
+                    {lang === "de" ? "Beschreiben Sie bekannte Funktionen, Nutzergruppen oder erwartete Ergebnisse." : "Share the functionality, users or expected outcome you currently know."}
                   </p>
                 </div>
 
@@ -1090,8 +1086,7 @@ function Contact() {
                   </h3>
 
                   <p className="mt-2 font-body text-xs leading-6 text-slate-200">
-                    We can help identify an appropriate technology or direction
-                    from there.
+                    {lang === "de" ? "Gemeinsam finden wir eine passende Technologie oder Vorgehensweise." : "We can help identify an appropriate technology or direction from there."}
                   </p>
                 </div>
               </div>
