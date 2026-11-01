@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { FiBookOpen, FiUsers, FiGrid, FiCreditCard } from "react-icons/fi";
 
-const AUTO_SWITCH_MS = 5000;
+const AUTO_SWITCH_MS = 3000;
 
 // Demonstration-only software screens; all dashboard numbers are illustrative.
 const products = [
@@ -52,18 +52,18 @@ const products = [
 
 export default function ProductWorkspaceHero({ active = true, lang = "en" }) {
   const [selected, setSelected] = useState(0);
-  const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
   const rootRef = useRef(null);
   const visible = useInView(rootRef, { margin: "-10% 0px -10% 0px" });
   const reducedMotion = useReducedMotion();
-  const play = active && visible && pageVisible && !reducedMotion && !hovered && !focused;
+  const play = active && visible && pageVisible && !reducedMotion && !focused;
   const german = lang === "de";
   const current = products[selected];
 
-  // Selecting a tab restarts the five-second countdown. Stop when hidden,
-  // reduced motion is requested, or the visitor is interacting with the demo.
+  // Loop through LMS, CRM, ERP and Billing every three seconds.
+  // Manual pointer selection resets the countdown; keyboard focus and
+  // reduced-motion preferences pause automatic switching.
   useEffect(() => {
     if (!play) return;
     const timer = window.setTimeout(() => {
@@ -84,8 +84,8 @@ export default function ProductWorkspaceHero({ active = true, lang = "en" }) {
 
   return (
     <div ref={rootRef} className="relative mx-auto w-full min-w-0 max-w-[520px]"
-      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)}
+      onPointerDownCapture={() => setFocused(false)}
+      onFocusCapture={(event) => setFocused(Boolean(event.target.matches?.(":focus-visible")))}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
       }}>
