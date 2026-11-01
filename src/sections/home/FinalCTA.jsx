@@ -165,7 +165,7 @@ function FinalCTA({ content, lang }) {
             >
               <Link
                 href={localizedPath("/contact")}
-                className="group inline-flex items-center gap-3 rounded-full bg-brand-accent px-6 py-3.5 font-body text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500"
+                className="group inline-flex items-center gap-3 rounded-full gd-brand-primary px-6 py-3.5 font-body text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 "
               >
                 {t("finalCta.primary")}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
