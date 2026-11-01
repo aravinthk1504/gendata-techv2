@@ -929,8 +929,7 @@ function Training() {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
-                Explore what you&apos;ll learn, the technologies you&apos;ll
-                work with and the learning outcome for each track.
+                {lang === "de" ? "Entdecken Sie die Lerninhalte, eingesetzten Technologien und Ziele der einzelnen Schulungsbereiche." : "Explore what you'll learn, the technologies you'll work with and the learning outcome for each track."}
               </p>
             </div>
 
@@ -1247,9 +1246,7 @@ function Training() {
                 </h2>
 
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
-                  Training combines foundational understanding with practical
-                  implementation so learners can connect concepts with real
-                  development workflows.
+                  {lang === "de" ? "Unsere Schulungen verbinden Grundlagenwissen mit praktischer Umsetzung, damit Lernende Konzepte in reale Entwicklungsabläufe übertragen können." : "Training combines foundational understanding with practical implementation so learners can connect concepts with real development workflows."}
                 </p>
               </div>
 
@@ -1397,8 +1394,7 @@ function Training() {
               </h2>
 
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base">
-                Our training approach follows a progressive path from
-                understanding concepts to applying them practically.
+                {lang === "de" ? "Unser Schulungsansatz führt Schritt für Schritt vom Verständnis der Konzepte bis zur praktischen Anwendung." : "Our training approach follows a progressive path from understanding concepts to applying them practically."}
               </p>
             </div>
 
