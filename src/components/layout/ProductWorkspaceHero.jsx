@@ -54,10 +54,11 @@ export default function ProductWorkspaceHero({ active = true, lang = "en" }) {
   const [selected, setSelected] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
   const rootRef = useRef(null);
   const visible = useInView(rootRef, { margin: "-10% 0px -10% 0px" });
   const reducedMotion = useReducedMotion();
-  const play = active && visible && !reducedMotion && !hovered && !focused;
+  const play = active && visible && pageVisible && !reducedMotion && !hovered && !focused;
   const german = lang === "de";
   const current = products[selected];
 
@@ -74,18 +75,12 @@ export default function ProductWorkspaceHero({ active = true, lang = "en" }) {
   }, [play, selected]);
 
   // A tab hidden before a pending tick becomes visible again should resume.
-  const [pageVisible, setPageVisible] = useState(true);
   useEffect(() => {
     const sync = () => setPageVisible(document.visibilityState === "visible");
     sync();
     document.addEventListener("visibilitychange", sync);
     return () => document.removeEventListener("visibilitychange", sync);
   }, []);
-  useEffect(() => {
-    if (!play || !pageVisible) return;
-    // This effect is intentionally not responsible for the timer; it keeps the
-    // paused page visible state tracked for accessibility and future extensions.
-  }, [play, pageVisible]);
 
   return (
     <div ref={rootRef} className="relative mx-auto w-full min-w-0 max-w-[520px]"
