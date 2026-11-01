@@ -1,11 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/react";
 
 function CustomCursor() {
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -20,6 +21,8 @@ function CustomCursor() {
   const ringY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const moveCursor = (event) => {
       mouseX.set(event.clientX);
       mouseY.set(event.clientY);
@@ -50,7 +53,10 @@ function CustomCursor() {
         handleMouseLeave,
       );
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, reducedMotion]);
+
+  // A native cursor is essential for visitors who request reduced motion.
+  if (reducedMotion) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-9999 hidden md:block">
