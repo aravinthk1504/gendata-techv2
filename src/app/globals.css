@@ -118,6 +118,13 @@ button:focus-visible {
   body, a, button { cursor: none; }
 }
 
+/* Restore system pointer behaviour when OS/browser requests reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  body { cursor: auto !important; }
+  a, button, summary { cursor: pointer !important; }
+  input, select, textarea { cursor: auto !important; }
+}
+
 
 /* Unified hero CTAs: shared across Home, main pages and service-detail pages. */
 .gd-hero-button {
