@@ -13,6 +13,7 @@ import {
 
 import BlogCard from "../blog/BlogCard"
 import CommonCTA from "../layout/CommonCTA"
+import InsightsEditorialHero from "../blog/InsightsEditorialHero"
 
 
 
@@ -60,7 +61,7 @@ function Blog({posts = []}) {
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pt-32 pb-[236px] sm:pt-36 sm:pb-[142px] lg:px-10 lg:pt-32 lg:pb-20"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-20 lg:pt-32"
         >
           <motion.div
             className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
@@ -195,65 +196,10 @@ function Blog({posts = []}) {
               </div>
 
 
-              <motion.div
-                initial={{
-                  opacity: 1,
-                  scale: 0.96,
-                }}
-                animate={
-                  heroInView
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 0.65,
-                  delay: 0.15,
-                }}
-                className="relative hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex lg:justify-self-center"
-              >
-                {/* Insights publishing cards */}
-                {[0,1,2].map(i=><motion.div key={i} className="absolute h-44 w-32 rounded-2xl border border-[#057CFA]/30 bg-[#06152C]/90 p-4 shadow-xl" style={{left:`${16+i*23}%`,top:`${18+i*12}%`}} animate={heroShouldAnimate?{y:[0,-8,0]}:{y:0}} transition={{duration:4,delay:i*0.6,repeat:heroShouldAnimate?Infinity:0}}><div className="mb-5 h-2 w-12 rounded-full bg-[#057CFA]"/><div className="mb-2 h-1.5 w-full rounded bg-white/25"/><div className="mb-2 h-1.5 w-4/5 rounded bg-white/20"/><div className="h-1.5 w-3/5 rounded bg-white/20"/></motion.div>)}
-                <div className="relative z-10 flex h-[130px] w-[130px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.15)]">
-                  <span className="h-3 w-3 rounded-full bg-[#057CFA] shadow-[0_0_22px_rgba(5,124,250,1)]" />
-                  <span className="mt-3 font-heading text-sm font-semibold text-white">
-                    {tr("Ideas")}
-                  </span>
-                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-300">
-                    {tr("Learn • Share")}
-                  </span>
-                </div>
-
-                {[
-                  {
-                    label: "AI",
-                    className: "right-3 top-7",
-                  },
-                  {
-                    label: "ML",
-                    className: "bottom-12 left-1",
-                  },
-                  {
-                    label: "Software",
-                    className: "bottom-3 right-5",
-                  },
-                  {
-                    label: "IoT",
-                    className: "left-5 top-12",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className={`absolute ${item.className} rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm`}
-                  >
-                    <span className="font-body text-[9px] font-semibold text-slate-200">
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
+              {/* Interactive four-theme editorial concept, responsive at every size. */}
+              <div className="relative mx-auto w-full min-w-0 max-w-[480px] lg:justify-self-center">
+                <InsightsEditorialHero active={heroShouldAnimate} lang={lang} />
+              </div>
             </div>
           </div>
         </section>
