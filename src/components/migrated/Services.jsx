@@ -748,7 +748,7 @@ function Services() {
                       delay: index * 0.06,
                     }}
                   >
-                    <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#057CFA]/25 bg-white font-heading text-[10px] font-semibold text-[#057CFA] shadow-sm">
+                    <div data-process-marker className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#057CFA]/25 bg-white font-heading text-[10px] font-semibold text-[#057CFA] shadow-sm">
                       {step.number}
                     </div>
 
