@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import useHeroAutoCycle from "./useHeroAutoCycle";
 
 // The outputs below are illustrative examples, not predictions from a live model.
 const demonstrations = [
@@ -64,9 +65,10 @@ export default function AiNeuralEngineHero({ active = true, lang = "en" }) {
   const motionOn = active && !reducedMotion;
   const german = lang === "de";
   const current = demonstrations[selected];
+  const autoCycle = useHeroAutoCycle({ active, index: selected, setIndex: setSelected, count: demonstrations.length });
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-[540px]">
+    <div {...autoCycle} className="mx-auto w-full min-w-0 max-w-[540px]">
       <div className="mb-3 flex items-center justify-between gap-2 font-body text-[9px] uppercase tracking-[0.12em] text-[#80acc8]">
         <span>GenData / Neural Engine</span>
         <span className="text-[#60e2bf]">{german ? "● Demo aktiv" : "● Demo active"}</span>
