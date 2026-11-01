@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import useHeroAutoCycle from "./useHeroAutoCycle";
 
 const modules = [
   { id: "rules", x: 82, y: 107, label: "Business Rules", de: "Geschäftsregeln" },
@@ -24,9 +25,10 @@ export default function SoftwareBlueprintHero({ active = true, lang = "en" }) {
   const motionOn = active && !reducedMotion;
   const duration = reducedMotion ? 0 : 0.65;
   const german = lang === "de";
+  const autoCycle = useHeroAutoCycle({ active, index: mode === "built" ? 0 : 1, setIndex: (updater) => setMode(previous => (typeof updater === "function" ? updater(previous === "built" ? 0 : 1) : updater) === 0 ? "built" : "blueprint"), count: 2 });
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-[470px]">
+    <div {...autoCycle} className="mx-auto w-full min-w-0 max-w-[470px]">
       <div className="mb-3 flex items-center justify-between gap-2 font-body text-[9px] font-medium uppercase tracking-[0.13em] text-[#7fa6c3]">
         <span>GenData / System Design</span>
         <span className="text-right text-cyan-300">
