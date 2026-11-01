@@ -1401,7 +1401,7 @@ function Training() {
             <div className="relative mt-14">
               <ProcessFlowGlow />
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="gd-process-steps grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
                 {trainingProcess.map((step, index) => (
                   <motion.div
                     key={step.number}
