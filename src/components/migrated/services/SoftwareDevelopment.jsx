@@ -46,7 +46,7 @@ function SoftwareDevelopment() {
 
   const reduceMotion = useReducedMotion()
 
-  const glowShouldAnimate =
+  const heroShouldAnimate =
     heroInView && !reduceMotion
 
   const glowShouldAnimate = useDesktopHeroMotion(heroShouldAnimate)
