@@ -122,6 +122,33 @@ function ProductVisual({ type, content }) {
   const chartVisible = useInView(chartRef, { once: true, amount: 0.15 });
   const reduceMotion = useReducedMotion();
 
+  if (type === "lms") {
+    // Compact mobile preview sized to match the CRM, ERP and Billing cards.
+    // The full interactive dashboard remains visible from the sm breakpoint.
+    return (
+      <div className="relative mt-5 h-28 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-3">
+        <div className="flex h-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50">
+            <span className="font-heading text-[11px] font-bold text-brand-primary">LMS</span>
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2 font-body text-[9px] text-slate-500">
+              <span className="truncate">{t("products.lms.dashboard.courses")}</span>
+              <span className="font-heading font-semibold text-slate-800">24</span>
+            </div>
+            <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-full w-[84%] rounded-full bg-gradient-to-r from-[#21d4f3] to-[#057cfa]" />
+            </div>
+            <div className="mt-2 flex justify-between gap-2 font-body text-[9px] text-slate-500">
+              <span className="truncate">{t("products.lms.dashboard.progress")}</span>
+              <span className="font-semibold text-brand-primary">84%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (type === "crm") {
     const bars = [45, 68, 55, 86];
     return (
@@ -281,7 +308,7 @@ function Products({ content, lang }) {
           <div className="absolute -left-30 bottom-0 h-100 w-100 rounded-full bg-brand-primary/5 blur-[120px]" />
           <div className="absolute -right-20 top-0 h-100 w-100 rounded-full bg-brand-accent/6 blur-[130px]" />
 
-          <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-8">
+          <div className="relative grid gap-5 sm:gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-8">
             <div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-accent sm:tracking-[0.2em]">
@@ -289,7 +316,7 @@ function Products({ content, lang }) {
                 </span>
               </div>
 
-              <h3 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:mt-5 sm:text-4xl">
+              <h3 className="mt-4 font-heading text-2xl font-semibold tracking-[-0.04em] text-slate-950 sm:mt-5 sm:text-4xl">
                 {t("products.lms.title")}
               </h3>
 
@@ -319,7 +346,12 @@ function Products({ content, lang }) {
               </Link>
             </div>
 
-            <LMSDashboard content={content} />
+            <div className="hidden sm:block">
+              <LMSDashboard content={content} />
+            </div>
+            <div className="sm:hidden">
+              <ProductVisual type="lms" content={content} />
+            </div>
             <Link
               href={localizedPath("/products/lms")}
               className="group inline-flex w-fit items-center gap-3 pb-1 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent lg:hidden"
