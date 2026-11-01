@@ -349,22 +349,20 @@ function Blog({posts = []}) {
 
 
             <div className="mt-10 grid items-start gap-8 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[260px_minmax(0,1fr)]">
-              <aside aria-label="Filter articles by technology domain" className="rounded-2xl border border-slate-200 bg-white p-4 lg:sticky lg:top-24">
-                <h3 className="mb-4 font-heading text-sm font-semibold text-[#081b3a]">Browse by domain</h3>
+              <aside aria-label={lang === "de" ? "Artikel nach Themenbereich filtern" : "Filter articles by technology domain"} className="rounded-2xl border border-slate-200 bg-white p-4 lg:sticky lg:top-24">
+                <h3 className="mb-4 font-heading text-sm font-semibold text-[#081b3a]">{lang === "de" ? "Nach Themenbereich" : "Browse by domain"}</h3>
                 <div className="flex flex-wrap gap-2 lg:flex-col lg:items-stretch">
-                  {domains.map(domain=><button key={domain} type="button" onClick={()=>setActiveCategory(domain)} aria-pressed={activeCategory===domain} className={`rounded-xl border px-3 py-2.5 text-left font-body text-[11px] font-semibold transition ${activeCategory===domain?"border-[#057CFA] bg-[#057CFA] text-white":"border-slate-200 bg-white text-slate-600 hover:border-[#057CFA] hover:text-[#002DCC]"}`}>{domain}</button>)}
+                  {domains.map(domain=><button key={domain} type="button" onClick={()=>setActiveCategory(domain)} aria-pressed={activeCategory===domain} className={`rounded-xl border px-3 py-2.5 text-left font-body text-[11px] font-semibold transition ${activeCategory===domain?"border-[#057CFA] bg-[#057CFA] text-white":"border-slate-200 bg-white text-slate-600 hover:border-[#057CFA] hover:text-[#002DCC]"}`}>{tr(domain)}</button>)}
                 </div>
               </aside>
               <div className="min-w-0">
             <div className="mt-9">
-              <p className="font-body text-xs text-slate-500">
-                Showing{" "}
-                <span className="font-semibold text-slate-900">
-                  {filteredPosts.length}
-                </span>{" "}
-                {filteredPosts.length === 1
-                  ? "item"
-                  : "items"}
+              <p className="font-body text-xs text-slate-500" role="status" aria-live="polite">
+                {lang === "de" ? "Angezeigt: " : "Showing "}
+                <span className="font-semibold text-slate-900">{filteredPosts.length}</span>{" "}
+                {lang === "de"
+                  ? (filteredPosts.length === 1 ? "Beitrag" : "Beiträge")
+                  : (filteredPosts.length === 1 ? "item" : "items")}
               </p>
             </div>
 
