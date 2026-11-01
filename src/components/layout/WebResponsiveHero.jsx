@@ -92,13 +92,12 @@ export default function WebResponsiveHero({ active = true, lang = "en" }) {
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
-            width: isMobile ? 138 : 96,
-            height: isMobile ? 260 : 190,
-            left: isMobile ? "50%" : "79%",
+            scale: isMobile ? 1 : 0.72,
             x: "-50%",
             y: 0,
           }}
           transition={{ duration, ease: "easeInOut" }}
+          style={{ width: 138, height: 260, left: isMobile ? "50%" : "79%", transformOrigin: "center bottom" }}
           className="absolute bottom-2 z-10 overflow-hidden rounded-[18px] border-[4px] border-[#162e4b] bg-[#f8fafd] shadow-[0_17px_34px_rgba(0,0,0,0.5)] sm:bottom-3"
         >
           <div className="mx-auto mt-[3px] h-[4px] w-5 rounded-full bg-[#19344d]" />
