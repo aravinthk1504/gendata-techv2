@@ -29,6 +29,7 @@ import {
 import Link from "../layout/LocalizedLink"
 
 import CommonCTA from "../layout/CommonCTA"
+import ProductWorkspaceHero from "../layout/ProductWorkspaceHero"
 const translationsDE = {"Service Overview":"Leistungsüberblick","What We Offer":"Unsere Leistungen","Use Cases":"Anwendungsfälle","Technology Stack":"Technologie-Stack","Development Process":"Entwicklungsprozess","Why GenData Tech":"Warum GenData Tech","Frequently Asked Questions":"Häufig gestellte Fragen","Requirement":"Anforderungen","Planning":"Planung","Architecture":"Architektur","Development":"Entwicklung","Integration":"Integration","Testing":"Tests","Deployment":"Bereitstellung","Delivery":"Auslieferung","Understand":"Verstehen","Design":"Konzeption","Build":"Entwicklung","Evaluate":"Evaluierung","Evaluation":"Bewertung","Training":"Training","Structure":"Struktur","Connect":"Verbinden","Improve":"Verbessern","Start a Project":"Projekt starten","Discuss Your Requirement":"Anforderung besprechen","AI / ML Development":"KI- und ML-Entwicklung","Full Stack Development":"Full-Stack-Entwicklung","Web Development":"Webentwicklung","Software Development":"Softwareentwicklung","App Development":"App-Entwicklung","IoT Solutions":"IoT-Lösungen","AI Automation":"KI-Automatisierung","Custom AI Solutions":"Individuelle KI-Lösungen","Machine Learning Solutions":"Lösungen für maschinelles Lernen","Model Design":"Modellkonzeption","Data Understanding":"Datenverständnis","AI Model Development":"KI-Modellentwicklung","Frontend Development":"Frontend-Entwicklung","Backend Development":"Backend-Entwicklung","API Development":"API-Entwicklung","Database Integration":"Datenbankintegration","Authentication & Security":"Authentifizierung und Sicherheit","Corporate Websites":"Unternehmenswebsites","Startup Websites":"Websites für Start-ups","Product Websites":"Produktwebsites","Responsive Development":"Responsive Entwicklung","Performance-focused Development":"Performanceorientierte Entwicklung","SEO-ready Structure":"SEO-gerechte Struktur","Custom Business Software":"Individuelle Unternehmenssoftware","Internal Tools":"Interne Tools","Management Systems":"Managementsysteme","Workflow Applications":"Workflow-Anwendungen","API & System Integration":"API- und Systemintegration","Software Modernization":"Softwaremodernisierung","Android App Development":"Android-App-Entwicklung","iOS App Development":"iOS-App-Entwicklung","Cross-platform Applications":"Plattformübergreifende Anwendungen","Backend & API Integration":"Backend- und API-Integration","Notifications & User Features":"Benachrichtigungen und Nutzerfunktionen","Business Mobile Apps":"Mobile Business-Apps","Sensor Monitoring":"Sensorüberwachung","Device Automation":"Geräteautomatisierung","Remote Monitoring":"Fernüberwachung","IoT Dashboards":"IoT-Dashboards","Alerts & Notifications":"Warnmeldungen und Benachrichtigungen","AI-enabled IoT":"KI-gestütztes IoT","Our Services":"Unsere Leistungen","Technology Services":"Technologiedienstleistungen","Product Portfolio":"Produktportfolio","Our Products":"Unsere Produkte","GenData Tech Products":"GenData Tech Produkte","Training Programs":"Schulungsprogramme","Learning Experience":"Lernerfahrung","Learning Process":"Lernprozess","Learning Approach":"Lernkonzept","Contact GenData Tech":"Kontakt zu GenData Tech","Quick Contact":"Direkter Kontakt","Start Your Enquiry":"Anfrage senden","Full Name *":"Vollständiger Name *","Email Address *":"E-Mail-Adresse *","Phone Number":"Telefonnummer","What are you interested in? *":"Wofür interessieren Sie sich? *","Select a category":"Kategorie auswählen","Other Enquiry":"Sonstige Anfrage","What are you looking for? *":"Was suchen Sie? *","Tell us about your requirement *":"Beschreiben Sie Ihr Anliegen *","Locations":"Standorte","Before You Get in Touch":"Bevor Sie Kontakt aufnehmen","Your Requirement":"Ihre Anforderung","The Problem":"Die Herausforderung","The Next Step":"Der nächste Schritt","Our Response Promise":"Unser Antwortversprechen","Within 24 hrs":"Innerhalb von 24 Std.","Response":"Antwort","Availability":"Erreichbarkeit","Insights":"Einblicke","Explore":"Entdecken","Learn":"Lernen","Students":"Studierende","Beginners":"Einsteiger","Skill Builders":"Weiterbildungsinteressierte","Data Science":"Data Science","Data Analytics":"Datenanalyse","IoT Development":"IoT-Entwicklung","Mobile App Development":"Mobile-App-Entwicklung","Python":"Python","Digital products built":"Digitale Produkte für","around practical workflows.":"Bildung und Business.","Software products for learning and business operations.":"Software für Bildung und Unternehmen.","A growing product ecosystem from GenData Tech.":"Ein wachsendes Produktportfolio von GenData Tech.","Products shaped around useful everyday workflows.":"Produkte für praktische Arbeitsabläufe.","From user need to structured digital product.":"Vom Nutzerbedarf zum digitalen Produkt.","Questions about GenData Tech products.":"Fragen zu den Produkten von GenData Tech.","A learning management platform designed to organize courses, learners, training content and learning activities in one connected system.":"Eine Lernplattform, die Kurse, Teilnehmende, Schulungsinhalte und Lernaktivitäten in einem vernetzten System organisiert.","A customer relationship platform designed to organize customer information, interactions, follow-ups and business relationships.":"Eine CRM-Plattform zur Verwaltung von Kundeninformationen, Interaktionen, Nachfassaktionen und Geschäftsbeziehungen.","A centralized business platform designed to connect operational information, workflows and management activities.":"Eine zentrale Unternehmensplattform, die Betriebsdaten, Arbeitsabläufe und Managementprozesse verbindet.","A billing and business transaction platform designed to simplify invoice creation, records and billing-related workflows.":"Eine Plattform für Abrechnungen und Geschäftsvorgänge, die Rechnungsstellung, Aufzeichnungen und Abrechnungsprozesse vereinfacht.","Built Around the Workflow":"An Arbeitsabläufen orientiert","Products should support the process users actually need rather than adding unnecessary complexity.":"Produkte sollen die tatsächlich benötigten Prozesse unterstützen, statt unnötige Komplexität zu schaffen.","Connected Information":"Vernetzte Informationen","Data, users and workflows are structured so important information can work together within one platform.":"Daten, Nutzer und Abläufe werden so strukturiert, dass wichtige Informationen auf einer Plattform zusammenwirken.","Practical Experience":"Praxisnahe Nutzung","Interfaces and functionality are designed around useful everyday actions and clear user journeys.":"Oberflächen und Funktionen orientieren sich an alltäglichen Aufgaben und klaren Nutzerwegen.","Designed to Evolve":"Für Weiterentwicklung ausgelegt","Product architecture considers future features, integrations and changing operational requirements.":"Die Produktarchitektur berücksichtigt künftige Funktionen, Integrationen und sich verändernde Anforderungen.","Understand the user, workflow and problem the product needs to support.":"Nutzer, Arbeitsabläufe und die zu lösende Aufgabe verstehen.","Define the modules, information flow and product architecture.":"Module, Informationsflüsse und Produktarchitektur festlegen.","Plan interfaces and user journeys around important actions.":"Oberflächen und Nutzerwege für wichtige Aufgaben gestalten.","Develop the required product functionality and supporting systems.":"Benötigte Produktfunktionen und unterstützende Systeme entwickeln.","Integrate data, APIs and other services where required.":"Daten, APIs und weitere Dienste bei Bedarf integrieren.","Continue refining functionality as product requirements evolve.":"Funktionen mit neuen Produktanforderungen kontinuierlich verbessern.","What products does GenData Tech provide?":"Welche Produkte bietet GenData Tech an?","GenData Tech's product portfolio includes GenData LMS, GenData CRM, GenData ERP and GenData Billing.":"Zum Produktportfolio von GenData Tech gehören GenData LMS, GenData CRM, GenData ERP und GenData Billing.","What is GenData LMS?":"Was ist GenData LMS?","GenData LMS is a learning management platform designed around course organization, learner management, training content and learning activities.":"GenData LMS ist eine Lernmanagementplattform für die Organisation von Kursen, Teilnehmenden, Schulungsinhalten und Lernaktivitäten.","What is GenData CRM?":"Was ist GenData CRM?","GenData CRM is designed to help organize customer information, leads, interactions and follow-up activities within one system.":"GenData CRM unterstützt die Verwaltung von Kundendaten, Leads, Interaktionen und Nachfassaktionen in einem System.","What is GenData ERP?":"Was ist GenData ERP?","GenData ERP is designed as a centralized platform for connecting business information, operational workflows and management activities.":"GenData ERP ist eine zentrale Plattform zur Verbindung von Unternehmensdaten, betrieblichen Abläufen und Verwaltungsaufgaben.","What is GenData Billing?":"Was ist GenData Billing?","GenData Billing is designed to support billing workflows including invoice creation, customer records and transaction-related information.":"GenData Billing unterstützt Abrechnungsabläufe wie die Rechnungserstellung, Kundenverwaltung und Verarbeitung von Transaktionsdaten.","Can I contact GenData Tech to learn more about a product?":"Kann ich GenData Tech kontaktieren, um mehr über ein Produkt zu erfahren?","Yes. You can use the Contact page, select Products as the enquiry category and choose the product you are interested in.":"Ja. Wählen Sie auf der Kontaktseite die Anfragekategorie „Produkte“ und anschließend das gewünschte Produkt aus.","Can GenData Tech products connect with other systems?":"Können GenData-Tech-Produkte mit anderen Systemen verbunden werden?","Integration possibilities depend on the product requirement and the external system involved. APIs and connected services can be considered where technically suitable.":"Die Integrationsmöglichkeiten hängen vom Produkt und dem externen System ab. APIs und vernetzte Dienste können bei technischer Eignung berücksichtigt werden.","Can I request a product demonstration?":"Kann ich eine Produktdemonstration anfordern?","Yes. You can submit a product enquiry through the Contact page and mention that you would like to discuss or request a demonstration.":"Ja. Stellen Sie über die Kontaktseite eine Produktanfrage und geben Sie an, dass Sie eine Demonstration wünschen.","Explore Our Products":"Unsere Produkte entdecken","Core Capabilities":"Kernfunktionen","Enquire About Product":"Produkt anfragen","Product Thinking":"Produktphilosophie","Product Approach":"Unser Produktansatz","Product Ecosystem":"Produktökosystem","Different products. One technology direction.":"Verschiedene Produkte. Eine gemeinsame technologische Ausrichtung.","Learning":"Lernen","Customers":"Kunden","Operations":"Betrieb","Billing":"Abrechnung","Course Management":"Kursverwaltung","Learner Management":"Teilnehmerverwaltung","Training Content":"Schulungsinhalte","Learning Tracking":"Lernfortschritt","Customer Records":"Kundendaten","Lead Management":"Lead-Verwaltung","Follow-ups":"Nachfassaktionen","Interaction Tracking":"Interaktionsverfolgung","Business Records":"Unternehmensdaten","Workflow Management":"Workflow-Verwaltung","Centralized Data":"Zentrale Daten","Invoices":"Rechnungen","Billing Records":"Abrechnungsdaten","Customer Details":"Kundendetails","Transaction Management":"Transaktionsverwaltung"};
 
 function Products() {
@@ -49,14 +50,6 @@ function Products() {
   const reduceMotion = useReducedMotion();
 
   const heroShouldAnimate = heroInView && !reduceMotion;
-  const [heroProductIndex, setHeroProductIndex] = useState(0);
-  const heroProductPreviews = [
-    { name: "LMS", title: "Learning Management", metrics: [{ label: "Sample course modules", value: "08" }, { label: "Learning paths", value: "04" }], rows: [{ label: "Course Management", action: "Manage" }, { label: "Student Progress", action: "Track" }, { label: "Learning Resources", action: "View" }] },
-    { name: "CRM", title: "Customer Relationship", metrics: [{ label: "Sample contacts", value: "128" }, { label: "Lead pipelines", value: "04" }], rows: [{ label: "Customer Records", action: "Manage" }, { label: "Lead Pipeline", action: "Track" }, { label: "Follow-ups", action: "Review" }] },
-    { name: "ERP", title: "Enterprise Management", metrics: [{ label: "Business units", value: "04" }, { label: "Workflows", value: "12" }], rows: [{ label: "Operations", action: "Manage" }, { label: "Inventory", action: "Track" }, { label: "Team Activities", action: "View" }] },
-    { name: "Billing", title: "Billing & Invoicing", metrics: [{ label: "Sample invoices", value: "48" }, { label: "Sample revenue", value: "₹24K" }], rows: [{ label: "Invoice Creation", action: "Create" }, { label: "Payment Records", action: "Track" }, { label: "Customer Billing", action: "Manage" }] },
-    { name: "IoT", title: "IoT Device Monitoring", sensors: [{ label: "Temperature", value: "26.4°" }, { label: "Humidity", value: "62%" }, { label: "Devices", value: "04" }] },
-  ];
 
   /* ======================================================
       FAQ
@@ -505,74 +498,8 @@ function Products() {
               </div>
 
 
-              {/* Interactive product portfolio — conceptual interfaces, not live product data */}
-              <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.6, delay: 0.15 }}
-                className="relative mx-auto w-full min-w-0 max-w-[470px] lg:justify-self-center"
-              >
-                <div className="overflow-hidden rounded-xl border border-[#244762] bg-[#08192e] shadow-[0_24px_65px_rgba(0,0,0,0.35)]">
-                  <div className="flex h-10 items-center justify-between border-b border-[#284057] bg-[#0c223c] px-3">
-                    <div className="flex gap-1" aria-hidden="true"><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/><span className="h-1.5 w-1.5 rounded-full bg-slate-500"/></div>
-                    <span className="font-body text-[11px] font-semibold text-white">GenData <span className="text-cyan-300">Products</span></span>
-                    <span className="text-cyan-300" aria-hidden="true">◇</span>
-                  </div>
-                  <div className="min-h-[228px] p-4" aria-live="polite">
-                    <motion.div key={heroProductIndex} initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.32 }}>
-                      <div className="mb-4 flex items-center justify-between gap-2">
-                        <span className="font-heading text-xs font-semibold text-white">{heroProductPreviews[heroProductIndex].title}</span>
-                        <span className="shrink-0 font-body text-[9px] uppercase tracking-wide text-cyan-300">{heroProductIndex === 4 ? "Future concept" : "Concept preview"}</span>
-                      </div>
-                      {heroProductIndex === 4 ? (
-                        <>
-                          <div className="grid grid-cols-3 gap-2">
-                            {heroProductPreviews[4].sensors.map((item) => (
-                              <div key={item.label} className="rounded-lg border border-[#22536f] bg-[#102d43] px-2 py-3 text-center">
-                                <p className="font-body text-[9px] text-slate-300">{item.label}</p>
-                                <p className="mt-2 font-heading text-base font-semibold text-cyan-200">{item.value}</p>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="mt-4 flex h-[65px] items-end gap-2 border-b border-[#2d506a] px-2">
-                            {[35, 51, 43, 65, 56, 76, 59, 87].map((height, i) => (
-                              <motion.div key={i} className="flex-1 rounded-t-sm bg-gradient-to-t from-[#1257a9] to-[#57d8f5]" initial={reduceMotion ? false : { height: 0 }} animate={{ height: height + "%" }} transition={{ duration: reduceMotion ? 0 : 0.6, delay: i * 0.05 }}/>
-                            ))}
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="grid grid-cols-2 gap-2">
-                            {heroProductPreviews[heroProductIndex].metrics.map((metric) => (
-                              <div key={metric.label} className="rounded-lg border border-[#2a435b] bg-[#102a43] p-3">
-                                <p className="font-body text-[10px] text-slate-300">{metric.label}</p>
-                                <p className="mt-1.5 font-heading text-xl font-semibold text-white">{metric.value}</p>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="mt-3">
-                            {heroProductPreviews[heroProductIndex].rows.map((row) => (
-                              <div key={row.label} className="flex items-center justify-between gap-3 border-b border-[#213c55] py-2">
-                                <span className="font-body text-[11px] text-slate-200">{row.label}</span>
-                                <span className="rounded border border-[#29677e] bg-[#113f57] px-2 py-1 font-body text-[9px] text-cyan-200">{row.action}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </motion.div>
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap justify-center gap-2" role="group" aria-label="Select product concept preview">
-                  {heroProductPreviews.map((product, index) => (
-                    <button key={product.name} type="button" aria-pressed={heroProductIndex === index} onClick={() => setHeroProductIndex(index)}
-                      className={`rounded-lg border px-3 py-2 font-body text-[11px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 ${heroProductIndex === index ? "border-[#057CFA] bg-[#057CFA] text-white" : "border-[#33536f] bg-[#10263c] text-slate-300 hover:border-cyan-400 hover:text-white"}`}>
-                      {product.name}
-                    </button>
-                  ))}
-                </div>
-                <p className="mt-3 text-center font-body text-[9px] uppercase tracking-wide text-slate-400">Illustrative concepts · IoT planned for the future</p>
-              </motion.div>
+              {/* Auto-rotating product concept workspace; all figures illustrative. */}
+              <ProductWorkspaceHero active={heroShouldAnimate} lang={lang} />
             </div>
           </div>
         </section>
