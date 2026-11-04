@@ -2,95 +2,130 @@ import { NextResponse } from "next/server";
 import { getAuth } from "firebase-admin/auth";
 import "../../../../lib/firebase-admin";
 import {
-  reserveAdminLoginAttempt, clearAdminLoginAttempts, recordAdminEvent,
+  checkAdminLoginLimit, registerAdminLoginFailure, clearAdminLoginFailures,
+  normalizedLoginEmail, recordAdminEvent,
 } from "../../../../lib/admin-security";
 
 export const runtime = "nodejs";
-const LIMIT = 8192;
+const BODY_LIMIT = 8192;
 const genericFailure = () => NextResponse.json(
   { error: "Invalid credentials or access unavailable" },
   { status: 401, headers: { "Cache-Control": "no-store" } },
 );
 
-function sameOrigin(req) {
-  const origin = req.headers.get("origin");
-  const host = req.headers.get("host");
+const lockResponse = seconds => NextResponse.json(
+  { error: "Too many failed sign-in attempts. Please try again in 10 minutes." },
+  {
+    status: 429,
+    headers: {
+      "Retry-After": String(Math.max(1, seconds)),
+      "Cache-Control": "no-store",
+    },
+  },
+);
+
+function sameOrigin(request) {
+  const origin = request.headers.get("origin");
+  const host = request.headers.get("host");
   if (!origin || !host) return false;
   try { return new URL(origin).host === host; } catch { return false; }
 }
 
 export async function POST(request) {
-  if (!sameOrigin(request)) return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  if (!sameOrigin(request)) {
+    return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  }
+
   try {
     const raw = await request.text();
-    if (Buffer.byteLength(raw, "utf8") > LIMIT) return genericFailure();
+    if (Buffer.byteLength(raw, "utf8") > BODY_LIMIT) return genericFailure();
     const body = JSON.parse(raw);
-    const email = body?.email;
+    const email = normalizedLoginEmail(body?.email);
     const password = body?.password;
-    if (typeof email !== "string" || typeof password !== "string" ||
-      !email.trim() || !password || email.length > 254 || password.length > 1024) {
+
+    if (!email || !email.includes("@") || email.length > 254 ||
+        typeof password !== "string" || !password || password.length > 1024) {
       return genericFailure();
     }
 
     const apiKey = process.env.FIREBASE_WEB_API_KEY;
-    const allowed = (process.env.ADMIN_UIDS || "").split(",").map(s => s.trim()).filter(Boolean);
-    if (!apiKey || !allowed.length) return NextResponse.json(
-      { error: "Admin login not configured" }, { status: 503 },
-    );
+    const allowed = (process.env.ADMIN_UIDS || "").split(",").map(x => x.trim()).filter(Boolean);
+    if (!apiKey || !allowed.length) {
+      return NextResponse.json({ error: "Admin login not configured" }, { status: 503 });
+    }
 
-    // Look up approved UID server-side before checking a password. This lets
-    // Firestore enforce a shared login limit across all Next.js instances;
-    // external clients never receive the UID or a user-existence signal.
-    let adminUser;
+    // Check before contacting Firebase. This includes unknown email addresses,
+    // and blocks correct passwords during a temporary lock.
+    const status = await checkAdminLoginLimit(email);
+    if (status.blocked) return lockResponse(status.retryAfter);
+
+    let adminUser = null;
     try {
-      adminUser = await getAuth().getUserByEmail(email.trim());
+      adminUser = await getAuth().getUserByEmail(email);
     } catch (error) {
-      if (error?.code === "auth/user-not-found" || error?.code === "auth/invalid-email") return genericFailure();
-      throw error;
+      if (error?.code !== "auth/user-not-found" && error?.code !== "auth/invalid-email") throw error;
     }
-    if (!allowed.includes(adminUser.uid) || adminUser.disabled) return genericFailure();
+    const approved = Boolean(adminUser && allowed.includes(adminUser.uid) && !adminUser.disabled);
 
-    const reservation = await reserveAdminLoginAttempt(adminUser.uid);
-    if (!reservation.allowed) {
-      await recordAdminEvent({ event: "login_limited", actorUid: adminUser.uid });
-      return NextResponse.json({ error: "Too many attempts. Try again later." }, {
-        status: 429,
-        headers: {
-          "Retry-After": String(reservation.retryAfter),
-          "Cache-Control": "no-store",
-        },
-      });
+    async function rejectAttempt() {
+      const failed = await registerAdminLoginFailure(email);
+      if (approved) {
+        await recordAdminEvent({
+          event: failed.blocked ? "login_limited" : "login_failed",
+          actorUid: adminUser.uid,
+        });
+      }
+      return failed.blocked ? lockResponse(failed.retryAfter) : genericFailure();
     }
+
+    if (!approved) return await rejectAttempt();
 
     const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + encodeURIComponent(apiKey),
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+      encodeURIComponent(apiKey),
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), password, returnSecureToken: true }),
+        body: JSON.stringify({ email, password, returnSecureToken: true }),
         cache: "no-store",
         signal: AbortSignal.timeout(12000),
       },
     );
+
     if (!response.ok) {
-      await recordAdminEvent({ event: "login_failed", actorUid: adminUser.uid });
-      return genericFailure();
+      // Provider-side service errors must not lock an account as a bad password.
+      if (response.status >= 500) {
+        return NextResponse.json({ error: "Authentication service unavailable" }, { status: 503 });
+      }
+      return await rejectAttempt();
     }
+
     const authentication = await response.json();
     if (authentication.localId !== adminUser.uid || !allowed.includes(authentication.localId)) {
-      return genericFailure();
+      return await rejectAttempt();
     }
     const decoded = await getAuth().verifyIdToken(authentication.idToken);
     if (Date.now() / 1000 - decoded.auth_time > 300) return genericFailure();
 
-    const expiry = 60 * 60 * 8 * 1000;
+    // Reserve a final check before issuing a session so parallel requests cannot
+    // trivially skip a lock imposed by other failed requests.
+    const afterAuthentication = await checkAdminLoginLimit(email);
+    if (afterAuthentication.blocked) return lockResponse(afterAuthentication.retryAfter);
+
+    const expiry = 8 * 60 * 60 * 1000;
     const session = await getAuth().createSessionCookie(authentication.idToken, { expiresIn: expiry });
-    await clearAdminLoginAttempts(adminUser.uid);
+    await clearAdminLoginFailures(email);
     await recordAdminEvent({ event: "login_success", actorUid: adminUser.uid });
-    const result = NextResponse.json({ success: true }, { headers: { "Cache-Control": "no-store" } });
+
+    const result = NextResponse.json({ success: true }, {
+      headers: { "Cache-Control": "no-store" },
+    });
     result.cookies.set("gd_admin_session", session, {
-      httpOnly: true, secure: process.env.NODE_ENV === "production",
-      sameSite: "strict", path: "/", maxAge: expiry / 1000,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: expiry / 1000,
     });
     return result;
   } catch (error) {
