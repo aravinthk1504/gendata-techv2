@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
+import { db } from "../../../lib/firebase-admin";
+import { sendEnquiryNotification } from "../../../lib/contact-email";
 import { contactSchema } from "../../../lib/contact-validation";
 import {
   RateLimitError,
@@ -54,6 +56,7 @@ export async function POST(request) {
     }
 
     const { website: ignoredHoneypot, ...formData } = parsed.data;
+    const enquiry = { ...formData, email: formData.email.toLowerCase() };
 
     // Local-development fallback only. A production deployment must
     // derive the client address from a verified, trusted proxy.
@@ -65,14 +68,26 @@ export async function POST(request) {
 
     const enquiryId = await saveEnquiryWithRateLimit(
       {
-        ...formData,
-        email: formData.email.toLowerCase(),
+        ...enquiry,
         status: "new",
-        emailStatus: "not_configured",
+        emailStatus: "pending",
         createdAt: FieldValue.serverTimestamp(),
       },
       clientAddress
     );
+
+    // Firestore is the source of truth: a Resend outage must never turn a
+    // successfully saved enquiry into a failed form response.
+    const notification = await sendEnquiryNotification(enquiryId, enquiry);
+    try {
+      await db.collection("enquiries").doc(enquiryId).update({
+        emailStatus: notification.status,
+        ...(notification.providerId ? { emailProviderId: notification.providerId } : {}),
+        emailAttemptedAt: FieldValue.serverTimestamp(),
+      });
+    } catch (error) {
+      console.error("Enquiry email state update failed", error?.code || error?.name || "unknown");
+    }
 
     return json({
       success: true,
