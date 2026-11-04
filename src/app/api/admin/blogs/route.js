@@ -3,6 +3,7 @@ import { FieldValue } from "firebase-admin/firestore";
 import { blogSchema, publishingIssues } from "../../../../lib/blog-validation";
 import { currentAdmin } from "../../../../lib/admin-auth";
 import { db } from "../../../../lib/firebase-admin";
+import { recordAdminEvent } from "../../../../lib/admin-security";
 
 export const runtime = "nodejs";
 function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
@@ -33,6 +34,7 @@ export async function POST(request){
   const existing=await ref.get();
   if(existing.exists)return response({error:"This slug already exists for that language"},409);
   await ref.create({...data,createdBy:user.uid,updatedBy:user.uid,createdAt:FieldValue.serverTimestamp(),updatedAt:FieldValue.serverTimestamp(),publishedAt:data.status==="published"?FieldValue.serverTimestamp():null});
+  await recordAdminEvent({event:"blog_created",actorUid:user.uid,target:id});
   return response({success:true,id},201);
  }catch(e){if(e instanceof SyntaxError)return response({error:"Invalid JSON"},400);console.error("CMS create failed",e.code||e.name);return response({error:"Unable to create article"},500)}
 }
