@@ -1,5 +1,6 @@
 import { currentAdmin } from "../../../../../lib/admin-auth";
 import { db } from "../../../../../lib/firebase-admin";
+import { recordAdminEvent } from "../../../../../lib/admin-security";
 
 export const runtime = "nodejs";
 
@@ -21,7 +22,8 @@ function csvRow(values) {
 }
 
 export async function GET() {
-  if (!await currentAdmin()) {
+  const admin = await currentAdmin();
+  if (!admin) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
     });
@@ -57,6 +59,7 @@ export async function GET() {
         }
       },
     });
+    await recordAdminEvent({ event: "enquiries_exported", actorUid: admin.uid });
     return new Response(stream, {
       status: 200,
       headers: {
