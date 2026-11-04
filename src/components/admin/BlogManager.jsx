@@ -31,6 +31,7 @@ export default function BlogManager({onUnsavedChange}){
  function field(name,value){
    setForm(previous=>({...previous,[name]:value,...(name==="title"&&!editing&&!slugEdited?{slug:slugify(value)}:{})}));
    setRevision(value=>value+1);
+   setAutosaveState("");
  }
  function edit(item){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(true);setPreview(false);setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
  function reset(){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(false);setPreview(false);setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
@@ -59,6 +60,7 @@ export default function BlogManager({onUnsavedChange}){
      const alt=file.name.split(".").slice(0,-1).join(".").replace(/[^a-zA-Z0-9 _-]/g,"")||"Article image";
      setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+ `![${alt}](${data.url})`}));
      setRevision(v=>v+1);
+     setAutosaveState("");
    }
    setNotice("Image uploaded successfully. Drafts will autosave once changes settle.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
@@ -135,7 +137,7 @@ export default function BlogManager({onUnsavedChange}){
  </div>
  <form onSubmit={save} noValidate className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
-   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
+   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{busy?"Saving…":autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
    <button disabled={busy||uploading} type="submit" className="rounded-full bg-[#057cfa] px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
   </div>
   <div className="flex flex-wrap gap-2 border-b border-slate-100 px-5 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
@@ -162,7 +164,7 @@ export default function BlogManager({onUnsavedChange}){
         <MarkdownContent content={form.content}/>
       </div>
     </div>:<>
-     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>{setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}));setRevision(v=>v+1)}} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
+     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>{setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}));setRevision(v=>v+1);setAutosaveState("")}} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
      <textarea aria-label="Article content" required minLength={30} rows={9} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here..."/>
     </>}
    </div>
