@@ -34,10 +34,10 @@ export default function AdminLogin({ lang }) {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[linear-gradient(120deg,#f4f7fc_0%,#d9e7ff_55%,#8bacf6_100%)] px-4 py-10">
+    <main className="gd-admin-root relative flex min-h-screen items-center justify-center overflow-hidden bg-[linear-gradient(120deg,#f4f7fc_0%,#d9e7ff_55%,#8bacf6_100%)] px-4 py-10">
       <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 h-80 w-80 rounded-full bg-cyan-200/50 blur-3xl" />
       <div className="relative grid w-full max-w-4xl overflow-hidden rounded-[30px] bg-white shadow-[0_24px_80px_rgba(8,27,58,0.22)] md:min-h-[480px] md:grid-cols-2">
-        <section className="flex items-center justify-center px-7 py-10 sm:px-12 md:py-12">
+        <section className="order-1 flex items-center justify-center px-7 py-10 sm:px-12 md:order-2 md:py-12">
           <div className="w-full max-w-sm">
             <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#057cfa]">GenData Tech</p>
             <h1 className="mt-3 text-center text-3xl font-bold text-[#081b3a]">Admin Sign In</h1>
@@ -55,12 +55,12 @@ export default function AdminLogin({ lang }) {
                 </button>
               </div>
               {error&&<p role="alert" className="rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-              <button disabled={loading} type="submit" className="mx-auto block w-full rounded-full bg-[#003cba] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#002d8b] disabled:opacity-60">{loading?"Signing in…":"Sign In"}</button>
+              <button disabled={loading} type="submit" className="gd-brand-primary mx-auto block w-full rounded-full px-6 py-3.5 text-sm font-semibold disabled:opacity-60">{loading?"Signing in…":"Sign In"}</button>
             </form>
             <p className="mt-6 text-center text-xs leading-5 text-slate-400">Access is limited to approved GenData Tech leadership and website administrators.</p>
           </div>
         </section>
-        <section className="relative flex min-h-[240px] items-center justify-center overflow-hidden rounded-t-[90px] bg-[linear-gradient(145deg,#00245c_0%,#003cba_53%,#057cfa_100%)] px-8 py-12 text-center text-white md:min-h-[480px] md:rounded-l-[150px] md:rounded-tr-none">
+        <section className="order-2 relative flex min-h-[200px] items-center justify-center overflow-hidden rounded-t-[60px] bg-[linear-gradient(145deg,#00245c_0%,#003cba_53%,#057cfa_100%)] px-8 py-9 text-center text-white md:order-1 md:min-h-[480px] md:rounded-r-[110px] md:rounded-tl-none md:rounded-tr-[110px] md:py-12">
           <div className="absolute -right-16 -top-12 h-52 w-52 rounded-full bg-cyan-300/15 blur-3xl" aria-hidden="true"/>
           <div className="relative flex flex-col items-center">
             <img src="/assets/gendata-tech-mark.webp" alt="GenData Tech logo" className="h-24 w-24 object-contain sm:h-28 sm:w-28" />
