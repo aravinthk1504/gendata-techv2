@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
 import { currentAdmin } from "../../../../../lib/admin-auth";
 import { db } from "../../../../../lib/firebase-admin";
+import { recordAdminEvent } from "../../../../../lib/admin-security";
 
 export const runtime = "nodejs";
 const STATUSES = new Set(["new", "in_progress", "contacted", "completed"]);
@@ -92,6 +93,7 @@ export async function PATCH(request, { params }) {
       });
       return true;
     });
+    if (changed) await recordAdminEvent({ event: "enquiry_status_updated", actorUid: admin.uid, target: ref.id });
     return reply({ success: true, changed, status: body.status });
   } catch (error) {
     if (error instanceof SyntaxError) return reply({ error: "Invalid JSON" }, 400);
@@ -131,6 +133,7 @@ export async function POST(request, { params }) {
         createdBy: admin.uid, createdAt: FieldValue.serverTimestamp(),
       });
     });
+    await recordAdminEvent({ event: "enquiry_note_added", actorUid: admin.uid, target: ref.id });
     return reply({ success: true }, 201);
   } catch (error) {
     if (error instanceof SyntaxError) return reply({ error: "Invalid JSON" }, 400);
