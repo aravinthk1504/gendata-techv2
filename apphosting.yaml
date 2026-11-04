@@ -1,0 +1,10 @@
+# Firebase App Hosting (Next.js SSR + API routes).
+# Secrets are configured in Firebase App Hosting > Backend > Settings >
+# Environment, not committed to this repository.
+#
+# No GOOGLE_APPLICATION_CREDENTIALS file is needed in App Hosting:
+# Firebase Admin uses the backend service account's application credentials.
+runConfig:
+  minInstances: 0
+  maxInstances: 3
+  concurrency: 40
