@@ -133,8 +133,8 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   }
 
   return (
-    <section className="mt-6 space-y-5">
-      <div className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6">
+    <section className="space-y-5">
+      <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-lg font-bold text-[#081b3a]">Enquiry management</h2>
@@ -181,8 +181,8 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
             className="font-semibold text-[#057cfa] hover:underline">Clear filters</button>
         </div>
 
-        <div className="mt-4 space-y-3 md:hidden">
-          {filtered.map(item => <article key={item.id} className="rounded-xl border border-slate-200 p-4">
+        <div className="mt-4 space-y-3 lg:hidden">
+          {filtered.map(item => <article key={item.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_18px_rgba(8,27,58,0.04)]">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="min-w-0"><h3 className="break-words text-sm font-semibold">{item.name || "Unnamed enquiry"}</h3>
                 <p className="mt-1 break-all text-xs text-slate-500">{item.email}</p></div>
@@ -191,12 +191,12 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
             <p className="mt-3 text-xs text-slate-600">{item.category || "Other"} · {item.offering || "General enquiry"}</p>
             <p className="mt-1 text-xs text-slate-500">{formatDate(item.createdAt)}</p>
             <button type="button" onClick={() => openDetail(item.id)}
-              className="mt-3 min-h-10 rounded-full border border-blue-200 px-4 text-xs font-semibold text-[#057cfa]">
+              className="mt-3 min-h-11 rounded-full border border-blue-200 px-4 text-xs font-semibold text-[#057cfa]">
               View & manage
             </button>
           </article>)}
         </div>
-        <div className="mt-4 hidden overflow-x-auto md:block">
+        <div className="mt-4 hidden overflow-x-auto lg:block">
           <table className="w-full min-w-[760px] text-left text-sm">
             <thead><tr className="border-b text-slate-500">
               <th scope="col" className="p-3">Date</th><th scope="col" className="p-3">Customer</th>
@@ -223,7 +223,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
       </div>
 
       {selectedId && <section ref={detailsRef} aria-label="Selected enquiry details"
-        className="scroll-mt-24 rounded-3xl border border-blue-200 bg-white p-4 shadow-sm sm:p-6">
+        className="scroll-mt-24 rounded-3xl border border-blue-200 bg-white p-4 shadow-[0_10px_30px_rgba(5,124,250,0.08)] sm:p-6">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-lg font-bold text-[#081b3a]">Customer details & follow-ups</h2>
           <button type="button" onClick={() => { setSelectedId(null); setDetail(null); setError(""); }}
