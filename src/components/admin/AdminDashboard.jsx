@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { FiGrid, FiInbox, FiFileText, FiLogOut, FiMenu, FiX, FiShield, FiArrowUpRight, FiActivity, FiCheckCircle } from "react-icons/fi";
 import BlogManager from "./BlogManager";
 import EnquiryManager from "./EnquiryManager";
+import SecurityPanel from "./SecurityPanel";
 
 const statuses = ["new", "in_progress", "contacted", "completed"];
 const navItems = [
   { id: "overview", label: "Overview", icon: FiGrid },
   { id: "enquiries", label: "Enquiries", icon: FiInbox },
   { id: "blogs", label: "Blog management", icon: FiFileText },
+  { id: "security", label: "Security & activity", icon: FiShield },
 ];
 const metrics = [
   { label: "Loaded enquiries", key: "total", icon: FiInbox, tint: "bg-blue-50 text-[#057cfa]" },
@@ -207,12 +209,14 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
                 </p>
                 <h1 className="mt-2 font-heading text-2xl font-bold tracking-tight text-[#081b3a] sm:text-3xl">
                   {tab === "overview" ? "Welcome, " + (adminName || "Administrator") :
-                    tab === "enquiries" ? "Enquiry management" : "Content studio"}
+                    tab === "enquiries" ? "Enquiry management" :
+                    tab === "blogs" ? "Content studio" : "Security & activity"}
                 </h1>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   {tab === "overview" ? "Your website activity at a glance." :
                     tab === "enquiries" ? "Review messages, track follow-ups and export records." :
-                    "Create, preview and publish GenData Tech insights."}
+                    tab === "blogs" ? "Create, preview and publish GenData Tech insights." :
+                    "Manage your active sessions and review administrator actions."}
                 </p>
               </div>
               <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600">
@@ -222,7 +226,8 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
             </header>
             {logoutError && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm text-red-700">{logoutError}</p>}
 
-            {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} /> : (
+            {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} /> :
+              tab === "security" ? <SecurityPanel lang={lang}/> : (
               <>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
                   {metrics.map(({ label, key, icon: Icon, tint }) => (
