@@ -45,7 +45,7 @@ export async function POST(request) {
     try {
       adminUser = await getAuth().getUserByEmail(email.trim());
     } catch (error) {
-      if (error?.code === "auth/user-not-found") return genericFailure();
+      if (error?.code === "auth/user-not-found" || error?.code === "auth/invalid-email") return genericFailure();
       throw error;
     }
     if (!allowed.includes(adminUser.uid) || adminUser.disabled) return genericFailure();
