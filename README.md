@@ -164,3 +164,68 @@ eight-hour session cookies remain in place.
 
 The public Contact API production limiter remains deferred until the planned
 pre-deployment work and is not changed by Phase 4.
+
+
+## Phase 5 — Scheduled posts, Cloudinary media library and full enquiry reports
+
+### Scheduled blog posts
+
+- In **Admin → Blog management → SEO & Publishing**, choose **Scheduled** and a
+  date/time in your browser's local timezone. The form stores an ISO timestamp
+  in UTC and requires the publication time to be more than one minute ahead.
+- Complete the same publishing checklist as a published article and **Save**.
+  Scheduled posts do **not** autosave. Regular incomplete drafts still autosave.
+- Public article detail and listing pages check the due time on every request.
+  Before the scheduled time, a scheduled article is inaccessible to visitors.
+  At/after the scheduled time, it becomes visible without a cron service.
+- The Firestore `status` can remain `scheduled` even after the post becomes
+  public. The public date displayed is the scheduled timestamp.
+- Changing a scheduled or published post's status is a manual Save operation.
+  A scheduled post with a past due date must be changed to Published to make
+  subsequent editor changes; rescheduling it for a new future date is also possible.
+- Scheduled publishing requires the deployed site to stay reachable and the
+  public blog pages to remain dynamic. It is **visibility-on-request**, not a
+  background job or an automatic social-media notification.
+
+### Cloudinary image library
+
+- Under **Blog management → Images**, choose **Choose from media library**.
+  Browse existing images within the `gendata-tech` folder and its subfolders,
+  use one as the cover or insert it as a Markdown image in the article.
+- The image list is retrieved through an authenticated server-side proxy,
+  `GET /api/admin/media/library`, using the existing Cloudinary credentials.
+  It supports pagination and deliberately does **not** allow deletion.
+- Image browsing uses Cloudinary's rate-limited Admin/Search API. Avoid
+  repeatedly refreshing the library unnecessarily. Existing image uploads
+  continue using the original upload route.
+
+### Reporting
+
+- **Admin → Reports** uses `GET /api/admin/reports` and Firestore aggregation
+  queries to show a full-database enquiry count, status breakdown and six
+  calendar months of enquiry activity (UTC month boundaries).
+- Reports are calculated on demand when the tab opens or Refresh is pressed.
+  This requires no new API credentials and retains **Export for Excel (CSV)**.
+- Legacy enquiries without a `status` field are included in the overall
+  total but not in the four individual status totals. Monthly counts reflect
+  documents with a valid Firestore `createdAt` timestamp.
+
+### Phase 5 verification
+
+1. Run `node --test tests/blog-schedule.test.mjs` and `npm run build`.
+2. Save an English or German article as a Scheduled post for a future time.
+   Verify its public URL returns a 404 before the time and loads afterward.
+   Test in both locales and check the displayed publication date.
+3. Edit the scheduled post, and verify that changes require a manual Save.
+4. Open Images → Media Library. Check a previously uploaded Cloudinary image
+   can become a cover and can be inserted into Markdown; publishing should
+   continue to work without uploading again.
+5. Open Reports and compare full-database counts to Firebase Firestore.
+   Check that the all-record totals can exceed the first 100 loaded enquiries.
+6. Verify draft autosaving, article editing/deletion, Cloudinary upload,
+   follow-up notes, session controls and CSV export still work.
+7. Keep production scheduling disabled in practice until public-route
+   behavior has been tested with the actual hosting and Firebase credentials.
+
+MFA and the deferred public Contact API production limiter remain out of scope
+for this phase.
