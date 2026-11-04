@@ -431,3 +431,26 @@ inbound mailbox. A Cloudflare Drop routing rule is optional. Support@ must
 continue forwarding to a monitored inbox. Customer emails remain opt-in via
 `RESEND_CUSTOMER_ACK_ENABLED`, and must not be enabled for unrestricted
 public traffic without abuse controls. Test both languages and both inboxes.
+
+ 
+### Resend logo rendering fix (PNG)
+
+Previously, both emails used a WebP file as a CID attachment. Certain email
+clients and webmail image proxies may not display WebP inline consistently.
+The default logo now uses `sharp` to convert the **existing** GenData Tech
+WebP mark to a compact transparent PNG and sends `image/png` with a matching
+`cid:gendata-tech-logo` / `content_id`. The same logo is used for
+management and customer emails. The conversion is cached by the Node.js worker;
+a logo problem will not block notifications.
+
+For maximum Gmail/Outlook compatibility, an optional
+`RESEND_EMAIL_LOGO_URL=https://.../logo.png` may be set to a directly
+accessible public HTTPS PNG, e.g. from Cloudinary. When set it takes priority
+over CID and no logo attachment is sent. Do not use a private Cloudinary console
+page, an upload dashboard URL, or an inaccessible asset URL. If the old URL
+doesn't load in an incognito browser, **remove that environment variable** to
+use the PNG inline fallback.
+
+Run `node --test tests/*.test.mjs`, `npm run build`, and make two controlled
+test enquiries to verify both receiving inboxes. Some mail clients can still
+block images by user setting; the text wordmark remains visible.
