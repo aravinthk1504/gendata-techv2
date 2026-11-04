@@ -237,7 +237,8 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
                 ["Customer", detail.name], ["Email", detail.email],
                 ["Phone", detail.phone], ["Category", detail.category],
                 ["Offering", detail.offering], ["Submitted", formatDate(detail.createdAt)],
-                 ["Email notification", ({accepted:"Accepted by Resend",failed:"Sending failed",pending:"Pending",disabled:"Notifications disabled",not_configured:"Resend not configured"})[detail.emailStatus] || "Not tracked"],
+                 ["Management email", ({accepted:"Accepted by Resend",failed:"Sending failed",pending:"Pending",disabled:"Notifications disabled",not_configured:"Resend not configured"})[detail.emailStatus] || "Not tracked"],
+                ["Customer confirmation", ({accepted:"Accepted by Resend",failed:"Sending failed",pending:"Pending",disabled:"Not enabled",not_configured:"Resend not configured"})[detail.customerEmailStatus] || "Not tracked"],
               ].map(([name, value]) => <div key={name} className="min-w-0 rounded-xl bg-slate-50 p-3">
                 <dt className="text-xs font-semibold text-slate-500">{name}</dt>
                 <dd className="mt-1 break-words text-slate-800">{value || "—"}</dd>

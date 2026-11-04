@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
 import { db } from "../../../lib/firebase-admin";
-import { sendEnquiryNotification } from "../../../lib/contact-email";
+import { sendEnquiryNotification, sendCustomerAcknowledgement } from "../../../lib/contact-email";
 import { contactSchema } from "../../../lib/contact-validation";
 import {
   RateLimitError,
@@ -73,6 +73,7 @@ export async function POST(request) {
         ...enquiry,
         status: "new",
         emailStatus: "pending",
+        customerEmailStatus: process.env.RESEND_CUSTOMER_ACK_ENABLED === "true" ? "pending" : "disabled",
         createdAt: FieldValue.serverTimestamp(),
       },
       clientAddress
@@ -81,11 +82,17 @@ export async function POST(request) {
     // Firestore is the source of truth: a Resend outage must never turn a
     // successfully saved enquiry into a failed form response.
     const notification = await sendEnquiryNotification(enquiryId, enquiry);
+    // A separate acknowledgement to the customer, independent of management.
+    // Failure of either email must never roll back the saved Firestore enquiry.
+    const acknowledgement = await sendCustomerAcknowledgement(enquiryId, enquiry);
     try {
       await db.collection("enquiries").doc(enquiryId).update({
         emailStatus: notification.status,
         ...(notification.providerId ? { emailProviderId: notification.providerId } : {}),
         emailAttemptedAt: FieldValue.serverTimestamp(),
+        customerEmailStatus: acknowledgement.status,
+        ...(acknowledgement.providerId ? { customerEmailProviderId: acknowledgement.providerId } : {}),
+        customerEmailAttemptedAt: FieldValue.serverTimestamp(),
       });
     } catch (error) {
       console.error("Enquiry email state update failed", error?.code || error?.name || "unknown");

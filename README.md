@@ -368,3 +368,41 @@ admin workflows were preserved.
 **Note:** Source checks alone are not proof of a successful production build
 or operational Firebase deployment. The release remains conditional on CI
 and first-deployment acceptance tests.
+
+ 
+## Optional customer enquiry confirmation
+
+The management notification sends only to `RESEND_NOTIFY_TO` and uses the form's
+email as Reply-To. Reply-To does **not** send the customer a message.
+The optional bilingual customer acknowledgement is a second transactional email
+sent to the validated email from the form, after the enquiry is saved to Firestore.
+It uses the same verified Resend sender and a separate idempotency key.
+
+To enable it in local `.env.local` (and later Firebase App Hosting secrets/environment):
+
+```env
+RESEND_NOTIFICATIONS_ENABLED=true
+RESEND_FROM_EMAIL="GenData Tech <enquiries@gendatatech.com>"
+RESEND_NOTIFY_TO=info@gendatatech.com
+RESEND_CUSTOMER_ACK_ENABLED=true
+RESEND_CUSTOMER_REPLY_TO=info@gendatatech.com
+```
+
+Keep your existing `RESEND_API_KEY` private. `RESEND_CUSTOMER_ACK_ENABLED`
+defaults to false. With it disabled, internal management notifications still
+work. `RESEND_CUSTOMER_REPLY_TO` must be a real receiving inbox/Cloudflare
+forwarding alias. The customer recipient comes from the submitted email field;
+a separate recipient environment variable is not needed.
+
+Firestore fields: `emailStatus` (management email),
+`customerEmailStatus` (customer receipt), and their corresponding provider
+IDs and attempt timestamps. The admin enquiry detail page shows both statuses.
+`accepted` means Resend accepted the email, not confirmed inbox delivery.
+A failure of either email does not undo the saved enquiry.
+
+**Production caution:** Visitors can enter email addresses they do not own.
+Enable customer acknowledgements on a public domain only after trusted-edge
+anti-bot/IP abuse protection is configured. Each enquiry can produce two
+Resend sends and use twice the quota. Test with an address you control,
+review Resend activity and the recipient's spam folder, and test both EN/DE.
+Run `node --test tests/*.test.mjs` and `npm run build` before go-live.

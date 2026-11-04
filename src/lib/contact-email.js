@@ -1,5 +1,5 @@
 import "server-only";
-import { buildEnquiryNotification } from "./contact-notification-template.mjs";
+import { buildEnquiryNotification, buildCustomerAcknowledgement } from "./contact-notification-template.mjs";
 
 function validEmail(value) {
   return typeof value === "string" &&
@@ -23,7 +23,7 @@ function notificationSettings() {
 }
 
 // A successful API response means Resend accepted the message, not that an inbox
-// delivered it. No customer-facing acknowledgement is sent from this function.
+// delivered it. This function sends the internal management notification.
 export async function sendEnquiryNotification(enquiryId, enquiry) {
   const settings = notificationSettings();
   if (!settings.enabled) return { status: "disabled" };
@@ -62,6 +62,50 @@ export async function sendEnquiryNotification(enquiryId, enquiry) {
     return { status: "accepted", providerId: result.id };
   } catch (error) {
     console.error("Resend enquiry notification unavailable", error?.name || "unknown");
+    return { status: "failed" };
+  }
+}
+
+// Optional, separately addressed customer email. The management notification's
+// Reply-To header alone never sends an email to the customer.
+export async function sendCustomerAcknowledgement(enquiryId, enquiry) {
+  if (process.env.RESEND_CUSTOMER_ACK_ENABLED !== "true") return { status: "disabled" };
+  const settings = notificationSettings();
+  if (!settings.enabled) return { status: "disabled" };
+  if (!settings.configured || !validEmail(enquiry.email)) return { status: "not_configured" };
+
+  const fromAddress = settings.from.match(/<([^<>]+)>$/)?.[1] || settings.from;
+  const replyTo = process.env.RESEND_CUSTOMER_REPLY_TO?.trim() || fromAddress;
+  if (!validEmail(replyTo)) return { status: "not_configured" };
+
+  const { subject, html, text } = buildCustomerAcknowledgement(enquiryId, enquiry);
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + settings.key,
+        "Content-Type": "application/json",
+        "Idempotency-Key": "gendata-customer-ack-" + enquiryId,
+      },
+      body: JSON.stringify({
+        from: settings.from, to: [enquiry.email], reply_to: replyTo,
+        subject, html, text,
+      }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!response.ok) {
+      console.error("Resend customer acknowledgement rejected", { status: response.status });
+      return { status: "failed" };
+    }
+    const result = await response.json();
+    if (typeof result.id !== "string" || !result.id) {
+      console.error("Resend customer acknowledgement returned no message ID");
+      return { status: "failed" };
+    }
+    return { status: "accepted", providerId: result.id };
+  } catch (error) {
+    console.error("Resend customer acknowledgement unavailable", error?.name || "unknown");
     return { status: "failed" };
   }
 }

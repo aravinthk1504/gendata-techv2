@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildEnquiryNotification } from "../src/lib/contact-notification-template.mjs";
+import { buildEnquiryNotification, buildCustomerAcknowledgement } from "../src/lib/contact-notification-template.mjs";
 
 const enquiry = {
   name: "Customer Example",
@@ -40,4 +40,32 @@ test("customer-submitted markup is escaped in email HTML", () => {
 test("German-language enquiry notification identifies its language", () => {
   const result = buildEnquiryNotification("record", { ...enquiry, language: "de" });
   assert.match(result.text, /Language: German/);
+});
+
+test("English customer receipt includes reference, without re-sending private message", () => {
+  const receipt = buildCustomerAcknowledgement("id-456", enquiry);
+  assert.match(receipt.subject, /received your enquiry/i);
+  assert.match(receipt.text, /Customer Example/);
+  assert.match(receipt.text, /id-456/);
+  assert.match(receipt.html, /Web Development/);
+  assert.ok(!receipt.html.includes(enquiry.message));
+  assert.ok(!receipt.text.includes(enquiry.phone));
+});
+
+test("German customer receipt is localized", () => {
+  const receipt = buildCustomerAcknowledgement("id-789", { ...enquiry, language: "de" });
+  assert.match(receipt.subject, /Anfrage erhalten/);
+  assert.match(receipt.text, /Vielen Dank/);
+  assert.match(receipt.text, /id-789/);
+});
+
+test("customer name, topic and reference are escaped in HTML", () => {
+  const receipt = buildCustomerAcknowledgement('<test-id>', {
+    ...enquiry, name: '<img src=x onerror="alert(1)">', offering: '<script>x</script>',
+  });
+  assert.ok(!receipt.html.includes("<script>"));
+  assert.ok(!receipt.html.includes("<img src=x"));
+  assert.ok(receipt.html.includes("&lt;img"));
+  assert.ok(receipt.html.includes("&lt;script&gt;"));
+  assert.ok(receipt.html.includes("&lt;test-id&gt;"));
 });
