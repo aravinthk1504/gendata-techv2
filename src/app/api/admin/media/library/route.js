@@ -31,7 +31,7 @@ export async function GET(request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          expression: "(asset_folder:gendata-tech/* OR folder:gendata-tech/*) AND resource_type:image",
+          expression: "(asset_folder:gendata-tech/* OR asset_folder=gendata-tech OR folder:gendata-tech/* OR folder=gendata-tech) AND resource_type:image",
           sort_by: [{ created_at: "desc" }],
           max_results: 48,
           ...(cursor ? { next_cursor: cursor } : {}),
