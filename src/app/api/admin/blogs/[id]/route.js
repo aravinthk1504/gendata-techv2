@@ -15,7 +15,7 @@ export async function PATCH(request,{params}){
  try{
   const raw=await request.text();if(Buffer.byteLength(raw,"utf8")>65000)return answer({error:"Content too large"},413);
   const parsed=blogUpdateSchema.safeParse(JSON.parse(raw));if(!parsed.success)return answer({error:"Invalid article",fields:parsed.error.flatten().fieldErrors},400);
-  if(parsed.data.status==="published"){
+  if(parsed.data.status!=="draft"){
    const issues=publishingIssues(parsed.data);
    if(Object.keys(issues).length)return answer({error:"Complete the publishing checklist",fields:issues},400);
   }
