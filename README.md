@@ -466,3 +466,44 @@ for legible contrast. The gradient-like effect is made of inline colored spans,
 rather than relying on CSS background-clip gradients unsupported in some email
 clients. Management notifications retain their original content; the change
 only updates their header's branded wordmark.
+
+ 
+## Final production security: Cloudflare Turnstile
+
+The production contact route now requires verified Cloudflare Turnstile tokens
+before writing enquiries to Firestore or sending Resend notifications. This
+uses server-side Siteverify, with an exact hostname allowlist and a required
+`contact` action. Tokens are single-use and never stored. Missing production
+configuration returns a safe error; it does **not** bypass verification.
+
+### Required Cloudflare setup
+
+1. In Cloudflare Turnstile, create a Managed widget for `gendatatech.com`,
+   `www.gendatatech.com`, and the actual Firebase App Hosting test hostname.
+   Domains must be authorized in Turnstile and in
+   `TURNSTILE_ALLOWED_HOSTNAMES`.
+2. Configure `TURNSTILE_SITE_KEY` (public),
+   `TURNSTILE_SECRET_KEY` (server-only secret), and
+   `TURNSTILE_ALLOWED_HOSTNAMES` (exact comma-separated hostnames) in
+   Firebase App Hosting. Store the secret in Secret Manager; never in GitHub.
+3. The contact page is dynamically rendered and receives only the public site
+   key. The browser resets its widget after every submission attempt.
+4. Local development does not require Turnstile by default. Set
+   `CONTACT_TURNSTILE_REQUIRED=true` and allow `localhost` for local
+   integration tests. Production cannot disable verification with that flag.
+5. Test legitimate EN/DE submissions, omitted token, invalid token, expired
+   token, and wrong hostname. Only legitimate verified requests should create
+   Firestore documents and send Resend messages.
+
+### Admin access review
+
+All 11 admin API route files already check authenticated admin sessions.
+The shared allowlist helper now requires exact case-sensitive Firebase Auth
+UIDs. No email-domain or name-based approval is used. Verify an unlisted
+Firebase user receives 401/redirect, and a permitted user can still log in.
+Logout, session revocation, and login throttling remain unchanged.
+
+For additional production abuse protection, consider WAF rate limits on
+`POST /api/contact` and `POST /api/admin/login` once your actual website
+traffic is confirmed to pass through Cloudflare proxy. A domain merely
+managed in Cloudflare DNS is not proof traffic traverses its WAF.
