@@ -204,3 +204,16 @@ button:focus-visible {
 .gd-brand-primary:hover { filter: brightness(1.1); }
 .gd-brand-primary:focus-visible { outline: 2px solid #057cfa; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { .gd-brand-primary { transition: none; } }
+
+
+/* Admin workspaces have dense form controls. Use the native pointer there
+   instead of the public-site custom cursor, including desktop precision mice. */
+.gd-admin-root { cursor: auto; }
+.gd-admin-root a, .gd-admin-root button, .gd-admin-root summary,
+.gd-admin-root label:has(input[type="file"]) { cursor: pointer; }
+.gd-admin-root input, .gd-admin-root textarea, .gd-admin-root select { cursor: auto; }
+.gd-admin-root input:focus-visible, .gd-admin-root select:focus-visible,
+.gd-admin-root textarea:focus-visible {
+  outline: 2px solid #057cfa;
+  outline-offset: 2px;
+}
