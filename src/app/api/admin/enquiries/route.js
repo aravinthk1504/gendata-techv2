@@ -8,7 +8,7 @@ const reply = (body, status = 200) => NextResponse.json(body, {
   status, headers: { "Cache-Control": "no-store" },
 });
 
-export function normalizeEnquiry(doc) {
+function normalizeEnquiry(doc) {
   const data = doc.data();
   return {
     id: doc.id,
