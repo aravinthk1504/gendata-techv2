@@ -2,56 +2,43 @@ import "server-only";
 import { createHash } from "node:crypto";
 import { FieldValue } from "firebase-admin/firestore";
 import { db } from "./firebase-admin";
+import { loginLockStatus, nextFailedLogin } from "./admin-login-policy.mjs";
 
-// Shared Firestore counters work across Next.js instances and do not rely on
-// client-controlled X-Forwarded-For headers. Only approved admin UIDs are keyed.
-const WINDOW_MS = 15 * 60 * 1000;
-const MAX_ATTEMPTS = 10;
-const COOLDOWN_MS = 10 * 60 * 1000;
+// Per normalized email, independent of whether a Firebase account exists.
+// Never trust client-supplied forwarding headers or expose the account key.
+export function normalizedLoginEmail(value) {
+  return String(value || "").trim().toLowerCase();
+}
+const attemptRef = email => db.collection("_adminLoginAttempts")
+  .doc(createHash("sha256").update(normalizedLoginEmail(email)).digest("hex"));
 
-const attemptRef = uid => db.collection("_adminLoginAttempts")
-  .doc(createHash("sha256").update(uid).digest("hex"));
+export async function checkAdminLoginLimit(email) {
+  const snapshot = await attemptRef(email).get();
+  return loginLockStatus(snapshot.exists ? snapshot.data() : null, Date.now());
+}
 
-export async function reserveAdminLoginAttempt(uid) {
-  const ref = attemptRef(uid);
-  return db.runTransaction(async transaction => {
-    const snapshot = await transaction.get(ref);
-    const now = Date.now();
-    const state = snapshot.exists ? snapshot.data() : {};
-    const blockedUntil = Number(state.blockedUntil || 0);
-    if (blockedUntil > now) {
-      return { allowed: false, retryAfter: Math.max(1, Math.ceil((blockedUntil - now) / 1000)) };
+export async function registerAdminLoginFailure(email) {
+  const ref = attemptRef(email);
+  return db.runTransaction(async tx => {
+    const snapshot = await tx.get(ref);
+    const result = nextFailedLogin(snapshot.exists ? snapshot.data() : null, Date.now());
+    if (result.state) {
+      tx.set(ref, { ...result.state, updatedAt: FieldValue.serverTimestamp() });
     }
-    const inWindow = Number(state.windowStartedAt || 0) > now - WINDOW_MS;
-    const attempts = inWindow ? Number(state.attempts || 0) : 0;
-    const windowStartedAt = inWindow ? state.windowStartedAt : now;
-    if (attempts >= MAX_ATTEMPTS) {
-      transaction.set(ref, {
-        windowStartedAt, attempts,
-        blockedUntil: now + COOLDOWN_MS,
-        updatedAt: FieldValue.serverTimestamp(),
-      });
-      return { allowed: false, retryAfter: COOLDOWN_MS / 1000 };
-    }
-    transaction.set(ref, {
-      windowStartedAt, attempts: attempts + 1,
-      blockedUntil: 0, updatedAt: FieldValue.serverTimestamp(),
-    });
-    return { allowed: true };
+    return { blocked: result.blocked, retryAfter: result.retryAfter, remaining: result.remaining ?? 0 };
   });
 }
 
-export async function clearAdminLoginAttempts(uid) {
+export async function clearAdminLoginFailures(email) {
   try {
-    await attemptRef(uid).delete();
+    await attemptRef(email).delete();
   } catch (error) {
-    // Session login has succeeded; counter cleanup should not lock the admin out.
+    // Authentication has succeeded; counter cleanup must not fail the login.
     console.error("Admin login counter cleanup failed", error?.code || error?.name);
   }
 }
 
-// Never store passwords, ID tokens, session cookies, full customer messages,
-// raw login email addresses, or user-agent/IP tracking in activity records.
+// Do not store passwords, tokens, cookies, message bodies, raw email addresses or IPs.
 const EVENTS = new Set([
   "login_success", "login_failed", "login_limited",
   "logout", "revoke_sessions",
@@ -68,8 +55,6 @@ export async function recordAdminEvent({ event, actorUid, target = null }) {
       createdAt: FieldValue.serverTimestamp(),
     });
   } catch (error) {
-    // Audit persistence is best-effort; never change the outcome of a completed
-    // customer action or successful login because the audit store is unavailable.
     console.error("Admin activity recording failed", error?.code || error?.name);
   }
 }
