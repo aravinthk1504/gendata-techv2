@@ -1,6 +1,6 @@
 # GenData Tech Website
 
-Next.js website for GenData Tech, including English and German pages, Firebase-backed enquiries, and an authenticated CMS for articles and events.
+Next.js website for GenData Tech, including English and German pages, Firebase-backed enquiries, and an authenticated article CMS.
 
 ## Local development
 
@@ -36,9 +36,9 @@ Do not expose the API secret in client components or any `NEXT_PUBLIC_` variable
 ## Content management
 
 - `/en/admin` and `/de/admin`: restricted administrator dashboard
-- Articles and events: `cmsBlogs` Firestore collection, with draft / published status
+- Articles: `cmsBlogs` Firestore collection, with draft / scheduled / published status
 - Public Insights: `/en/blog` and `/de/blog`
-- Media: currently via HTTPS image URLs. Cloudinary upload integration is not yet configured.
+- Media: authenticated Cloudinary uploads and a reusable library in the Blog CMS.
 - `scripts/migrate-legacy-blogs.mjs`: optional **one-time** import of legacy summaries as drafts; do not run repeatedly unless intended.
 
 ## Admin Blog CMS draft and publishing workflow
@@ -238,8 +238,7 @@ to Firestore → request admin email notification from Resend → update `emailS
 in the enquiry document. The visitor sees success when the Firestore save succeeds,
 even if Resend is disabled, unconfigured or temporarily unavailable.
 
-The `resend` package is already installed, but this integration uses Resend's
-HTTPS email endpoint directly. No additional npm installation is necessary.
+Resend notifications use the HTTPS API via built-in Node.js fetch, without an extra Resend SDK dependency.
 
 ### Resend account setup
 
@@ -314,3 +313,58 @@ Test with the feature flag disabled first (Firestore must still save successfull
 then enable after DNS verification. Run a real contact form submission to verify
 Resend and the destination inbox. Never publish `.env.local` or paste an API key
 into chat or a public issue.
+
+
+## Firebase App Hosting deployment readiness
+
+**Deploy as Firebase App Hosting**, not static Firebase Hosting. The Next.js
+server renders content dynamically and handles protected API routes.
+This repository includes \`apphosting.yaml\` with minInstances 0, maxInstances
+3 and concurrency 40. Firebase App Hosting requires the Blaze billing plan.
+
+1. In Firebase Console → App Hosting → Create backend, select the existing
+   Firebase project. Connect repository \`aravinthk1504/gendata-techv2\`,
+   use **master** as the live branch and \`/\` as the app root.
+2. In backend Settings → Environment, configure \`GOOGLE_CLOUD_PROJECT\`,
+   \`FIREBASE_WEB_API_KEY\`, \`ADMIN_UIDS\`, \`RATE_LIMIT_SECRET\`,
+   \`CLOUDINARY_CLOUD_NAME\`, \`CLOUDINARY_API_KEY\`,
+   \`CLOUDINARY_API_SECRET\`, and \`RESEND_NOTIFICATIONS_ENABLED=false\`.
+   After Resend verification, securely configure \`RESEND_API_KEY\`,
+   \`RESEND_FROM_EMAIL\` and \`RESEND_NOTIFY_TO\` and change the flag.
+   Store sensitive settings as restricted secrets rather than public code.
+3. Never commit a service-account JSON or set a local Windows
+   \`GOOGLE_APPLICATION_CREDENTIALS\` path in App Hosting. The hosted
+   runtime uses application-default credentials and needs correct
+   Firestore/Firebase Authentication permissions for its service account.
+4. Set Firebase/Google Cloud budget alerts and review billing usage.
+5. Run \`npm ci\`, \`node --test tests/*.test.mjs\`, and \`npm run build\`.
+   Verify the GitHub Actions workflow succeeds on the latest commit.
+   The CI smoke test checks EN/DE About-page SSR without production secrets.
+6. First deploy to the App Hosting-provided hostname, not the public custom
+   domain. Verify all pages in English and German on desktop and mobile,
+   including Home, six Services, Products, Training, About, Contact and Blog.
+7. Check admin sign-in/out, UID restrictions, Blog draft autosave and
+   scheduling, Cloudinary uploads and library, customer enquiries,
+   CSV exports, security activity, session controls and full reports.
+   Submit a real test contact form, confirm Firestore persistence and
+   check Resend acceptance and inbox delivery once its DNS is verified.
+8. Before broad public launch, add trusted-edge abuse protection for the
+   contact form. The existing email-based limiter is insufficient against
+   a malicious visitor who changes email addresses.
+9. Connect and verify the production domain and HTTPS only once the
+   production build, permissions, backend, smoke tests, abuse protection
+   and billing controls have been validated.
+
+### Static code cleanup
+
+Removed six confirmed-unused legacy modules: \`InfinityVisual\`,
+\`NeuralBackground\`, \`TechHeroSculpture\`, \`ServiceFlowVisual\`,
+\`src/i18n/home.js\`, and \`EventGallery\`. Removed the unreachable
+event rendering from the public blog article page and its orphan CSS rule.
+Dropped the unused Resend SDK dependency (the integration calls the
+Resend HTTPS API using built-in fetch). Active website hero animations and
+admin workflows were preserved.
+
+**Note:** Source checks alone are not proof of a successful production build
+or operational Firebase deployment. The release remains conditional on CI
+and first-deployment acceptance tests.
