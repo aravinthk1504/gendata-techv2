@@ -229,3 +229,88 @@ pre-deployment work and is not changed by Phase 4.
 
 MFA and the deferred public Contact API production limiter remain out of scope
 for this phase.
+
+
+## Contact form email notifications via Resend
+
+**Flow:** English/German contact form → validate + Firestore rate-limit → save enquiry
+to Firestore → request admin email notification from Resend → update `emailStatus`
+in the enquiry document. The visitor sees success when the Firestore save succeeds,
+even if Resend is disabled, unconfigured or temporarily unavailable.
+
+The `resend` package is already installed, but this integration uses Resend's
+HTTPS email endpoint directly. No additional npm installation is necessary.
+
+### Resend account setup
+
+1. Create/login to a Resend account and open **Domains → Add Domain**.
+   Add a sending domain or subdomain you control, e.g. `mail.example.com`.
+2. At your DNS provider add Resend's **exact generated** verification records
+   (DKIM, and the SPF / return-path records shown by Resend). Do not substitute
+   guessed DNS record values. Wait until the Resend dashboard marks the domain
+   **Verified**.
+3. Create a Resend API key authorized to send email, and store it only in the
+   server environment (never in GitHub or client-side variables).
+4. Configure these server-only variables in `.env.local` (and later your production
+   host's secure environment variables):
+
+```env
+RESEND_NOTIFICATIONS_ENABLED=false
+RESEND_API_KEY=re_your_server_side_api_key
+RESEND_FROM_EMAIL="GenData Tech <enquiries@mail.example.com>"
+RESEND_NOTIFY_TO=owner@example.com
+```
+
+Replace both example domains with real authorized addresses: the From address
+must belong to your verified Resend sending domain, and the notification mailbox
+must be one you control (up to five comma-separated addresses). The visitor's
+address is set as **Reply-To**, not **From**, to protect domain authentication.
+
+5. After verifying DNS and configuring the variables, change
+   `RESEND_NOTIFICATIONS_ENABLED=true` and restart Next.js. Until then leave it
+   **false**, so the contact form only saves to Firebase.
+6. Submit a valid test enquiry through the **website form** and confirm that:
+   - A new Firestore `enquiries` document exists.
+   - The Resend dashboard records a matching outgoing email.
+   - The team inbox receives the notification (also inspect spam/junk).
+   - **Admin → Enquiries → View & manage** shows the notification status.
+7. The Firestore field `emailStatus` can be `pending`, `disabled`,
+   `not_configured`, `failed`, or `accepted`. **Accepted** means Resend
+   accepted the request; it does **not** prove mailbox delivery.
+   `emailProviderId` stores the Resend message ID when accepted.
+
+### Reliability and privacy notes
+
+- The notification includes the enquiry ID and the submitted customer details.
+  Send only to an approved, access-controlled mailbox; this is personal data.
+- User-entered strings are escaped in the HTML email template. A plaintext
+  alternative is also supplied.
+- If Resend rejects a request, the customer submission still succeeds and remains
+  accessible in Firestore/Admin. The application logs the provider HTTP status
+  server-side without exposing credentials or details to the visitor.
+- The `Idempotency-Key` is derived from the unique Firestore enquiry ID to avoid
+  duplicate Resend messages if this exact request is retried. This integration
+  **does not yet provide a scheduled retry queue**, delivery webhooks or a
+  customer-facing acknowledgement email; these can be added after go-live.
+- Resend API quotas and sending limits depend on the account plan. Check usage
+  in the Resend dashboard rather than assuming unlimited messages.
+- Production form rate limits currently use a hash of the **validated sender
+  email** as their fallback identity, instead of mistakenly grouping every user
+  under the same `unverified-client` value. A malicious visitor can change
+  email addresses, so configure a trusted-edge/IP limiter and abuse protection
+  before production launch. Do **not** blindly trust user-supplied forwarding
+  headers.
+
+### Local smoke tests
+
+```bash
+git pull origin master
+node --test tests/contact-notification-template.test.mjs
+npm run build
+npm run dev
+```
+
+Test with the feature flag disabled first (Firestore must still save successfully),
+then enable after DNS verification. Run a real contact form submission to verify
+Resend and the destination inbox. Never publish `.env.local` or paste an API key
+into chat or a public issue.
