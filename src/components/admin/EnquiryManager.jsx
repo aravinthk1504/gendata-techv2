@@ -28,7 +28,6 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [syncing, setSyncing] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
 
@@ -119,16 +118,6 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
     finally { setSaving(false); }
   }
 
-  async function syncGoogleSheet() {
-    if (syncing) return;
-    setSyncing(true); setError(""); setNotice("");
-    try {
-      const result = await jsonRequest("/api/admin/enquiries/sync", { method: "POST" });
-      setNotice(`Google Sheet updated: ${result.added} new, ${result.updated} changed, ${result.total} enquiries checked.`);
-    } catch (err) { setError(err.message || "Unable to synchronize enquiries"); }
-    finally { setSyncing(false); }
-  }
-
   async function loadMore() {
     if (!cursor || loadingMore) return;
     setLoadingMore(true); setError(""); setNotice("");
@@ -153,16 +142,10 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
               Search and manage enquiries. Filters apply to the {records.length} loaded records.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <button type="button" onClick={syncGoogleSheet} disabled={syncing}
-              className="gd-brand-primary inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold disabled:opacity-60">
-              {syncing ? "Syncing…" : "Sync to Google Sheets"}
-            </button>
-            <a href="/api/admin/enquiries/export"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-blue-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#002dcc]">
-              Export for Excel (CSV)
-            </a>
-          </div>
+          <a href="/api/admin/enquiries/export"
+            className="gd-brand-primary inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold">
+            Export for Excel (CSV)
+          </a>
         </div>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <label className="text-xs font-semibold text-slate-600">Search
