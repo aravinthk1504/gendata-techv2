@@ -41,6 +41,37 @@ Do not expose the API secret in client components or any `NEXT_PUBLIC_` variable
 - Media: currently via HTTPS image URLs. Cloudinary upload integration is not yet configured.
 - `scripts/migrate-legacy-blogs.mjs`: optional **one-time** import of legacy summaries as drafts; do not run repeatedly unless intended.
 
+## Admin Blog CMS draft and publishing workflow
+
+- **Draft autosave:** Draft articles with a title of 5+ characters and a valid URL slug are
+  saved to Firestore approximately 2 seconds after the latest edit. A saving/saved/error
+  indicator appears in the editor. Drafts may have incomplete content or metadata.
+- **Publishing:** Publishing remains **manual** via Save. The API (not only the UI)
+  requires a title, category, summary, body, cover image, image alt text, SEO title,
+  and SEO description. Existing published articles never auto-unpublish.
+- **Slug generation:** A new article's URL slug is derived from its title, with
+  German character support. The slug can be customized before the first save and
+  is locked afterward to avoid breaking published links.
+- **Preview:** Preview renders an article-style hero, metadata, cover and Markdown
+  using the current unsaved editor content; it does not publish a draft.
+- **Navigation protection:** Unsaved editor changes prompt before the admin tab
+  changes or the browser page unloads. Edits during an in-progress save trigger
+  a subsequent autosave rather than being marked as already saved.
+
+### Local acceptance checks
+
+1. Admin → Blog Management → New article: type a title of at least five characters
+   and wait. Verify the draft appears in Firestore and the editor reports saved.
+2. Add text, switch to another editor section, then refresh. Verify the draft
+   persisted. Test both English and German titles.
+3. Leave publishing fields incomplete, choose Published and Save. Confirm an
+   error prevents publication. Fill the checklist and Save again.
+4. Check Preview with headings, images and links before publishing.
+5. Reopen an already published article, edit its content and wait; ensure the
+   article is not silently changed or unpublished. Save manually to publish edits.
+6. Start editing and switch to Overview before saving; confirm the unsaved
+   changes warning appears.
+
 ## Verification and deployment
 
 Run `npm run build` before deployment and verify authenticated CMS routes and both localized public routes. The site requires working Firebase credentials to render content that queries Firestore. The GitHub Actions workflow does not provide production Firebase credentials; account for that when interpreting build and smoke-test failures.
