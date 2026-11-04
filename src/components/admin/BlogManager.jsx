@@ -4,12 +4,14 @@ import MarkdownContent from "../blog/MarkdownContent";
 import {FiUpload,FiTrash2} from "react-icons/fi";
 const slugify = value => value.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,130).replace(/-+$/,"");
 const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
-const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
+const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft",scheduledFor:""};
 export default function BlogManager({onUnsavedChange}){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
  const checks=[["Title",form.title.trim().length>=5],["URL slug",Boolean(form.slug)],["Category",form.category.trim().length>=2],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
  const ready=checks.every(([,ok])=>ok);
+ const scheduleTimeValid = form.status!=="scheduled" || (Boolean(form.scheduledFor) && Number.isFinite(Date.parse(form.scheduledFor)) && Date.parse(form.scheduledFor)>Date.now()+60_000);
+ const toLocalInput = iso => {if(!iso)return "";const date=new Date(iso);if(Number.isNaN(date.getTime()))return "";return new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16)};
  const [preview,setPreview]=useState(false);
  const [section,setSection]=useState("content");
  const [query,setQuery]=useState(""),[statusFilter,setStatusFilter]=useState("all"),[languageFilter,setLanguageFilter]=useState("all"),[categoryFilter,setCategoryFilter]=useState("all");
@@ -25,7 +27,7 @@ export default function BlogManager({onUnsavedChange}){
  const savingRef=useRef(false);
  const dirty=revision>savedRevision;
  useEffect(()=>{onUnsavedChange?.(dirty||busy||uploading)},[dirty,busy,uploading,onUnsavedChange]);
- const persistedPublished=items.some(item=>item.id===editing&&item.status==="published");
+ const persistedPublished=items.some(item=>item.id===editing&&["published","scheduled"].includes(item.status));
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
  useEffect(()=>{load()},[]);
  function field(name,value){
@@ -33,7 +35,7 @@ export default function BlogManager({onUnsavedChange}){
    setRevision(value=>value+1);
    setAutosaveState("");
  }
- function edit(item){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(true);setPreview(false);setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
+ function edit(item){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(true);setPreview(false);setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status,scheduledFor:item.scheduledFor||""});setError("");setNotice("");setSection("content")}
  function reset(){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(false);setPreview(false);setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
  async function changeLanguage(nextLanguage){
   if(nextLanguage===form.language||savingRef.current||uploading)return;
@@ -50,7 +52,7 @@ export default function BlogManager({onUnsavedChange}){
    // A saved slug is part of the Firestore document ID and public URL.
    // Copy to a distinct language-scoped draft, never silently rename
    // or unpublish the existing article.
-   const copy={...form,language:nextLanguage,status:"draft"};
+   const copy={...form,language:nextLanguage,status:"draft",scheduledFor:""};
    const response=await fetch("/api/admin/blogs",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
@@ -112,8 +114,8 @@ export default function BlogManager({onUnsavedChange}){
     if(!automatic)setError("Enter an article title to generate a URL slug before saving.");
     return;
   }
-  if(draft.status==="published"&&!ready){
-    if(!automatic){setError("Complete the publishing checklist before publishing.");setSection("seo");}
+  if(draft.status!=="draft"&&(!ready||!scheduleTimeValid)){
+    if(!automatic){setError("Complete the publishing checklist and choose a valid future schedule before publishing.");setSection("seo");}
     return;
   }
   savingRef.current=true;setBusy(true);
@@ -134,7 +136,7 @@ export default function BlogManager({onUnsavedChange}){
    if(!editing)setEditing(data.id);
    setSavedRevision(v=>Math.max(v,version));
    if(automatic){setAutosaveState("Draft saved to Firebase");setError("");}
-   else {setAutosaveState("");setNotice(draft.status==="published"?"Article published successfully":"Draft saved to Firebase");}
+   else {setAutosaveState("");setNotice(draft.status==="published"?"Article published successfully":draft.status==="scheduled"?"Article scheduled successfully":"Draft saved to Firebase");}
    await load();
   }catch(e){
    setError(e.message||"Unable to save article");
@@ -166,7 +168,7 @@ export default function BlogManager({onUnsavedChange}){
   </div>
   <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
     <input aria-label="Search blog articles" type="search" placeholder="Search articles..." value={query} onChange={e=>setQuery(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"/>
-    <select aria-label="Filter by publishing status" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Drafts</option></select>
+    <select aria-label="Filter by publishing status" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All statuses</option><option value="published">Published</option><option value="scheduled">Scheduled</option><option value="draft">Drafts</option></select>
     <select aria-label="Filter by category" value={categoryFilter} onChange={e=>setCategoryFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All categories</option>{categories.map(category=><option key={category} value={category}>{category}</option>)}</select>
     <select aria-label="Filter by language" value={languageFilter} onChange={e=>setLanguageFilter(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"><option value="all">All languages</option><option value="en">English</option><option value="de">German</option></select>
   </div>
@@ -178,7 +180,7 @@ export default function BlogManager({onUnsavedChange}){
  </div>
  <form onSubmit={save} noValidate className="min-w-0 rounded-3xl border border-slate-200 bg-white shadow-sm">
   <div className="sticky top-[64px] z-20 flex flex-wrap items-center justify-between gap-3 rounded-t-3xl border-b border-slate-100 bg-white/95 px-4 py-4 backdrop-blur sm:px-6 lg:top-0">
-   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{busy?"Saving…":autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
+   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":form.status==="scheduled"?"Scheduled":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{busy?"Saving…":autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
    <button disabled={busy||uploading} type="submit" className="gd-brand-primary inline-flex min-h-11 items-center rounded-full px-5 py-2.5 text-sm font-semibold disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
   </div>
   <div className="flex gap-2 overflow-x-auto border-b border-slate-100 px-4 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
@@ -224,7 +226,8 @@ export default function BlogManager({onUnsavedChange}){
      <label className="text-sm font-semibold md:col-span-2">SEO title<input value={form.seoTitle} onChange={e=>field("seoTitle",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
      <label className="text-sm font-semibold md:col-span-2">SEO description<textarea rows={3} value={form.seoDescription} onChange={e=>field("seoDescription",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
      <label className="text-sm font-semibold">Language<select disabled={busy||uploading} value={form.language} onChange={e=>{void changeLanguage(e.target.value)}} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3 disabled:bg-slate-100"><option value="en">English</option><option value="de">German</option></select><span className="mt-1 block text-xs font-normal text-slate-500">{editing?"Switching creates a separate draft in the selected language; the original article stays unchanged.":"Choose the language before publishing."}</span></label>
-     <label className="text-sm font-semibold">Publishing status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option></select></label>
+     <label className="text-sm font-semibold">Publishing status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option><option value="scheduled">Scheduled</option></select></label>
+      {form.status==="scheduled"&&<label className="text-sm font-semibold md:col-span-2">Publish on (your local time)<input type="datetime-local" required value={toLocalInput(form.scheduledFor)} onChange={e=>field("scheduledFor",e.target.value?new Date(e.target.value).toISOString():"")} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3 text-sm font-normal"/><span className="mt-1 block text-xs font-normal text-slate-500">Stored in UTC; the article becomes public when this time arrives. The date must be at least one minute ahead.</span></label>}
     </div>
    </div>
    {uploading&&<p role="status" className="mt-4 text-sm text-blue-600">Uploading image…</p>}
