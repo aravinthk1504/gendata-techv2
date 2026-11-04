@@ -25,7 +25,7 @@ export async function POST(request){
   const parsed=blogSchema.safeParse(JSON.parse(raw));
   if(!parsed.success)return response({error:"Invalid article",fields:parsed.error.flatten().fieldErrors},400);
   const data=parsed.data;
-  if(data.status==="published"){
+  if(data.status!=="draft"){
    const issues=publishingIssues(data);
    if(Object.keys(issues).length)return response({error:"Complete the publishing checklist",fields:issues},400);
   }
