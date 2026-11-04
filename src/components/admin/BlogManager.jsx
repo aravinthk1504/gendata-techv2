@@ -1,7 +1,8 @@
 "use client";
-import {useEffect,useState} from "react";
+import {useEffect,useRef,useState} from "react";
 import MarkdownContent from "../blog/MarkdownContent";
 import {FiUpload,FiTrash2} from "react-icons/fi";
+const slugify = value => value.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,130).replace(/-+$/,"");
 const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
 const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
 export default function BlogManager(){
@@ -18,11 +19,20 @@ export default function BlogManager(){
  const [deleting,setDeleting]=useState(null);
  const [uploading,setUploading]=useState(false);
  const [busy,setBusy]=useState(false),[error,setError]=useState(""),[notice,setNotice]=useState("");
+ const [revision,setRevision]=useState(0),[savedRevision,setSavedRevision]=useState(0);
+ const [autosaveState,setAutosaveState]=useState("");
+ const [slugEdited,setSlugEdited]=useState(false);
+ const savingRef=useRef(false);
+ const dirty=revision>savedRevision;
+ const persistedPublished=items.some(item=>item.id===editing&&item.status==="published");
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
  useEffect(()=>{load()},[]);
- function field(name,value){setForm(v=>({...v,[name]:value}))}
- function edit(item){setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
- function reset(){setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
+ function field(name,value){
+   setForm(previous=>({...previous,[name]:value,...(name==="title"&&!editing&&!slugEdited?{slug:slugify(value)}:{})}));
+   setRevision(value=>value+1);
+ }
+ function edit(item){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(true);setPreview(false);setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
+ function reset(){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(false);setPreview(false);setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
  async function removeEntry(item){
   if(!item||busy||uploading)return;
   setDeleting(item.id);setError("");setNotice("");
@@ -30,7 +40,7 @@ export default function BlogManager(){
    const response=await fetch(`/api/admin/blogs/${encodeURIComponent(item.id)}`,{method:"DELETE"});
    const data=await response.json();
    if(!response.ok)throw Error(data.error||"Deletion failed");
-   if(editing===item.id)reset();
+   if(editing===item.id){setEditing(null);setForm({...blank,type:contentType});setRevision(0);setSavedRevision(0);setSlugEdited(false);}
    setNotice(`${item.type==="event"?"Event":"Article"} deleted from Firestore. Cloudinary images are retained.`);
    await load();
   }catch(e){setError(e.message||"Unable to delete")}finally{setDeleting(null)}
@@ -44,26 +54,67 @@ export default function BlogManager(){
    const data=await response.json();
    if(!response.ok)throw Error(data.error||"Upload failed");
    if(target==="cover")field("image",data.url);
-   else field("content",form.content+(form.content?"\n\n":"")+ `![${file.name.replace(/\.[^.]+$/,"").replace(/[\[\]()]/g,"")||"Event photo"}](${data.url})`);
+   else {setForm(previous=>({...previous,content:previous.content+(previous.content?"\\n\\n":"")+ `![${file.name.replace(/\\.[^.]+$/,"").replace(/[\\[\\]()]/g,"")||"Article image"}](${data.url})`}));setRevision(v=>v+1);}
    setNotice("Image uploaded successfully. Save the article to keep the link.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
  }
- async function save(event){
-  event.preventDefault();setError("");setNotice("");
-  if(form.status==="published"&&!ready){setError("Complete the publishing checklist before publishing. Drafts can be saved at any time.");setSection("seo");return;}
-  setBusy(true);
+ async function persist(draft, version, automatic=false){
+  if(savingRef.current||uploading)return;
+  if(!draft.slug||!draft.title.trim()){
+    if(!automatic)setError("Enter an article title to generate a URL slug before saving.");
+    return;
+  }
+  if(draft.status==="published"&&!ready){
+    if(!automatic){setError("Complete the publishing checklist before publishing.");setSection("seo");}
+    return;
+  }
+  savingRef.current=true;setBusy(true);
+  if(automatic)setAutosaveState("Saving draft…");
+  else {setError("");setNotice("");}
   try{
-   const body=editing?((({slug,language,...rest})=>rest)(form)):form;
-   const response=await fetch(editing?`/api/admin/blogs/${encodeURIComponent(editing)}`:"/api/admin/blogs",{method:editing?"PATCH":"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-   const data=await response.json();if(!response.ok){const details=data.fields&&typeof data.fields==="object"?Object.entries(data.fields).flatMap(([field,messages])=>(Array.isArray(messages)?messages:[]).map(message=>`${field}: ${message}`)).join("; "):"";throw Error(details||data.error||"Unable to save article");}
-   setNotice(editing?`${contentType==="event"?"Event":"Article"} updated`:`${contentType==="event"?"Event":"Article"} created`);await load();setEditing(data.id||editing);
-  }catch(e){setError(e.message)}finally{setBusy(false)}
+   const body=editing?((({slug,language,...rest})=>rest)(draft)):draft;
+   const response=await fetch(editing?`/api/admin/blogs/${encodeURIComponent(editing)}`:"/api/admin/blogs",{
+     method:editing?"PATCH":"POST",
+     headers:{"Content-Type":"application/json"},
+     body:JSON.stringify(body)
+   });
+   const data=await response.json();
+   if(!response.ok){
+    const details=data.fields&&typeof data.fields==="object"?Object.entries(data.fields).flatMap(([field,messages])=>(Array.isArray(messages)?messages:[]).map(message=>`${field}: ${message}`)).join("; "):"";
+    throw Error(details||data.error||"Unable to save article");
+   }
+   if(!editing)setEditing(data.id);
+   setSavedRevision(v=>Math.max(v,version));
+   if(automatic)setAutosaveState("Draft saved to Firebase");
+   else {setAutosaveState("");setNotice(draft.status==="published"?"Article published successfully":"Draft saved to Firebase");}
+   await load();
+  }catch(e){
+   setError(e.message||"Unable to save article");
+   setAutosaveState(automatic?"Autosave failed — use Save article":"");
+  }finally{savingRef.current=false;setBusy(false);}
  }
+ async function save(event){
+  event.preventDefault();
+  await persist(form,revision,false);
+ }
+ // Autosave only drafts; published articles are never unpublished by a timer.
+ // The revision counter prevents an in-flight save from dropping later edits.
+ useEffect(()=>{
+   if(!dirty||form.status!=="draft"||persistedPublished||!form.title.trim()||!form.slug||uploading||busy)return;
+   const timer=setTimeout(()=>{void persist(form,revision,true)},2000);
+   return ()=>clearTimeout(timer);
+ },[form,revision,dirty,persistedPublished,uploading,busy,editing]);
+ useEffect(()=>{
+   if(!dirty)return;
+   const warn=event=>{event.preventDefault();event.returnValue="";};
+   window.addEventListener("beforeunload",warn);
+   return ()=>window.removeEventListener("beforeunload",warn);
+ },[dirty]);
  return <section className="mt-6 space-y-5">
  <div className="rounded-3xl border border-slate-200 bg-white p-5">
   <div className="flex flex-wrap items-center justify-between gap-3">
    <div><h2 className="text-lg font-bold">Blog Management</h2><p className="mt-1 text-xs text-slate-500">Select an article to edit, or start a new one.</p></div>
-   <button type="button" onClick={reset} className="rounded-full bg-[#057cfa] px-5 py-2 text-sm font-semibold text-white">+ New article</button>
+   <button type="button" onClick={reset} disabled={busy||uploading} className="rounded-full bg-[#057cfa] px-5 py-2 text-sm font-semibold text-white disabled:opacity-60">+ New article</button>
   </div>
   <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
     <input aria-label="Search blog articles" type="search" placeholder="Search articles..." value={query} onChange={e=>setQuery(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"/>
@@ -73,13 +124,13 @@ export default function BlogManager(){
   </div>
   <div className="mt-3 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-slate-500">Showing {matching.length} of {articles.length} articles</p><button type="button" onClick={()=>{setQuery("");setStatusFilter("all");setLanguageFilter("all");setCategoryFilter("all")}} className="text-xs font-semibold text-[#057cfa] hover:underline">Clear filters</button></div>
   <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">{matching.length?matching.map(item=><div key={item.id} className={"flex min-w-0 items-center gap-2 rounded-xl border p-3 "+(editing===item.id?"border-[#057cfa] bg-blue-50":"border-slate-200")}>
-   <button type="button" onClick={()=>edit(item)} className="min-w-0 flex-1 text-left"><span className="block truncate text-sm font-semibold">{item.title}</span><span className="mt-1 block text-xs text-slate-500">{item.category} · {item.language.toUpperCase()} · {item.status}</span></button>
+   <button type="button" onClick={()=>edit(item)} disabled={busy||uploading} className="min-w-0 flex-1 text-left disabled:opacity-60"><span className="block truncate text-sm font-semibold">{item.title}</span><span className="mt-1 block text-xs text-slate-500">{item.category} · {item.language.toUpperCase()} · {item.status}</span></button>
    <button type="button" disabled={Boolean(deleting)||busy||uploading} onClick={()=>{if(window.confirm('Permanently delete "'+item.title+'"? The entry will be deleted, but Cloudinary images will remain.'))removeEntry(item)}} aria-label={"Delete "+item.title} className="rounded-lg border border-red-200 bg-red-50 p-2 text-red-600 disabled:opacity-50"><FiTrash2 size={16}/></button>
   </div>):<p className="text-sm text-slate-500">{articles.length?"No articles match your filters.":"No blog articles yet."}</p>}</div>
  </div>
  <form onSubmit={save} noValidate className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
-   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p></div>
+   <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
    <button disabled={busy||uploading} type="submit" className="rounded-full bg-[#057cfa] px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
   </div>
   <div className="flex flex-wrap gap-2 border-b border-slate-100 px-5 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
@@ -89,13 +140,24 @@ export default function BlogManager(){
    <div className={section==="content"?"space-y-4":"hidden"}>
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">Article title<input required minLength={5} value={form.title} onChange={e=>field("title",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal" placeholder="Enter a clear article title"/></label>
-     <label className="text-sm font-semibold">URL slug<input required disabled={!!editing} value={form.slug} onChange={e=>field("slug",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal disabled:bg-slate-100"/></label>
+     <label className="text-sm font-semibold">URL slug<input required disabled={!!editing} value={form.slug} onChange={e=>{setSlugEdited(true);field("slug",slugify(e.target.value))}} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal disabled:bg-slate-100"/></label>
      <label className="text-sm font-semibold">Category<select required value={form.category} onChange={e=>field("category",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal">{!BLOG_CATEGORIES.includes(form.category)&&<option value={form.category}>{form.category} (existing)</option>}{BLOG_CATEGORIES.map(category=><option key={category} value={category}>{category}</option>)}</select></label>
      <label className="text-sm font-semibold md:col-span-2">Short summary<textarea required rows={2} value={form.excerpt} onChange={e=>field("excerpt",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
     </div>
     <div className="flex items-center justify-between gap-3"><h3 className="text-sm font-bold">Article body (Markdown)</h3><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit":"Preview"}</button></div>
-    {preview?<div className="max-h-[480px] overflow-auto rounded-xl border border-slate-200 p-5"><h2 className="mb-3 text-2xl font-bold">{form.title||"Untitled article"}</h2><p className="mb-5 text-slate-500">{form.excerpt}</p><MarkdownContent content={form.content}/></div>:<>
-     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}))} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
+    {preview?<div className="max-h-[600px] overflow-auto rounded-2xl border border-slate-200 bg-white">
+      <div className="bg-[#06142f] px-5 py-10 text-white sm:px-10">
+        <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">{form.category} · {form.language.toUpperCase()} · Draft preview</p>
+        <h2 className="mt-4 text-2xl font-bold leading-tight sm:text-4xl">{form.title||"Untitled article"}</h2>
+        <p className="mt-4 text-sm leading-7 text-slate-300">{form.excerpt||"Article summary will appear here."}</p>
+        <p className="mt-3 text-xs text-slate-400">/{form.language}/blog/{form.slug||"article-slug"}</p>
+      </div>
+      <div className="px-5 py-7 sm:px-10">
+        {form.image&&<img src={form.image} alt={form.imageAlt||"Article cover"} className="mb-8 aspect-video w-full rounded-xl object-cover"/>}
+        <MarkdownContent content={form.content}/>
+      </div>
+    </div>:<>
+     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>{setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}));setRevision(v=>v+1)}} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
      <textarea aria-label="Article content" required minLength={30} rows={9} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here..."/>
     </>}
    </div>
