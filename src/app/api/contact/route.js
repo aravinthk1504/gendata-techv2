@@ -58,13 +58,15 @@ export async function POST(request) {
     const { website: ignoredHoneypot, ...formData } = parsed.data;
     const enquiry = { ...formData, email: formData.email.toLowerCase() };
 
-    // Local-development fallback only. A production deployment must
-    // derive the client address from a verified, trusted proxy.
+    // Until a trusted edge/proxy client-address source is configured, use
+    // the validated normalized email as the production rate-limit identity.
+    // This avoids accidentally limiting all customers as one shared visitor.
+    // A verified-IP/WAF limiter is still required before public launch.
     const forwarded = request.headers.get("x-forwarded-for");
     const clientAddress =
       process.env.NODE_ENV === "production"
-        ? "unverified-client"
-        : forwarded?.split(",")[0]?.trim() || "127.0.0.1";
+        ? "email:" + enquiry.email
+        : "dev-ip:" + (forwarded?.split(",")[0]?.trim() || "127.0.0.1");
 
     const enquiryId = await saveEnquiryWithRateLimit(
       {
