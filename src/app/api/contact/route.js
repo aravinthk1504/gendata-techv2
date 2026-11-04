@@ -3,6 +3,7 @@ import { FieldValue } from "firebase-admin/firestore";
 import { db } from "../../../lib/firebase-admin";
 import { sendEnquiryNotification, sendCustomerAcknowledgement } from "../../../lib/contact-email";
 import { contactSchema } from "../../../lib/contact-validation";
+import { verifyContactTurnstile } from "../../../lib/contact-turnstile.mjs";
 import {
   RateLimitError,
   saveEnquiryWithRateLimit,
@@ -55,7 +56,20 @@ export async function POST(request) {
       return json({ success: false, error: "Invalid submission" }, 400);
     }
 
-    const { website: ignoredHoneypot, ...formData } = parsed.data;
+    const { website: ignoredHoneypot, turnstileToken, ...formData } = parsed.data;
+    // Siteverify runs before any Firestore write or Resend email.
+    // In production, missing keys or hostname settings fail closed.
+    const verification = await verifyContactTurnstile(turnstileToken);
+    if (!verification.ok) {
+      if (verification.reason === "not_configured") {
+        console.error("Contact Turnstile is not configured");
+      }
+      if (verification.reason === "not_configured" || verification.reason === "unavailable") {
+        return json({ success: false, error: "Security verification temporarily unavailable" }, 503);
+      }
+      return json({ success: false, error: "Security verification failed. Please try again." }, 403);
+    }
+
     const enquiry = { ...formData, email: formData.email.toLowerCase() };
 
     // Until a trusted edge/proxy client-address source is configured, use

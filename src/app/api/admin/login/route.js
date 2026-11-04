@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "firebase-admin/auth";
 import "../../../../lib/firebase-admin";
+import { adminUidAllowlist, approvedAdminUid } from "../../../../lib/admin-allowlist.mjs";
 import {
   checkAdminLoginLimit, registerAdminLoginFailure, clearAdminLoginFailures,
   normalizedLoginEmail, recordAdminEvent,
@@ -49,8 +50,8 @@ export async function POST(request) {
     }
 
     const apiKey = process.env.FIREBASE_WEB_API_KEY;
-    const allowed = (process.env.ADMIN_UIDS || "").split(",").map(x => x.trim()).filter(Boolean);
-    if (!apiKey || !allowed.length) {
+    const allowed = adminUidAllowlist(process.env.ADMIN_UIDS);
+    if (!apiKey || !allowed.size) {
       return NextResponse.json({ error: "Admin login not configured" }, { status: 503 });
     }
 
@@ -65,7 +66,7 @@ export async function POST(request) {
     } catch (error) {
       if (error?.code !== "auth/user-not-found" && error?.code !== "auth/invalid-email") throw error;
     }
-    const approved = Boolean(adminUser && allowed.includes(adminUser.uid) && !adminUser.disabled);
+    const approved = Boolean(adminUser && approvedAdminUid(adminUser.uid, allowed) && !adminUser.disabled);
 
     async function rejectAttempt() {
       const failed = await registerAdminLoginFailure(email);
@@ -101,7 +102,7 @@ export async function POST(request) {
     }
 
     const authentication = await response.json();
-    if (authentication.localId !== adminUser.uid || !allowed.includes(authentication.localId)) {
+    if (authentication.localId !== adminUser.uid || !approvedAdminUid(authentication.localId, allowed)) {
       return await rejectAttempt();
     }
     const decoded = await getAuth().verifyIdToken(authentication.idToken);

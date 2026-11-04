@@ -71,6 +71,8 @@ export const contactSchema = z
 
     // Hidden field: must remain empty.
     website: z.string().max(200).default(""),
+    // Single-use Turnstile token is validated then discarded, never persisted.
+    turnstileToken: z.string().max(2048).default(""),
   })
   .strict()
   .refine(
