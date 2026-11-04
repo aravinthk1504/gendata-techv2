@@ -165,7 +165,7 @@ button:focus-visible {
   .gd-hero-button--primary:hover { transform: none; }
 }
 
-@keyframes eventGalleryScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 
 
 /* One shared connector is positioned against actual step-marker centres. */
