@@ -9,6 +9,7 @@ const statuses = ["new", "in_progress", "contacted", "completed"];
 export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail, adminName }) {
   const router = useRouter();
   const [tab, setTab] = useState("overview");
+  const [blogUnsaved, setBlogUnsaved] = useState(false);
   const [records, setRecords] = useState(enquiries);
   const [cursor, setCursor] = useState(nextCursor);
   const [logoutError, setLogoutError] = useState("");
@@ -67,14 +68,17 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
         <nav className="my-8 flex flex-wrap gap-2" aria-label="Admin sections">
           {[["overview", "Overview"], ["enquiries", "Enquiries"], ["blogs", "Blog management"]].map(([id, label]) => (
             <button key={id} type="button" aria-current={tab === id ? "page" : undefined}
-              onClick={() => setTab(id)}
+              onClick={() => {
+                if (tab === "blogs" && id !== "blogs" && blogUnsaved && !window.confirm("There are unsaved blog edits. Leave the editor?")) return;
+                setTab(id);
+              }}
               className={`rounded-full px-5 py-2.5 text-sm font-semibold ${tab === id
                 ? "gd-brand-primary" : "border border-slate-200 bg-white text-slate-700"}`}>
               {label}
             </button>
           ))}
         </nav>
-        {tab === "blogs" ? <BlogManager key="articles" /> : (
+        {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} /> : (
           <>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
