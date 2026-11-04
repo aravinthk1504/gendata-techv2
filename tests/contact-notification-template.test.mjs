@@ -69,3 +69,29 @@ test("customer name is escaped and enquiry topic is omitted", () => {
   assert.ok(!receipt.html.includes("<script>"));
   assert.ok(!receipt.html.includes("&lt;script&gt;"));
 });
+
+test("email headers use a consistent blue-cyan wordmark", () => {
+  const admin = buildEnquiryNotification("id-123", enquiry, { logoSrc: "cid:gendata-tech-logo" });
+  const customer = buildCustomerAcknowledgement("id-456", enquiry);
+  for (const html of [admin.html, customer.html]) {
+    for (const color of ["#65A8FF", "#4398FF", "#40BFFF", "#78E4FF"]) {
+      assert.ok(html.includes(color));
+    }
+  }
+  for (const color of ["#003DB8", "#002DCC", "#057CFA", "#18BDF2"]) {
+    assert.ok(customer.html.includes(color));
+  }
+});
+test("warm sign-off is localized without exposing enquiry details", () => {
+  const en = buildCustomerAcknowledgement("internal-id", enquiry);
+  assert.ok(en.text.includes("Warm regards,\nGenData Tech Team"));
+  assert.ok(en.html.includes("Warm regards,"));
+  const de = buildCustomerAcknowledgement("internal-id", { ...enquiry, language: "de" });
+  assert.ok(de.text.includes("Herzliche Grüße,\nGenData Tech Team"));
+  assert.ok(de.html.includes("Herzliche Grüße,"));
+  for (const html of [en.html, de.html]) {
+    assert.ok(!html.includes("internal-id"));
+    assert.ok(!html.includes("Reference number"));
+    assert.ok(!html.includes("Enquiry topic"));
+  }
+});

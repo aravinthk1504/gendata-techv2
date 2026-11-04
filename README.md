@@ -454,3 +454,15 @@ use the PNG inline fallback.
 Run `node --test tests/*.test.mjs`, `npm run build`, and make two controlled
 test enquiries to verify both receiving inboxes. Some mail clients can still
 block images by user setting; the text wordmark remains visible.
+
+ 
+### Email wordmark and warm sign-off
+
+The customer receipt now ends with **Warm regards, / GenData Tech Team**
+(English) and **Herzliche Grüße, / GenData Tech Team** (German). The signature
+uses the four official website wordmark colors (`#003DB8`, `#002DCC`,
+`#057CFA`, `#18BDF2`). The dark email header uses related lighter colors
+for legible contrast. The gradient-like effect is made of inline colored spans,
+rather than relying on CSS background-clip gradients unsupported in some email
+clients. Management notifications retain their original content; the change
+only updates their header's branded wordmark.

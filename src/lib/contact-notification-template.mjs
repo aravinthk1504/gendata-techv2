@@ -10,6 +10,19 @@ function brandLogo(src) {
   return src ? '<img src="' + escapeHtml(src) + '" alt="GenData Tech logo" width="44" height="44" style="display:inline-block;width:44px;height:44px;vertical-align:middle;margin-right:12px" />' : "";
 }
 
+// The site wordmark uses four blue/cyan colors. Use inline color spans as a
+// robust alternative to CSS gradient text, which differs across email clients.
+// Adjust only the navy-header colors for readability on dark backgrounds.
+function brandWordmark(onDark = false) {
+  const colors = onDark
+    ? ["#65A8FF", "#4398FF", "#40BFFF", "#78E4FF"]
+    : ["#003DB8", "#002DCC", "#057CFA", "#18BDF2"];
+  const parts = ["Gen", "Data", " Te", "ch"];
+  return parts.map((part, i) =>
+    '<span style="color:' + colors[i] + '">' + part + '</span>'
+  ).join("");
+}
+
 export function buildEnquiryNotification(id, enquiry, { logoSrc = "" } = {}) {
   const lines = [
     ["Enquiry ID", id],
@@ -38,7 +51,7 @@ export function buildEnquiryNotification(id, enquiry, { logoSrc = "" } = {}) {
   ).join("");
   const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f5f8ff;font-family:Arial,sans-serif;color:#081b3a">
     <main style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #dde7f5;border-radius:14px;overflow:hidden">
-      <header style="background:#06142f;padding:26px 30px;color:#fff"><div style="font-size:12px;letter-spacing:2px;color:#67e8f9">${brandLogo(logoSrc)}<span style="vertical-align:middle">GENDATA TECH</span></div>
+      <header style="background:#06142f;padding:26px 30px;color:#fff"><div style="font-size:12px;letter-spacing:2px;color:#67e8f9">${brandLogo(logoSrc)}<span style="vertical-align:middle;font-size:17px;font-weight:700;letter-spacing:0.02em">${brandWordmark(true)}</span></div>
       <h1 style="font-size:24px;margin:12px 0 4px">New website enquiry</h1>
       <p style="margin:0;color:#cbd5e1">Saved in Firebase · Admin notification</p></header>
       <div style="padding:24px">
@@ -64,22 +77,24 @@ export function buildCustomerAcknowledgement(_id, enquiry, { logoSrc = "", suppo
     received: "Wir haben Ihre Anfrage erhalten. Unser Team wird sie prüfen.",
     next: "Wir melden uns über die von Ihnen angegebenen Kontaktdaten bei Ihnen.",
     footer: "Dies ist eine automatische Eingangsbestätigung. Bei Fragen erreichen Sie uns unter",
+    closing: "Herzliche Grüße,",
   } : {
     subject: "We've received your enquiry | GenData Tech",
     hello: "Hello", intro: "Thank you for contacting GenData Tech.",
     received: "We have received your enquiry and our team will review it.",
     next: "We will follow up using the contact information you provided.",
     footer: "This is an automated acknowledgement. If you need assistance, please contact",
+    closing: "Warm regards,",
   };
   const greeting = c.hello + (name ? " " + name : "") + ",";
   const text = [
     greeting, "", c.intro, c.received, "",
-    c.next, "", c.footer + " " + supportEmail, "", "GenData Tech",
+    c.next, "", c.footer + " " + supportEmail, "", c.closing, "GenData Tech Team",
   ].join("\n");
   const html = `<!doctype html><html lang="${de ? "de" : "en"}"><body style="margin:0;padding:24px;background:#f5f8ff;font-family:Arial,sans-serif;color:#081b3a">
     <main style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #dde7f5;border-radius:14px;overflow:hidden">
       <header style="background:#06142f;padding:28px;color:#fff">
-        <div style="font-size:12px;letter-spacing:2px;color:#67e8f9">${brandLogo(logoSrc)}<span style="vertical-align:middle">GENDATA TECH</span></div>
+        <div style="font-size:12px;letter-spacing:2px;color:#67e8f9">${brandLogo(logoSrc)}<span style="vertical-align:middle;font-size:17px;font-weight:700;letter-spacing:0.02em">${brandWordmark(true)}</span></div>
         <h1 style="font-size:25px;line-height:1.3;margin:14px 0 0">${escapeHtml(c.subject.split(" | ")[0])}</h1>
       </header>
       <div style="padding:28px">
@@ -88,7 +103,8 @@ export function buildCustomerAcknowledgement(_id, enquiry, { logoSrc = "", suppo
         <p style="font-size:15px;line-height:1.7;margin-bottom:20px">${escapeHtml(c.received)}</p>
         <p style="font-size:14px;line-height:1.7">${escapeHtml(c.next)}</p>
         <p style="font-size:12px;line-height:1.7;color:#64748b">${escapeHtml(c.footer)} <a href="mailto:${escapeHtml(supportEmail)}" style="color:#002DCC;text-decoration:underline">${escapeHtml(supportEmail)}</a>.</p>
-        <p style="font-size:14px;font-weight:700;color:#002DCC">GenData Tech</p>
+        <p style="font-size:14px;line-height:1.5;color:#56637a;margin:24px 0 5px">${escapeHtml(c.closing)}</p>
+        <p style="font-size:17px;line-height:1.5;font-weight:700;margin:0">${brandWordmark(false)}<span style="color:#081b3a"> Team</span></p>
       </div>
     </main>
   </body></html>`;
