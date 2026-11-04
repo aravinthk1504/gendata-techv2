@@ -50,7 +50,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   useEffect(() => {
     if (!selectedId) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    detailsRef.current?.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
+    detailsRef.current?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
   }, [selectedId]);
 
   async function jsonRequest(url, options) {
