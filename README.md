@@ -319,25 +319,25 @@ into chat or a public issue.
 
 **Deploy as Firebase App Hosting**, not static Firebase Hosting. The Next.js
 server renders content dynamically and handles protected API routes.
-This repository includes \`apphosting.yaml\` with minInstances 0, maxInstances
+This repository includes `apphosting.yaml` with minInstances 0, maxInstances
 3 and concurrency 40. Firebase App Hosting requires the Blaze billing plan.
 
 1. In Firebase Console → App Hosting → Create backend, select the existing
-   Firebase project. Connect repository \`aravinthk1504/gendata-techv2\`,
-   use **master** as the live branch and \`/\` as the app root.
-2. In backend Settings → Environment, configure \`GOOGLE_CLOUD_PROJECT\`,
-   \`FIREBASE_WEB_API_KEY\`, \`ADMIN_UIDS\`, \`RATE_LIMIT_SECRET\`,
-   \`CLOUDINARY_CLOUD_NAME\`, \`CLOUDINARY_API_KEY\`,
-   \`CLOUDINARY_API_SECRET\`, and \`RESEND_NOTIFICATIONS_ENABLED=false\`.
-   After Resend verification, securely configure \`RESEND_API_KEY\`,
-   \`RESEND_FROM_EMAIL\` and \`RESEND_NOTIFY_TO\` and change the flag.
+   Firebase project. Connect repository `aravinthk1504/gendata-techv2`,
+   use **master** as the live branch and `/` as the app root.
+2. In backend Settings → Environment, configure `GOOGLE_CLOUD_PROJECT`,
+   `FIREBASE_WEB_API_KEY`, `ADMIN_UIDS`, `RATE_LIMIT_SECRET`,
+   `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`,
+   `CLOUDINARY_API_SECRET`, and `RESEND_NOTIFICATIONS_ENABLED=false`.
+   After Resend verification, securely configure `RESEND_API_KEY`,
+   `RESEND_FROM_EMAIL` and `RESEND_NOTIFY_TO` and change the flag.
    Store sensitive settings as restricted secrets rather than public code.
 3. Never commit a service-account JSON or set a local Windows
-   \`GOOGLE_APPLICATION_CREDENTIALS\` path in App Hosting. The hosted
+   `GOOGLE_APPLICATION_CREDENTIALS` path in App Hosting. The hosted
    runtime uses application-default credentials and needs correct
    Firestore/Firebase Authentication permissions for its service account.
 4. Set Firebase/Google Cloud budget alerts and review billing usage.
-5. Run \`npm ci\`, \`node --test tests/*.test.mjs\`, and \`npm run build\`.
+5. Run `npm ci`, `node --test tests/*.test.mjs`, and `npm run build`.
    Verify the GitHub Actions workflow succeeds on the latest commit.
    The CI smoke test checks EN/DE About-page SSR without production secrets.
 6. First deploy to the App Hosting-provided hostname, not the public custom
@@ -357,9 +357,9 @@ This repository includes \`apphosting.yaml\` with minInstances 0, maxInstances
 
 ### Static code cleanup
 
-Removed six confirmed-unused legacy modules: \`InfinityVisual\`,
-\`NeuralBackground\`, \`TechHeroSculpture\`, \`ServiceFlowVisual\`,
-\`src/i18n/home.js\`, and \`EventGallery\`. Removed the unreachable
+Removed six confirmed-unused legacy modules: `InfinityVisual`,
+`NeuralBackground`, `TechHeroSculpture`, `ServiceFlowVisual`,
+`src/i18n/home.js`, and `EventGallery`. Removed the unreachable
 event rendering from the public blog article page and its orphan CSS rule.
 Dropped the unused Resend SDK dependency (the integration calls the
 Resend HTTPS API using built-in fetch). Active website hero animations and
