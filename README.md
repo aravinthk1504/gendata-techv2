@@ -119,12 +119,15 @@ before marking Phase 3 browser-verified.
 The existing Firebase-approved administrator UID allowlist and HTTP-only, SameSite=Strict
 eight-hour session cookies remain in place.
 
-- **Login throttle:** Shared Firestore transaction counters for approved admin UIDs
-  (`_adminLoginAttempts`) permit up to 10 login requests per 15-minute window.
-  The next request triggers a 10-minute cooldown. Successful login clears
-  that account's counter. This does not depend on spoofable forwarded IP headers.
-  **Tradeoff:** Someone who knows an admin's email could temporarily block sign-in
-  by deliberately consuming the attempts; keep a secure recovery channel.
+- **Login throttle:** Shared Firestore counters keyed by the SHA-256 digest of
+  a normalized email (`_adminLoginAttempts`) count failed credentials even for
+  unknown or unapproved accounts. The **fifth failed attempt within 15 minutes**
+  returns HTTP 429 and triggers a **10-minute cooldown**. A successful login
+  clears its counter. Counting is transactional and does not trust forwarded
+  IP headers; it requires working Firestore access.
+  **Tradeoff:** Someone who knows an admin email can temporarily lock that
+  email out. Keep a recovery administrator and add trusted-edge/IP controls
+  before launching publicly.
 - **Audit trail:** `_adminAudit` stores successful/failed/limited sign-ins, sign-outs,
   article changes, Cloudinary uploads, enquiry status/note changes and CSV exports,
   with administrator UID, optional record ID and timestamp. It intentionally avoids
@@ -147,9 +150,12 @@ eight-hour session cookies remain in place.
 3. Change an enquiry status, add a note and save a blog draft. Refresh the
    activity tab; verify no passwords, enquiry messages or note text are exposed.
 4. Sign out, then sign in again. Confirm the activity log updates.
-5. In a separate test account, attempt repeated incorrect passwords and verify
-   that HTTP 429 is returned after the configured limit and the cooldown ends.
-   Do not intentionally lock out the only production administrator.
+5. Run `node --test tests/admin-login-policy.test.mjs` to verify the
+   five-failure threshold and cooldown without submitting real passwords.
+   With a separate **test** administrator account, verify that the fifth
+   incorrect password yields HTTP 429, includes a `Retry-After` header,
+   and a correct password is blocked until the cooldown ends. Do not
+   intentionally lock out the only production administrator.
 6. Test **Sign out all my sessions** with two browsers logged in to the same
    admin account. Both should require authentication after revocation.
 7. Confirm unapproved Firebase UIDs still cannot access protected endpoints.
