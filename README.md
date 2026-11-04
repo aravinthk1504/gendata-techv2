@@ -406,3 +406,28 @@ anti-bot/IP abuse protection is configured. Each enquiry can produce two
 Resend sends and use twice the quota. Test with an address you control,
 review Resend activity and the recipient's spam folder, and test both EN/DE.
 Run `node --test tests/*.test.mjs` and `npm run build` before go-live.
+
+ 
+### Branded Resend customer acknowledgements (November 2026)
+
+The **customer** email is a short bilingual acknowledgement only: no enquiry
+topic, no reference number. Its From is
+`RESEND_CUSTOMER_FROM_EMAIL="GenData Tech <noreply@gendatatech.com>"`;
+its Reply-To and visible support contact are
+`RESEND_CUSTOMER_REPLY_TO=support@gendatatech.com`.
+
+**Management** continues to receive the full enquiry at
+`RESEND_NOTIFY_TO=info@gendatatech.com`, sent from the existing
+`RESEND_FROM_EMAIL="GenData Tech <enquiries@gendatatech.com>"`.
+
+Both templates include the GenData Tech logo and wordmark. By default, the
+existing `public/assets/gendata-tech-mark.webp` is embedded as a CID inline
+attachment using the Resend HTTP API; for compatibility across email clients,
+configure `RESEND_EMAIL_LOGO_URL` to a public HTTPS PNG (Cloudinary preferred).
+Some clients block images, so the text brand remains visible.
+
+The Resend-verified sending domain supports noreply@ without a Cloudflare
+inbound mailbox. A Cloudflare Drop routing rule is optional. Support@ must
+continue forwarding to a monitored inbox. Customer emails remain opt-in via
+`RESEND_CUSTOMER_ACK_ENABLED`, and must not be enabled for unrestricted
+public traffic without abuse controls. Test both languages and both inboxes.

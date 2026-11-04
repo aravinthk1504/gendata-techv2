@@ -1,5 +1,37 @@
 import "server-only";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { buildEnquiryNotification, buildCustomerAcknowledgement } from "./contact-notification-template.mjs";
+
+// A hosted PNG URL is preferred for broad email compatibility.
+// Otherwise embed the existing project logo via Resend CID attachments.
+let brandPromise;
+async function emailBranding() {
+  const hosted = process.env.RESEND_EMAIL_LOGO_URL?.trim();
+  if (hosted) {
+    try {
+      const url = new URL(hosted);
+      if (url.protocol === "https:") return { logoSrc: url.href, attachments: [] };
+    } catch {}
+  }
+  if (!brandPromise) {
+    brandPromise = readFile(join(process.cwd(), "public/assets/gendata-tech-mark.webp"))
+      .then(data => ({
+        logoSrc: "cid:gendata-tech-logo",
+        attachments: [{
+          filename: "gendata-tech-mark.webp",
+          content: data.toString("base64"),
+          content_type: "image/webp",
+          content_id: "gendata-tech-logo",
+        }],
+      }))
+      .catch(error => {
+        console.error("Email logo unavailable", error?.code || error?.name || "unknown");
+        return { logoSrc: "", attachments: [] };
+      });
+  }
+  return brandPromise;
+}
 
 function validEmail(value) {
   return typeof value === "string" &&
@@ -29,7 +61,8 @@ export async function sendEnquiryNotification(enquiryId, enquiry) {
   if (!settings.enabled) return { status: "disabled" };
   if (!settings.configured) return { status: "not_configured" };
 
-  const { subject, html, text } = buildEnquiryNotification(enquiryId, enquiry);
+  const branding = await emailBranding();
+  const { subject, html, text } = buildEnquiryNotification(enquiryId, enquiry, { logoSrc: branding.logoSrc });
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -46,6 +79,7 @@ export async function sendEnquiryNotification(enquiryId, enquiry) {
         subject,
         html,
         text,
+        ...(branding.attachments.length ? { attachments: branding.attachments } : {}),
       }),
       cache: "no-store",
       signal: AbortSignal.timeout(12000),
@@ -75,10 +109,13 @@ export async function sendCustomerAcknowledgement(enquiryId, enquiry) {
   if (!settings.configured || !validEmail(enquiry.email)) return { status: "not_configured" };
 
   const fromAddress = settings.from.match(/<([^<>]+)>$/)?.[1] || settings.from;
-  const replyTo = process.env.RESEND_CUSTOMER_REPLY_TO?.trim() || fromAddress;
-  if (!validEmail(replyTo)) return { status: "not_configured" };
-
-  const { subject, html, text } = buildCustomerAcknowledgement(enquiryId, enquiry);
+  const domain = fromAddress.split("@")[1];
+  const customerFrom = process.env.RESEND_CUSTOMER_FROM_EMAIL?.trim() || ("GenData Tech <noreply@" + domain + ">");
+  const replyTo = process.env.RESEND_CUSTOMER_REPLY_TO?.trim() || ("support@" + domain);
+  const customerEmail = customerFrom.match(/<([^<>]+)>$/)?.[1] || customerFrom;
+  if (!validEmail(customerEmail) || !validEmail(replyTo)) return { status: "not_configured" };
+  const branding = await emailBranding();
+  const { subject, html, text } = buildCustomerAcknowledgement(enquiryId, enquiry, { logoSrc: branding.logoSrc, supportEmail: replyTo });
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -88,8 +125,9 @@ export async function sendCustomerAcknowledgement(enquiryId, enquiry) {
         "Idempotency-Key": "gendata-customer-ack-" + enquiryId,
       },
       body: JSON.stringify({
-        from: settings.from, to: [enquiry.email], reply_to: replyTo,
+        from: customerFrom, to: [enquiry.email], reply_to: replyTo,
         subject, html, text,
+        ...(branding.attachments.length ? { attachments: branding.attachments } : {}),
       }),
       cache: "no-store",
       signal: AbortSignal.timeout(12000),
