@@ -112,3 +112,49 @@ The public-site layout and production APIs are unchanged. Admin layout improveme
 
 Run `npm run build` and review 375px / 768px / 1440px viewport layouts locally
 before marking Phase 3 browser-verified.
+
+
+## Phase 4 — Admin security controls
+
+The existing Firebase-approved administrator UID allowlist and HTTP-only, SameSite=Strict
+eight-hour session cookies remain in place.
+
+- **Login throttle:** Shared Firestore transaction counters for approved admin UIDs
+  (`_adminLoginAttempts`) permit up to 10 login requests per 15-minute window.
+  The next request triggers a 10-minute cooldown. Successful login clears
+  that account's counter. This does not depend on spoofable forwarded IP headers.
+  **Tradeoff:** Someone who knows an admin's email could temporarily block sign-in
+  by deliberately consuming the attempts; keep a secure recovery channel.
+- **Audit trail:** `_adminAudit` stores successful/failed/limited sign-ins, sign-outs,
+  article changes, Cloudinary uploads, enquiry status/note changes and CSV exports,
+  with administrator UID, optional record ID and timestamp. It intentionally avoids
+  passwords, raw IPs, tokens, full customer messages and follow-up note bodies.
+  Recording is best-effort and does not roll back successful operations.
+- **Security & activity tab:** Displays up to the latest 50 activity records and
+  provides **Sign out all my sessions**. The revocation endpoint invalidates Firebase
+  refresh tokens for the signed-in UID; it also clears the current session cookie.
+  Other administrators' sessions are not affected.
+- **CSRF:** Mutation endpoints continue to require a valid same-origin request;
+  the existing session cookie remains SameSite=Strict.
+- **MFA:** Not automatically activated. Firebase TOTP MFA depends on Identity
+  Platform and requires enrollment and updated authentication flows. Enable only
+  after testing and having at least one recovery administrator available.
+
+### Phase 4 acceptance tests
+
+1. Run `npm run build`, then sign in with an approved administrator account.
+2. In **Security & activity**, verify that a successful sign-in appears.
+3. Change an enquiry status, add a note and save a blog draft. Refresh the
+   activity tab; verify no passwords, enquiry messages or note text are exposed.
+4. Sign out, then sign in again. Confirm the activity log updates.
+5. In a separate test account, attempt repeated incorrect passwords and verify
+   that HTTP 429 is returned after the configured limit and the cooldown ends.
+   Do not intentionally lock out the only production administrator.
+6. Test **Sign out all my sessions** with two browsers logged in to the same
+   admin account. Both should require authentication after revocation.
+7. Confirm unapproved Firebase UIDs still cannot access protected endpoints.
+8. Review MFA, trusted proxy rate limiting, and deployment access controls before
+   moving to a public production hostname.
+
+The public Contact API production limiter remains deferred until the planned
+pre-deployment work and is not changed by Phase 4.
