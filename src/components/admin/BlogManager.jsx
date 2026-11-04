@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
 import MarkdownContent from "../blog/MarkdownContent";
+import MediaLibrary from "./MediaLibrary";
 import {FiUpload,FiTrash2} from "react-icons/fi";
 const slugify = value => value.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,130).replace(/-+$/,"");
 const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
@@ -20,6 +21,7 @@ export default function BlogManager({onUnsavedChange}){
  const matching=articles.filter(item=>(statusFilter==="all"||item.status===statusFilter)&&(languageFilter==="all"||item.language===languageFilter)&&(categoryFilter==="all"||item.category===categoryFilter)&&[item.title,item.category,item.excerpt,item.slug].some(x=>(x||"").toLowerCase().includes(query.trim().toLowerCase())));
  const [deleting,setDeleting]=useState(null);
  const [uploading,setUploading]=useState(false);
+ const [libraryOpen,setLibraryOpen]=useState(false);
  const [busy,setBusy]=useState(false),[error,setError]=useState(""),[notice,setNotice]=useState("");
  const [revision,setRevision]=useState(0),[savedRevision,setSavedRevision]=useState(0);
  const [autosaveState,setAutosaveState]=useState("");
@@ -212,6 +214,8 @@ export default function BlogManager({onUnsavedChange}){
     </>}
    </div>
    <div id="cms-panel-media" role="tabpanel" aria-labelledby="cms-tab-media" hidden={section!=="media"} className="space-y-4">
+    <button type="button" onClick={()=>setLibraryOpen(v=>!v)} className="min-h-11 rounded-full border border-blue-200 bg-blue-50 px-5 text-sm font-semibold text-[#003cba]">{libraryOpen?"Hide media library":"Choose from media library"}</button>
+    {libraryOpen && <MediaLibrary onSelectCover={item=>{field("image",item.url);if(!form.imageAlt.trim())field("imageAlt",item.name.slice(0,180));setNotice("Existing image selected as cover.")}} onInsertImage={item=>{const alt=(item.name||"Blog image").replace(/[\[\]()]/g,"").slice(0,150);setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+`![${alt}](${item.url})`}));setRevision(v=>v+1);setAutosaveState("");setNotice("Image inserted into the article body.")}}/>}
     <div className="grid gap-4 sm:grid-cols-2">
      <div><p className="mb-2 text-sm font-semibold">Cover image</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white"><FiUpload size={17}/>{uploading?"Uploading…":"Upload cover photo"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
      {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-36 w-full rounded-xl object-contain"/>}
