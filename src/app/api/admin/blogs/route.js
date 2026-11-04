@@ -1,30 +1,10 @@
 import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
-import { z } from "zod";
+import { blogSchema, publishingIssues } from "../../../../lib/blog-validation";
 import { currentAdmin } from "../../../../lib/admin-auth";
 import { db } from "../../../../lib/firebase-admin";
 
 export const runtime = "nodejs";
-const schema=z.object({
- type:z.enum(["article","event"]).default("article"),
- gallery:z.array(z.object({url:z.url().refine(v=>v.startsWith("https://")),caption:z.string().max(180)}).strict()).max(30).default([]),
- eventDate:z.string().max(30).default(""),
- eventTime:z.string().max(50).default(""),
- location:z.string().max(180).default(""),
- eventMode:z.enum(["online","in-person","hybrid"]).default("online"),
- registrationUrl:z.union([z.literal(""),z.url().refine(x=>x.startsWith("https://"))]).default(""),
- title:z.string().trim().min(5).max(180),
- slug:z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(130),
- category:z.string().trim().min(2).max(80),
- excerpt:z.string().trim().min(10).max(500),
- content:z.string().trim().min(30).max(50000),
- seoTitle:z.string().trim().max(180).default(""),
- seoDescription:z.string().trim().max(320).default(""),
- image:z.union([z.literal(""),z.url().refine(v=>v.startsWith("https://"),"Use an HTTPS image URL")]).default(""),
- imageAlt:z.string().trim().max(180).default(""),
- language:z.enum(["en","de"]).default("en"),
- status:z.enum(["draft","published"]).default("draft")
-}).strict();
 function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
 function response(body,status=200){return NextResponse.json(body,{status,headers:{"Cache-Control":"no-store"}})}
 export async function GET(){
@@ -41,10 +21,13 @@ export async function POST(request){
  try{
   const raw=await request.text();
   if(Buffer.byteLength(raw,"utf8")>65000)return response({error:"Content too large"},413);
-  const parsed=schema.safeParse(JSON.parse(raw));
+  const parsed=blogSchema.safeParse(JSON.parse(raw));
   if(!parsed.success)return response({error:"Invalid article",fields:parsed.error.flatten().fieldErrors},400);
   const data=parsed.data;
-  if(data.type==="event"&&(!/^\d{4}-\d{2}-\d{2}$/.test(data.eventDate)||!data.eventTime.trim()))return response({error:"Event date and time are required"},400);
+  if(data.status==="published"){
+   const issues=publishingIssues(data);
+   if(Object.keys(issues).length)return response({error:"Complete the publishing checklist",fields:issues},400);
+  }
   const id=`${data.language}_${data.slug}`;
   const ref=db.collection("cmsBlogs").doc(id);
   const existing=await ref.get();
