@@ -11,8 +11,11 @@ export default async function AdminPage({params}) {
   const {lang}=await params;
   const user=await currentAdmin();
   if(!user) redirect(`/${lang}/admin/login`);
-  const snap=await db.collection("enquiries").orderBy("createdAt","desc").limit(250).get();
-  const enquiries=snap.docs.map(doc=>{
+  const snap=await db.collection("enquiries").orderBy("createdAt","desc").limit(101).get();
+  const hasMore=snap.docs.length>100;
+  const pageDocs=snap.docs.slice(0,100);
+  const nextCursor=hasMore?pageDocs[pageDocs.length-1].id:null;
+  const enquiries=pageDocs.map(doc=>{
     const d=doc.data();
     return {
       id:doc.id,name:String(d.name||""),email:String(d.email||""),
@@ -24,5 +27,5 @@ export default async function AdminPage({params}) {
   });
   const profile = await getAuth().getUser(user.uid);
   const adminName = profile.displayName?.trim() || profile.email?.split("@")[0] || "Administrator";
-  return <AdminDashboard enquiries={enquiries} lang={lang} adminEmail={user.email||""} adminName={adminName}/>;
+  return <AdminDashboard enquiries={enquiries} nextCursor={nextCursor} lang={lang} adminEmail={user.email||""} adminName={adminName}/>;
 }
