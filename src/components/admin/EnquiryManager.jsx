@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const STATUS = [
   ["new", "New"],
@@ -20,6 +20,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [period, setPeriod] = useState("all");
   const [selectedId, setSelectedId] = useState(null);
+  const detailsRef = useRef(null);
   const [detail, setDetail] = useState(null);
   const [activity, setActivity] = useState([]);
   const [status, setStatus] = useState("new");
@@ -45,6 +46,12 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
       ))
     );
   }, [records, query, statusFilter, categoryFilter, period]);
+
+  useEffect(() => {
+    if (!selectedId) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    detailsRef.current?.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
+  }, [selectedId]);
 
   async function jsonRequest(url, options) {
     const response = await fetch(url, { cache: "no-store", ...options });
@@ -215,8 +222,8 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
           {loadingMore ? "Loading…" : "Load more enquiries"}</button></div>}
       </div>
 
-      {selectedId && <section aria-label="Selected enquiry details"
-        className="rounded-3xl border border-blue-200 bg-white p-4 shadow-sm sm:p-6">
+      {selectedId && <section ref={detailsRef} aria-label="Selected enquiry details"
+        className="scroll-mt-24 rounded-3xl border border-blue-200 bg-white p-4 shadow-sm sm:p-6">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-lg font-bold text-[#081b3a]">Customer details & follow-ups</h2>
           <button type="button" onClick={() => { setSelectedId(null); setDetail(null); setError(""); }}
