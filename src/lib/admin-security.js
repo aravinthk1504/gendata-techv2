@@ -56,7 +56,7 @@ const EVENTS = new Set([
   "login_success", "login_failed", "login_limited",
   "logout", "revoke_sessions",
   "blog_created", "blog_updated", "blog_deleted",
-  "media_uploaded", "enquiry_status_updated", "enquiry_note_added",
+  "media_uploaded", "enquiry_status_updated", "enquiry_note_added", "enquiries_exported",
 ]);
 
 export async function recordAdminEvent({ event, actorUid, target = null }) {
