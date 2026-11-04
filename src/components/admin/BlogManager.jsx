@@ -5,10 +5,10 @@ import {FiUpload,FiTrash2} from "react-icons/fi";
 const slugify = value => value.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,130).replace(/-+$/,"");
 const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
 const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft"};
-export default function BlogManager(){
+export default function BlogManager({onUnsavedChange}){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
- const checks=[["Title",form.title.trim().length>=5],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
+ const checks=[["Title",form.title.trim().length>=5],["URL slug",Boolean(form.slug)],["Category",form.category.trim().length>=2],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
  const ready=checks.every(([,ok])=>ok);
  const [preview,setPreview]=useState(false);
  const [section,setSection]=useState("content");
@@ -24,6 +24,7 @@ export default function BlogManager(){
  const [slugEdited,setSlugEdited]=useState(false);
  const savingRef=useRef(false);
  const dirty=revision>savedRevision;
+ useEffect(()=>{onUnsavedChange?.(dirty||busy||uploading)},[dirty,busy,uploading,onUnsavedChange]);
  const persistedPublished=items.some(item=>item.id===editing&&item.status==="published");
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
  useEffect(()=>{load()},[]);
@@ -59,7 +60,7 @@ export default function BlogManager(){
      setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+ `![${alt}](${data.url})`}));
      setRevision(v=>v+1);
    }
-   setNotice("Image uploaded successfully. Save the article to keep the link.");
+   setNotice("Image uploaded successfully. Drafts will autosave once changes settle.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
  }
  async function persist(draft, version, automatic=false){
@@ -89,7 +90,7 @@ export default function BlogManager(){
    }
    if(!editing)setEditing(data.id);
    setSavedRevision(v=>Math.max(v,version));
-   if(automatic)setAutosaveState("Draft saved to Firebase");
+   if(automatic){setAutosaveState("Draft saved to Firebase");setError("");}
    else {setAutosaveState("");setNotice(draft.status==="published"?"Article published successfully":"Draft saved to Firebase");}
    await load();
   }catch(e){
@@ -104,7 +105,7 @@ export default function BlogManager(){
  // Autosave only drafts; published articles are never unpublished by a timer.
  // The revision counter prevents an in-flight save from dropping later edits.
  useEffect(()=>{
-   if(!dirty||form.status!=="draft"||persistedPublished||!form.title.trim()||!form.slug||uploading||busy)return;
+   if(!dirty||form.status!=="draft"||persistedPublished||form.title.trim().length<5||!form.slug||uploading||busy)return;
    const timer=setTimeout(()=>{void persist(form,revision,true)},2000);
    return ()=>clearTimeout(timer);
  },[form,revision,dirty,persistedPublished,uploading,busy,editing]);
