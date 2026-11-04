@@ -54,7 +54,11 @@ export default function BlogManager(){
    const data=await response.json();
    if(!response.ok)throw Error(data.error||"Upload failed");
    if(target==="cover")field("image",data.url);
-   else {setForm(previous=>({...previous,content:previous.content+(previous.content?"\\n\\n":"")+ `![${file.name.replace(/\\.[^.]+$/,"").replace(/[\\[\\]()]/g,"")||"Article image"}](${data.url})`}));setRevision(v=>v+1);}
+   else {
+     const alt=file.name.split(".").slice(0,-1).join(".").replace(/[^a-zA-Z0-9 _-]/g,"")||"Article image";
+     setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+ `![${alt}](${data.url})`}));
+     setRevision(v=>v+1);
+   }
    setNotice("Image uploaded successfully. Save the article to keep the link.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
  }
