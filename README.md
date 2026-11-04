@@ -46,53 +46,14 @@ Do not expose the API secret in client components or any `NEXT_PUBLIC_` variable
 Run `npm run build` before deployment and verify authenticated CMS routes and both localized public routes. The site requires working Firebase credentials to render content that queries Firestore. The GitHub Actions workflow does not provide production Firebase credentials; account for that when interpreting build and smoke-test failures.
 
 
-## Google Sheets enquiry synchronization (optional)
+## Enquiry export for management
 
-The Admin → Enquiries page provides a **Sync to Google Sheets** button beside the CSV export.
-The server-side endpoint is \`POST /api/admin/enquiries/sync\`; it is **disabled by default**
-and requires an authenticated approved administrator plus a same-origin request.
+The Admin → Enquiries page provides an authenticated **Export for Excel (CSV)** download.
+It reads paginated enquiry records directly from Firestore, including status and the latest follow-up note.
+Open the downloaded CSV in Microsoft Excel, or import it into a separate Google Sheets tab
+before merging it with existing management records. No Google Sheets API, Google Cloud Console
+configuration, spreadsheet sharing, or synchronization credentials are required.
 
-Destination: existing Google Sheet \`16kBU_nbQJWaVv8gFX52zfHIDJz0sNtQd3JS-TQNHkKs\`,
-existing tab \`enquiryForm\`.
-
-- Existing columns **A:G** retain their headers: Timestamp, Name, Email, Phone, Category, Offering, Message.
-- First sync adds only headers **H:K**: Status, Latest follow-up note, Firebase enquiry ID, Last synced.
-- New enquiries append complete A:K rows. Existing synced rows update only **H:I and K** by Firebase ID;
-  **A:G** and all other management tabs are never overwritten.
-- The action is *manual*, one-way **Firestore → Sheet**. CSV export remains available.
-- A Firestore lock prevents concurrent sync attempts. The server validates the existing headers
-  and stops if H:K already contain unexpected data. Source records are bounded at 5,000 per run.
-- Changes made directly in Sheets do not update Firebase. For status and note changes,
-  use the admin dashboard (and then sync again).
-
-### Required setup (do not commit secrets)
-
-1. **Privacy:** In Google Sheets → Share, change *General access* from **Anyone with link**
-   to **Restricted** before transferring customer data. The source workbook was publicly
-   readable by link when inspected. Only share the workbook with approved managers and
-   your Google service account.
-2. Open Google Cloud Console for the service account's project and enable **Google Sheets API**.
-3. Share **this existing workbook** with the service account's \`client_email\` as **Editor**.
-   You can reuse the Firebase Admin service-account JSON specified by
-   \`GOOGLE_APPLICATION_CREDENTIALS\` if it has the Sheets API enabled and sheet access;
-   otherwise set the separate server-only values below.
-4. Set \`GOOGLE_SHEETS_SYNC_ENABLED=true\` **only after** restricting sharing, enabling
-   the API, and granting Editor permission. Restart the Next.js server.
-5. In Admin → Enquiries, press **Sync to Google Sheets** and verify the H:K header
-   row, row count, statuses, and Firestore IDs in \`enquiryForm\`. Press the button again;
-   the second run should report zero new rows.
-
-\`\`\`env
-# Required to enable write operations; absence disables the endpoint
-GOOGLE_SHEETS_SYNC_ENABLED=false
-
-# Optional when GOOGLE_APPLICATION_CREDENTIALS already points to an authorized service-account JSON
-GOOGLE_SHEETS_CLIENT_EMAIL=service-account@your-project.iam.gserviceaccount.com
-GOOGLE_SHEETS_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...contents...\n-----END PRIVATE KEY-----\n"
-\`\`\`
-
-Do not make \`GOOGLE_SHEETS_PRIVATE_KEY\` a \`NEXT_PUBLIC_\` variable or place it
-in GitHub. API credentials belong in the server runtime environment.
-
-The Sheets connection in ChatGPT does **not** grant the deployed Next.js application
-permission to edit the user's workbook; the service account is required separately.
+CSV export is a manual snapshot, not a live link to the management workbook. The website
+continues to store and update enquiries in Firebase Firestore. The exported file includes
+formula-injection safeguards for spreadsheet applications.
