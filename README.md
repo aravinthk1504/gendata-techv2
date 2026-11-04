@@ -88,3 +88,27 @@ configuration, spreadsheet sharing, or synchronization credentials are required.
 CSV export is a manual snapshot, not a live link to the management workbook. The website
 continues to store and update enquiries in Firebase Firestore. The exported file includes
 formula-injection safeguards for spreadsheet applications.
+
+
+## Phase 3 admin UI acceptance checklist
+
+The public-site layout and production APIs are unchanged. Admin layout improvements:
+
+- Desktop (1440px): sticky dark sidebar, active Overview/Enquiries/Blog Management
+  selection, refreshed metric cards, category chart and sign-out.
+- Tablet (768px): the mobile-style navigation drawer replaces the sidebar;
+  enquiry records are readable as cards instead of a horizontally scrolling table.
+- Phone (375px): open and close the admin drawer using button, backdrop and Escape;
+  tab navigation and account sign-out should work; focus stays within the drawer
+  while it is open and body scrolling resumes when it closes.
+- Blog CMS: Save button stays visible near the top while scrolling; use ArrowLeft,
+  ArrowRight, Home and End to navigate Content, Images and SEO tabs.
+- Blog behavior: verify draft autosave, German-language draft switch, publishing
+  validation, image upload, delete confirmation and unsaved-change warnings.
+- Enquiries: verify status updates, history, follow-up notes, pagination and CSV
+  export using the existing Firestore collection.
+- Login: desktop branding on the left and sign-in on the right; compact mobile
+  layout with native text cursor and visible focus outlines.
+
+Run `npm run build` and review 375px / 768px / 1440px viewport layouts locally
+before marking Phase 3 browser-verified.
