@@ -14,7 +14,7 @@ const genericFailure = () => NextResponse.json(
 );
 
 const lockResponse = seconds => NextResponse.json(
-  { error: "Too many failed sign-in attempts. Please try again in 10 minutes." },
+  { error: `Too many failed sign-in attempts. Try again in approximately ${Math.ceil(Math.max(1, seconds) / 60)} minute(s).` },
   {
     status: 429,
     headers: {
