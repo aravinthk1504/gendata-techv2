@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { scheduleError } from "./blog-schedule.mjs";
 
 // Drafts may be incomplete. Publishing is validated separately on the server.
 const httpsOrEmpty = z.union([
@@ -26,7 +27,8 @@ export const blogSchema = z.object({
   image: httpsOrEmpty.default(""),
   imageAlt: z.string().trim().max(180).default(""),
   language: z.enum(["en", "de"]).default("en"),
-  status: z.enum(["draft", "published"]).default("draft"),
+  status: z.enum(["draft", "scheduled", "published"]).default("draft"),
+  scheduledFor: z.string().max(40).default(""),
 }).strict();
 
 export const blogUpdateSchema = blogSchema.omit({ slug: true, language: true });
@@ -44,6 +46,10 @@ export function publishingIssues(data) {
   check("imageAlt", Boolean(data.imageAlt?.trim()), "Provide cover image alternative text");
   check("seoTitle", Boolean(data.seoTitle?.trim()), "Provide an SEO title");
   check("seoDescription", Boolean(data.seoDescription?.trim()), "Provide an SEO description");
+  if (data.status === "scheduled") {
+    const issue = scheduleError(data);
+    if (issue) issues.scheduledFor = [issue];
+  }
   if (data.type === "event") {
     check("eventDate", /^\d{4}-\d{2}-\d{2}$/.test(data.eventDate || ""), "Choose an event date");
     check("eventTime", Boolean(data.eventTime?.trim()), "Provide an event time");
