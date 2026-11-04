@@ -6,12 +6,14 @@ import { FiGrid, FiInbox, FiFileText, FiLogOut, FiMenu, FiX, FiShield, FiArrowUp
 import BlogManager from "./BlogManager";
 import EnquiryManager from "./EnquiryManager";
 import SecurityPanel from "./SecurityPanel";
+import ReportsPanel from "./ReportsPanel";
 
 const statuses = ["new", "in_progress", "contacted", "completed"];
 const navItems = [
   { id: "overview", label: "Overview", icon: FiGrid },
   { id: "enquiries", label: "Enquiries", icon: FiInbox },
   { id: "blogs", label: "Blog management", icon: FiFileText },
+  { id: "reports", label: "Reports", icon: FiActivity },
   { id: "security", label: "Security & activity", icon: FiShield },
 ];
 const metrics = [
@@ -210,12 +212,14 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
                 <h1 className="mt-2 font-heading text-2xl font-bold tracking-tight text-[#081b3a] sm:text-3xl">
                   {tab === "overview" ? "Welcome, " + (adminName || "Administrator") :
                     tab === "enquiries" ? "Enquiry management" :
-                    tab === "blogs" ? "Content studio" : "Security & activity"}
+                    tab === "blogs" ? "Content studio" :
+                    tab === "reports" ? "Reports & analytics" : "Security & activity"}
                 </h1>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   {tab === "overview" ? "Your website activity at a glance." :
                     tab === "enquiries" ? "Review messages, track follow-ups and export records." :
                     tab === "blogs" ? "Create, preview and publish GenData Tech insights." :
+                    tab === "reports" ? "Enquiry trends and full-database totals." :
                     "Manage your active sessions and review administrator actions."}
                 </p>
               </div>
@@ -227,7 +231,8 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
             {logoutError && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm text-red-700">{logoutError}</p>}
 
             {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} /> :
-              tab === "security" ? <SecurityPanel lang={lang}/> : (
+              tab === "security" ? <SecurityPanel lang={lang}/> :
+              tab === "reports" ? <ReportsPanel/> : (
               <>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
                   {metrics.map(({ label, key, icon: Icon, tint }) => (
