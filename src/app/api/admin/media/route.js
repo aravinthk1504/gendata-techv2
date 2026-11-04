@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { currentAdmin } from "../../../../lib/admin-auth";
+import { recordAdminEvent } from "../../../../lib/admin-security";
 export const runtime="nodejs";
 const MAX_BYTES=5*1024*1024;
 const json=(data,status=200)=>NextResponse.json(data,{status,headers:{"Cache-Control":"no-store"}});
 function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
 export async function POST(req){
- if(!await currentAdmin())return json({error:"Unauthorized"},401);
+ const admin=await currentAdmin();
+ if(!admin)return json({error:"Unauthorized"},401);
  if(!sameOrigin(req))return json({error:"Invalid origin"},403);
  const cloud=process.env.CLOUDINARY_CLOUD_NAME, key=process.env.CLOUDINARY_API_KEY, secret=process.env.CLOUDINARY_API_SECRET;
  if(!cloud||!key||!secret)return json({error:"Cloudinary is not configured on the server"},503);
@@ -38,6 +40,7 @@ export async function POST(req){
    if(status===420||status===429)return json({error:"Cloudinary rate limit or account usage limit reached. Check Cloudinary usage."},502);
    return json({error:`Cloudinary upload failed (provider status ${status}). Check the Cloudinary account activity and server logs.`},502);
   }
+  await recordAdminEvent({event:"media_uploaded",actorUid:admin.uid,target:data.public_id});
   return json({url:data.secure_url,publicId:data.public_id,width:data.width,height:data.height});
  }catch(e){console.error("Media upload failed",e.name||"unknown");return json({error:"Unable to upload image"},500)}
 }
