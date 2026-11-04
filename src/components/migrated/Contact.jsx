@@ -180,7 +180,8 @@ function Contact({ turnstileRequired = false, turnstileSiteKey = "" }) {
       });
 
       if (!response.ok) {
-        setSubmitStatus(response.status === 429 ? "rateLimited" : "error");
+        setSubmitStatus(response.status === 429 ? "rateLimited" :
+          (response.status === 403 || response.status === 503) ? "verification" : "error");
         return;
       }
 
@@ -888,8 +889,8 @@ function Contact({ turnstileRequired = false, turnstileSiteKey = "" }) {
                   {submitStatus === "verification" && (
                     <p role="alert" className="text-xs text-amber-700">
                       {lang === "de"
-                        ? "Bitte schließen Sie die Sicherheitsprüfung ab."
-                        : "Please complete the security verification first."}
+                        ? "Die Sicherheitsprüfung konnte nicht bestätigt werden. Bitte prüfen Sie das Widget und versuchen Sie es erneut."
+                        : "Security verification could not be confirmed. Check the widget and try again."}
                     </p>
                   )}
                   {/* FORM STATUS */}
@@ -958,7 +959,7 @@ function Contact({ turnstileRequired = false, turnstileSiteKey = "" }) {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting || (turnstileRequired && (!turnstileSiteKey || !turnstileToken))}
+                    disabled={isSubmitting}
                     className="group inline-flex items-center justify-center gap-2 rounded-full gd-brand-primary px-6 py-3.5 font-body text-xs font-semibold text-white transition  disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isSubmitting ? tr("Sending...") : tr("Send Enquiry")}

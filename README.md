@@ -507,3 +507,37 @@ For additional production abuse protection, consider WAF rate limits on
 `POST /api/contact` and `POST /api/admin/login` once your actual website
 traffic is confirmed to pass through Cloudflare proxy. A domain merely
 managed in Cloudflare DNS is not proof traffic traverses its WAF.
+
+ 
+### Turnstile local troubleshooting (November 2026)
+
+The dev contact page now auto-shows the Turnstile widget when either
+`TURNSTILE_SITE_KEY` or `TURNSTILE_SECRET_KEY` is set. Missing a key still
+causes an explicit error rather than silently submitting. Set
+`CONTACT_TURNSTILE_REQUIRED=false` only to turn verification off in local
+development (never production).
+
+The widget shows loading / ready / complete / expired / error messages,
+and the form displays a verification-specific error on 403 or 503 rather
+than a generic validation error. Submitting without a solved widget gives
+visible feedback; submission isn't silently disabled.
+
+To validate locally without setting up a real Cloudflare widget, use Cloudflare
+test keys (only in `.env.local`):
+
+```env
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+TURNSTILE_ALLOWED_HOSTNAMES=localhost
+```
+
+Cloudflare dummy verification can return action=`test`; the server accepts
+this only in development with the exact paired test site/secret keys.
+Production always rejects these dummy keys and requires genuine keys and an
+exact verified hostname. Do not configure the dummy keys in Firebase App
+Hosting, which runs `NODE_ENV=production`.
+
+If the form is blocked in production, check the server-side site/secret
+variables, widget hostname permissions and `TURNSTILE_ALLOWED_HOSTNAMES`.
+Cloudflare DNS management alone does not configure Turnstile. Browser content
+blockers may also block `challenges.cloudflare.com`.
