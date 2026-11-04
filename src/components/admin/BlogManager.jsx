@@ -35,6 +35,47 @@ export default function BlogManager({onUnsavedChange}){
  }
  function edit(item){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(true);setPreview(false);setEditing(item.id);setForm({gallery:item.gallery||[],type:item.type||"article",eventDate:item.eventDate||"",eventTime:item.eventTime||"",location:item.location||"",eventMode:item.eventMode||"online",registrationUrl:item.registrationUrl||"",title:item.title,slug:item.slug,category:item.category,excerpt:item.excerpt,content:item.content,seoTitle:item.seoTitle||"",seoDescription:item.seoDescription||"",image:item.image||"",imageAlt:item.imageAlt||"",language:item.language,status:item.status});setError("");setNotice("");setSection("content")}
  function reset(){if(savingRef.current||uploading||(dirty&&!window.confirm("Discard unsaved changes?")))return;setRevision(0);setSavedRevision(0);setAutosaveState("");setSlugEdited(false);setPreview(false);setEditing(null);setForm({...blank,type:contentType});setError("");setNotice("");setSection("content")}
+ async function changeLanguage(nextLanguage){
+  if(nextLanguage===form.language||savingRef.current||uploading)return;
+  setError("");setNotice("");
+  if(!editing){
+   field("language",nextLanguage);
+   return;
+  }
+  const name=nextLanguage==="de"?"German":"English";
+  if(!window.confirm(`Create a separate ${name} draft of this article? The original article will remain unchanged. Article text is not translated automatically.`))return;
+  savingRef.current=true;
+  setBusy(true);
+  try{
+   // A saved slug is part of the Firestore document ID and public URL.
+   // Copy to a distinct language-scoped draft, never silently rename
+   // or unpublish the existing article.
+   const copy={...form,language:nextLanguage,status:"draft"};
+   const response=await fetch("/api/admin/blogs",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(copy)
+   });
+   const data=await response.json();
+   if(!response.ok){
+    if(response.status===409)throw Error(`A ${name} article with this URL slug already exists. Select that article from the list, or use a different slug for a new draft.`);
+    throw Error(data.error||"Unable to create language draft");
+   }
+   setEditing(data.id);
+   setForm(copy);
+   setRevision(0);
+   setSavedRevision(0);
+   setSlugEdited(true);
+   setAutosaveState("Draft saved to Firebase");
+   setNotice(`${name} draft created. Translate its text before publishing; the original article is unchanged.`);
+   await load();
+  }catch(error){
+   setError(error.message||"Unable to change language");
+  }finally{
+   savingRef.current=false;
+   setBusy(false);
+  }
+ }
  async function removeEntry(item){
   if(!item||busy||uploading)return;
   setDeleting(item.id);setError("");setNotice("");
@@ -182,7 +223,7 @@ export default function BlogManager({onUnsavedChange}){
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">SEO title<input value={form.seoTitle} onChange={e=>field("seoTitle",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
      <label className="text-sm font-semibold md:col-span-2">SEO description<textarea rows={3} value={form.seoDescription} onChange={e=>field("seoDescription",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
-     <label className="text-sm font-semibold">Language<select disabled={!!editing} value={form.language} onChange={e=>field("language",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="en">English</option><option value="de">German</option></select></label>
+     <label className="text-sm font-semibold">Language<select disabled={busy||uploading} value={form.language} onChange={e=>{void changeLanguage(e.target.value)}} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3 disabled:bg-slate-100"><option value="en">English</option><option value="de">German</option></select><span className="mt-1 block text-xs font-normal text-slate-500">{editing?"Switching creates a separate draft in the selected language; the original article stays unchanged.":"Choose the language before publishing."}</span></label>
      <label className="text-sm font-semibold">Publishing status<select value={form.status} onChange={e=>field("status",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 p-3"><option value="draft">Draft</option><option value="published">Published</option></select></label>
     </div>
    </div>
