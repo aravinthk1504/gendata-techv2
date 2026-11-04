@@ -158,11 +158,11 @@ export default function BlogManager({onUnsavedChange}){
    window.addEventListener("beforeunload",warn);
    return ()=>window.removeEventListener("beforeunload",warn);
  },[dirty]);
- return <section className="mt-6 space-y-5">
- <div className="rounded-3xl border border-slate-200 bg-white p-5">
+ return <section className="space-y-5">
+ <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
   <div className="flex flex-wrap items-center justify-between gap-3">
    <div><h2 className="text-lg font-bold">Blog Management</h2><p className="mt-1 text-xs text-slate-500">Select an article to edit, or start a new one.</p></div>
-   <button type="button" onClick={reset} disabled={busy||uploading} className="rounded-full bg-[#057cfa] px-5 py-2 text-sm font-semibold text-white disabled:opacity-60">+ New article</button>
+   <button type="button" onClick={reset} disabled={busy||uploading} className="gd-brand-primary inline-flex min-h-11 items-center rounded-full px-5 py-2.5 text-sm font-semibold disabled:opacity-60">+ New article</button>
   </div>
   <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
     <input aria-label="Search blog articles" type="search" placeholder="Search articles..." value={query} onChange={e=>setQuery(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"/>
@@ -176,16 +176,16 @@ export default function BlogManager({onUnsavedChange}){
    <button type="button" disabled={Boolean(deleting)||busy||uploading} onClick={()=>{if(window.confirm('Permanently delete "'+item.title+'"? The entry will be deleted, but Cloudinary images will remain.'))removeEntry(item)}} aria-label={"Delete "+item.title} className="rounded-lg border border-red-200 bg-red-50 p-2 text-red-600 disabled:opacity-50"><FiTrash2 size={16}/></button>
   </div>):<p className="text-sm text-slate-500">{articles.length?"No articles match your filters.":"No blog articles yet."}</p>}</div>
  </div>
- <form onSubmit={save} noValidate className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
-  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
+ <form onSubmit={save} noValidate className="min-w-0 rounded-3xl border border-slate-200 bg-white shadow-sm">
+  <div className="sticky top-[64px] z-20 flex flex-wrap items-center justify-between gap-3 rounded-t-3xl border-b border-slate-100 bg-white/95 px-4 py-4 backdrop-blur sm:px-6 lg:top-0">
    <div><h2 className="text-lg font-bold">{editing?"Edit article":"Create article"}</h2><p className="text-xs text-slate-500">{form.status==="published"?"Published":"Draft"} · {form.language.toUpperCase()}</p><p role="status" aria-live="polite" className="mt-1 text-xs text-slate-500">{busy?"Saving…":autosaveState || (dirty?"Unsaved changes":editing?"Changes saved":"Autosaves 2 seconds after typing")}</p></div>
-   <button disabled={busy||uploading} type="submit" className="rounded-full bg-[#057cfa] px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
+   <button disabled={busy||uploading} type="submit" className="gd-brand-primary inline-flex min-h-11 items-center rounded-full px-5 py-2.5 text-sm font-semibold disabled:opacity-60">{busy?"Saving…":editing?"Save changes":"Save article"}</button>
   </div>
-  <div className="flex flex-wrap gap-2 border-b border-slate-100 px-5 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
-   {[["content","Content"],["media","Images"],["seo","SEO & Publishing"]].map(([id,name])=><button key={id} type="button" role="tab" aria-selected={section===id} onClick={()=>setSection(id)} className={"rounded-full px-4 py-2 text-sm font-semibold "+(section===id?"bg-[#057cfa] text-white":"bg-slate-100 text-slate-600 hover:bg-slate-200")}>{name}</button>)}
+  <div className="flex gap-2 overflow-x-auto border-b border-slate-100 px-4 py-3 sm:px-6" role="tablist" aria-label="Article form sections">
+   {[["content","Content"],["media","Images"],["seo","SEO & Publishing"]].map(([id,name])=><button key={id} type="button" role="tab" id={"cms-tab-"+id} aria-controls={"cms-panel-"+id} aria-selected={section===id} tabIndex={section===id?0:-1} onKeyDown={event=>{if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;event.preventDefault();const ids=["content","media","seo"];const target=event.key==="Home"?0:event.key==="End"?2:(ids.indexOf(id)+(event.key==="ArrowRight"?1:2))%3;setSection(ids[target]);document.getElementById("cms-tab-"+ids[target])?.focus()}} onClick={()=>setSection(id)} className={"shrink-0 rounded-full px-4 py-2 text-sm font-semibold "+(section===id?"gd-brand-primary":"bg-slate-100 text-slate-600 hover:bg-slate-200")}>{name}</button>)}
   </div>
-  <div className="px-5 py-5 sm:px-6">
-   <div className={section==="content"?"space-y-4":"hidden"}>
+  <div className="px-4 py-5 sm:px-6">
+   <div id="cms-panel-content" role="tabpanel" aria-labelledby="cms-tab-content" hidden={section!=="content"} className="space-y-4">
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">Article title<input required minLength={5} value={form.title} onChange={e=>field("title",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal" placeholder="Enter a clear article title"/></label>
      <label className="text-sm font-semibold">URL slug<input required disabled={!!editing} value={form.slug} onChange={e=>{setSlugEdited(true);field("slug",slugify(e.target.value))}} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal disabled:bg-slate-100"/></label>
@@ -209,7 +209,7 @@ export default function BlogManager({onUnsavedChange}){
      <textarea aria-label="Article content" required minLength={30} rows={9} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here..."/>
     </>}
    </div>
-   <div className={section==="media"?"space-y-4":"hidden"}>
+   <div id="cms-panel-media" role="tabpanel" aria-labelledby="cms-tab-media" hidden={section!=="media"} className="space-y-4">
     <div className="grid gap-4 sm:grid-cols-2">
      <div><p className="mb-2 text-sm font-semibold">Cover image</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white"><FiUpload size={17}/>{uploading?"Uploading…":"Upload cover photo"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
      {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-36 w-full rounded-xl object-contain"/>}
@@ -218,7 +218,7 @@ export default function BlogManager({onUnsavedChange}){
     </div>
     <div className="border-t border-slate-100 pt-4"><p className="mb-2 text-sm font-semibold">Insert photo or diagram into the article</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border-2 border-[#057cfa] bg-blue-50 px-5 py-3 text-sm font-semibold text-[#003cba]"><FiUpload size={17}/>{uploading?"Uploading…":"Upload inline image"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"inline");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">Inserted into Markdown content automatically. Save the article afterwards.</p></div>
    </div>
-   <div className={section==="seo"?"space-y-4":"hidden"}>
+   <div id="cms-panel-seo" role="tabpanel" aria-labelledby="cms-tab-seo" hidden={section!=="seo"} className="space-y-4">
     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4"><div className="flex flex-wrap items-center justify-between gap-2"><h3 className="text-sm font-bold">Publishing checklist</h3><span className={"text-xs font-semibold "+(ready?"text-green-700":"text-amber-700")}>{checks.filter(([,ok])=>ok).length}/{checks.length} complete</span></div><div className="mt-3 grid gap-2 sm:grid-cols-2">{checks.map(([name,ok])=><p key={name} className={"text-xs "+(ok?"text-green-700":"text-slate-600")}><span aria-hidden="true">{ok?"✓":"○"}</span> {name}</p>)}</div><p className="mt-3 text-xs text-slate-500">All checks are required for publishing. Incomplete articles can still be saved as drafts.</p></div>
     <div className="grid gap-4 md:grid-cols-2">
      <label className="text-sm font-semibold md:col-span-2">SEO title<input value={form.seoTitle} onChange={e=>field("seoTitle",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
