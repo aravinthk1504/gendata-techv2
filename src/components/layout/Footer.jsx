@@ -36,7 +36,7 @@ const getFooterLinks = (t, lang) => ({
 
   [t("footer.sections.products")]: [
     {
-      label: "GenData LMS",
+      label: "Jukushi",
       path: "/products",
     },
     {
@@ -48,7 +48,7 @@ const getFooterLinks = (t, lang) => ({
       path: "/products",
     },
     {
-      label: "GenData Billing",
+      label: "Bilaxure",
       path: "/products",
     },
   ],
