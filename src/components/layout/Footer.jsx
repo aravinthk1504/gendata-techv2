@@ -176,6 +176,33 @@ function Footer({ lang = "en", content = {} }) {
               {t("footer.description")}
             </p>
 
+            {/* BUSINESS EMAILS */}
+            <div className="mt-6 space-y-4">
+              <div>
+                <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  {lang === "de" ? "Allgemeine Anfragen" : "General enquiries"}
+                </p>
+                <a
+                  href="mailto:info@gendatatech.com"
+                  className="mt-1 inline-flex break-words font-body text-sm font-medium text-slate-100 transition-colors hover:text-[#18BDF2]"
+                >
+                  info@gendatatech.com
+                </a>
+              </div>
+
+              <div>
+                <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  {lang === "de" ? "Kundensupport" : "Customer support"}
+                </p>
+                <a
+                  href="mailto:support@gendatatech.com"
+                  className="mt-1 inline-flex break-words font-body text-sm font-medium text-slate-100 transition-colors hover:text-[#18BDF2]"
+                >
+                  support@gendatatech.com
+                </a>
+              </div>
+            </div>
+
             {/* Social */}
 
             <div className="mt-8">
