@@ -58,7 +58,7 @@ function Contact() {
       tr("IoT Solutions"),
     ],
 
-    Products: ["GenData LMS", "GenData CRM", "GenData ERP", "GenData Billing"],
+    Products: ["Jukushi", "GenData CRM", "GenData ERP", "Bilaxure"],
 
     Training: [
       tr("AI & Machine Learning"),
