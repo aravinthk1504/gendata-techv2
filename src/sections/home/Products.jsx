@@ -336,7 +336,7 @@ function Products({ content, lang }) {
               </div>
 
               <Link
-                href={localizedPath("/products/lms")}
+                href={localizedPath("/contact?category=Products&offering=Jukushi")}
                 className="group mt-7 hidden items-center gap-3 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent sm:mt-7 lg:inline-flex"
               >
                 {t("products.explore")}
@@ -353,7 +353,7 @@ function Products({ content, lang }) {
               <ProductVisual type="lms" content={content} />
             </div>
             <Link
-              href={localizedPath("/products/lms")}
+              href={localizedPath("/contact?category=Products&offering=Jukushi")}
               className="group inline-flex w-fit items-center gap-3 pb-1 font-body text-xs font-semibold text-brand-primary transition duration-300 hover:text-brand-accent lg:hidden"
             >
               {t("products.explore")}
@@ -384,7 +384,7 @@ function Products({ content, lang }) {
               </div>
 
               <h3 className="mt-6 text-left font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-5 sm:text-2xl">
-                GenData {product.title}
+                {product.id === "billing" ? product.title : `GenData ${product.title}`}
               </h3>
 
               <p className="mt-3 font-body text-sm leading-6 text-slate-500 sm:mt-4 sm:leading-7">
@@ -405,7 +405,7 @@ function Products({ content, lang }) {
               </div>
 
               <Link
-                href={localizedPath(`/products/${product.id}`)}
+                href={localizedPath(`/contact?category=Products&offering=${encodeURIComponent(product.id === "billing" ? "Bilaxure" : `GenData ${product.title}`)}`)}
                 className="mt-6 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary sm:mt-8"
               >
                 {t("products.explore")}
