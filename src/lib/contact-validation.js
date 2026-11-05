@@ -66,7 +66,7 @@ export const contactSchema = z
       "Other Enquiry",
     ]),
     offering: z.string().trim().min(2).max(150),
-    message: z.string().trim().min(10).max(5000),
+    message: z.string().trim().max(5000).default(""),
     language: z.enum(["en", "de"]).default("en"),
 
     // Hidden field: must remain empty.
