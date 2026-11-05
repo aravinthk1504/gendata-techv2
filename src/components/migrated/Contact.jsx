@@ -221,15 +221,22 @@ function Contact() {
     {
       icon: FiMail,
       label: "Email",
-      value: "gendatatechies@gmail.com",
-      href: "mailto:gendatatechies@gmail.com",
+      value: "info@gendatatech.com",
+      href: "mailto:info@gendatatech.com",
+    },
+
+    {
+      icon: FiMail,
+      label: lang === "de" ? "Support" : "Customer Support",
+      value: "support@gendatatech.com",
+      href: "mailto:support@gendatatech.com",
     },
 
     {
       icon: FiCalendar,
       label: tr("Schedule a Call"),
       value: "Request a suitable time",
-      href: "mailto:gendatatechies@gmail.com?subject=Schedule%20a%20Call%20with%20GenData%20Tech",
+      href: "mailto:info@gendatatech.com?subject=Schedule%20a%20Call%20with%20GenData%20Tech",
     },
   ];
 
