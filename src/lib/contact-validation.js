@@ -18,10 +18,10 @@ export const offeringOptions = {
   ],
 
   Products: [
-    "GenData LMS",
+    "Jukushi",
     "GenData CRM",
     "GenData ERP",
-    "GenData Billing",
+    "Bilaxure",
   ],
 
   Training: [
