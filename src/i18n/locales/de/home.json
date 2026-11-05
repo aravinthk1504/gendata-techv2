@@ -143,7 +143,7 @@
     "explore": "Produkt entdecken",
     "lms": {
       "label": "01 / Lernplattform",
-      "title": "GenData LMS",
+      "title": "Jukushi",
       "description": "Eine moderne Lernmanagement-Plattform zum Organisieren von Kursen, Verwalten von Lernenden, Verfolgen des Fortschritts und Vereinfachen digitaler Schulungen.",
       "features": [
         "Kursverwaltung",
@@ -188,7 +188,7 @@
         "id": "billing",
         "number": "04",
         "category": "Finanzen & Abrechnung",
-        "title": "Billing",
+        "title": "Bilaxure",
         "description": "Eine optimierte Abrechnungsplattform für Rechnungen, Zahlungen, Kundendaten und finanzielle Transparenz.",
         "features": [
           "Rechnungen",
