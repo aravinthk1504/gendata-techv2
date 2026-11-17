@@ -1,4 +1,5 @@
-export const dynamic = "force-dynamic";
+// Static page refreshed in the background; the blog section tolerates Firestore outages.
+export const revalidate = 300
 import { notFound } from "next/navigation"
 import { isValidLanguage } from "../../i18n/config"
 import Hero from "../../sections/home/Hero"
@@ -8,7 +9,7 @@ import IntelligenceProcess from "../../sections/home/IntelligenceProcess"
 import Products from "../../sections/home/Products"
 import Training from "../../sections/home/Training"
 import Insights from "../../sections/home/Insights"
-import {getPublishedBlogs} from "../../lib/public-blogs"
+import {getPublishedBlogsOrEmpty} from "../../lib/public-blogs"
 import FinalCTA from "../../sections/home/FinalCTA"
 import { getDictionary } from "../../i18n/dictionaries"
 import { buildMetadata } from "../../i18n/pageMetadata"
@@ -23,7 +24,7 @@ export default async function HomePage({ params }) {
   if (!isValidLanguage(lang)) notFound()
 
   const content = await homeDictionaries[lang]()
-  const posts = await getPublishedBlogs(lang,6)
+  const posts = await getPublishedBlogsOrEmpty(lang,6)
 
   return (
     <main id="main-content" tabIndex={-1} className="outline-none">

@@ -5,7 +5,10 @@ import JsonLd from "../../../../components/seo/JsonLd";
 import { articleSchema } from "../../../../lib/json-ld.mjs";
 import { SITE_NAME, defaultShareImage, openGraphLocale } from "../../../../lib/site.mjs";
 import { isValidLanguage } from "../../../../i18n/config";
-export const dynamic = "force-dynamic";
+// Rendered on first visit, then cached and refreshed in the background.
+export const revalidate = 300;
+// No pages are built ahead of time; returning an empty list opts into on-demand ISR.
+export async function generateStaticParams(){return [];}
 export default async function BlogDetailsPage({params}){
  const {lang,slug}=await params;
  if(!isValidLanguage(lang))notFound();

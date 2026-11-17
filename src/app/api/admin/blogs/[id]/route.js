@@ -4,6 +4,7 @@ import { blogUpdateSchema, publishingIssues } from "../../../../../lib/blog-vali
 import { currentAdmin } from "../../../../../lib/admin-auth";
 import { db } from "../../../../../lib/firebase-admin";
 import { recordAdminEvent } from "../../../../../lib/admin-security";
+import { revalidateBlogContent } from "../../../../../lib/blog-revalidate";
 
 export const runtime="nodejs";
 const answer=(obj,status=200)=>NextResponse.json(obj,{status,headers:{"Cache-Control":"no-store"}});
@@ -26,6 +27,7 @@ export async function PATCH(request,{params}){
    tx.update(ref,{...parsed.data,updatedAt:FieldValue.serverTimestamp(),updatedBy:user.uid,publishedAt:parsed.data.status==="published"?(prev.publishedAt||FieldValue.serverTimestamp()):null});
   });
   await recordAdminEvent({event:"blog_updated",actorUid:user.uid,target:id});
+  revalidateBlogContent(id);
   return answer({success:true,id});
  }catch(e){if(e instanceof SyntaxError)return answer({error:"Invalid JSON"},400);if(e.message==="NOT_FOUND")return answer({error:"Not found"},404);console.error("CMS update failed",e.code||e.name);return answer({error:"Unable to update article"},500)}
 }
@@ -42,6 +44,7 @@ export async function DELETE(request,{params}){
   if(!existing.exists)return answer({error:"Not found"},404);
   await ref.delete();
   await recordAdminEvent({event:"blog_deleted",actorUid:user.uid,target:id});
+  revalidateBlogContent(id);
   return answer({success:true,id});
  }catch(error){
   console.error("CMS deletion failed",error?.code||error?.name||"unknown");
