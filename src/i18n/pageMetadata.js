@@ -1,4 +1,6 @@
 // Route-specific SEO metadata for the Next.js EN/DE site.
+import { SITE_NAME, alternatesFor, defaultShareImage, openGraphLocale } from "../lib/site.mjs";
+
 const ROUTES = {
   "about": {
     "en": [
@@ -132,15 +134,32 @@ const ROUTES = {
   }
 };
 
+// Shared builder: canonical + hreflang (EN, DE, x-default), Open Graph and
+// Twitter tags. Share images come from the [lang]/opengraph-image route.
+export function buildMetadata({ lang, path = "", title, description }) {
+  const locale = lang === "de" ? "de" : "en";
+  const alternates = alternatesFor(locale, path);
+  return {
+    title,
+    description,
+    alternates,
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      title,
+      description,
+      url: alternates.canonical,
+      locale: openGraphLocale(locale),
+      alternateLocale: [openGraphLocale(locale === "de" ? "en" : "de")],
+      images: [defaultShareImage(locale)],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [defaultShareImage(locale).url] },
+  };
+}
+
 export function getPageMetadata(lang, route) {
   const locale = lang === "de" ? "de" : "en";
   const [label, description] = (ROUTES[route] ?? ROUTES.about)[locale];
   const path = route === "blog/[slug]" ? "/blog" : `/${route}`;
-  return {
-    title: `${label} | GenData Tech`,
-    description,
-    alternates: {
-      languages: { en: `/en${path}`, de: `/de${path}` },
-    },
-  };
+  return buildMetadata({ lang: locale, path, title: `${label} | GenData Tech`, description });
 }

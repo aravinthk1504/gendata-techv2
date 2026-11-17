@@ -15,6 +15,12 @@ export default function SiteChrome({ lang, navigation, footer, children }) {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:font-medium focus:text-[#002DCC] focus:shadow-lg"
+      >
+        {lang === "de" ? "Zum Inhalt springen" : "Skip to content"}
+      </a>
       <CustomCursor />
       <ScrollToTop />
       <Navbar lang={lang} navigation={navigation} />

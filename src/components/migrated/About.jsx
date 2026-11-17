@@ -271,7 +271,7 @@ function About() {
     <>
       
 
-      <main className="overflow-hidden bg-white">
+      <main id="main-content" tabIndex={-1} className="overflow-hidden bg-white outline-none">
         {/* ======================================================
             HERO
         ====================================================== */}

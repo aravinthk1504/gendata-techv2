@@ -146,7 +146,7 @@ function Footer({ lang = "en", content = {} }) {
 
               <img
                 src={logoMark}
-                alt="GenData Tech"
+                alt=""
                 className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
               />
 
@@ -277,17 +277,24 @@ function Footer({ lang = "en", content = {} }) {
 
           <div className="flex gap-5">
             <Link
-              href="#footer-legal"
-              className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
+              href={localizedPath("/privacy")}
+              className="font-body text-[12px] text-slate-300 transition hover:text-white"
             >
               {t("footer.privacy")}
             </Link>
 
             <Link
-              href="#footer-legal"
-              className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
+              href={localizedPath("/terms")}
+              className="font-body text-[12px] text-slate-300 transition hover:text-white"
             >
               {t("footer.terms")}
+            </Link>
+
+            <Link
+              href={localizedPath("/imprint")}
+              className="font-body text-[12px] text-slate-300 transition hover:text-white"
+            >
+              {t("footer.imprint")}
             </Link>
           </div>
         </div>

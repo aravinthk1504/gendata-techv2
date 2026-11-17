@@ -10,6 +10,8 @@ import Training from "../../sections/home/Training"
 import Insights from "../../sections/home/Insights"
 import {getPublishedBlogs} from "../../lib/public-blogs"
 import FinalCTA from "../../sections/home/FinalCTA"
+import { getDictionary } from "../../i18n/dictionaries"
+import { buildMetadata } from "../../i18n/pageMetadata"
 
 const homeDictionaries = {
   en: () => import("../../i18n/locales/en/home.json").then((m) => m.default),
@@ -24,7 +26,7 @@ export default async function HomePage({ params }) {
   const posts = await getPublishedBlogs(lang,6)
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1} className="outline-none">
       <Hero lang={lang} content={content} />
       <AICapabilities lang={lang} content={content} />
       <TechnologyServices lang={lang} content={content} />
@@ -35,4 +37,16 @@ export default async function HomePage({ params }) {
       <FinalCTA lang={lang} content={content} />
     </main>
   )
+}
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params
+  if (!isValidLanguage(lang)) return {}
+  const dictionary = await getDictionary(lang)
+  return buildMetadata({
+    lang,
+    path: "",
+    title: `GenData Tech | ${dictionary.home.title}`,
+    description: dictionary.home.description,
+  })
 }

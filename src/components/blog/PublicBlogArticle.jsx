@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MarkdownContent from "./MarkdownContent";
 export default function PublicBlogArticle({post,lang}){
- return <main className="min-h-screen bg-white">
+ return <main id="main-content" tabIndex={-1} className="min-h-screen bg-white outline-none">
   <section className="bg-[#06142f] px-5 pb-16 pt-32 text-white sm:pt-40">
    <div className="mx-auto max-w-4xl"><Link href={`/${lang}/blog`} className="text-sm text-cyan-300">← Back to Insights</Link>
    <p className="mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">Article / {post.category}</p>
