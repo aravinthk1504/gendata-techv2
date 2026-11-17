@@ -4,11 +4,11 @@ import { SITE_NAME, alternatesFor, defaultShareImage, openGraphLocale } from "..
 const ROUTES = {
   "about": {
     "en": [
-      "About GenData Tech",
+      "About Us",
       "Discover our approach to intelligent technology, AI engineering and practical digital solutions."
     ],
     "de": [
-      "Über GenData Tech",
+      "Über uns",
       "Entdecken Sie unseren Ansatz für intelligente Technologie, AI-Engineering und praxisnahe digitale Lösungen."
     ]
   },
@@ -54,11 +54,11 @@ const ROUTES = {
   },
   "contact": {
     "en": [
-      "Contact GenData Tech",
+      "Contact Us",
       "Discuss your AI, software or technology project with GenData Tech."
     ],
     "de": [
-      "Kontakt zu GenData Tech",
+      "Kontakt",
       "Sprechen Sie mit GenData Tech über Ihr AI-, Software- oder Technologieprojekt."
     ]
   },
@@ -68,7 +68,7 @@ const ROUTES = {
       "Custom AI models, machine learning and intelligent automation solutions."
     ],
     "de": [
-      "AI/ML Development",
+      "KI-/ML-Entwicklung",
       "Individuelle AI-Modelle, Machine Learning und intelligente Automatisierung."
     ]
   },
@@ -78,7 +78,7 @@ const ROUTES = {
       "Mobile applications for connected services and business workflows."
     ],
     "de": [
-      "App Development",
+      "App-Entwicklung",
       "Mobile Anwendungen für vernetzte Services und betriebliche Abläufe."
     ]
   },
@@ -88,7 +88,7 @@ const ROUTES = {
       "End-to-end application engineering across frontend, backend and databases."
     ],
     "de": [
-      "Full Stack Development",
+      "Full-Stack-Entwicklung",
       "Ganzheitliche Anwendungsentwicklung mit Frontend, Backend und Datenbanken."
     ]
   },
@@ -98,7 +98,7 @@ const ROUTES = {
       "Connected sensor systems, monitoring platforms and intelligent automation."
     ],
     "de": [
-      "IoT Solutions",
+      "IoT-Lösungen",
       "Vernetzte Sensorsysteme, Monitoring-Plattformen und intelligente Automatisierung."
     ]
   },
@@ -108,7 +108,7 @@ const ROUTES = {
       "Custom software for digital operations and business needs."
     ],
     "de": [
-      "Software Development",
+      "Softwareentwicklung",
       "Individuelle Software für digitale Prozesse und geschäftliche Anforderungen."
     ]
   },
@@ -118,7 +118,7 @@ const ROUTES = {
       "Modern, responsive and performant corporate and product websites."
     ],
     "de": [
-      "Web Development",
+      "Webentwicklung",
       "Moderne, responsive und leistungsstarke Unternehmens- und Produktwebsites."
     ]
   },
