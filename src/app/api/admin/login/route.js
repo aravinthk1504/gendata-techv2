@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getAuth } from "firebase-admin/auth";
 import "../../../../lib/firebase-admin";
 import { adminUidAllowlist, approvedAdminUid } from "../../../../lib/admin-allowlist.mjs";
+import { trustedClientAddress } from "../../../../lib/client-address.mjs";
 import {
   checkAdminLoginLimit, registerAdminLoginFailure, clearAdminLoginFailures,
   normalizedLoginEmail, recordAdminEvent,
@@ -49,6 +50,10 @@ export async function POST(request) {
       return genericFailure();
     }
 
+    // Optional: set TRUSTED_PROXY_HOPS to the number of proxies in front of the app
+    // to also limit by client address. Unset, only the email is counted.
+    const address = trustedClientAddress(request.headers.get("x-forwarded-for"), process.env.TRUSTED_PROXY_HOPS);
+
     const apiKey = process.env.FIREBASE_WEB_API_KEY;
     const allowed = adminUidAllowlist(process.env.ADMIN_UIDS);
     if (!apiKey || !allowed.size) {
@@ -57,7 +62,7 @@ export async function POST(request) {
 
     // Check before contacting Firebase. This includes unknown email addresses,
     // and blocks correct passwords during a temporary lock.
-    const status = await checkAdminLoginLimit(email);
+    const status = await checkAdminLoginLimit(email, address);
     if (status.blocked) return lockResponse(status.retryAfter);
 
     let adminUser = null;
@@ -69,7 +74,7 @@ export async function POST(request) {
     const approved = Boolean(adminUser && approvedAdminUid(adminUser.uid, allowed) && !adminUser.disabled);
 
     async function rejectAttempt() {
-      const failed = await registerAdminLoginFailure(email);
+      const failed = await registerAdminLoginFailure(email, address);
       if (approved) {
         await recordAdminEvent({
           event: failed.blocked ? "login_limited" : "login_failed",
@@ -110,12 +115,12 @@ export async function POST(request) {
 
     // Reserve a final check before issuing a session so parallel requests cannot
     // trivially skip a lock imposed by other failed requests.
-    const afterAuthentication = await checkAdminLoginLimit(email);
+    const afterAuthentication = await checkAdminLoginLimit(email, address);
     if (afterAuthentication.blocked) return lockResponse(afterAuthentication.retryAfter);
 
     const expiry = 8 * 60 * 60 * 1000;
     const session = await getAuth().createSessionCookie(authentication.idToken, { expiresIn: expiry });
-    await clearAdminLoginFailures(email);
+    await clearAdminLoginFailures(email, address);
     await recordAdminEvent({ event: "login_success", actorUid: adminUser.uid });
 
     const result = NextResponse.json({ success: true }, {

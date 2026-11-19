@@ -16,6 +16,8 @@ Next.js website for GenData Tech, including English and German pages, Firebase-b
 - `FIREBASE_WEB_API_KEY`: Firebase Auth web API key for admin sign-in
 - `ADMIN_UIDS`: comma-separated allowlist of approved Firebase Auth user UIDs
 - `RATE_LIMIT_SECRET`: secret used by the contact form rate limiter
+- `SITE_URL` (optional): public site origin for canonical links, the sitemap and structured data. Defaults to `https://gendatatech.com`
+- `TRUSTED_PROXY_HOPS` (optional): number of trusted proxies that append to `X-Forwarded-For` in front of the app (for example `1`). When set, admin sign-in failures are also counted per client address; see Phase 4. Leave unset if unsure: a wrong value can only weaken address-based limits, never lock out the email-based ones
 
 Keep `.env.local`, service-account JSON files, private keys and tokens out of source control. Do not expose server credentials using `NEXT_PUBLIC_` variables.
 
@@ -126,8 +128,15 @@ eight-hour session cookies remain in place.
   clears its counter. Counting is transactional and does not trust forwarded
   IP headers; it requires working Firestore access.
   **Tradeoff:** Someone who knows an admin email can temporarily lock that
-  email out. Keep a recovery administrator and add trusted-edge/IP controls
-  before launching publicly.
+  email out. Keep a recovery administrator.
+  **Address-based limits (optional):** with `TRUSTED_PROXY_HOPS` set, failures
+  are also counted per email + client address (5 in 15 minutes, 10-minute
+  cooldown), per email from anywhere (20 in an hour, 15-minute cooldown) and per
+  client address across all emails (20 in 15 minutes, 15-minute cooldown). A
+  stranger guessing from another address then hits their own limit first and
+  cannot lock the real administrator out of their own address. Only the entry
+  counted from the right of `X-Forwarded-For` is trusted; leading entries can be
+  forged and are ignored. Addresses and emails are stored only as SHA-256 digests.
 - **Audit trail:** `_adminAudit` stores successful/failed/limited sign-ins, sign-outs,
   article changes, Cloudinary uploads, enquiry status/note changes and CSV exports,
   with administrator UID, optional record ID and timestamp. It intentionally avoids
