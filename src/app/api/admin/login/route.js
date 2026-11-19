@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../lib/request-origin";
 import { getAuth } from "firebase-admin/auth";
 import "../../../../lib/firebase-admin";
 import { adminUidAllowlist, approvedAdminUid } from "../../../../lib/admin-allowlist.mjs";
@@ -26,22 +27,9 @@ const lockResponse = seconds => NextResponse.json(
   },
 );
 
-function sameOrigin(request) {
-  const origin = request.headers.get("origin");
-  const host = request.headers.get("host");
-  if (!origin || !host) return false;
-  try { return new URL(origin).host === host; } catch { return false; }
-}
 
 export async function POST(request) {
-  if (!sameOrigin(request)) {
-    console.warn("[admin-login-origin-check] " + JSON.stringify({
-      origin: request.headers.get("origin"),
-      host: request.headers.get("host"),
-      forwardedHost: request.headers.get("x-forwarded-host"),
-      forwardedProto: request.headers.get("x-forwarded-proto"),
-      nextUrlOrigin: request.nextUrl?.origin,
-    }));
+  if (!isSameOriginRequest(request)) {
     return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
   }
 
