@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../../lib/request-origin";
 import { FieldValue } from "firebase-admin/firestore";
 import { blogUpdateSchema, publishingIssues } from "../../../../../lib/blog-validation";
 import { currentAdmin } from "../../../../../lib/admin-auth";
@@ -8,10 +9,10 @@ import { revalidateBlogContent } from "../../../../../lib/blog-revalidate";
 
 export const runtime="nodejs";
 const answer=(obj,status=200)=>NextResponse.json(obj,{status,headers:{"Cache-Control":"no-store"}});
-function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
+
 export async function PATCH(request,{params}){
  const user=await currentAdmin();if(!user)return answer({error:"Unauthorized"},401);
- if(!sameOrigin(request))return answer({error:"Invalid origin"},403);
+ if(!isSameOriginRequest(request))return answer({error:"Invalid origin"},403);
  const {id}=await params;if(!/^(en|de)_[a-z0-9-]{1,130}$/.test(id))return answer({error:"Invalid ID"},400);
  try{
   const raw=await request.text();if(Buffer.byteLength(raw,"utf8")>65000)return answer({error:"Content too large"},413);
