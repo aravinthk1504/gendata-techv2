@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../../lib/request-origin";
 import { getAuth } from "firebase-admin/auth";
 import { currentAdmin } from "../../../../../lib/admin-auth";
 import { recordAdminEvent } from "../../../../../lib/admin-security";
@@ -7,13 +8,7 @@ export const runtime = "nodejs";
 export async function POST(request) {
   const user = await currentAdmin();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const origin = request.headers.get("origin");
-  const host = request.headers.get("host");
-  try {
-    if (!origin || !host || new URL(origin).host !== host) {
-      return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
-    }
-  } catch {
+  if (!isSameOriginRequest(request)) {
     return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
   }
   try {
