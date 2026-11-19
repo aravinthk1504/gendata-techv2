@@ -49,6 +49,7 @@ export default function SecurityPanel({ lang }) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- fetch on mount; the loading flag is part of the request lifecycle
   useEffect(() => { void refresh(); }, []);
 
   async function revokeSessions() {
@@ -86,7 +87,7 @@ export default function SecurityPanel({ lang }) {
             <FiLogOut aria-hidden="true"/> {busy ? "Revoking sessions…" : "Sign out all my sessions"}
           </button>
           <p className="mt-3 text-xs leading-5 text-slate-500">
-            This affects your own account, including other devices. It does not revoke other administrators' accounts.
+            This affects your own account, including other devices. It does not revoke other administrators&apos; accounts.
           </p>
         </div>
         <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">

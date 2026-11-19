@@ -19,6 +19,8 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   const [statusFilter, setStatusFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [period, setPeriod] = useState("all");
+  // Reference time for the 7/30 day filters, fixed when the panel opens (keeps render pure).
+  const [loadedAt] = useState(() => Date.now());
   const [selectedId, setSelectedId] = useState(null);
   const detailsRef = useRef(null);
   const [detail, setDetail] = useState(null);
@@ -34,7 +36,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
   const categories = useMemo(() => [...new Set(records.map(e => e.category).filter(Boolean))].sort(), [records]);
 
   const filtered = useMemo(() => {
-    const now = Date.now();
+    const now = loadedAt;
     const threshold = period === "7" ? now - 7 * 86400000 : period === "30" ? now - 30 * 86400000 : 0;
     const term = query.trim().toLowerCase();
     return records.filter(e =>
@@ -45,7 +47,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
         value => String(value || "").toLowerCase().includes(term)
       ))
     );
-  }, [records, query, statusFilter, categoryFilter, period]);
+  }, [records, query, statusFilter, categoryFilter, period, loadedAt]);
 
   useEffect(() => {
     if (!selectedId) return;
@@ -142,6 +144,7 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
               Search and manage enquiries. Filters apply to the {records.length} loaded records.
             </p>
           </div>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- file download from an API route, not a page navigation */}
           <a href="/api/admin/enquiries/export"
             className="gd-brand-primary inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold">
             Export for Excel (CSV)

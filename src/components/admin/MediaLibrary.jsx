@@ -30,6 +30,7 @@ export default function MediaLibrary({ onSelectCover, onInsertImage }) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- fetch on mount; the loading flag is part of the request lifecycle
   useEffect(() => { void load(); }, []);
   const matching = items.filter(item =>
     (item.name || "").toLowerCase().includes(search.toLowerCase()) ||

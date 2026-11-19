@@ -35,6 +35,7 @@ export default function IntelligenceHorizonBackground() {
     if (!element) return;
 
     if (!("IntersectionObserver" in window)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- browser feature check, only possible after mount
       setVisible(true);
       return;
     }

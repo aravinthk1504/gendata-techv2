@@ -17,8 +17,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      # Errors fail the job; the remaining warnings (mostly <img> usage) do not.
+      - name: Lint
+        run: npm run lint
       - name: Run deterministic unit tests
-        run: node --test tests/*.test.mjs
+        run: npm test
       - name: Check Next.js production build
         run: npm run build
         env:
@@ -40,3 +43,12 @@ jobs:
           test -s /tmp/about-de.html
           grep -q 'GenData Tech' /tmp/about-en.html
           grep -q 'GenData Tech' /tmp/about-de.html
+          # SEO files served by the build.
+          curl -fsS http://localhost:3000/robots.txt -o /tmp/robots.txt
+          curl -fsS http://localhost:3000/sitemap.xml -o /tmp/sitemap.xml
+          grep -q 'Sitemap:' /tmp/robots.txt
+          grep -q '<urlset' /tmp/sitemap.xml
+          grep -q 'rel="canonical"' /tmp/about-en.html
+          grep -q 'application/ld+json' /tmp/about-en.html
+          # Security headers.
+          curl -fsSI http://localhost:3000/en/about | grep -qi '^content-security-policy:'

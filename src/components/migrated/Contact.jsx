@@ -100,6 +100,8 @@ function Contact() {
     const offering = query.get("offering") || "";
     const options = offeringOptions[category];
     if (!options) return;
+    // Read after hydration: window.location is not available during server rendering.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFormData((previous) => ({
       ...previous,
       category,

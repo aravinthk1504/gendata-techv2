@@ -29,6 +29,7 @@ export default function ReportsPanel() {
       setLoading(false);
     }
   }
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- fetch on mount; the loading flag is part of the request lifecycle
   useEffect(() => { void refresh(); }, []);
 
   const total = report?.total || 0;
@@ -40,7 +41,7 @@ export default function ReportsPanel() {
     <section className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-slate-600">
-          Firestore-wide statistics, including enquiries that haven't been loaded into the management table.
+          Firestore-wide statistics, including enquiries that haven&apos;t been loaded into the management table.
         </p>
         <button type="button" onClick={refresh} disabled={loading}
           className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold disabled:opacity-50">

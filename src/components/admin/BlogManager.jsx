@@ -11,6 +11,7 @@ export default function BlogManager({onUnsavedChange}){
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
  const checks=[["Title",form.title.trim().length>=5],["URL slug",Boolean(form.slug)],["Category",form.category.trim().length>=2],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
  const ready=checks.every(([,ok])=>ok);
+ // eslint-disable-next-line react-hooks/purity -- the schedule must be in the future *now*; the server validates it again on save
  const scheduleTimeValid = form.status!=="scheduled" || (Boolean(form.scheduledFor) && Number.isFinite(Date.parse(form.scheduledFor)) && Date.parse(form.scheduledFor)>Date.now()+60_000);
  const toLocalInput = iso => {if(!iso)return "";const date=new Date(iso);if(Number.isNaN(date.getTime()))return "";return new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16)};
  const [preview,setPreview]=useState(false);
@@ -31,6 +32,7 @@ export default function BlogManager({onUnsavedChange}){
  useEffect(()=>{onUnsavedChange?.(dirty||busy||uploading)},[dirty,busy,uploading,onUnsavedChange]);
  const persistedPublished=items.some(item=>item.id===editing&&["published","scheduled"].includes(item.status));
  async function load(){try{const response=await fetch("/api/admin/blogs",{cache:"no-store"});if(!response.ok)throw Error("Unable to load articles");const json=await response.json();setItems(json.blogs||[])}catch(e){setError(e.message)}}
+ // eslint-disable-next-line react-hooks/set-state-in-effect -- fetch on mount; load() only sets state after the request starts
  useEffect(()=>{load()},[]);
  function field(name,value){
    setForm(previous=>({...previous,[name]:value,...(name==="title"&&!editing&&!slugEdited?{slug:slugify(value)}:{})}));
