@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../lib/request-origin";
 import { FieldValue } from "firebase-admin/firestore";
 import { blogSchema, publishingIssues } from "../../../../lib/blog-validation";
 import { currentAdmin } from "../../../../lib/admin-auth";
@@ -7,7 +8,7 @@ import { recordAdminEvent } from "../../../../lib/admin-security";
 import { revalidateBlogContent } from "../../../../lib/blog-revalidate";
 
 export const runtime = "nodejs";
-function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
+
 function response(body,status=200){return NextResponse.json(body,{status,headers:{"Cache-Control":"no-store"}})}
 export async function GET(){
  if(!await currentAdmin())return response({error:"Unauthorized"},401);
@@ -19,7 +20,7 @@ export async function GET(){
 export async function POST(request){
  const user=await currentAdmin();
  if(!user)return response({error:"Unauthorized"},401);
- if(!sameOrigin(request))return response({error:"Invalid origin"},403);
+ if(!isSameOriginRequest(request))return response({error:"Invalid origin"},403);
  try{
   const raw=await request.text();
   if(Buffer.byteLength(raw,"utf8")>65000)return response({error:"Content too large"},413);
