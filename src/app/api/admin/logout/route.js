@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../lib/request-origin";
 import { currentAdmin } from "../../../../lib/admin-auth";
 import { recordAdminEvent } from "../../../../lib/admin-security";
 
 export const runtime = "nodejs";
 export async function POST(request) {
-  const origin = request.headers.get("origin");
-  const host = request.headers.get("host");
-  if (!origin || !host || (() => { try { return new URL(origin).host !== host; } catch { return true; } })()) {
+  if (!isSameOriginRequest(request)) {
     return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
   }
   const user = await currentAdmin();
