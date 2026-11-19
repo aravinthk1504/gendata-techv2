@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../lib/request-origin";
 import { currentAdmin } from "../../../../lib/admin-auth";
 import { recordAdminEvent } from "../../../../lib/admin-security";
 export const runtime="nodejs";
 const MAX_BYTES=5*1024*1024;
 const json=(data,status=200)=>NextResponse.json(data,{status,headers:{"Cache-Control":"no-store"}});
-function sameOrigin(req){try{return new URL(req.headers.get("origin")).host===req.headers.get("host")}catch{return false}}
+
 export async function POST(req){
  const admin=await currentAdmin();
  if(!admin)return json({error:"Unauthorized"},401);
- if(!sameOrigin(req))return json({error:"Invalid origin"},403);
+ if(!isSameOriginRequest(req))return json({error:"Invalid origin"},403);
  const cloud=process.env.CLOUDINARY_CLOUD_NAME, key=process.env.CLOUDINARY_API_KEY, secret=process.env.CLOUDINARY_API_SECRET;
  if(!cloud||!key||!secret)return json({error:"Cloudinary is not configured on the server"},503);
  if(!/^[a-zA-Z0-9_-]+$/.test(cloud))return json({error:"Invalid Cloudinary configuration"},503);
