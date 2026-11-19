@@ -3,6 +3,7 @@ import { db } from "./firebase-admin";
 import { unstable_cache } from "next/cache";
 import { blogIsPublic, blogPublicDate } from "./blog-schedule.mjs";
 import { BLOG_CACHE_TAG, BLOG_REVALIDATE_SECONDS } from "./blog-cache.mjs";
+import { withTimeout } from "./with-timeout.mjs";
 async function readPublishedBlogs(lang="en",limit=100){
  const [published, scheduled] = await Promise.all([
   db.collection("cmsBlogs").where("status","==","published").get(),
@@ -25,8 +26,9 @@ const cacheOptions = { revalidate: BLOG_REVALIDATE_SECONDS, tags: [BLOG_CACHE_TA
 
 // Cached reads: Firestore is queried at most once per window (or after an admin
 // change calls revalidateBlogContent). Errors are thrown, never cached.
-export const getPublishedBlogs = unstable_cache(readPublishedBlogs, ["public-blogs-list"], cacheOptions);
-export const getPublishedBlog = unstable_cache(readPublishedBlog, ["public-blog-article"], cacheOptions);
+const READ_TIMEOUT_MS = 10000;
+export const getPublishedBlogs = unstable_cache((lang, limit) => withTimeout(readPublishedBlogs(lang, limit), READ_TIMEOUT_MS, "Blog list read"), ["public-blogs-list"], cacheOptions);
+export const getPublishedBlog = unstable_cache((lang, slug) => withTimeout(readPublishedBlog(lang, slug), READ_TIMEOUT_MS, "Blog article read"), ["public-blog-article"], cacheOptions);
 
 // For pages that should still render when Firestore is unreachable.
 export async function getPublishedBlogsOrEmpty(lang, limit){

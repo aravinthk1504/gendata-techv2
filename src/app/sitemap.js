@@ -1,16 +1,9 @@
 import { LANGUAGES, STATIC_ROUTES, absoluteUrl } from "../lib/site.mjs";
 import { getPublishedBlogEntries } from "../lib/public-blogs";
+import { withTimeout } from "../lib/with-timeout.mjs";
 
 // Regenerated at most once an hour.
 export const revalidate = 3600;
-
-// A slow or unreachable Firestore must never hang the sitemap.
-function withTimeout(promise, ms) {
-  return Promise.race([
-    promise,
-    new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), ms)),
-  ]);
-}
 
 function languageAlternates(path) {
   return {
@@ -36,7 +29,7 @@ export default async function sitemap() {
   // Articles are published per language, so they carry no hreflang alternates.
   // If Firestore is unavailable the static pages are still served.
   try {
-    for (const post of await withTimeout(getPublishedBlogEntries(), 8000)) {
+    for (const post of await withTimeout(getPublishedBlogEntries(), 8000, "Sitemap blog read")) {
       entries.push({
         url: absoluteUrl(`/${post.language}/blog/${post.slug}`),
         ...(post.lastModified ? { lastModified: post.lastModified } : {}),

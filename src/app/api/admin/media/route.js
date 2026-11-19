@@ -13,6 +13,7 @@ export async function POST(req){
  if(!cloud||!key||!secret)return json({error:"Cloudinary is not configured on the server"},503);
  if(!/^[a-zA-Z0-9_-]+$/.test(cloud))return json({error:"Invalid Cloudinary configuration"},503);
  const length=Number(req.headers.get("content-length"));
+ if(!Number.isFinite(length)||length<=0)return json({error:"Content-Length is required"},411);
  if(length>MAX_BYTES+20000)return json({error:"Image exceeds 5 MB limit"},413);
  try{
   const form=await req.formData();
