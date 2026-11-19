@@ -35,13 +35,13 @@ function sameOrigin(request) {
 
 export async function POST(request) {
   if (!sameOrigin(request)) {
-    console.warn("[admin-login-origin-check]", {
+    console.warn("[admin-login-origin-check] " + JSON.stringify({
       origin: request.headers.get("origin"),
       host: request.headers.get("host"),
       forwardedHost: request.headers.get("x-forwarded-host"),
       forwardedProto: request.headers.get("x-forwarded-proto"),
       nextUrlOrigin: request.nextUrl?.origin,
-    });
+    }));
     return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
   }
 
