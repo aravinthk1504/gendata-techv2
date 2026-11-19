@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isSameOriginRequest } from "../../../../../lib/request-origin";
 import { FieldValue } from "firebase-admin/firestore";
 import { currentAdmin } from "../../../../../lib/admin-auth";
 import { db } from "../../../../../lib/firebase-admin";
@@ -10,13 +11,7 @@ const reply = (body, status = 200) => NextResponse.json(body, {
   status, headers: { "Cache-Control": "no-store" },
 });
 
-function sameOrigin(request) {
-  try {
-    const origin = request.headers.get("origin");
-    const host = request.headers.get("host");
-    return Boolean(origin && host && new URL(origin).host === host);
-  } catch { return false; }
-}
+
 
 async function recordRef(params) {
   const { id } = await params;
@@ -67,7 +62,7 @@ export async function GET(request, { params }) {
 export async function PATCH(request, { params }) {
   const admin = await currentAdmin();
   if (!admin) return reply({ error: "Unauthorized" }, 401);
-  if (!sameOrigin(request)) return reply({ error: "Invalid origin" }, 403);
+  if (!isSameOriginRequest(request)) return reply({ error: "Invalid origin" }, 403);
   const ref = await recordRef(params);
   if (!ref) return reply({ error: "Invalid enquiry ID" }, 400);
 
