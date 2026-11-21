@@ -5,7 +5,7 @@
 // Blocks: heading, image, ul, ol, quote, code, table, paragraph.
 // Inline: **bold**, *italic*, `code`, [text](https://link).
 
-const INLINE_PATTERN = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g;
+const INLINE_PATTERN = /(`[^`]+`|\*\*.+?\*\*|\*[^*]+\*|\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g;
 
 export function parseInline(source) {
   return String(source ?? "")
