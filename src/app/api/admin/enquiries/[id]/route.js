@@ -102,7 +102,7 @@ export async function PATCH(request, { params }) {
 export async function POST(request, { params }) {
   const admin = await currentAdmin();
   if (!admin) return reply({ error: "Unauthorized" }, 401);
-  if (!sameOrigin(request)) return reply({ error: "Invalid origin" }, 403);
+  if (!isSameOriginRequest(request)) return reply({ error: "Invalid origin" }, 403);
   const ref = await recordRef(params);
   if (!ref) return reply({ error: "Invalid enquiry ID" }, 400);
 

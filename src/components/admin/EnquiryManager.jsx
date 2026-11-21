@@ -57,8 +57,19 @@ export default function EnquiryManager({ records, setRecords, cursor, setCursor 
 
   async function jsonRequest(url, options) {
     const response = await fetch(url, { cache: "no-store", ...options });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || "Request failed");
+    const raw = await response.text();
+    let payload;
+    try {
+      payload = raw ? JSON.parse(raw) : null;
+    } catch {
+      throw new Error(`The server returned an unreadable response (HTTP ${response.status}). Please try again; if it continues, check the server logs.`);
+    }
+    if (!response.ok) {
+      throw new Error(payload?.error || `Request failed (HTTP ${response.status})`);
+    }
+    if (!payload || typeof payload !== "object") {
+      throw new Error("The server returned an empty response. Please try again.");
+    }
     return payload;
   }
 
