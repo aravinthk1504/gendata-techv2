@@ -36,7 +36,7 @@ export async function PATCH(request,{params}){
 export async function DELETE(request,{params}){
  const user=await currentAdmin();
  if(!user)return answer({error:"Unauthorized"},401);
- if(!sameOrigin(request))return answer({error:"Invalid origin"},403);
+ if(!isSameOriginRequest(request))return answer({error:"Invalid origin"},403);
  const {id}=await params;
  if(!/^(en|de)_[a-z0-9-]{1,130}$/.test(id))return answer({error:"Invalid ID"},400);
  try{
