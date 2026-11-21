@@ -28,7 +28,8 @@ export default function BlogManager({onUnsavedChange,sidebarCollapsed=false}){
  const [revision,setRevision]=useState(0),[savedRevision,setSavedRevision]=useState(0);
  const [autosaveState,setAutosaveState]=useState("");
  const [slugEdited,setSlugEdited]=useState(false);
- const savingRef=useRef(false);\n const visualEditorRef=useRef(null);
+ const savingRef=useRef(false);
+ const visualEditorRef=useRef(null);
  const dirty=revision>savedRevision;
  useEffect(()=>{onUnsavedChange?.(dirty||busy||uploading)},[dirty,busy,uploading,onUnsavedChange]);
  const persistedPublished=items.some(item=>item.id===editing&&["published","scheduled"].includes(item.status));
