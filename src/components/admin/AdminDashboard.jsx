@@ -65,7 +65,7 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
   const [cursor, setCursor] = useState(nextCursor);
   const [logoutError, setLogoutError] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);\n  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const menuTrigger = useRef(null);
   const mobileDrawer = useRef(null);
 
