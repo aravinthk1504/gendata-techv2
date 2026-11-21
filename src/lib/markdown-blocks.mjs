@@ -5,7 +5,7 @@
 // Blocks: heading, image, ul, ol, quote, code, table, paragraph.
 // Inline: **bold**, *italic*, `code`, [text](https://link).
 
-const INLINE_PATTERN = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g;
+const INLINE_PATTERN = /(`[^`]+`|\*\*.+?\*\*|\*[^*]+\*|\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g;
 
 export function parseInline(source) {
   return String(source ?? "")
@@ -41,6 +41,7 @@ export function parseBlocks(content) {
   const lines = String(content ?? "").split(/\r?\n/);
   const blocks = [];
   let index = 0;
+  let nextOrderedNumber = null;
 
   while (index < lines.length) {
     const line = lines[index];
@@ -64,10 +65,10 @@ export function parseBlocks(content) {
     const image = trimmed.match(IMAGE);
     if (image) { blocks.push({ type: "image", alt: image[1], src: image[2] }); index += 1; continue; }
 
-    if (line.startsWith("### ")) { blocks.push({ type: "heading", level: 3, text: line.slice(4) }); index += 1; continue; }
-    if (line.startsWith("## ")) { blocks.push({ type: "heading", level: 2, text: line.slice(3) }); index += 1; continue; }
+    if (line.startsWith("### ")) { nextOrderedNumber = null; blocks.push({ type: "heading", level: 3, text: line.slice(4) }); index += 1; continue; }
+    if (line.startsWith("## ")) { nextOrderedNumber = null; blocks.push({ type: "heading", level: 2, text: line.slice(3) }); index += 1; continue; }
     // A single "#" is rendered as h2 because the article title is the page's h1.
-    if (line.startsWith("# ")) { blocks.push({ type: "heading", level: 2, text: line.slice(2), large: true }); index += 1; continue; }
+    if (line.startsWith("# ")) { nextOrderedNumber = null; blocks.push({ type: "heading", level: 2, text: line.slice(2), large: true }); index += 1; continue; }
 
     if (BULLET.test(line)) {
       const items = [];
@@ -76,16 +77,20 @@ export function parseBlocks(content) {
         index += 1;
       }
       blocks.push({ type: "ul", items });
+      nextOrderedNumber = null;
       continue;
     }
 
     if (NUMBERED.test(line)) {
       const items = [];
+      const firstNumber = Number(line.match(NUMBERED)[0].match(/^\d+/)[0]);
+      const start = nextOrderedNumber ?? firstNumber;
       while (index < lines.length && NUMBERED.test(lines[index])) {
         items.push(lines[index].match(NUMBERED)[1]);
         index += 1;
       }
-      blocks.push({ type: "ol", items });
+      blocks.push({ type: "ol", items, start });
+      nextOrderedNumber = start + items.length;
       continue;
     }
 
@@ -96,6 +101,7 @@ export function parseBlocks(content) {
         index += 1;
       }
       blocks.push({ type: "quote", text: quoted.join(" ").trim() });
+      nextOrderedNumber = null;
       continue;
     }
 

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 
 import "../globals.css"
 
-import { poppins, montserrat } from "../../lib/fonts"
+import { poppins, montserrat, urbanist } from "../../lib/fonts"
 import { languages, isValidLanguage } from "../../i18n/config"
 import { getDictionary } from "../../i18n/dictionaries"
 import SiteChrome from "../../components/layout/SiteChrome"
@@ -43,7 +43,7 @@ export default async function LanguageLayout({ children, params }) {
 
   return (
     <html lang={lang} data-scroll-behavior="smooth">
-      <body suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable} antialiased`}>
+      <body suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable} ${urbanist.variable} antialiased`}>
         <JsonLd data={[organizationSchema(), websiteSchema(lang)]} />
         <SiteChrome lang={lang} navigation={dictionary.nav} footer={{ footer: lang === "de" ? footerDE : footerEN }}>
           {children}

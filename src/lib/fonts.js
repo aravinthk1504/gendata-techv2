@@ -1,6 +1,7 @@
 import {
   Poppins,
   Montserrat,
+  Urbanist,
 } from "next/font/google"
 
 export const poppins = Poppins({
@@ -15,3 +16,4 @@ export const montserrat = Montserrat({
   display: "swap",
   variable: "--font-montserrat",
 })
+export const urbanist = Urbanist({ subsets: ["latin"], weight: ["400", "500", "600", "700"], display: "swap", variable: "--font-urbanist" })
