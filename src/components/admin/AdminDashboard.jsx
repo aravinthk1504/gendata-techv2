@@ -105,6 +105,23 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
   }
 
   useEffect(() => {
+    function handlePageHide(event) {
+      // Keep the session when the page enters the back/forward cache.
+      if (event.persisted) return;
+      fetch("/api/admin/logout", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+        keepalive: true,
+      }).catch(() => {});
+    }
+
+    window.addEventListener("pagehide", handlePageHide);
+    return () => window.removeEventListener("pagehide", handlePageHide);
+  }, []);
+
+  useEffect(() => {
     if (!mobileMenuOpen) return;
     const oldOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
