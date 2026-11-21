@@ -13,7 +13,7 @@ function Inline({ text }) {
 }
 
 export default function MarkdownContent({ content }) {
-  return <div className="space-y-4 text-base leading-8 text-slate-700">{parseBlocks(content).map((block, i) => {
+  return <div className="gd-blog-font space-y-4 text-base leading-8 text-slate-700">{parseBlocks(content).map((block, i) => {
     switch (block.type) {
       case "image":
         return <figure key={i} className="my-8">
@@ -27,7 +27,7 @@ export default function MarkdownContent({ content }) {
       case "ul":
         return <ul key={i} className="list-disc space-y-2 pl-6 marker:text-[#057cfa]">{block.items.map((item, j) => <li key={j}><Inline text={item} /></li>)}</ul>;
       case "ol":
-        return <ol key={i} className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-[#057cfa]">{block.items.map((item, j) => <li key={j}><Inline text={item} /></li>)}</ol>;
+        return <ol key={i} start={block.start || 1} className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-[#057cfa]">{block.items.map((item, j) => <li key={j}><Inline text={item} /></li>)}</ol>;
       case "quote":
         return <blockquote key={i} className="border-l-4 border-[#057cfa]/40 pl-5 italic text-slate-600"><Inline text={block.text} /></blockquote>;
       case "code":
