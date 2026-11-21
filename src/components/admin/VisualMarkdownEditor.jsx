@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
-import { FiBold, FiItalic, FiLink, FiList, FiListOrdered, FiCode, FiMinus, FiType } from "react-icons/fi";
+import { FiBold, FiItalic, FiLink, FiList, FiHash, FiCode, FiMinus, FiType } from "react-icons/fi";
 
 const escapeHtml = value => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 function inlineHtml(value) {
@@ -103,7 +103,7 @@ const VisualMarkdownEditor = forwardRef(function VisualMarkdownEditor({ value, o
     {label:"Heading 2",icon:FiType,action:()=>command("formatBlock","h2")},
     {label:"Heading 3",icon:FiType,action:()=>command("formatBlock","h3")},
     {label:"Bulleted list",icon:FiList,action:()=>command("insertUnorderedList")},
-    {label:"Numbered list",icon:FiListOrdered,action:()=>command("insertOrderedList")},
+    {label:"Numbered list",icon:FiHash,action:()=>command("insertOrderedList")},
     {label:"Link",icon:FiLink,action:addLink},
     {label:"Quote",icon:FiMinus,action:()=>command("formatBlock","blockquote")},
     {label:"Code",icon:FiCode,action:()=>command("formatBlock","pre")},
