@@ -32,8 +32,8 @@ function Navigation({ active, onSelect, counts, collapsed=false }) {
           title={collapsed?label:undefined}\n          className={"flex w-full items-center rounded-xl py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 "+(collapsed?"justify-center px-0":"gap-3 px-4 text-left")+" " +
             (active === id ? "bg-white/15 text-white ring-1 ring-white/20" : "text-blue-100/80 hover:bg-white/10 hover:text-white")}>
           <Icon size={18} aria-hidden="true" className={active === id ? "text-[#67e8f9]" : "text-blue-200"} />
-          <span className="flex-1">{label}</span>
-          {id === "enquiries" && counts.new > 0 && (
+          {!collapsed && <span className="flex-1">{label}</span>}
+          {!collapsed && id === "enquiries" && counts.new > 0 && (
             <span className="rounded-full bg-white/15 px-2 py-0.5 text-xs font-bold text-white">{counts.new}</span>
           )}
         </button>
@@ -63,7 +63,8 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
   const [records, setRecords] = useState(enquiries);
   const [cursor, setCursor] = useState(nextCursor);
   const [logoutError, setLogoutError] = useState("");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);\n  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);\n  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const menuTrigger = useRef(null);
   const mobileDrawer = useRef(null);
 
@@ -144,17 +145,16 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
   return (
     <main className="gd-admin-root min-h-screen bg-[#f5f8ff] text-[#081b3a]">
       <div className="lg:flex lg:min-h-screen">
-        <aside className="hidden w-64 shrink-0 flex-col bg-[#06142f] px-4 py-7 lg:sticky lg:top-0 lg:flex lg:h-screen">
-          <div className="px-2"><AdminBrand /></div>
-          <Navigation active={tab} onSelect={selectSection} counts={counts} />
-          <div className="mt-auto space-y-4 px-2">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <FiShield className="text-[#70deff]" size={19} aria-hidden="true"/>
-              <p className="mt-2 text-xs font-semibold text-white">Restricted access</p>
-              <p className="mt-1 break-all text-xs leading-5 text-blue-100/70">{adminEmail}</p>
-            </div>
-            <button type="button" onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-blue-100 hover:bg-white/10 hover:text-white">
-              <FiLogOut size={18} aria-hidden="true" /> Sign out
+        <aside className={"hidden shrink-0 flex-col bg-[#06142f] py-7 transition-[width] duration-200 lg:sticky lg:top-0 lg:flex lg:h-screen "+(sidebarCollapsed?"w-20 px-2":"w-64 px-4")}>
+          <div className={sidebarCollapsed?"flex justify-center":"px-2"}>
+            {sidebarCollapsed ? <button type="button" onClick={()=>selectSection("overview")} aria-label="GenData Tech dashboard home" title="Dashboard home" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 hover:bg-white/20"><img src="/assets/gendata-tech-mark.webp" alt="GenData Tech" className="h-10 w-10 object-contain"/></button> : <button type="button" onClick={()=>selectSection("overview")} aria-label="Go to dashboard overview" className="rounded-xl text-left"><AdminBrand /></button>}
+          </div>
+          <Navigation active={tab} onSelect={selectSection} counts={counts} collapsed={sidebarCollapsed} />
+          <button type="button" onClick={()=>setSidebarCollapsed(value=>!value)} aria-label={sidebarCollapsed?"Expand sidebar":"Collapse sidebar"} title={sidebarCollapsed?"Expand sidebar":"Collapse sidebar"} className={"mt-5 flex min-h-10 items-center rounded-xl text-blue-100 hover:bg-white/10 "+(sidebarCollapsed?"justify-center":"justify-end px-3")}>{sidebarCollapsed?<FiChevronRight size={19}/>:<><span className="mr-2 text-xs">Collapse sidebar</span><FiChevronLeft size={18}/></>}</button>
+          <div className={"mt-auto space-y-4 "+(sidebarCollapsed?"px-0":"px-2")}>
+            {!sidebarCollapsed && <div className="rounded-2xl border border-white/10 bg-white/5 p-4"><FiShield className="text-[#70deff]" size={19} aria-hidden="true"/><p className="mt-2 text-xs font-semibold text-white">Restricted access</p><p className="mt-1 break-all text-xs leading-5 text-blue-100/70">{adminEmail}</p></div>}
+            <button type="button" onClick={logout} aria-label="Sign out" title="Sign out" className={"flex w-full items-center rounded-xl py-3 text-sm font-semibold text-blue-100 hover:bg-white/10 hover:text-white "+(sidebarCollapsed?"justify-center":"gap-3 px-4")}>
+              <FiLogOut size={18} aria-hidden="true" />{!sidebarCollapsed && "Sign out"}
             </button>
           </div>
         </aside>
