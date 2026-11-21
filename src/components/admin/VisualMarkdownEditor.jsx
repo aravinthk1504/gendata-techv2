@@ -124,8 +124,8 @@ const VisualMarkdownEditor = forwardRef(function VisualMarkdownEditor({ value, o
     {label:"Quote",icon:FiMinus,action:()=>command("formatBlock","blockquote")},
     {label:"Code",icon:FiCode,action:()=>command("formatBlock","pre")},
   ];
-  return <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-    <div className="flex items-stretch gap-2">
+  return <div className="overflow-visible rounded-2xl border border-slate-200 bg-white">
+    <div className="flex items-start gap-2">
       <div className="sticky top-24 flex shrink-0 flex-row items-start gap-1 border-r border-slate-200 bg-slate-50 p-2 sm:flex-col" role="toolbar" aria-label="Article formatting">
         {tools.map(({label,icon:Icon,action})=><button key={label} type="button" title={label} aria-label={label} onMouseDown={event=>event.preventDefault()} onClick={action} className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-700 hover:bg-blue-100 hover:text-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"><Icon size={16}/><span className="sr-only">{label}</span></button>)}
       </div>
