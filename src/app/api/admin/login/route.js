@@ -126,7 +126,6 @@ export async function POST(request) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: expiry / 1000,
     });
     return result;
   } catch (error) {
