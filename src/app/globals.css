@@ -215,3 +215,4 @@ a:focus-visible, button:focus-visible {
 
 /* Urbanist is reserved for blog writing and published article reading. */
 .gd-blog-font { font-family: var(--font-urbanist), sans-serif; }
+.gd-blog-font :is(h1, h2, h3, h4, h5, h6) { font-family: var(--font-urbanist), sans-serif; }
