@@ -106,9 +106,7 @@ export default function BlogManager({onUnsavedChange,sidebarCollapsed=false}){
    if(target==="cover")field("image",data.url);
    else {
      const alt=file.name.split(".").slice(0,-1).join(".").replace(/[^a-zA-Z0-9 _-]/g,"")||"Article image";
-     setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+ `![${alt}](${data.url})`}));
-     setRevision(v=>v+1);
-     setAutosaveState("");
+     visualEditorRef.current?.insertImage(data.url,alt);
    }
    setNotice("Image uploaded successfully. Drafts will autosave once changes settle.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
@@ -208,7 +206,7 @@ export default function BlogManager({onUnsavedChange,sidebarCollapsed=false}){
     </div>
    <div id="cms-panel-media" role="tabpanel" aria-labelledby="cms-tab-media" hidden={section!=="media"} className="space-y-4">
     <button type="button" onClick={()=>setLibraryOpen(v=>!v)} className="min-h-11 rounded-full border border-blue-200 bg-blue-50 px-5 text-sm font-semibold text-[#003cba]">{libraryOpen?"Hide media library":"Choose from media library"}</button>
-    {libraryOpen && <MediaLibrary onSelectCover={item=>{field("image",item.url);if(!form.imageAlt.trim())field("imageAlt",item.name.slice(0,180));setNotice("Existing image selected as cover.")}} onInsertImage={item=>{const alt=(item.name||"Blog image").replace(/[\[\]()]/g,"").slice(0,150);setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+`![${alt}](${item.url})`}));setRevision(v=>v+1);setAutosaveState("");setNotice("Image inserted into the article body.")}}/>}
+    {libraryOpen && <MediaLibrary onSelectCover={item=>{field("image",item.url);if(!form.imageAlt.trim())field("imageAlt",item.name.slice(0,180));setNotice("Existing image selected as cover.")}} onInsertImage={item=>{const alt=(item.name||"Blog image").replace(/[\[\]()]/g,"").slice(0,150);visualEditorRef.current?.insertImage(item.url,alt);setNotice("Image inserted into the article body.")}}/>}
     <div className="grid gap-4 sm:grid-cols-2">
      <div><p className="mb-2 text-sm font-semibold">Cover image</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white"><FiUpload size={17}/>{uploading?"Uploading…":"Upload cover photo"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
      {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-36 w-full rounded-xl object-contain"/>}
