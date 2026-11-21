@@ -1,12 +1,13 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
 import MarkdownContent from "../blog/MarkdownContent";
+import VisualMarkdownEditor from "./VisualMarkdownEditor";
 import MediaLibrary from "./MediaLibrary";
 import {FiUpload,FiTrash2} from "react-icons/fi";
 const slugify = value => value.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,130).replace(/-+$/,"");
 const BLOG_CATEGORIES=["AI & Machine Learning","Data Science","Full Stack Development","Web Development","Software Development","App Development","IoT Solutions","Technology Trends"];
 const blank={gallery:[],type:"article",eventDate:"",eventTime:"",location:"",eventMode:"online",registrationUrl:"",title:"",slug:"",category:"Technology Trends",excerpt:"",content:"",seoTitle:"",seoDescription:"",image:"",imageAlt:"",language:"en",status:"draft",scheduledFor:""};
-export default function BlogManager({onUnsavedChange}){
+export default function BlogManager({onUnsavedChange,sidebarCollapsed=false}){
  const contentType="article";
  const [items,setItems]=useState([]),[editing,setEditing]=useState(null),[form,setForm]=useState({...blank,type:contentType});
  const checks=[["Title",form.title.trim().length>=5],["URL slug",Boolean(form.slug)],["Category",form.category.trim().length>=2],["Summary",form.excerpt.trim().length>=10],["Cover image",Boolean(form.image.trim())],["Image alt text",Boolean(form.imageAlt.trim())],["SEO title",Boolean(form.seoTitle.trim())],["SEO description",Boolean(form.seoDescription.trim())],["Article body",form.content.trim().length>=30]];
@@ -28,6 +29,7 @@ export default function BlogManager({onUnsavedChange}){
  const [autosaveState,setAutosaveState]=useState("");
  const [slugEdited,setSlugEdited]=useState(false);
  const savingRef=useRef(false);
+ const visualEditorRef=useRef(null);
  const dirty=revision>savedRevision;
  useEffect(()=>{onUnsavedChange?.(dirty||busy||uploading)},[dirty,busy,uploading,onUnsavedChange]);
  const persistedPublished=items.some(item=>item.id===editing&&["published","scheduled"].includes(item.status));
@@ -105,9 +107,7 @@ export default function BlogManager({onUnsavedChange}){
    if(target==="cover")field("image",data.url);
    else {
      const alt=file.name.split(".").slice(0,-1).join(".").replace(/[^a-zA-Z0-9 _-]/g,"")||"Article image";
-     setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+ `![${alt}](${data.url})`}));
-     setRevision(v=>v+1);
-     setAutosaveState("");
+     visualEditorRef.current?.insertImage(data.url,alt);
    }
    setNotice("Image uploaded successfully. Drafts will autosave once changes settle.");
   }catch(e){setError(e.message||"Upload failed")}finally{setUploading(false)}
@@ -198,26 +198,16 @@ export default function BlogManager({onUnsavedChange}){
      <label className="text-sm font-semibold">Category<select required value={form.category} onChange={e=>field("category",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal">{!BLOG_CATEGORIES.includes(form.category)&&<option value={form.category}>{form.category} (existing)</option>}{BLOG_CATEGORIES.map(category=><option key={category} value={category}>{category}</option>)}</select></label>
      <label className="text-sm font-semibold md:col-span-2">Short summary<textarea required rows={2} value={form.excerpt} onChange={e=>field("excerpt",e.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-normal"/></label>
     </div>
-    <div className="flex items-center justify-between gap-3"><h3 className="text-sm font-bold">Article body (Markdown)</h3><button type="button" onClick={()=>setPreview(v=>!v)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold">{preview?"Edit":"Preview"}</button></div>
-    {preview?<div className="max-h-[600px] overflow-auto rounded-2xl border border-slate-200 bg-white">
-      <div className="bg-[#06142f] px-5 py-10 text-white sm:px-10">
-        <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">{form.category} · {form.language.toUpperCase()} · Draft preview</p>
-        <h2 className="mt-4 text-2xl font-bold leading-tight sm:text-4xl">{form.title||"Untitled article"}</h2>
-        <p className="mt-4 text-sm leading-7 text-slate-300">{form.excerpt||"Article summary will appear here."}</p>
-        <p className="mt-3 text-xs text-slate-400">/{form.language}/blog/{form.slug||"article-slug"}</p>
-      </div>
-      <div className="px-5 py-7 sm:px-10">
-        {form.image&&<img src={form.image} alt={form.imageAlt||"Article cover"} className="mb-8 aspect-video w-full rounded-xl object-cover"/>}
-        <MarkdownContent content={form.content}/>
-      </div>
-    </div>:<>
-     <div className="flex flex-wrap gap-2">{[["Heading","## "],["Bold","**bold text**"],["Italic","*italic text*"],["List","- "],["Link","[link](https://example.com)"],["Image","![Image description](https://example.com/image.webp)"]].map(([label,snippet])=><button key={label} type="button" onClick={()=>{setForm(v=>({...v,content:v.content+(v.content?"\n":"")+snippet}));setRevision(v=>v+1);setAutosaveState("")}} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium">{label}</button>)}</div>
-     <textarea aria-label="Article content" required minLength={30} rows={9} value={form.content} onChange={e=>field("content",e.target.value)} className="w-full rounded-xl border border-slate-200 p-4 text-sm font-normal" placeholder="Write your article here..."/>
-    </>}
-   </div>
+    <div className="space-y-3">
+     <div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="text-sm font-bold">Article writing studio</h3><p className="mt-1 text-xs text-slate-500">Write naturally, select text and apply formatting. Preview updates as you type.</p></div><span className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">Visual editor</span></div>
+     <div className={sidebarCollapsed?"grid items-start gap-5 xl:grid-cols-2":"grid grid-cols-1 gap-5"}>
+      <section className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white"><div className="border-b border-slate-100 px-4 py-3"><h4 className="text-sm font-semibold text-slate-800">Write article</h4></div><div className="p-3"><VisualMarkdownEditor ref={visualEditorRef} value={form.content} onChange={value=>field("content",value)}/></div></section>
+      <section className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white"><div className="flex items-center justify-between border-b border-slate-100 px-4 py-3"><div><h4 className="text-sm font-semibold text-slate-800">Live preview</h4><p className="mt-1 text-xs text-slate-500">Approximate public article appearance</p></div><span className="text-xs font-medium text-emerald-700">Live</span></div><div className="max-h-[850px] overflow-auto"><div className="bg-[#06142f] px-5 py-8 text-white"><p className="text-xs font-bold uppercase tracking-widest text-cyan-300">{form.category} · {form.language.toUpperCase()} · Draft preview</p><h2 className="mt-3 text-2xl font-bold leading-tight">{form.title||"Untitled article"}</h2><p className="mt-3 text-sm leading-7 text-slate-300">{form.excerpt||"Article summary will appear here."}</p></div><div className="px-5 py-6">{form.image&&<img src={form.image} alt={form.imageAlt||"Article cover"} className="mb-6 aspect-video w-full rounded-xl object-cover"/>}<MarkdownContent content={form.content}/></div></div></section>
+     </div>
+    </div>
    <div id="cms-panel-media" role="tabpanel" aria-labelledby="cms-tab-media" hidden={section!=="media"} className="space-y-4">
     <button type="button" onClick={()=>setLibraryOpen(v=>!v)} className="min-h-11 rounded-full border border-blue-200 bg-blue-50 px-5 text-sm font-semibold text-[#003cba]">{libraryOpen?"Hide media library":"Choose from media library"}</button>
-    {libraryOpen && <MediaLibrary onSelectCover={item=>{field("image",item.url);if(!form.imageAlt.trim())field("imageAlt",item.name.slice(0,180));setNotice("Existing image selected as cover.")}} onInsertImage={item=>{const alt=(item.name||"Blog image").replace(/[\[\]()]/g,"").slice(0,150);setForm(previous=>({...previous,content:previous.content+(previous.content?"\n\n":"")+`![${alt}](${item.url})`}));setRevision(v=>v+1);setAutosaveState("");setNotice("Image inserted into the article body.")}}/>}
+    {libraryOpen && <MediaLibrary onSelectCover={item=>{field("image",item.url);if(!form.imageAlt.trim())field("imageAlt",item.name.slice(0,180));setNotice("Existing image selected as cover.")}} onInsertImage={item=>{const alt=(item.name||"Blog image").replace(/[\[\]()]/g,"").slice(0,150);visualEditorRef.current?.insertImage(item.url,alt);setNotice("Image inserted into the article body.")}}/>}
     <div className="grid gap-4 sm:grid-cols-2">
      <div><p className="mb-2 text-sm font-semibold">Cover image</p><label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#057cfa] px-5 py-3 text-sm font-semibold text-white"><FiUpload size={17}/>{uploading?"Uploading…":"Upload cover photo"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={e=>{uploadImage(e.target.files?.[0],"cover");e.target.value=""}} className="sr-only"/></label><p className="mt-2 text-xs text-slate-500">JPG, PNG or WebP · Max 5 MB</p></div>
      {form.image&&<img src={form.image} alt={form.imageAlt||"Cover preview"} className="max-h-36 w-full rounded-xl object-contain"/>}
