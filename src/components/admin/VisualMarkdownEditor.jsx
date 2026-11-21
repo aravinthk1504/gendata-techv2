@@ -49,7 +49,8 @@ function nodeMarkdown(node) {
   if (tag==="img") { const src=node.getAttribute("src")||""; return /^https:\/\//.test(src) ? "!["+(node.getAttribute("alt")||"Article image")+"]("+src+")" : ""; }
   if (tag==="br") return "\n";
   if (tag==="h2") return "## "+children;
-  if (tag==="h3") return "### "+children;\n  if (tag==="pre") return "```\\n"+node.textContent+"\\n```";
+  if (tag==="h3") return "### "+children;
+  if (tag==="pre") return "```\n"+node.textContent+"\n```";\n  if (tag==="pre") return "```\\n"+node.textContent+"\\n```";
   if (tag==="blockquote") return children.split("\n").map(line=>"> "+line).join("\n");
   if (tag==="ul" || tag==="ol") return Array.from(node.children).map((item,index)=>(tag==="ul"?"- ":String(index+1)+". ")+Array.from(item.childNodes).map(nodeMarkdown).join("")).join("\n");
   if (tag==="li") return children;
@@ -63,10 +64,12 @@ function htmlToMarkdown(root) {
 const VisualMarkdownEditor = forwardRef(function VisualMarkdownEditor({ value, onChange }, ref) {
   const editorRef=useRef(null);
   const lastValue=useRef(value || "");
+  const initialized=useRef(false);
   useEffect(() => {
-    if (!editorRef.current || (value || "") === lastValue.current) return;
+    if (!editorRef.current || (initialized.current && (value || "") === lastValue.current)) return;
     editorRef.current.innerHTML=markdownToHtml(value || "");
     lastValue.current=value || "";
+    initialized.current=true;
   }, [value]);
   useImperativeHandle(ref, () => ({
     insertImage(url, alt="Article image") {
