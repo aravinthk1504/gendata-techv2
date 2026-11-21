@@ -23,13 +23,13 @@ const metrics = [
   { label: "Completed", key: "completed", icon: FiCheckCircle, tint: "bg-emerald-50 text-emerald-700" },
 ];
 
-function Navigation({ active, onSelect, counts }) {
+function Navigation({ active, onSelect, counts, collapsed=false }) {
   return (
-    <nav aria-label="Admin sections" className="mt-6 space-y-1.5">
+    <nav aria-label="Admin sections" className={"mt-6 space-y-1.5 "+(collapsed?"px-0":"")}>
       {navItems.map(({ id, label, icon: Icon }) => (
         <button key={id} type="button" onClick={() => onSelect(id)}
           aria-current={active === id ? "page" : undefined}
-          className={"flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 " +
+          title={collapsed?label:undefined}\n          className={"flex w-full items-center rounded-xl py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 "+(collapsed?"justify-center px-0":"gap-3 px-4 text-left")+" " +
             (active === id ? "bg-white/15 text-white ring-1 ring-white/20" : "text-blue-100/80 hover:bg-white/10 hover:text-white")}>
           <Icon size={18} aria-hidden="true" className={active === id ? "text-[#67e8f9]" : "text-blue-200"} />
           <span className="flex-1">{label}</span>
