@@ -29,7 +29,8 @@ function Navigation({ active, onSelect, counts, collapsed=false }) {
       {navItems.map(({ id, label, icon: Icon }) => (
         <button key={id} type="button" onClick={() => onSelect(id)}
           aria-current={active === id ? "page" : undefined}
-          title={collapsed?label:undefined}\n          className={"flex w-full items-center rounded-xl py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 "+(collapsed?"justify-center px-0":"gap-3 px-4 text-left")+" " +
+          title={collapsed?label:undefined}
+          className={"flex w-full items-center rounded-xl py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 "+(collapsed?"justify-center px-0":"gap-3 px-4 text-left")+" " +
             (active === id ? "bg-white/15 text-white ring-1 ring-white/20" : "text-blue-100/80 hover:bg-white/10 hover:text-white")}>
           <Icon size={18} aria-hidden="true" className={active === id ? "text-[#67e8f9]" : "text-blue-200"} />
           {!collapsed && <span className="flex-1">{label}</span>}
