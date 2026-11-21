@@ -50,7 +50,7 @@ function nodeMarkdown(node) {
   if (tag==="br") return "\n";
   if (tag==="h2") return "## "+children;
   if (tag==="h3") return "### "+children;
-  if (tag==="pre") return "```\n"+node.textContent+"\n```";\n  if (tag==="pre") return "```\\n"+node.textContent+"\\n```";
+  if (tag==="pre") return "```\n"+node.textContent+"\n```";
   if (tag==="blockquote") return children.split("\n").map(line=>"> "+line).join("\n");
   if (tag==="ul" || tag==="ol") return Array.from(node.children).map((item,index)=>(tag==="ul"?"- ":String(index+1)+". ")+Array.from(item.childNodes).map(nodeMarkdown).join("")).join("\n");
   if (tag==="li") return children;
