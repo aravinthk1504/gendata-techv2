@@ -83,7 +83,7 @@ export function parseBlocks(content) {
 
     if (NUMBERED.test(line)) {
       const items = [];
-      const firstNumber = Number(line.match(NUMBERED)[0].match(/^\\d+/)[0]);
+      const firstNumber = Number(line.match(NUMBERED)[0].match(/^\d+/)[0]);
       const start = nextOrderedNumber ?? firstNumber;
       while (index < lines.length && NUMBERED.test(lines[index])) {
         items.push(lines[index].match(NUMBERED)[1]);
