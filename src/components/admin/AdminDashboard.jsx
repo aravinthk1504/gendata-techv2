@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FiGrid, FiInbox, FiFileText, FiLogOut, FiMenu, FiX, FiShield, FiArrowUpRight, FiActivity, FiCheckCircle } from "react-icons/fi";
+import { FiGrid, FiInbox, FiFileText, FiLogOut, FiMenu, FiX, FiShield, FiArrowUpRight, FiActivity, FiCheckCircle, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import BlogManager from "./BlogManager";
 import EnquiryManager from "./EnquiryManager";
 import SecurityPanel from "./SecurityPanel";
@@ -63,7 +63,7 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
   const [records, setRecords] = useState(enquiries);
   const [cursor, setCursor] = useState(nextCursor);
   const [logoutError, setLogoutError] = useState("");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);\n  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const menuTrigger = useRef(null);
   const mobileDrawer = useRef(null);
 
@@ -230,7 +230,7 @@ export default function AdminDashboard({ enquiries, nextCursor, lang, adminEmail
             </header>
             {logoutError && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm text-red-700">{logoutError}</p>}
 
-            {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} /> :
+            {tab === "blogs" ? <BlogManager key="articles" onUnsavedChange={setBlogUnsaved} sidebarCollapsed={sidebarCollapsed} /> :
               tab === "security" ? <SecurityPanel lang={lang}/> :
               tab === "reports" ? <ReportsPanel/> : (
               <>
