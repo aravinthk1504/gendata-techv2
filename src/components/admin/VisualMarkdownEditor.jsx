@@ -17,6 +17,7 @@ function markdownToHtml(markdown) {
   const lines = String(markdown || "").split(/\r?\n/);
   const html = [];
   let i = 0;
+  let nextOrderedNumber = null;
   while (i < lines.length) {
     const line = lines[i];
     if (!line.trim()) { i++; continue; }
@@ -27,8 +28,12 @@ function markdownToHtml(markdown) {
       html.push("<ul>"+items.join("")+"</ul>"); continue;
     }
     if (/^\d+[.)]\s+/.test(line)) {
+      const firstNumber = Number(line.match(/^\d+/)[0]);
+      const start = nextOrderedNumber ?? firstNumber;
       const items=[]; while(i<lines.length && /^\d+[.)]\s+/.test(lines[i])) items.push("<li>"+inlineHtml(lines[i++].replace(/^\d+[.)]\s+/,""))+"</li>");
-      html.push("<ol>"+items.join("")+"</ol>"); continue;
+      html.push('<ol start="'+start+'">'+items.join("")+"</ol>");
+      nextOrderedNumber = start + items.length;
+      continue;
     }
     if (/^>\s?/.test(line)) { html.push("<blockquote>"+inlineHtml(line.replace(/^>\s?/,""))+"</blockquote>"); i++; continue; }
     if (/^!\[([^\]]*)\]\((https:\/\/[^\s)]+)\)$/.test(line.trim())) { html.push("<p>"+inlineHtml(line.trim())+"</p>"); i++; continue; }
